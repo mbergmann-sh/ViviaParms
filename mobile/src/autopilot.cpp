@@ -317,6 +317,47 @@ static int systemChecks(QQuickWindow *win, AppController &app, QObject *home, co
     check(!back(), "Zurück: auf der Übersicht nichts mehr zurück (App darf schließen)");
     check(stack->property("depth").toInt() == depth0, "Zurück: Startseite bleibt");
 
+    // Drehen: Hoch- und Querformat im Wechsel, die Oberfläche muss jeweils sofort folgen
+    {
+        const QSize land = win->size(), port(land.height(), land.width());
+        for (int i = 0; i < 4; ++i) {
+            QElapsedTimer et; et.start();
+            win->resize(i % 2 ? land : port);
+            wait(400);
+            const qint64 ms = et.elapsed();
+            auto *root = win->contentItem();
+            check(qAbs(root->width() - win->width()) < 1 && qAbs(root->height() - win->height()) < 1, "Drehen: Inhalt folgt der Fenstergröße");
+            check(ms < 2000, "Drehen: Oberfläche reagiert");
+            qInfo("Drehen %d: %lld ms (%dx%d)", i + 1, ms, win->width(), win->height());
+            if (i == 0 && !Edition::light()) {           // Hochformat: Personenauswahl zeigt die Namen
+                QObject *combo = win->findChild<QObject *>(QStringLiteral("personCombo"));
+                QObject *box = combo ? qvariant_cast<QObject *>(combo->property("combo")) : nullptr;
+                check(box && combo->property("visible").toBool(), "Hochformat: Personenauswahl sichtbar");
+                if (box) {
+                    QObject *popup = qvariant_cast<QObject *>(box->property("popup"));
+                    if (popup) QMetaObject::invokeMethod(popup, "open");
+                    wait(400);
+                    QStringList names;
+                    std::function<void(QQuickItem *)> collect = [&](QQuickItem *it) {
+                        if (it->objectName() == QLatin1String("comboItemText") && it->isVisible()) names << it->property("text").toString();
+                        for (QQuickItem *c : it->childItems()) collect(c);
+                    };
+                    collect(win->contentItem()->parentItem() ? win->contentItem()->parentItem() : win->contentItem());
+                    QStringList expected;
+                    for (const QVariant &p : app.persons()) expected << p.toMap().value(QStringLiteral("name")).toString();
+                    names.sort(); expected.sort();
+                    check(!names.isEmpty() && names == expected, "Hochformat: Personenauswahl zeigt die Namen");
+                    qInfo("Personenauswahl: %s", qPrintable(names.join(QStringLiteral(" | "))));
+                    win->grabWindow().save(out + QLatin1Char('/') + prefix + QStringLiteral("hochformat_personen.png"));
+                    if (popup) QMetaObject::invokeMethod(popup, "close");
+                    wait(200);
+                }
+            }
+        }
+        win->resize(land);
+        wait(300);
+    }
+
     // Systemleisten: Werte aus VP_AUTOPILOT_SAFE (oben,rechts,unten,links)
     QQmlEngine *eng = qmlEngine(win);
     QObject *sys = eng ? qvariant_cast<QObject *>(eng->rootContext()->contextProperty(QStringLiteral("systemUi"))) : nullptr;

@@ -50,4 +50,5 @@ private:
     QMargins m_margins;
     QMargins m_fake;
     bool m_hasFake = false;
+    bool m_barsSet = false, m_lightBars = false;
 };

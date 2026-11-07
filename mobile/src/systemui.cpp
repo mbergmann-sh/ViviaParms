@@ -31,11 +31,17 @@ bool SystemUi::windowPads() const
 #endif
 }
 
+// Ab Qt 6.9 polstert ApplicationWindow den Inhalt selbst (windowPads); die Ränder werden dann nicht
+// abgefragt. 0.31.2 fragte QWindow::safeAreaMargins() bei jeder Änderung ab – beim Drehen des
+// Tablets kam diese Meldung mitten im Größenwechsel von Android, die Abfrage blockierte, und die
+// Oberfläche blieb stehen bzw. schwarz. Abgefragt wird jetzt nur noch, wenn Qt nicht selbst polstert
+// (ältere Qt-Versionen ohne Android), und nie während der Meldung, sondern danach (queued).
 void SystemUi::attach(QWindow *window)
 {
     m_window = window;
 #if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
-    if (window && !m_hasFake) connect(window, &QWindow::safeAreaMarginsChanged, this, &SystemUi::update);
+    if (window && !m_hasFake && !windowPads())
+        connect(window, &QWindow::safeAreaMarginsChanged, this, &SystemUi::update, Qt::QueuedConnection);
 #endif
     update();
 }
@@ -44,7 +50,7 @@ void SystemUi::update()
 {
     QMargins m = m_fake;
 #if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
-    if (!m_hasFake && m_window) m = m_window->safeAreaMargins();
+    if (!m_hasFake && !windowPads() && m_window) m = m_window->safeAreaMargins();
 #endif
     if (m == m_margins) return;
     m_margins = m;
@@ -53,6 +59,9 @@ void SystemUi::update()
 
 void SystemUi::setLightBars(bool light)
 {
+    if (m_barsSet && light == m_lightBars) return;   // nur bei echter Änderung (hell/dunkel)
+    m_barsSet = true;
+    m_lightBars = light;
 #ifdef Q_OS_ANDROID
     const QJniObject activity(QNativeInterface::QAndroidApplication::context());
     QJniObject::callStaticMethod<void>("de/mbergmann/vitaparms/SystemBars", "setLight",

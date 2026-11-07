@@ -40,7 +40,15 @@ ColumnLayout {
             width: box.width
             height: Theme.touch
             contentItem: Text {
-                text: box.textRole ? (Array.isArray(box.model) ? modelData[box.textRole] : model[box.textRole]) : modelData
+                // Eintrag als Objekt (Liste aus C++/JS) oder Rollen des Modells. Nicht über Array.isArray(box.model)
+                // entscheiden: Eine Liste aus C++ ist in neueren Qt-Versionen kein JS-Array, und die
+                // Einträge blieben leer (Personenauswahl im Hochformat, Qt 6.12).
+                objectName: "comboItemText"
+                text: {
+                    if (!box.textRole) return modelData === undefined ? "" : modelData
+                    const v = (modelData !== null && typeof modelData === "object") ? modelData[box.textRole] : model[box.textRole]
+                    return v === undefined || v === null ? "" : v
+                }
                 font: box.font; color: Theme.ink; verticalAlignment: Text.AlignVCenter; elide: Text.ElideRight
             }
             highlighted: box.highlightedIndex === index

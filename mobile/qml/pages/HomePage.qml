@@ -148,6 +148,7 @@ Page {
                     Label { visible: app.light; text: app.appName; font.pixelSize: Theme.fsL; font.bold: true; color: Theme.ink
                             Layout.fillWidth: true; elide: Text.ElideRight }
                     VCombo {
+                        objectName: "personCombo"
                         visible: !win.wide && !app.light
                         Layout.fillWidth: true
                         model: home.persons

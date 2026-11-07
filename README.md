@@ -431,6 +431,17 @@ Wiederherstellungsschlüssel (Anmeldedialog → *Wiederherstellungsschlüssel…
   ein Abgleich (USB oder Website) mit einem Gerät in neuerer Version abgelehnt, und der Server
   nimmt von älteren Versionen keine Datenbank mehr an (HTTP 426) – so kann ein nicht
   aktualisiertes Gerät keine Daten überschreiben, die es nicht kennt.
+* **0.31.4:** VitaParms mobile: Auswahllisten zeigten auf dem Tablet (Qt 6.12) **leere Einträge** –
+  z. B. die Personenauswahl im Hochformat. `VCombo` entschied über `Array.isArray(model)`, ob ein
+  Eintrag ein Objekt ist; eine Liste aus C++ ist in neueren Qt-Versionen aber kein JS-Array. Jetzt
+  wird der Eintrag selbst geprüft. Autopilot öffnet die Personenauswahl im Hochformat und prüft die Namen.
+* **0.31.3:** VitaParms mobile: **Drehen des Tablets** – die Oberfläche passte sich nicht mehr an,
+  beim zweiten Drehen blieb der Bildschirm schwarz (seit 0.31.2). `SystemUi` fragt die Ränder der
+  Systemleisten nicht mehr ab, wenn Qt (ab 6.9) den Fensterinhalt selbst polstert – die Abfrage kam
+  mitten im Größenwechsel; sonst nur noch nachträglich (queued). Symbole der Systemleisten werden nur
+  bei randloser Darstellung (Android 15+) und nur bei einem Wechsel hell/dunkel umgestellt (unter
+  Android 13 wären dunkle Symbole auf der dunklen Statusleiste unsichtbar gewesen). Autopilot dreht
+  das Fenster viermal und prüft, dass die Oberfläche folgt.
 * **0.31.2:** **VitaParms mobile für Android 15/16 und Google Play:** Ziel-API 36 (Android 16),
   Mindestversion Android 9, qmake verlangt für Android Qt 6.10 oder neuer (16-KB-Speicherseiten).
   Darstellung bis an den Rand: Inhalt bleibt frei von Status- und Navigationsleiste (`SystemUi`,

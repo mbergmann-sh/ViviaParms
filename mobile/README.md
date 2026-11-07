@@ -92,9 +92,11 @@ wird nicht erneut übergeben.
 **Android 15 und 16 (Ziel-API 36):**
 
 * *Darstellung bis an den Rand:* Android zeichnet die App unter Status- und Navigationsleiste.
-  Qt (ab 6.9) polstert den Fensterinhalt selbst um diese Ränder; `SystemUi`
-  (`src/systemui.*`, in QML `systemUi`) meldet sie zusätzlich (`QWindow::safeAreaMargins`) und
-  stellt die Symbole der Leisten passend zum hellen/dunklen Design ein (`SystemBars.java`).
+  Qt (ab 6.9) polstert den Fensterinhalt selbst um diese Ränder. `SystemUi`
+  (`src/systemui.*`, in QML `systemUi`) fragt sie dann **nicht** zusätzlich ab – eine Abfrage von
+  `QWindow::safeAreaMargins()` während des Drehens ließ die Oberfläche stehen bzw. schwarz werden
+  (0.31.2) – und stellt ab Android 15 die Symbole der Leisten passend zum hellen/dunklen Design ein
+  (`SystemBars.java`).
 * *Zurück:* `android:enableOnBackInvokedCallback="false"` – sonst meldet Android 16 „Zurück“ nicht
   mehr als Taste, und die App würde geschlossen statt eine Seite zurückzugehen. „Zurück“ schließt
   die geöffnete Seite wie *Abbrechen*/*Schließen*, führt aus einem Reiter zur Übersicht und beendet
