@@ -1,6 +1,6 @@
-// VitaParms – Medikamente suchen: BtM, Schmerzmittel, Blutverdünner/Antikoagulanzien
+// ViviaParms – Medikamente suchen: BtM, Schmerzmittel, Blutverdünner/Antikoagulanzien
 // (oder Freitext) im aktuellen Medikamentenplan – mit Dosierung und Einnahmemenge
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

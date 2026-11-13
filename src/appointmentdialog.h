@@ -1,5 +1,5 @@
-// VitaParms – Termin anlegen/bearbeiten (Formular: appointmentform.ui)
-// SPDX-License-Identifier: MIT
+// ViviaParms – Termin anlegen/bearbeiten (Formular: appointmentform.ui)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "apptcore.h"

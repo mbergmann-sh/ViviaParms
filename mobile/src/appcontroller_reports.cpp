@@ -1,7 +1,7 @@
-// VitaParms Tablet – Ausgaben (Reiter „Berichte“): alle Berichte als PDF bzw. Excel öffnen oder
+// ViviaParms Tablet – Ausgaben (Reiter „Berichte“): alle Berichte als PDF bzw. Excel öffnen oder
 // über das Teilen-Menü von Android weitergeben (einzeln, mehrere, auf Wunsch als verschlüsseltes
 // ZIP-Archiv), dazu die Website mit den aktuellen Daten aktualisieren (Teil von AppController).
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "appcontroller.h"
 #include "edition.h"
 
@@ -52,7 +52,7 @@ bool AppController::shareFiles(const QStringList &files, const QString &subject)
         if (!QFileInfo::exists(f)) { setError(tr("Die Datei %1 fehlt.").arg(QFileInfo(f).fileName())); return false; }
 #ifdef Q_OS_ANDROID
     const QJniObject ctx(QNativeInterface::QAndroidApplication::context());
-    const jboolean ok = QJniObject::callStaticMethod<jboolean>("de/mbergmann/vitaparms/Capture", "share",
+    const jboolean ok = QJniObject::callStaticMethod<jboolean>("de/mbergmann/viviaparms/Capture", "share",
         "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z",
         ctx.object(), QJniObject::fromString(files.join(QLatin1Char('\n'))).object<jstring>(),
         QJniObject::fromString(mimeFor(files)).object<jstring>(), QJniObject::fromString(subject).object<jstring>(),
@@ -104,7 +104,7 @@ QVariantList AppController::reportCatalog(qint64 pid)
     add(QStringLiteral("chart"), gValues, tr("Verlaufskurven"), tr("Kurven mit Legende und Kennwerten (DIN A4)"), true, true, !recs.isEmpty());
     add(QStringLiteral("glucose"), gProt, tr("BZ-Tagesprofile"), tr("Blutzuckerwerte je Tag, nach Uhrzeit geordnet"), true, true, glucose);
     add(QStringLiteral("bpProfile"), gProt, tr("RR-Tagesprofile"), tr("Blutdruck und Puls je Tag nach Profilzeitpunkten, mit Mittelwerten"), true, true, bp);
-    if (!Edition::light()) {             // VitaParms light: kein Stuhlprotokoll, keine Bilanz, keine Wunddokumentation
+    if (!Edition::light()) {             // ViviaParms light: kein Stuhlprotokoll, keine Bilanz, keine Wunddokumentation
         add(QStringLiteral("stool"), gProt, tr("Stuhlprotokoll"), tr("Stuhlgänge mit Bristol-Typ und Angaben, Tage ohne Stuhlgang"), true, true, stool);
         add(QStringLiteral("fluid"), gProt, tr("Ein- und Ausfuhr (Bilanz)"), tr("Einträge mit Tagessummen und Bilanz"), true, true, fluid);
     }
@@ -169,13 +169,13 @@ QVariantMap AppController::shareReports(qint64 pid, const QVariantList &items, c
         QString base = p->displayName();
         base.replace(QRegularExpression(QStringLiteral("[^\\w\\-]+")), QStringLiteral("_"));
         const QString path = QFileInfo(files.first()).absolutePath()
-                             + QStringLiteral("/VitaParms_%1_%2.zip").arg(base, QDate::currentDate().toString(Qt::ISODate));
+                             + QStringLiteral("/ViviaParms_%1_%2.zip").arg(base, QDate::currentDate().toString(Qt::ISODate));
         QString err;
         if (!z.save(path, &err)) { setError(err); return r; }
         files = { path };
     }
     r.insert(QStringLiteral("files"), files);
-    if (!shareFiles(files, tr("VitaParms – %1").arg(p->displayName()))) return r;
+    if (!shareFiles(files, tr("ViviaParms – %1").arg(p->displayName()))) return r;
     r.insert(QStringLiteral("ok"), true);
     return r;
 }

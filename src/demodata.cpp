@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "demodata.h"
 #include "edition.h"
 #include "sqlquery.h"
@@ -65,7 +65,7 @@ QByteArray makePdf(const QString &title, const QString &issuer, const QDate &dat
         w.setPageSize(QPageSize(QPageSize::A4));
         w.setPageMargins(QMarginsF(20, 18, 20, 18), QPageLayout::Millimeter);
         w.setTitle(title);
-        w.setCreator(QStringLiteral("VitaParms Demo"));
+        w.setCreator(QStringLiteral("ViviaParms Demo"));
         QPainter p(&w);
         const QRectF page(QPointF(0, 0), w.pageLayout().paintRectPixels(w.resolution()).size());
         QFont f(QStringLiteral("Helvetica"));
@@ -99,7 +99,7 @@ QByteArray makePdf(const QString &title, const QString &issuer, const QDate &dat
         f.setPointSizeF(7.5);
         p.setFont(f);
         p.drawText(QRectF(page.left(), page.bottom() - 30, page.width(), 30), Qt::AlignCenter,
-                   DemoData::tr("Beispieldokument der VitaParms-Demo – keine echten Befunddaten"));
+                   DemoData::tr("Beispieldokument der ViviaParms-Demo – keine echten Befunddaten"));
     }
     if (fullText) *fullText = (QStringList{ issuer, title, patient } + lines).join(QLatin1Char('\n'));
     return bytes;
@@ -112,7 +112,7 @@ void DemoData::setActive(bool on) { g_active = on; }
 
 void DemoData::enterDemoSettings()
 {
-    QSettings own;                 // eigene Einstellungen (noch unter "VitaParms")
+    QSettings own;                 // eigene Einstellungen (noch unter "ViviaParms")
     QCoreApplication::setApplicationName(Edition::settingsName() + QStringLiteral("-Demo"));
     QSettings demo;
     demo.clear();
@@ -140,7 +140,7 @@ QString DemoData::databasePath()
 {
     const QString dir = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
     QDir().mkpath(dir);
-    return QDir(dir).filePath(QStringLiteral("vitaparms-demo.sqlite"));
+    return QDir(dir).filePath(QStringLiteral("viviaparms-demo.sqlite"));
 }
 
 bool DemoData::launch()
@@ -354,7 +354,7 @@ bool DemoData::populate(qint64 *patientId, const QDate &today, QString *error,
         a.measuredAt = QDateTime(d0, QTime(9, 0));
         a.systolic = 156; a.diastolic = 95; a.pulse = 78; a.temperature = 36.6; a.spo2 = 97;
         a.peakFlow = 340; a.glucose = 158; a.weight = 84.2; a.height = 164;
-        a.observations = tr("Aufnahme in VitaParms");
+        a.observations = tr("Aufnahme in ViviaParms");
         if (!save(a)) { db.commitBulk(); return false; }
     }
 
@@ -592,7 +592,7 @@ bool DemoData::populate(qint64 *patientId, const QDate &today, QString *error,
         if (!db.addDocument(md, pdf, error)) return false;
     }
     if (Edition::light()) {
-        // VitaParms light: nur die Werte, die Light erfasst – ohne Peak Flow, INR, Ein-/Ausfuhr, Ödeme, Stuhlgang,
+        // ViviaParms light: nur die Werte, die Light erfasst – ohne Peak Flow, INR, Ein-/Ausfuhr, Ödeme, Stuhlgang,
         // Pflegegrad und Schwerbehindertenausweis
         SqlQuery q(db.handleDb());
         const QString pid = QString::number(p.id);

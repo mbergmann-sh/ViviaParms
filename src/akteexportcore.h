@@ -1,5 +1,5 @@
-// VitaParms – Krankenakte als ZIP packen (optional AES-256); ohne Oberfläche (Desktop und Tablet)
-// SPDX-License-Identifier: MIT
+// ViviaParms – Krankenakte als ZIP packen (optional AES-256); ohne Oberfläche (Desktop und Tablet)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

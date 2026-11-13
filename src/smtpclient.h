@@ -1,8 +1,8 @@
-// VitaParms – minimaler SMTP-Client für Termin-Erinnerungen
+// ViviaParms – minimaler SMTP-Client für Termin-Erinnerungen
 // SMTP mit STARTTLS oder SSL/TLS (Port 465), Anmeldung per AUTH PLAIN/LOGIN.
 // Der Versand blockiert und wird deshalb in einem Hintergrund-Thread ausgeführt
 // (sendAsync).
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QObject>

@@ -1,4 +1,4 @@
-// VitaParms – umbrechendes Layout (nach dem Qt-Beispiel „Flow Layout“)
+// ViviaParms – umbrechendes Layout (nach dem Qt-Beispiel „Flow Layout“)
 #include "flowlayout.h"
 
 #include <QStyle>

@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "smtpclient.h"
 #include "database.h"
 
@@ -174,7 +174,7 @@ bool send(const Config &c, const QString &to, const QString &subject, const QStr
     if (!s.cmd("DATA", { 354 })) return failWith(s.error());
 
     QByteArray msg;
-    msg += "From: VitaParms <" + c.from.trimmed().toUtf8() + ">\r\n";
+    msg += "From: ViviaParms <" + c.from.trimmed().toUtf8() + ">\r\n";
     msg += "To: <" + to.trimmed().toUtf8() + ">\r\n";
     msg += "Subject: " + encodeHeader(subject) + "\r\n";
     {
@@ -189,7 +189,7 @@ bool send(const Config &c, const QString &to, const QString &subject, const QStr
     msg += "MIME-Version: 1.0\r\n";
     msg += "Content-Type: text/plain; charset=utf-8\r\n";
     msg += "Content-Transfer-Encoding: base64\r\n";
-    msg += "X-Mailer: VitaParms\r\n\r\n";
+    msg += "X-Mailer: ViviaParms\r\n\r\n";
     QString b = body;
     b.replace(QStringLiteral("\r\n"), QStringLiteral("\n")).replace(QLatin1Char('\n'), QStringLiteral("\r\n"));
     msg += wrap76(b.toUtf8().toBase64());   // Base64 enthält keine Zeile ".": kein Dot-Stuffing nötig

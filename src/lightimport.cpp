@@ -1,6 +1,7 @@
-// VitaParms – Datenbank von VitaParms light übernehmen (siehe lightimport.h)
-// SPDX-License-Identifier: MIT
+// ViviaParms – Datenbank von ViviaParms light übernehmen (siehe lightimport.h)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "lightimport.h"
+#include "legacymigration.h"
 
 #include "autobackup.h"
 #include "database.h"
@@ -21,15 +22,21 @@ QString tr(const char *s) { return QCoreApplication::translate("LightImport", s)
 
 QString lightDataDir()
 {
-    // <Programmdaten>/<Organisation>/<Programm>: neben "VitaParms" liegt "VitaParmsLight"
+    // <Programmdaten>/<Organisation>/<Programm>: neben "ViviaParms" liegt "ViviaParmsLight"
     QDir d(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
     d.cdUp();
-    return d.filePath(QStringLiteral("VitaParmsLight"));
+    return d.filePath(QStringLiteral("ViviaParmsLight"));
 }
 
 QString lightDatabasePath()
 {
-    return QDir(lightDataDir()).filePath(QStringLiteral("vitaparms.sqlite"));
+    const QString p = QDir(lightDataDir()).filePath(QStringLiteral("viviaparms.sqlite"));
+    if (QFileInfo::exists(p)) return p;
+    // ViviaParms light noch nie gestartet: Datenbank von VitaParms light (Name bis 0.31.4)
+    const QString old = LegacyMigration::legacyDataDir(QStringLiteral("VitaParms"), QStringLiteral("VitaParmsLight"));
+    if (!old.isEmpty() && QFileInfo::exists(QDir(old).filePath(QStringLiteral("vitaparms.sqlite"))))
+        return QDir(old).filePath(QStringLiteral("vitaparms.sqlite"));
+    return p;
 }
 
 bool importFrom(const QString &path, const QByteArray &key, Result *result, QString *error)

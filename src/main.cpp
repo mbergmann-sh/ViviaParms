@@ -1,6 +1,6 @@
-// VitaParms – Tagebuch für Vitalwerte
+// ViviaParms – Tagebuch für Vitalwerte
 // Copyright (c) 2026 Michael Bergmann
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "accountdialogs.h"
 #include "appsettings.h"
 #include "database.h"
@@ -10,6 +10,7 @@
 #include "mainwindow.h"
 #include "session.h"
 #include "i18n.h"
+#include "legacymigration.h"
 #include "themes.h"
 
 #include <QApplication>
@@ -86,15 +87,27 @@ int main(int argc, char *argv[])
 #endif
     QApplication app(argc, argv);
     ScreenFit::install(app);     // kleine Bildschirme: Dialoge rollbar, Fenster ganz sichtbar
-    QApplication::setOrganizationName(QStringLiteral("VitaParms"));
-    // VitaParms light: eigene Einstellungen und eigener Datenordner (beide Ausgaben laufen nebeneinander)
+    QApplication::setOrganizationName(QStringLiteral("ViviaParms"));
+    // ViviaParms light: eigene Einstellungen und eigener Datenordner (beide Ausgaben laufen nebeneinander)
     QApplication::setApplicationName(Edition::settingsName());
     QApplication::setApplicationDisplayName(Edition::appName());
-    QApplication::setApplicationVersion(QStringLiteral(VITAPARMS_VERSION));
-    // Linux: Zuordnung zum Starter (vitaparms.desktop / vitaparms-light.desktop) – Symbol in Dock und Taskleiste, Wayland-App-ID
-    QGuiApplication::setDesktopFileName(Edition::light() ? QStringLiteral("vitaparms-light") : QStringLiteral("vitaparms"));
-    QApplication::setWindowIcon(QIcon(Edition::light() ? QStringLiteral(":/icons/vitaparms-light.png")
-                                                       : QStringLiteral(":/icons/vitaparms.png")));
+    QApplication::setApplicationVersion(QStringLiteral(VIVIAPARMS_VERSION));
+    // Linux: Zuordnung zum Starter (viviaparms.desktop / viviaparms-light.desktop) – Symbol in Dock und Taskleiste, Wayland-App-ID
+    QGuiApplication::setDesktopFileName(Edition::light() ? QStringLiteral("viviaparms-light") : QStringLiteral("viviaparms"));
+    QApplication::setWindowIcon(QIcon(Edition::light() ? QStringLiteral(":/icons/viviaparms-light.png")
+                                                       : QStringLiteral(":/icons/viviaparms.png")));
+
+    // Bis 0.31.4 hieß das Programm VitaParms: Einstellungen und Daten einmalig übernehmen (vor jedem
+    // Zugriff auf die Einstellungen – sonst fragte ViviaParms erneut nach der Sprache)
+    LegacyMigration::Result migrated;
+    {
+        const QStringList a = QCoreApplication::arguments();
+        const bool infoOnly = a.contains(QStringLiteral("--help")) || a.contains(QStringLiteral("-h"))
+                              || a.contains(QStringLiteral("--version")) || a.contains(QStringLiteral("-v"));
+        if (!infoOnly)
+            migrated = LegacyMigration::migrate(QStringLiteral("VitaParms"),
+                                                Edition::light() ? QStringLiteral("VitaParmsLight") : QStringLiteral("VitaParms"));
+    }
 
     // Sprache (beim allerersten Start wählen lassen, sonst Einstellung bzw. Systemsprache) und Erscheinungsbild
     chooseLanguageOnFirstStart();
@@ -111,6 +124,9 @@ int main(int argc, char *argv[])
     QCommandLineOption demoOpt(QStringLiteral("demo"), QObject::tr("Demo-Datenbank mit Beispieldaten starten"));
     parser.addOption(demoOpt);
     parser.process(app);
+
+    if (migrated.any())
+        QMessageBox::information(nullptr, Edition::appName(), LegacyMigration::message(migrated));
 
     if (!confirmDisclaimer())
         return 0;

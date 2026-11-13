@@ -1,5 +1,5 @@
 <?php
-// VitaParms – Inhalte der Krankenakte beim Datenbank-Abgleich (getrennt von der Datenbank)
+// ViviaParms – Inhalte der Krankenakte beim Datenbank-Abgleich (getrennt von der Datenbank)
 //
 // Die Geräte laden Dokumentinhalte einzeln hoch und holen nur, was ihnen fehlt. Jeder Inhalt ist
 // auf dem Gerät verschlüsselt (AES-256, Schlüssel aus dem Datenbankschlüssel); der Name ist eine
@@ -11,7 +11,7 @@
 //   POST files.php?prune=1         Rumpf = {"keep": [Kennungen]} → löscht nicht mehr gebrauchte
 //                                  Inhalte, die älter als einen Tag sind → {ok, removed}
 // Alle Aufrufe brauchen den Kopf "X-VitaParms-Key" (Upload-Schlüssel der Website).
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 
 require __DIR__ . '/lib.php';
 

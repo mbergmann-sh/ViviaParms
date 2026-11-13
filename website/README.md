@@ -1,6 +1,6 @@
-# VitaParms – Website
+# ViviaParms – Website
 
-Diese Website zeigt die mit VitaParms erfassten Daten **aller Personen** zum Ansehen:
+Diese Website zeigt die mit ViviaParms erfassten Daten **aller Personen** zum Ansehen:
 persönliche Angaben, den gesamten Verlauf der Messwerte (Tabelle und Verlaufskurven, dazu die
 Stuhlgang-Häufigkeit als Tagesbalken mit Hinweis nach drei Tagen ohne Stuhlgang),
 Medikamentenplan, Termine und Berichte zum Herunterladen. Die Krankenakte wird nicht übertragen.
@@ -9,7 +9,7 @@ Medikamentenplan, Termine und Berichte zum Herunterladen. Die Krankenakte wird n
 
 ## So sind die Daten geschützt
 
-- VitaParms verschlüsselt alle Daten **auf dem eigenen Rechner** mit dem Master-Passwort,
+- ViviaParms verschlüsselt alle Daten **auf dem eigenen Rechner** mit dem Master-Passwort,
   bevor sie hochgeladen werden (PBKDF2-SHA256, 210 000 Iterationen → AES-256-CTR + HMAC-SHA256).
 - Auf dem Server liegen nur verschlüsselte Dateien (`data/<paket>/*.vpw`) und ein
   unverschlüsseltes Manifest (`data/current.json`) mit Salz und Prüfwert – **keine** Messwerte,
@@ -35,8 +35,8 @@ Heimnetz-Adresse), `AllowOverride All`, `a2enmod rewrite headers ssl`, `data/` u
 
 ## Installation
 
-1. Subdomain anlegen, z. B. `vitaparms.example.de`, und auf einen **leeren Ordner** zeigen
-   lassen (z. B. `vitaparms/`). HTTPS-Zertifikat aktivieren.
+1. Subdomain anlegen, z. B. `viviaparms.example.de`, und auf einen **leeren Ordner** zeigen
+   lassen (z. B. `viviaparms/`). HTTPS-Zertifikat aktivieren.
 2. Den **Inhalt** dieses Ordners per (S)FTP dorthin hochladen:
    ```
    .htaccess  index.html  robots.txt  README.md
@@ -47,12 +47,12 @@ Heimnetz-Adresse), `AllowOverride All`, `a2enmod rewrite headers ssl`, `data/` u
    ```
    Versteckte Dateien (`.htaccess`) im FTP-Programm einblenden, damit sie mit übertragen werden.
 3. Ordner `data/` und `sync/` beschreibbar machen (Rechte `755`, bei manchen Anbietern `775`).
-4. In VitaParms als Administrator *Extras → Website…*:
-   *Website verwenden* anhaken, Adresse (`https://vitaparms.example.de`) und Master-Passwort
+4. In ViviaParms als Administrator *Extras → Website…*:
+   *Website verwenden* anhaken, Adresse (`https://viviaparms.example.de`) und Master-Passwort
    eintragen, **Verbindung testen**, dann **Jetzt hochladen**.
 5. Die Adresse im Browser öffnen und mit dem Master-Passwort anmelden.
 
-Ab dann aktualisiert VitaParms die Website automatisch etwa eine Minute nach Änderungen und
+Ab dann aktualisiert ViviaParms die Website automatisch etwa eine Minute nach Änderungen und
 beim Beenden (abschaltbar), von Hand mit *Datei → Website aktualisieren* (`Strg+Umschalt+U`).
 
 ## Abgleich mit der Tablet-App
@@ -63,7 +63,7 @@ nur über die Schnittstelle mit Upload-Schlüssel). Zusammengeführt wird auf de
 Server zählt nur eine Revision hoch und lehnt veraltete Uploads ab (HTTP 409). Die
 Website-Ansicht selbst ist davon unabhängig.
 
-Ab VitaParms 0.27 merkt sich `sync.php` das höchste Datenbankformat (`schema` in
+Ab ViviaParms 0.27 merkt sich `sync.php` das höchste Datenbankformat (`schema` in
 `sync/state.json`) und lehnt Uploads von Geräten mit älterem Format – auch von Versionen vor 0.27,
 die gar kein Format mitsenden – mit **HTTP 426** ab. Ein nicht aktualisiertes Gerät kann so keine
 Tabellen überschreiben, die es nicht kennt. **Nach dem Update auf 0.27 den Ordner `api/` auf dem
@@ -76,17 +76,17 @@ bitte mit hochladen; `api/` ist unverändert.
 **0.29:** Das Website-Paket enthält die **Blutdruckamplitude** (`pulsePressure`, berechnet:
 systolisch − diastolisch) – als Spalte im Verlauf nach RR/Puls, als Kurve im Bereich „Blutdruck & Puls“
 und in der CSV-Ausgabe. `app.js` braucht dafür keine Änderung (Werte und Bereiche kommen aus dem Paket);
-die Website zeigt sie nach dem nächsten Hochladen mit VitaParms 0.29.
+die Website zeigt sie nach dem nächsten Hochladen mit ViviaParms 0.29.
 
 **0.28 (Datenbankformat 12):** neue Spalte `vitals.pain` (Schmerzstärke). Die Website-Ansicht
 zeigt sie als eigene Kurve und im Verlauf; `api/` ist unverändert, der Versionsschutz verlangt aber,
 dass **alle Geräte auf 0.28** aktualisiert werden. `assets/app.js` bitte mit hochladen.
-VitaParms light hat keinen Website-Abgleich.
+ViviaParms light hat keinen Website-Abgleich.
 
-Ab VitaParms 0.19 gehen die **Inhalte der Krankenakte** (PDF) getrennt über `api/files.php`:
+Ab ViviaParms 0.19 gehen die **Inhalte der Krankenakte** (PDF) getrennt über `api/files.php`:
 einzeln, nur die fehlenden, auf dem Gerät mit AES-256 verschlüsselt, abgelegt in `sync/files/`
 unter einer Kennung, die nichts über das Dokument verrät. Nicht mehr gebrauchte Inhalte werden
-nach einem Tag gelöscht. Ohne `api/files.php` überträgt VitaParms die Datenbank wie bisher
+nach einem Tag gelöscht. Ohne `api/files.php` überträgt ViviaParms die Datenbank wie bisher
 vollständig (alle Geräte sollten dieselbe Version verwenden).
 
 ## Zugriffsprotokoll
@@ -101,7 +101,7 @@ Suche) mit **Herunterladen (CSV)**.
   eine JSON-Zeile je Eintrag). Ab 1 MB wird es nach `data/.access-log.1.php` verschoben; die
   ältere Datei wird dabei ersetzt.
 * Lesen dürfen nur Personen mit dem Master-Passwort: Der Browser leitet daraus einen Zugriffswert
-  ab, den der Server mit dem Prüfwert in `data/.access.php` vergleicht. VitaParms legt diesen
+  ab, den der Server mit dem Prüfwert in `data/.access.php` vergleicht. ViviaParms legt diesen
   Prüfwert beim Hochladen ab (ab Version 0.26 – vorher einmal *Website aktualisieren*).
 * Fehlgeschlagene Anmeldungen werden auch ohne Passwort protokolliert, je IP-Adresse höchstens
   20 pro Stunde.
@@ -116,8 +116,8 @@ Suche) mit **Herunterladen (CSV)**.
 
 | Aufgabe | Vorgehen |
 |---|---|
-| neuen Upload-Schlüssel verwenden | in VitaParms *Neu* klicken, auf dem Server `data/.uploadkey.php` löschen, hochladen |
-| Master-Passwort ändern | in VitaParms ändern und hochladen – das alte Passwort gilt danach nicht mehr |
+| neuen Upload-Schlüssel verwenden | in ViviaParms *Neu* klicken, auf dem Server `data/.uploadkey.php` löschen, hochladen |
+| Master-Passwort ändern | in ViviaParms ändern und hochladen – das alte Passwort gilt danach nicht mehr |
 | Website leeren | alle Unterordner von `data/` und `data/current.json` löschen |
 | Abgleich zurücksetzen | Inhalt von `sync/` löschen (außer `.htaccess`), danach am Computer abgleichen |
 | Fehler „post_max_size“ | `upload_max_filesize` und `post_max_size` beim Anbieter erhöhen (z. B. 64M) |
@@ -149,22 +149,22 @@ sync/               verschlüsselte Datenbank und Dokumentinhalte (files/) für 
 
 ## English summary
 
-This website shows the data of **all persons** recorded in VitaParms (no medical records),
-encrypted end-to-end: VitaParms encrypts everything with the master password before uploading;
+This website shows the data of **all persons** recorded in ViviaParms (no medical records),
+encrypted end-to-end: ViviaParms encrypts everything with the master password before uploading;
 the browser decrypts it after sign-in. Requirements: Apache with PHP ≥ 7.4 and HTTPS, no database.
 
 Installation: upload the contents of this folder (including the hidden `.htaccess` files) to the
-document root of your (sub)domain, make `data/` and `sync/` writable (755/775), then in VitaParms choose
+document root of your (sub)domain, make `data/` and `sync/` writable (755/775), then in ViviaParms choose
 *Tools → Website…*, enter the address and master password, click **Test connection** and
 **Upload now**. To accept a new upload key, delete `data/.uploadkey.php` on the server.
 
 Access log: the website records who (the name entered at sign-in), when and from which IP
 address it was accessed (sign-in, failed sign-in, sign-out, downloads). **Access log** (top right)
-shows the list and downloads it as CSV. Only users with the master password can read it (VitaParms
+shows the list and downloads it as CSV. Only users with the master password can read it (ViviaParms
 0.26 or later stores the verifier when uploading). Stored in `data/.access-log.php`; delete it to
 clear the log.
 
 Since 0.30 the personal data section also shows the **vaccination record** (date, vaccine, lot
 number); upload `assets/app.js` and `assets/app.css` again.
 
-License: MIT (VitaParms); font: SIL Open Font License 1.1.
+License: PolyForm Noncommercial License 1.0.0 (ViviaParms); font: SIL Open Font License 1.1.

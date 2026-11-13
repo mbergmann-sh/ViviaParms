@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "mainwindow.h"
 #include "flowlayout.h"
 #include "dbtransfer.h"
@@ -121,7 +121,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     else if (m_userCombo->count() > 0) onUserComboChanged(m_userCombo->currentIndex());
 
     statusBar()->showMessage(tr("Datenbank: %1").arg(QDir::toNativeSeparators(db.path())));
-    // VitaParms light: beim ersten Start gleich das Stammblatt anlegen lassen
+    // ViviaParms light: beim ersten Start gleich das Stammblatt anlegen lassen
     if (Edition::light() && !DemoData::isActive() && db.patients().isEmpty())
         QTimer::singleShot(600, this, [this] {
             if (!Database::instance().patients().isEmpty() || !isVisible()) return;
@@ -440,7 +440,7 @@ void MainWindow::buildMenus()
     if (!Edition::light()) {
         m_actImportLight = file->addAction(tr("Datenbank der &Light-Version importieren…"), this, &MainWindow::importLightDatabase);
         m_actImportLight->setObjectName(QStringLiteral("actImportLight"));
-        m_actImportLight->setStatusTip(tr("Übernimmt die Person aus VitaParms light mit allen Daten als weitere Person in diese Datenbank"));
+        m_actImportLight->setStatusTip(tr("Übernimmt die Person aus ViviaParms light mit allen Daten als weitere Person in diese Datenbank"));
     }
     file->addSeparator();
     m_actWebPublish = file->addAction(tr("&Website aktualisieren"), this, [this] {
@@ -703,7 +703,7 @@ void MainWindow::buildMenus()
     // Jede Änderung der sichtbaren Auswahl (Maus, Tastatur, Mausrad, Programm) übernimmt die Person –
     // nicht nur „activated“: sonst konnte die Anzeige eine andere Person zeigen als die intern gewählte
     connect(m_userCombo, qOverload<int>(&QComboBox::currentIndexChanged), this, &MainWindow::onUserComboChanged);
-    if (!Edition::light()) {      // VitaParms light: eine Person – keine Auswahl, keine Hauptbenutzer
+    if (!Edition::light()) {      // ViviaParms light: eine Person – keine Auswahl, keine Hauptbenutzer
         tb->addWidget(new QLabel(tr(" Benutzer: "), tb));
         tb->addWidget(m_userCombo);
         tb->addAction(m_actPrimary[0]);
@@ -723,7 +723,7 @@ void MainWindow::buildMenus()
     tb->addAction(m_actPrint);
 
     if (Edition::light()) {
-        // VitaParms light: nur eine Person, keine Website, keine Stuhl-/Bilanz-/Wundprotokolle,
+        // ViviaParms light: nur eine Person, keine Website, keine Stuhl-/Bilanz-/Wundprotokolle,
         // keine Formularanpassung, ein Anmeldekonto ohne Rollen
         users->setTitle(tr("&Person"));
         for (QAction *a : { np, m_actDeletePatient, m_actPrimary[0], m_actPrimary[1], m_actAssign[0], m_actAssign[1],
@@ -874,7 +874,7 @@ void MainWindow::updateHeader()
                      .arg(tr("Bestand:"), s.join(QStringLiteral(" · ")).toHtmlEscaped());
     }
     // Stuhlgang: seit mindestens drei Tagen nichts eingetragen (nur wenn Stuhlgang erfasst wird)
-    // (VitaParms light erfasst weder INR, Ein-/Ausfuhr, Stuhlgang noch Wunden)
+    // (ViviaParms light erfasst weder INR, Ein-/Ausfuhr, Stuhlgang noch Wunden)
     if (!Edition::light()) {
         const QList<VitalRecord> recent = Database::instance().vitals(p->id, QDateTime(QDate::currentDate().addDays(-40), QTime(0, 0)), {});
         QStringList care;
@@ -950,7 +950,7 @@ void MainWindow::assignPrimary(int slot)
 
 void MainWindow::newPatient()
 {
-    // VitaParms light verwaltet genau eine Person
+    // ViviaParms light verwaltet genau eine Person
     if (Edition::light() && !Database::instance().patients().isEmpty()) { editPatient(); return; }
     PatientDialog d(Patient{}, this);
     if (d.exec() == QDialog::Accepted) {
@@ -1510,7 +1510,7 @@ bool MainWindow::reopenDatabase(const QString &path, bool createNew)
         return false;
     }
     if (!Session::isLoggedIn()) {
-        QMessageBox::information(this, tr("Datenbank"), tr("Ohne geöffnete Datenbank wird VitaParms beendet."));
+        QMessageBox::information(this, tr("Datenbank"), tr("Ohne geöffnete Datenbank wird ViviaParms beendet."));
         qApp->quit();
     }
     Q_UNUSED(previousUser)
@@ -1584,8 +1584,8 @@ void MainWindow::newDatabase()
 {
     if (!Session::isAdmin()) return;
     const QString path = QFileDialog::getSaveFileName(this, tr("Neue Datenbank anlegen"),
-        QDir(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)).filePath(QStringLiteral("vitaparms.sqlite")),
-        tr("VitaParms-Datenbank (*.sqlite *.db)"));
+        QDir(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)).filePath(QStringLiteral("viviaparms.sqlite")),
+        tr("ViviaParms-Datenbank (*.sqlite *.db)"));
     if (path.isEmpty()) return;
     if (Database::fileHasContent(path)) {
         QMessageBox::information(this, tr("Neue Datenbank"), tr("Die Datei existiert bereits und wird geöffnet."));
@@ -1599,7 +1599,7 @@ void MainWindow::openDatabase()
 {
     if (!Session::isAdmin()) return;
     const QString path = QFileDialog::getOpenFileName(this, tr("Datenbank öffnen"),
-        QFileInfo(Database::instance().path()).absolutePath(), tr("VitaParms-Datenbank (*.sqlite *.db);;Alle Dateien (*)"));
+        QFileInfo(Database::instance().path()).absolutePath(), tr("ViviaParms-Datenbank (*.sqlite *.db);;Alle Dateien (*)"));
     if (!path.isEmpty())
         reopenDatabase(path, false);
 }
@@ -1609,8 +1609,8 @@ void MainWindow::backupDatabase()
     if (!Session::isAdmin()) return;
     const QString path = QFileDialog::getSaveFileName(this, tr("Sicherung erstellen"),
         QDir(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation))
-            .filePath(QStringLiteral("VitaParms-Sicherung_%1.sqlite").arg(QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd_HHmm")))),
-        tr("VitaParms-Datenbank (*.sqlite)"));
+            .filePath(QStringLiteral("ViviaParms-Sicherung_%1.sqlite").arg(QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd_HHmm")))),
+        tr("ViviaParms-Datenbank (*.sqlite)"));
     if (path.isEmpty()) return;
     QString err;
     QApplication::setOverrideCursor(Qt::WaitCursor);
@@ -1638,7 +1638,7 @@ void MainWindow::restoreDatabase()
     // Vorschlag: Ordner der automatischen Sicherungen, falls es dort welche gibt
     const QString src = QFileDialog::getOpenFileName(this, tr("Sicherung wiederherstellen / Datenbank importieren"),
         !AutoBackup::list().isEmpty() ? AutoBackup::folder() : QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
-        tr("VitaParms-Datenbank (*.vpdb *.sqlite *.db);;Alle Dateien (*)"));
+        tr("ViviaParms-Datenbank (*.vpdb *.sqlite *.db);;Alle Dateien (*)"));
     if (src.isEmpty()) return;
     const QString target = Database::instance().path();
     const bool hasKeys = DbTransfer::isBundle(src) || QFile::exists(KeyStore::pathFor(src));
@@ -1690,14 +1690,14 @@ void MainWindow::showUsbSync(bool autoMerge)
     QFile::remove(bundle);
 }
 
-// Datei → Datenbank der Light-Version importieren: Person(en) aus VitaParms light mit allen Daten übernehmen
+// Datei → Datenbank der Light-Version importieren: Person(en) aus ViviaParms light mit allen Daten übernehmen
 void MainWindow::importLightDatabase()
 {
     const QString title = tr("Datenbank der Light-Version importieren");
     const QString start = QFile::exists(LightImport::lightDatabasePath()) ? LightImport::lightDatabasePath()
                                                                           : LightImport::lightDataDir();
     QString src = QFileDialog::getOpenFileName(this, title, start,
-                                               tr("Datenbank von VitaParms light (*.sqlite *.vpdb);;Alle Dateien (*)"));
+                                               tr("Datenbank von ViviaParms light (*.sqlite *.vpdb);;Alle Dateien (*)"));
     if (src.isEmpty()) return;
     QString err;
     QTemporaryDir tmp;
@@ -1725,7 +1725,7 @@ void MainWindow::importLightDatabase()
         d.setObjectName(QStringLiteral("lightLoginDialog"));
         d.setWindowTitle(title);
         auto *lay = new QVBoxLayout(&d);
-        auto *intro = new QLabel(tr("Melden Sie sich mit dem Konto von <b>VitaParms light</b> an, um die Datenbank<br>%1<br>zu entsperren.")
+        auto *intro = new QLabel(tr("Melden Sie sich mit dem Konto von <b>ViviaParms light</b> an, um die Datenbank<br>%1<br>zu entsperren.")
                                      .arg(QDir::toNativeSeparators(src).toHtmlEscaped()), &d);
         intro->setWordWrap(true);
         lay->addWidget(intro);
@@ -1760,19 +1760,19 @@ void MainWindow::importLightDatabase()
         (name->text().isEmpty() ? name : pw)->setFocus();
         if (d.exec() != QDialog::Accepted) {
             if (!useRecovery) return;
-            key = askRecoveryKey(this, tr("Datenbank von VitaParms light entsperren"));
+            key = askRecoveryKey(this, tr("Datenbank von ViviaParms light entsperren"));
         }
     } else {
         key = askRecoveryKey(this, tr("Zur Datenbank\n%1\nfehlt die Schlüsseldatei (%2). Sie lässt sich nur mit dem "
-                                      "Wiederherstellungsschlüssel von VitaParms light öffnen.")
+                                      "Wiederherstellungsschlüssel von ViviaParms light öffnen.")
                                        .arg(QDir::toNativeSeparators(src), QFileInfo(keysPath).fileName()));
     }
     if (key.isEmpty()) return;
 
     if (QMessageBox::question(this, title,
-            tr("<p>Die Person aus VitaParms light wird mit Stammblatt, Messungen, Medikamenten, Terminen, Kontakten und "
+            tr("<p>Die Person aus ViviaParms light wird mit Stammblatt, Messungen, Medikamenten, Terminen, Kontakten und "
                "Dokumenten als <b>weitere Person</b> in diese Datenbank übernommen. Vorhandene Personen bleiben unverändert.</p>"
-               "<p>Vorher legt VitaParms eine Sicherung dieser Datenbank an. Jetzt importieren?</p>")) != QMessageBox::Yes)
+               "<p>Vorher legt ViviaParms eine Sicherung dieser Datenbank an. Jetzt importieren?</p>")) != QMessageBox::Yes)
         return;
     QApplication::setOverrideCursor(Qt::WaitCursor);
     LightImport::Result res;
@@ -1796,8 +1796,8 @@ void MainWindow::exportDatabase()
     if (!Session::isAdmin()) return;
     const QString path = QFileDialog::getSaveFileName(this, tr("Datenbank exportieren"),
         QDir(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation))
-            .filePath(QStringLiteral("VitaParms_%1.vpdb").arg(QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd_HHmm")))),
-        tr("VitaParms-Übertragungsdatei (*.vpdb)"));
+            .filePath(QStringLiteral("ViviaParms_%1.vpdb").arg(QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd_HHmm")))),
+        tr("ViviaParms-Übertragungsdatei (*.vpdb)"));
     if (path.isEmpty()) return;
     QString err;
     QApplication::setOverrideCursor(Qt::WaitCursor);
@@ -1884,10 +1884,13 @@ void MainWindow::about()
         tr("<h3>%3 %1</h3>"
            "<p>Tagebuch für Vitalwerte mit Verlauf, Grafiken, Druck, PDF- und Excel-Export.</p>"
            "<p>Copyright © 2026 Michael Bergmann<br>"
-           "Freie Software unter der <b>MIT-Lizenz</b>.</p>"
+           "Quelloffen unter der <b>PolyForm Noncommercial License 1.0.0</b>: kostenlos für jede nicht-kommerzielle Nutzung – "
+           "privat sowie durch gemeinnützige Organisationen, Schulen und Behörden –, einschließlich Verändern und "
+           "Weitergeben. Kommerzielle Nutzung und Verkauf nur mit Erlaubnis des Autors.<br>"
+           "<a href=\"https://polyformproject.org/licenses/noncommercial/1.0.0\">polyformproject.org/licenses/noncommercial/1.0.0</a></p>"
            "<p>Erstellt mit Qt %2 (LGPLv3).</p>"
            "<p><small>Kein Medizinprodukt – Verwendung auf eigene Gefahr.</small></p>")
-            .arg(QStringLiteral(VITAPARMS_VERSION), QString::fromLatin1(qVersion()), Edition::appName()));
+            .arg(QStringLiteral(VIVIAPARMS_VERSION), QString::fromLatin1(qVersion()), Edition::appName()));
 }
 
 void MainWindow::showWebsiteSettings()
@@ -1903,7 +1906,7 @@ void MainWindow::closeEvent(QCloseEvent *e)
     if (!DemoData::isActive() && Session::isLoggedIn() && UsbSyncDialog::askOnExit()) {
         QMessageBox mb(QMessageBox::Question, tr("Mit dem Tablet abgleichen?"),
                        tr("Vor dem Beenden die Datenbank über das USB-Kabel mit dem Tablet abgleichen?\n\n"
-                          "Das Tablet muss angeschlossen sein, VitaParms darauf geöffnet und angemeldet."),
+                          "Das Tablet muss angeschlossen sein, ViviaParms darauf geöffnet und angemeldet."),
                        QMessageBox::NoButton, this);
         QPushButton *sync = mb.addButton(tr("&Abgleichen…"), QMessageBox::AcceptRole);
         QPushButton *quit = mb.addButton(tr("&Ohne Abgleich beenden"), QMessageBox::DestructiveRole);
@@ -1921,7 +1924,7 @@ void MainWindow::closeEvent(QCloseEvent *e)
         DbSync &ds = DbSync::instance();
         if (!DemoData::isActive() && sc.autoSync && DbSync::isReady(sc) && ds.status().pending) {
             QProgressDialog progress(tr("Datenbank wird abgeglichen …"), QString(), 0, 0, this);
-            progress.setWindowTitle(tr("VitaParms"));
+            progress.setWindowTitle(tr("ViviaParms"));
             progress.setWindowModality(Qt::ApplicationModal);
             progress.setMinimumDuration(0);
             progress.show();
@@ -1942,7 +1945,7 @@ void MainWindow::closeEvent(QCloseEvent *e)
     const WebSync::Config wc = WebSync::config();
     if (!DemoData::isActive() && wc.autoPublish && WebSync::isReady(wc) && (ws.hasPendingChanges() || ws.isBusy())) {
         QProgressDialog progress(tr("Website wird aktualisiert …"), QString(), 0, 0, this);
-        progress.setWindowTitle(tr("VitaParms"));
+        progress.setWindowTitle(tr("ViviaParms"));
         progress.setWindowModality(Qt::ApplicationModal);
         progress.setMinimumDuration(0);
         progress.show();
@@ -1960,7 +1963,7 @@ void MainWindow::closeEvent(QCloseEvent *e)
     // Automatische Sicherung beim Beenden, wenn sich seit der letzten etwas geändert hat
     if (Session::isLoggedIn() && AutoBackup::dueAtExit()) {
         QProgressDialog progress(tr("Automatische Sicherung …"), QString(), 0, 0, this);
-        progress.setWindowTitle(tr("VitaParms"));
+        progress.setWindowTitle(tr("ViviaParms"));
         progress.setWindowModality(Qt::ApplicationModal);
         progress.setMinimumDuration(0);
         progress.show();

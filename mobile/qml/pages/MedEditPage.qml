@@ -179,7 +179,7 @@ Page {
                         }
                     }
                 }
-                Label { text: qsTr("Die Erinnerungen erscheinen in der Terminliste und werden von VitaParms am Computer angezeigt.")
+                Label { text: qsTr("Die Erinnerungen erscheinen in der Terminliste und werden von ViviaParms am Computer angezeigt.")
                         color: Theme.muted; font.pixelSize: Theme.fsXs; Layout.fillWidth: true; wrapMode: Text.WordWrap }
             }
             VField { id: rhythmNote; label: cat.currentIndex === 1 || cat.currentIndex === 2 ? qsTr("Anlass / Anwendung") : qsTr("Bemerkung zur Einnahme")

@@ -1,9 +1,9 @@
-// VitaParms Tablet – Brücke zwischen dem gemeinsamen Kern und der QML-Oberfläche
+// ViviaParms Tablet – Brücke zwischen dem gemeinsamen Kern und der QML-Oberfläche
 //
 // Alle Daten gehen als QVariantMap/QVariantList an QML; Schreibzugriffe laufen über
 // dieselben Kernfunktionen wie im Desktop-Programm (Database, Session, MedSchedule …),
 // damit beide Versionen dieselbe Datenbank verwenden und abgleichen können.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "edition.h"
@@ -19,8 +19,8 @@ class AppController : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString version READ version CONSTANT)
-    Q_PROPERTY(bool light READ light CONSTANT)                 // VitaParms light (eine Person, vereinfacht)
-    Q_PROPERTY(QString appName READ appName CONSTANT)          // "VitaParms" bzw. "VitaParms light"
+    Q_PROPERTY(bool light READ light CONSTANT)                 // ViviaParms light (eine Person, vereinfacht)
+    Q_PROPERTY(QString appName READ appName CONSTANT)          // "ViviaParms" bzw. "ViviaParms light"
     Q_PROPERTY(bool hasDatabase READ hasDatabase NOTIFY sessionChanged)
     Q_PROPERTY(bool loggedIn READ loggedIn NOTIFY sessionChanged)
     Q_PROPERTY(bool isAdmin READ isAdmin NOTIFY sessionChanged)

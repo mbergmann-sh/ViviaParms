@@ -1,4 +1,4 @@
-// VitaParms – Kontakte einer Person (Stammblatt, „Weitere Angaben“)
+// ViviaParms – Kontakte einer Person (Stammblatt, „Weitere Angaben“)
 //
 // Krankenkasse, Hausarzt, Fachärzte, Kliniken, Pflegedienst, Apotheke, Notfallkontakt …
 // jeweils mit Anschrift, Telefon, Mobil, E-Mail und Website; die Krankenkasse zusätzlich mit
@@ -8,7 +8,7 @@
 // Ältere Versionen kannten nur die Zusatzfelder „Krankenkasse“, „Hausarztpraxis“, „Praxis-Telefon“
 // und „Notfallkontakt“. list() übernimmt sie beim ersten Lesen; store() schreibt sie weiter mit,
 // damit ältere Programmstände (z. B. ein noch nicht aktualisiertes Tablet) sie anzeigen.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

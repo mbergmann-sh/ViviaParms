@@ -1,5 +1,5 @@
-// VitaParms – einen Kontakt bearbeiten (Stammblatt → Weitere Angaben: Kontakte)
-// SPDX-License-Identifier: MIT
+// ViviaParms – einen Kontakt bearbeiten (Stammblatt → Weitere Angaben: Kontakte)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "contacts.h"

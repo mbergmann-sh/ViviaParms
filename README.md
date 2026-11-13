@@ -1,18 +1,23 @@
-# VitaParms
+# ViviaParms
 
 Tagebuch für Vitalwerte mit Verlauf, Grafiken, Druck (DIN A4), PDF- und Excel-Export.
-Qt 6 / C++17 / qmake – MIT-Lizenz.
+Qt 6 / C++17 / qmake – quelloffen unter der PolyForm Noncommercial License 1.0.0.
 
-> **Kein Medizinprodukt.** VitaParms ist ein persönliches Tagebuch für gesundheitsbezogene
+> **Kein Medizinprodukt.** ViviaParms ist ein persönliches Tagebuch für gesundheitsbezogene
 > Messwerte. Es stellt keine Diagnosen und ersetzt keine ärztliche Beratung.
 > Die Verwendung erfolgt auf eigene Gefahr.
 
-![VitaParms – Hauptfenster mit Journal und dem Hinweis auf die Termine von heute und morgen (Demo-Daten)](docs/images/hauptfenster.png)
+![ViviaParms – Hauptfenster mit Journal (Beispieldaten)](docs/images/hauptfenster.png)
 
-*Hauptfenster mit Journal und dem Hinweis auf die Termine von heute und morgen (Demo-Modus mit erfundenen Daten).*
+*Hauptfenster mit Journal (erfundene Beispieldaten).*
 
-> **Neu: VitaParms light** – eine vereinfachte Ausgabe für eine einzelne Person, gebaut aus demselben
-> Quelltext (Unterprojekt `light/`, Desktop und Tablet/Smartphone). Siehe [VitaParms light](#vitaparms-light).
+> **Neuer Name, neue Lizenz (ab 0.32.0):** Das Programm hieß bis Version 0.31.4 **VitaParms** und
+> erschien unter der MIT-Lizenz. Es heißt jetzt **ViviaParms** und steht unter der **PolyForm
+> Noncommercial License 1.0.0** (siehe [Lizenzhinweise](#lizenzhinweise)). Umstieg siehe
+> [Von VitaParms auf ViviaParms umsteigen](#von-vitaparms-auf-viviaparms-umsteigen).
+
+> **Neu: ViviaParms light** – eine vereinfachte Ausgabe für eine einzelne Person, gebaut aus demselben
+> Quelltext (Unterprojekt `light/`, Desktop und Tablet/Smartphone). Siehe [ViviaParms light](#viviaparms-light).
 
 ## Funktionen
 
@@ -41,39 +46,39 @@ Qt 6 / C++17 / qmake – MIT-Lizenz.
 | **Sprachen** | Deutsch und Englisch, Auswahl in den Einstellungen (oder Systemsprache) |
 | **Themes** | alle Qt-Styles der Plattform sowie „Dark“ und „Visual Studio Code Dark“ aus AmigaED 4.0 – sofort umschaltbar |
 | **Daten** | Sicherung/Wiederherstellung, **automatische Sicherung** (beim Beenden bzw. täglich, die letzten n Stände, Ordner wählbar), mehrere Datenbanken möglich |
-| **Demo** | *Hilfe → Demo-Datenbank starten*: zweites Fenster mit einer erfundenen Person und **365 Tagen** Messwerten bis heute, Medikamentenplan, Terminen und Befunden; eigene verschlüsselte Datenbank und eigene Einstellungen, bei jedem Start neu erzeugt (auch `VitaParms --demo`) |
+| **Demo** | *Hilfe → Demo-Datenbank starten*: zweites Fenster mit einer erfundenen Person und **365 Tagen** Messwerten bis heute, Medikamentenplan, Terminen und Befunden; eigene verschlüsselte Datenbank und eigene Einstellungen, bei jedem Start neu erzeugt (auch `ViviaParms --demo`) |
 | **Website** | *Extras → Website…*: die Daten **aller Personen** (gesamter Messwert-Verlauf mit Verlaufskurven, Medikamente, Termine, Berichte als PDF/Excel – **ohne Krankenakte**) auf der eigenen Website, geschützt durch ein Master-Passwort; Ende-zu-Ende-verschlüsselt (AES-256, Entschlüsselung erst im Browser), automatisch aktualisiert (*Datei → Website aktualisieren*, `Strg+Umschalt+U`). Siehe `website/README.md` |
-| **Übertragen** | *Datei → Datenbank exportieren* (eine `.vpdb`-Datei mit Datenbank und Anmeldekonten) und **Import bei der Anmeldung** (*Datenbank importieren…*, auch beim ersten Start, am Computer und auf dem Tablet) – ohne Website, z. B. per USB-Kabel; **Datei → Datenbank der Light-Version importieren…** übernimmt die Person aus VitaParms light als weitere Person (vorher automatische Sicherung, erneuter Import ohne Dubletten) |
+| **Übertragen** | *Datei → Datenbank exportieren* (eine `.vpdb`-Datei mit Datenbank und Anmeldekonten) und **Import bei der Anmeldung** (*Datenbank importieren…*, auch beim ersten Start, am Computer und auf dem Tablet) – ohne Website, z. B. per USB-Kabel; **Datei → Datenbank der Light-Version importieren…** übernimmt die Person aus ViviaParms light als weitere Person (vorher automatische Sicherung, erneuter Import ohne Dubletten) |
 | **Tablet** | **Tablet-App für Android** (Qt Quick, `mobile/`): Messungen erfassen (Messzeitpunkt auch als Freitext), Verläufe, Kurven, Stammblatt, Medikamentenplan, Kontakte und Vorsorge bearbeiten (Vorsorge-PDF aus der Krankenakte verknüpfen), **Medikamente stellen** mit Vorlesen, **Bestand und Bestellungen**, **Wunddokumentation** mit Kamerafoto, **Berichte** öffnen/teilen (auch als verschlüsseltes ZIP), **Website aktualisieren**, **Terminplaner** mit Serien, **BZ-Tagesprofil**, Quartalswechsel-Erinnerung und **Erinnerungen als Android-Benachrichtigung** – mit derselben verschlüsselten Datenbank; **Abgleich** über die eigene Website (*Datei → Datenbank abgleichen*, `Strg+Umschalt+A`) oder direkt **über das USB-Kabel** (*Datei → Mit Tablet über USB abgleichen…*, per `adb`; auch Computer → Tablet bzw. Tablet → Computer ersetzen), zeilenweises Zusammenführen. Siehe `mobile/README.md` |
 | **Bestand** | *Benutzer → Medikamentenbestand und Bestellungen*: Packungen mit Stückzahl und **Verfallsdatum**, Abbuchung beim **Stellen** (zuerst ablaufende Packung), Reichweite nach Dosierschema und Rhythmus, **Bestellen bis** = Reichweite − Vorlauf (Standard 7 Tage, Wochenende → Freitag), Warnung „ist fast aufgebraucht – bitte Verordnung besorgen und bestellen!“, gespeicherte **Bestelllisten** (Druck/PDF), Erinnerung bis zur Bestätigung „bestellt“, Lieferung bucht ein |
 | **Impfpass** | Im Stammblatt (Reiter *Impfpass*): erhaltene Impfungen mit Datum, „Impfung gegen“, Impfstoff, **Chargennummer**, Arzt/Praxis und Bemerkung – hinzufügen, ändern, entfernen, drucken; auch im Stammblatt-Ausdruck, in der Tablet-App (bearbeitbar) und auf der Website. Ersetzt nicht den amtlichen Impfausweis |
 | **Kontakte** | Im Stammblatt (*Weitere Angaben: Kontakte*): beliebig viele Kontakte – **Krankenkasse mit Versichertennummer**, Hausarztpraxis, Fachärzte, Kliniken, Pflegedienst, Apotheke, Notfallkontakt, **Angehörige**, Sonstige –, je mit Anschrift, Telefon, Mobil, E-Mail und Website; **scrollbare Liste mit Suchfeld**, *Hinzufügen / Bearbeiten / Entfernen*. Die früheren Zusatzfelder (Krankenkasse, Hausarztpraxis, Praxis-Telefon, Notfallkontakt) werden automatisch übernommen und für ältere Versionen weiter mitgeschrieben. Anzeige im Stammblatt-Ausdruck, auf Apotheken- und Bestellliste, auf der Website und im Tablet |
 | **Wunddokumentation** | *Benutzer → Wunddokumentation…* (`Strg+Umschalt+W`), nach dem Expertenstandard „Pflege von Menschen mit chronischen Wunden“: **Wunde** mit Wundanamnese (Wundart mit Klassifikation – Dekubitus-Kategorie EPUAP/NPIAP, Wagner-Grad, Verbrennungsgrad –, Diagnose, Lokalisation, Entstehung, **bei Aufnahme vorhanden**, Rezidive, Einschränkungen, Selbstmanagement, Therapieziel, Einwilligung zur Fotodokumentation), **Chronik** aus Wundbeurteilungen (Größe L×B×T, Taschen, Wundgrund in %, Exsudat, Geruch, Wundrand, Umgebung, Infektionszeichen, Schmerz, Phase, Versorgung, **Foto**) und Verbandwechseln (Handzeichen, Beschreibung, Tendenz), **Flächenverlauf**, Hinweise (Beurteilung nach 4 Wochen fällig, Infektionszeichen, Verschlechterung, Verbandwechsel fällig), Druck/PDF/Excel; **Wunden bei Aufnahme** im Stammblatt; auch auf dem Tablet (Reiter „Wunden“, Foto mit der Kamera) |
 | **Vorsorge** | Im Stammblatt (*Pflege, Ausweis und Vorsorge*): **Patientenverfügung, Vorsorgevollmacht, Betreuungsvollmacht** – je vorhanden ja/nein, eingetragene Person mit Anschrift und Telefon, gültig bis; jeweils **PDF hinterlegbar** (verschlüsselt in der Krankenakte); Anzeige im Kopf, im Stammblatt-Ausdruck, auf der Website und im Tablet |
-| **Apotheke** | *Medikationsliste für die Apotheke*: alle aktuellen Medikamente mit Wirkstoff und PZN, dazu Gewicht, Allergien, Diagnosen, Ankreuzliste für frei verkäufliche Mittel und Platz für Notizen – damit die Apotheke Wechselwirkungen prüft (VitaParms selbst prüft bewusst nicht; Hinweis auf die Medikationsberatung bei Polymedikation). Desktop, Website und Tablet |
+| **Apotheke** | *Medikationsliste für die Apotheke*: alle aktuellen Medikamente mit Wirkstoff und PZN, dazu Gewicht, Allergien, Diagnosen, Ankreuzliste für frei verkäufliche Mittel und Platz für Notizen – damit die Apotheke Wechselwirkungen prüft (ViviaParms selbst prüft bewusst nicht; Hinweis auf die Medikationsberatung bei Polymedikation). Desktop, Website und Tablet |
 | **Pflege** | **Pflegegrad** (mit nächster Überprüfung) und **Schwerbehindertenausweis** (GdB, Merkzeichen G, aG, B, H, Bl, Gl, TBl, RF, 1. Kl., Gültigkeit) im Stammblatt, im Kopf des Hauptfensters, im Ausdruck, auf der Website und in der Tablet-App |
 | **Hilfe** | **Handbuch** unter *Hilfe → Handbuch* bzw. `F1` in der Programmsprache: unter Windows als **Windows-Hilfe (.chm)** mit Inhalt, Stichwortverzeichnis und Volltextsuche, sonst als PDF im Standardanzeiger; Dateien in `<Programmordner>/docs`. Kurzanleitung **Erste Schritte** (*Getting Started*) mit Beispielen unter *Hilfe → Erste Schritte*, im Anmeldedialog, beim ersten Start und in der Tablet-App (*Einstellungen*) – auch ohne Anmeldung. Beim allerersten Start wählt man die **Sprache** (Desktop und Tablet) |
 | **Formulare** | Stammblatt, Messung und Medikament sind **Qt-Designer-Dateien, die zur Laufzeit geladen werden** – vom Benutzer veränderbar, inkl. eigener Felder ohne Neuübersetzen |
 
 ## Handbuch
 
-Zu VitaParms gibt es ein bebildertes Benutzerhandbuch als LaTeX-Projekt (pdfLaTeX, KOMA-Script),
-auf Deutsch (*VitaParms-Handbuch*) und auf Englisch (*VitaParms-Manual*), jeweils mit fertigem PDF.
+Zu ViviaParms gibt es ein bebildertes Benutzerhandbuch als LaTeX-Projekt (pdfLaTeX, KOMA-Script),
+auf Deutsch (*ViviaParms-Handbuch*) und auf Englisch (*ViviaParms-Manual*), jeweils mit fertigem PDF.
 
 **Im Programm (ab 0.7.7):** *Hilfe → Handbuch* (`F1`) öffnet das Handbuch in der Programmsprache aus dem
-Ordner `docs` neben dem Programm (macOS: `VitaParms.app/Contents/Resources/docs`, Linux nach `make install`:
-`/usr/local/share/vitaparms/docs`). qmake kopiert `docs/` beim Bauen automatisch neben das Programm.
+Ordner `docs` neben dem Programm (macOS: `ViviaParms.app/Contents/Resources/docs`, Linux nach `make install`:
+`/usr/local/share/viviaparms/docs`). qmake kopiert `docs/` beim Bauen automatisch neben das Programm.
 
 | Datei | Verwendung |
 |---|---|
-| `docs/VitaParms-Handbuch.pdf`, `docs/VitaParms-Manual.pdf` | alle Systeme, Standard-PDF-Anzeiger |
-| `docs/VitaParms-Handbuch.chm`, `docs/VitaParms-Manual.chm` | Windows-Hilfe (`hh.exe`); fehlt sie, wird das PDF geöffnet |
-| `docs/VitaParms-ErsteSchritte.pdf/.chm`, `docs/VitaParms-GettingStarted.pdf/.chm` | Kurzanleitung (*Hilfe → Erste Schritte*); die PDFs gehen auch ins Android-Paket (`assets:/docs`) |
+| `docs/ViviaParms-Handbuch.pdf`, `docs/ViviaParms-Manual.pdf` | alle Systeme, Standard-PDF-Anzeiger |
+| `docs/ViviaParms-Handbuch.chm`, `docs/ViviaParms-Manual.chm` | Windows-Hilfe (`hh.exe`); fehlt sie, wird das PDF geöffnet |
+| `docs/ViviaParms-ErsteSchritte.pdf/.chm`, `docs/ViviaParms-GettingStarted.pdf/.chm` | Kurzanleitung (*Hilfe → Erste Schritte*); die PDFs gehen auch ins Android-Paket (`assets:/docs`) |
 
 ### Erste Schritte / Getting Started
 
-Die Kurzanleitung ist ein eigenes LaTeX-Projekt je Sprache: `VitaParms-ErsteSchritte` (`erste-schritte.tex`)
-und `VitaParms-GettingStarted` (`getting-started.tex`), jeweils mit `Makefile` und `latexmkrc` (`make` bzw.
+Die Kurzanleitung ist ein eigenes LaTeX-Projekt je Sprache: `ViviaParms-ErsteSchritte` (`erste-schritte.tex`)
+und `ViviaParms-GettingStarted` (`getting-started.tex`), jeweils mit `Makefile` und `latexmkrc` (`make` bzw.
 `latexmk -pdf`). Sie arbeitet mit der Demo-Datenbank und den Beispielpersonen Erika und Max Mustermann;
 die nummerierten Markierungen in den Bildschirmfotos (`gs_*.png`) erzeugt der Testlauf.
 
@@ -81,10 +86,10 @@ Die CHM-Dateien entstehen aus denselben LaTeX-Quellen wie das PDF – ein Kapite
 Stichwortverzeichnis aus den `\index`-Einträgen, Volltextsuche; TikZ-Grafiken und Formeln als Bild:
 
 ```
-python3 tools/make_chm.py ../VitaParms-Handbuch      # → docs/VitaParms-Handbuch.chm
-python3 tools/make_chm.py ../VitaParms-Manual        # → docs/VitaParms-Manual.chm
-python3 tools/make_chm.py ../VitaParms-ErsteSchritte # → docs/VitaParms-ErsteSchritte.chm
-python3 tools/make_chm.py ../VitaParms-GettingStarted # → docs/VitaParms-GettingStarted.chm
+python3 tools/make_chm.py ../ViviaParms-Handbuch      # → docs/ViviaParms-Handbuch.chm
+python3 tools/make_chm.py ../ViviaParms-Manual        # → docs/ViviaParms-Manual.chm
+python3 tools/make_chm.py ../ViviaParms-ErsteSchritte # → docs/ViviaParms-ErsteSchritte.chm
+python3 tools/make_chm.py ../ViviaParms-GettingStarted # → docs/ViviaParms-GettingStarted.chm
 ```
 
 Benötigt werden pandoc, pdflatex, pdftoppm und ein CHM-Compiler: `chmcmd` (Free Pascal, Debian/Ubuntu:
@@ -118,7 +123,7 @@ Volltextsuche und direkten Druck der Dokumente. Ohne Qt PDF baut das Projekt tro
 (qmake meldet die Variante); Dokumente werden dann im Standard-PDF-Programm geöffnet.
 
 ```sh
-qmake6 VitaParms.pro      # bzw. qmake aus der Qt-6-Installation
+qmake6 ViviaParms.pro      # bzw. qmake aus der Qt-6-Installation
 make -j                   # Windows/MSVC: nmake oder jom
 ```
 
@@ -131,8 +136,8 @@ in der Qt-5-Variante öffnen sich Dokumente der Krankenakte im System-PDF-Progra
 und direkter Druck aus der Akte entfallen. Die Tablet-App (`mobile/`) benötigt weiterhin Qt 6.
 
 ```sh
-~/Qt/5.15.2/clang_64/bin/qmake VitaParms.pro && make -j
-~/Qt/5.15.2/clang_64/bin/macdeployqt VitaParms.app -dmg
+~/Qt/5.15.2/clang_64/bin/qmake ViviaParms.pro && make -j
+~/Qt/5.15.2/clang_64/bin/macdeployqt ViviaParms.app -dmg
 Debian/Ubuntu: sudo apt install qtbase5-dev qttools5-dev qttools5-dev-tools qtmultimedia5-dev libqt5texttospeech5-dev
 ```
 
@@ -156,13 +161,13 @@ Debian/Ubuntu: sudo apt install qt6-base-dev qt6-tools-dev qt6-tools-dev-tools q
 * Windows: läuft automatisch beim Build (siehe `installer/README.md`) – `windeployqt` nach jedem Build,
   beim Release-Build Installationsverzeichnis `installer/install_src` sowie, falls installiert,
   **Inno-Setup-Installer** und **Qt-Installer-Framework-Installer** in `installer/Output`
-  (Ziel `C:\VitaParms`, Sprachauswahl, Lizenz, Komponenten Programm/Handbücher, Update und Deinstallation)
-* macOS: `macdeployqt VitaParms.app -dmg`
+  (Ziel `C:\ViviaParms`, Sprachauswahl, Lizenz, Komponenten Programm/Handbücher, Update und Deinstallation)
+* macOS: `macdeployqt ViviaParms.app -dmg`
 * Linux (Debian, Ubuntu, Linux Mint, Raspberry Pi OS …): **natives Debian-Paket** mit
   `installer/debian/build_deb.sh [full|light|all]` – gebaut mit dem Qt der Distribution,
   Abhängigkeiten über `dpkg-shlibdeps`, je Distribution ein Paket
-  (`vitaparms_<V>-1~deb12_amd64.deb`, `…~deb13…`, `…~ubuntu24.04…`); zu installierende Pakete und
-  Ablauf in `installer/debian/README.md`. VitaParms light zusätzlich als IFW-Installer
+  (`viviaparms_<V>-1~deb12_amd64.deb`, `…~deb13…`, `…~ubuntu24.04…`); zu installierende Pakete und
+  Ablauf in `installer/debian/README.md`. ViviaParms light zusätzlich als IFW-Installer
   (`light/installer/README.md`)
 
 Externe Bibliotheken werden **nicht** benötigt: Diagramme (QPainter), ZIP- und XLSX-Erzeugung
@@ -194,7 +199,7 @@ Hauptbenutzer werden über *Benutzer → Aktuellen Benutzer als Hauptbenutzer 1/
 *Extras → Einstellungen* belegt. Drucken/PDF/Excel beziehen sich auf den gerade sichtbaren Reiter
 (Journal oder Grafik).
 
-Kommandozeile: `VitaParms --database <datei.sqlite>` öffnet eine bestimmte Datenbank, `VitaParms --demo` die Demo-Datenbank.
+Kommandozeile: `ViviaParms --database <datei.sqlite>` öffnet eine bestimmte Datenbank, `ViviaParms --demo` die Demo-Datenbank.
 
 ## Termine und Erinnerungen
 
@@ -202,7 +207,7 @@ Reiter **Termine** bzw. Menü *Termine*. Jeder Termin gehört einem **Anmeldekon
 einer Person zugeordnet werden. Anwender sehen und bearbeiten nur ihre eigenen Termine; Administratoren
 sehen alle (Filter „Alle Konten“/„Konto: …“) und können Termine anderen Konten zuweisen.
 
-Die Erinnerung wird zum eingestellten Vorlauf ausgelöst, solange VitaParms läuft und das zuständige
+Die Erinnerung wird zum eingestellten Vorlauf ausgelöst, solange ViviaParms läuft und das zuständige
 Konto angemeldet ist; verpasste Erinnerungen (bis 6 Stunden nach Terminbeginn) folgen nach der Anmeldung.
 
 * **optisch** – Hinweisfenster unten rechts, immer im Vordergrund, Farbbalken nach Priorität;
@@ -226,7 +231,7 @@ zeigt das Programm am Computer.
 
 ### Termine beim Start, Erinnerungen drucken
 
-Beim Programmstart zeigt VitaParms die offenen Termine der gewählten Person für **heute und morgen**
+Beim Programmstart zeigt ViviaParms die offenen Termine der gewählten Person für **heute und morgen**
 (einschließlich Medikamententermine) – mit *Drucken…* und *Terminplaner öffnen*. Abschaltbar im Fenster
 selbst oder unter *Einstellungen*; jederzeit erneut über *Termine → Termine heute und morgen…*.
 
@@ -243,7 +248,7 @@ monatlich (am gleichen Tag, am n-ten oder am letzten Wochentag), jährlich – j
 
 Jedes Vorkommen ist ein eigener Termin mit eigener Erinnerung und eigenem „Erledigt“. Serien ohne Ende
 werden laufend etwa 13 Monate im Voraus angelegt. Beim Ändern oder Löschen eines Serientermins fragt
-VitaParms nach dem Umfang: **nur dieser Termin**, **dieser und alle folgenden** oder **alle Termine der
+ViviaParms nach dem Umfang: **nur dieser Termin**, **dieser und alle folgenden** oder **alle Termine der
 Serie**. In der Liste sind Serientermine mit ↻ markiert.
 
 ### Export als iCalendar (.ics)
@@ -330,7 +335,7 @@ IE → internationale Einheiten, ½ → eine halbe, s.c. → unter die Haut).
 * Stimme: „weiblich/männlich (automatisch)“ wählt eine installierte Systemstimme der Oberflächensprache;
   zusätzlich lässt sich jede installierte Stimme gezielt auswählen (im Assistenten oder unter
   *Einstellungen*, dort auch das Sprechtempo). Da manche Sprachausgaben das Geschlecht ihrer Stimmen
-  falsch melden (flite: alle „männlich“), erkennt VitaParms bekannte Stimmen zusätzlich am Namen.
+  falsch melden (flite: alle „männlich“), erkennt ViviaParms bekannte Stimmen zusätzlich am Namen.
   Fehlt eine Stimme des gewünschten Geschlechts, wird die Tonhöhe der vorhandenen Stimme verändert und
   der Assistent weist darauf hin – eine echte männliche Stimme muss im Betriebssystem installiert sein.
 
@@ -344,7 +349,7 @@ Einträge (30 Tage … gesamter Zeitraum) zum Drucken oder als PDF. Löschen dü
 
 ## Website
 
-VitaParms kann die Daten aller Personen auf einer eigenen Website zum **Ansehen** bereitstellen –
+ViviaParms kann die Daten aller Personen auf einer eigenen Website zum **Ansehen** bereitstellen –
 für Angehörige, die Hausarztpraxis oder unterwegs. Die Website ist statisch (HTML/JavaScript plus
 eine kleine PHP-Datei zum Hochladen) und braucht **keine Datenbank** auf dem Server.
 
@@ -353,7 +358,7 @@ eine kleine PHP-Datei zum Hochladen) und braucht **keine Datenbank** auf dem Ser
   und ausblendbar, Legende, druckbar), Medikamentenplan, Termine sowie Stammblatt,
   Medikamentenplan und Verlauf als PDF/Excel zum Herunterladen. Die **Krankenakte wird nicht
   übertragen.**
-- **Schutz:** VitaParms verschlüsselt alles **vor dem Hochladen** mit dem Master-Passwort
+- **Schutz:** ViviaParms verschlüsselt alles **vor dem Hochladen** mit dem Master-Passwort
   (PBKDF2-SHA256 mit 210 000 Iterationen → AES-256-CTR + HMAC-SHA256). Der Server speichert nur
   Chiffrat; entschlüsselt wird im Browser (Web Crypto API). Ein getrennter **Upload-Schlüssel**
   berechtigt zum Hochladen. Automatische Abmeldung nach 30 Minuten.
@@ -361,13 +366,13 @@ eine kleine PHP-Datei zum Hochladen) und braucht **keine Datenbank** auf dem Ser
   Beenden, oder von Hand mit *Datei → Website aktualisieren* (`Strg+Umschalt+U`).
 
 Einrichtung: Inhalt von `website/` per (S)FTP in das Wurzelverzeichnis der (Sub-)Domain
-hochladen, HTTPS einschalten, in VitaParms *Extras → Website…* Adresse und Master-Passwort
+hochladen, HTTPS einschalten, in ViviaParms *Extras → Website…* Adresse und Master-Passwort
 eintragen, *Jetzt hochladen*. Details in `website/README.md` und im Handbuch (Kapitel „Die eigene
 Website“).
 
 ## Tablet-App und Abgleich
 
-Die Tablet-App (`mobile/VitaParmsMobile.pro`, Qt Quick) teilt sich mit dem Desktop-Programm den
+Die Tablet-App (`mobile/ViviaParmsMobile.pro`, Qt Quick) teilt sich mit dem Desktop-Programm den
 Kern (`core.pri`: Datenbank, Verschlüsselung, Fachlogik, Berichte, Website, Abgleich). Sie wird
 mit Qt Creator für Android gebaut und als APK direkt installiert (Entwicklermodus, keine
 Verteilung über Google Play) – Anleitung in `mobile/README.md`.
@@ -392,7 +397,7 @@ eine oder andere Richtung (bisheriger Stand bleibt als Kopie). Zum Testen ohne a
 
 ## Anmeldung, Rollen und Verschlüsselung
 
-**Erster Start / neue Datenbank:** VitaParms legt einen zufälligen 256-Bit-Datenbankschlüssel an,
+**Erster Start / neue Datenbank:** ViviaParms legt einen zufälligen 256-Bit-Datenbankschlüssel an,
 verschlüsselt damit die Datenbank und fragt nach dem ersten **Administrator-Konto** (Name + Passwort).
 Anschließend wird der **Wiederherstellungsschlüssel** angezeigt (drucken, speichern, kopieren). Eine
 unverschlüsselte Datenbank einer älteren Version wird beim ersten Öffnen verschlüsselt.
@@ -424,25 +429,37 @@ Wiederherstellungsschlüssel (Anmeldedialog → *Wiederherstellungsschlüssel…
 * **Automatische Sicherung** (ab 0.27, Desktop): beim Beenden, wenn sich etwas geändert hat, und
   beim Start, wenn die letzte älter als 24 Stunden ist. Die letzten n Stände (Standard 7) bleiben
   in `<Programmdaten>/Sicherungen` oder einem gewählten Ordner (*Extras → Einstellungen →
-  Automatische Sicherung*); Dateiname `VitaParms-Auto_<datenbank>_<datum>_<zeit>.sqlite` + `.keys`.
-  Ist der Ordner nicht erreichbar, warnt VitaParms; nach 7 Tagen ohne Sicherung deutlich.
+  Automatische Sicherung*); Dateiname `ViviaParms-Auto_<datenbank>_<datum>_<zeit>.sqlite` + `.keys`.
+  Ist der Ordner nicht erreichbar, warnt ViviaParms; nach 7 Tagen ohne Sicherung deutlich.
 * **Versionsschutz** (ab 0.27): Das Datenbankformat steht in `PRAGMA user_version`
   (`Database::kSchemaVersion`). Eine Datenbank aus einer neueren Version wird nicht geöffnet,
   ein Abgleich (USB oder Website) mit einem Gerät in neuerer Version abgelehnt, und der Server
   nimmt von älteren Versionen keine Datenbank mehr an (HTTP 426) – so kann ein nicht
   aktualisiertes Gerät keine Daten überschreiben, die es nicht kennt.
-* **0.31.4:** VitaParms mobile: Auswahllisten zeigten auf dem Tablet (Qt 6.12) **leere Einträge** –
+* **0.32.0:** **VitaParms heißt jetzt ViviaParms** und steht unter der **PolyForm Noncommercial
+  License 1.0.0** (bis 0.31.4: MIT-Lizenz; für diese Fassungen gilt sie weiter). Umbenannt sind
+  Programm, App, Website, Installer, Debian-Pakete, Handbücher, Projekt- und Quelldateien sowie
+  Paketnamen (`de.mbergmann.viviaparms`) und Datenordner. Neu: `src/legacymigration.*` übernimmt am
+  Computer beim ersten Start einmalig Einstellungen und Daten von VitaParms bzw. VitaParms light
+  (Kopie, der alte Ordner bleibt); ViviaParms light findet für den Import auch noch die Datenbank von
+  VitaParms light. Interne Kennungen, an denen verschlüsselte Daten, Sicherungen, Abgleich, Website
+  und Kalender hängen, bleiben unverändert (siehe [Umstieg](#von-vitaparms-auf-viviaparms-umsteigen)).
+  Lizenz: `LICENSE` (mit „Required Notice“), SPDX-Kennung `PolyForm-Noncommercial-1.0.0` in allen
+  Quelldateien, Info-Dialog, App-Einstellungen, Installer-Lizenzseiten, Debian-`copyright`,
+  AppStream (`project_license`), Manpages, Handbücher (Impressum, Anhang Recht). Test: Umzug mit
+  vorgetäuschten VitaParms-Ordnern und -Einstellungen.
+* **0.31.4:** ViviaParms mobile: Auswahllisten zeigten auf dem Tablet (Qt 6.12) **leere Einträge** –
   z. B. die Personenauswahl im Hochformat. `VCombo` entschied über `Array.isArray(model)`, ob ein
   Eintrag ein Objekt ist; eine Liste aus C++ ist in neueren Qt-Versionen aber kein JS-Array. Jetzt
   wird der Eintrag selbst geprüft. Autopilot öffnet die Personenauswahl im Hochformat und prüft die Namen.
-* **0.31.3:** VitaParms mobile: **Drehen des Tablets** – die Oberfläche passte sich nicht mehr an,
+* **0.31.3:** ViviaParms mobile: **Drehen des Tablets** – die Oberfläche passte sich nicht mehr an,
   beim zweiten Drehen blieb der Bildschirm schwarz (seit 0.31.2). `SystemUi` fragt die Ränder der
   Systemleisten nicht mehr ab, wenn Qt (ab 6.9) den Fensterinhalt selbst polstert – die Abfrage kam
   mitten im Größenwechsel; sonst nur noch nachträglich (queued). Symbole der Systemleisten werden nur
   bei randloser Darstellung (Android 15+) und nur bei einem Wechsel hell/dunkel umgestellt (unter
   Android 13 wären dunkle Symbole auf der dunklen Statusleiste unsichtbar gewesen). Autopilot dreht
   das Fenster viermal und prüft, dass die Oberfläche folgt.
-* **0.31.2:** **VitaParms mobile für Android 15/16 und Google Play:** Ziel-API 36 (Android 16),
+* **0.31.2:** **ViviaParms mobile für Android 15/16 und Google Play:** Ziel-API 36 (Android 16),
   Mindestversion Android 9, qmake verlangt für Android Qt 6.10 oder neuer (16-KB-Speicherseiten).
   Darstellung bis an den Rand: Inhalt bleibt frei von Status- und Navigationsleiste (`SystemUi`,
   `src/systemui.*`), Symbole der Leisten passend zum hellen/dunklen Design (`SystemBars.java`).
@@ -453,10 +470,10 @@ Wiederherstellungsschlüssel (Anmeldedialog → *Wiederherstellungsschlüssel…
   (*Einstellungen → Erinnerungen → Pünktliche Erinnerungen erlauben*), sonst ungefähr. Neues Skript
   `tools/check_android_16k.sh` prüft APK/AAB auf 16-KB-Speicherseiten. Autopilot: „Zurück“ und
   vorgetäuschte Systemleisten (`VP_AUTOPILOT_SAFE`). Auf Android 13 und älter ändert sich nichts.
-* **0.31.1:** **App reagiert wieder flüssig** (VitaParms mobile, vor allem Tablets): Nach jeder Änderung
+* **0.31.1:** **App reagiert wieder flüssig** (ViviaParms mobile, vor allem Tablets): Nach jeder Änderung
   (Messung speichern, löschen, Bestand buchen …) luden bisher alle Reiter neu – auch die unsichtbaren, weil
   die Startseite die Person bei jedem Neuladen neu setzte – und das bis zu dreimal je Vorgang. Auf einem
-  Tablet blockierte das die Oberfläche mehrere Sekunden („VitaParms reagiert nicht“, Tastatur öffnete
+  Tablet blockierte das die Oberfläche mehrere Sekunden („ViviaParms reagiert nicht“, Tastatur öffnete
   nicht). Jetzt: Änderungen eines Vorgangs werden gebündelt (`AppController::bump` → ein `dataChanged`
   nach Rückkehr in die Ereignisschleife), nur der sichtbare Reiter lädt sofort, die anderen beim Anzeigen
   (auch beim Personenwechsel und für die Verlaufskurven), Personenliste und Kopf werden nur bei echter
@@ -465,7 +482,7 @@ Wiederherstellungsschlüssel (Anmeldedialog → *Wiederherstellungsschlüssel…
   Hintergrund-Thread gestellt. **Tastatur:** öffnet auch beim Antippen der Messwert-Kachel neben den Ziffern
   und beim erneuten Antippen eines Feldes, nachdem sie mit „Zurück“ geschlossen wurde.
   Messmodus `VP_AUTOPILOT_BENCH=1` im Autopiloten (Zeiten der App-Aufrufe).
-* **0.31.0:** **Terminkollisions-Check** (nur VitaParms und VitaParms mobile, nicht light): nachträglich aufrufbar über
+* **0.31.0:** **Terminkollisions-Check** (nur ViviaParms und ViviaParms mobile, nicht light): nachträglich aufrufbar über
   *Termine → Terminkollisionen prüfen…* bzw. *Kollisionen prüfen…* im Terminplaner (App: Reiter Termine,
   „Kollisionen prüfen“, ab zwei Personen). Vergleicht die Termine von zwei oder mehr gewählten Personen in einem
   Zeitraum, meldet Überschneidungen (optional mit Mindestabstand, z. B. Fahrzeit) und schlägt je Kollision bis zu drei
@@ -494,7 +511,7 @@ Wiederherstellungsschlüssel (Anmeldedialog → *Wiederherstellungsschlüssel…
   begrenzt und ganz sichtbar platziert (auch mit einer gespeicherten Größe von einem größeren Bildschirm).
   Hauptfenster: Die Bereichsauswahl der Grafik bricht um (`src/flowlayout.*`) – das Fenster ist nicht mehr
   mindestens 1 690 Pixel breit, die Werkzeugleiste zeigt überzählige Einträge hinter der Schaltfläche ».
-* **0.30.1:** **Debian-Pakete (.deb)** für VitaParms und VitaParms light: `installer/debian/build_deb.sh`
+* **0.30.1:** **Debian-Pakete (.deb)** für ViviaParms und ViviaParms light: `installer/debian/build_deb.sh`
   baut auf Debian 12/13, Ubuntu 24.04+ und Derivaten (ältere mit `--qt5`) native Pakete gegen das Qt der
   Distribution – Prüfung der Voraussetzungen mit passendem `apt`-Befehl (`--check`, `--install-deps`),
   Abhängigkeiten über `dpkg-shlibdeps`, Menüeintrag mit Aktion „Demo-Datenbank“, Symbole 16–256 px,
@@ -511,9 +528,9 @@ Wiederherstellungsschlüssel (Anmeldedialog → *Wiederherstellungsschlüssel…
   Website: Kachel „Blutdruckamplitude“ in der Übersicht nach RR und Puls.
 * **0.29.0:** **Blutdruckamplitude** (Pulsdruck = systolisch − diastolisch), berechnet und nicht
   gespeichert (`VitalKey::PulsePressure`): eigene Spalte im Verlauf direkt nach RR und Puls, graue Kurve im
-  Bereich „Blutdruck & Puls“, in Excel/PDF, in der Tablet-App und auf der Website – in VitaParms und
-  VitaParms light. Datenbankformat unverändert (12). VitaParms light: Windows-Installer mit Inno Setup
-  und Qt Installer Framework wie bei VitaParms (`light/installer/README.md`).
+  Bereich „Blutdruck & Puls“, in Excel/PDF, in der Tablet-App und auf der Website – in ViviaParms und
+  ViviaParms light. Datenbankformat unverändert (12). ViviaParms light: Windows-Installer mit Inno Setup
+  und Qt Installer Framework wie bei ViviaParms (`light/installer/README.md`).
   **Verlauf drucken** (Druck, Vorschau, PDF; Computer, Tablet, Akte-ZIP, Website-Bericht): nicht mehr als
   gemischte Tabelle, sondern je gewählter Wertegruppe ein eigener, chronologischer Abschnitt mit
   Mittelwert/Minimum/Maximum; vorher Dialog mit Zeitraum (von–bis) und Wertegruppen
@@ -531,7 +548,7 @@ Wiederherstellungsschlüssel (Anmeldedialog → *Wiederherstellungsschlüssel…
   alten Zusatzfeld „Schmerz (NRS)“ werden beim ersten Öffnen übernommen. **Alle Geräte (Computer,
   Tablet, Website-`api/`) auf 0.28 aktualisieren** – ältere Versionen öffnen die Datenbank nicht mehr.
 
-**Grenzen (ehrlich benannt):** Die Rollen sind eine Regel innerhalb von VitaParms. Wer mit einem
+**Grenzen (ehrlich benannt):** Die Rollen sind eine Regel innerhalb von ViviaParms. Wer mit einem
 Anwenderkonto die Datenbank entsperren kann, könnte sie mit eigenen Werkzeugen auch vollständig
 auslesen – die Verschlüsselung schützt vor Personen *ohne* Konto (verlorenes Notebook, Kopie der
 Datei). Exporte (PDF, Excel, unverschlüsselte ZIPs) und Dateien, die zur Ansicht an andere Programme
@@ -542,9 +559,9 @@ Datenbank physisch erhalten bleiben.
 
 *Extras → Einstellungen → Darstellung*
 
-* **Sprache:** Systemsprache, Deutsch oder English (wirksam nach Neustart, VitaParms bietet ihn an).
-  Übersetzungsdatei: `translations/vitaparms_en.ts` (Qt Linguist). Neue Texte:
-  `lupdate -no-obsolete VitaParms.pro`, dann übersetzen (Linguist oder `translations/en_dict.py` +
+* **Sprache:** Systemsprache, Deutsch oder English (wirksam nach Neustart, ViviaParms bietet ihn an).
+  Übersetzungsdatei: `translations/viviaparms_en.ts` (Qt Linguist). Neue Texte:
+  `lupdate -no-obsolete ViviaParms.pro`, dann übersetzen (Linguist oder `translations/en_dict.py` +
   `python3 tools/apply_translations.py`). Die `.qm`-Datei erzeugt der Build automatisch.
   Eingegebene Daten (Diagnosen, Messzeitpunkte, Kategorien bestehender Dokumente) werden nicht übersetzt.
 * **Theme:** „Systemstandard“, alle Qt-Styles der Plattform (z. B. Fusion, Windows, windowsvista/
@@ -559,7 +576,7 @@ und Jahr, Suchfeld über Titel, Art, Absender, Notiz, Dateiname, Datum und – s
 enthält – den gesamten Inhalt. Mehrere Suchbegriffe müssen alle vorkommen; die Spalte
 „Fundstelle“ zeigt den Treffer im Text.
 
-**Import:** *Hinzufügen…* oder Dateien auf das Fenster ziehen. VitaParms schlägt vor:
+**Import:** *Hinzufügen…* oder Dateien auf das Fenster ziehen. ViviaParms schlägt vor:
 Datum aus Dateiname (`2026-09-30_…`, `20260930`, `30.09.2026`) oder Briefkopf (jüngstes
 plausibles Datum, Geburtsdatum ausgeschlossen) oder PDF-Erstellungsdatum; Art anhand von
 Stichwörtern (Entlass…, Labor…, Befund …); Titel aus PDF-Titel oder Dateiname. Identische
@@ -587,9 +604,9 @@ Krankenakte_Mustermann_Erika/
   **Nicht** mit dem Windows-Explorer oder dem macOS-Archivierungsprogramm allein.
   Das Passwort gehört nicht in dieselbe E-Mail.
 * **E-Mail:** Windows über Simple MAPI (Outlook, Thunderbird, eM Client …), macOS über Apple Mail,
-  Linux über `xdg-email`. Gelingt das nicht, öffnet VitaParms eine neue Nachricht ohne Anhang
+  Linux über `xdg-email`. Gelingt das nicht, öffnet ViviaParms eine neue Nachricht ohne Anhang
   und zeigt die ZIP-Datei im Dateimanager. Die Nachricht wird nie automatisch gesendet. Die
-  Versandkopie liegt in `Dokumente/VitaParms-Versand` und kann danach gelöscht werden.
+  Versandkopie liegt in `Dokumente/ViviaParms-Versand` und kann danach gelöscht werden.
 
 **Speicherung:** Die PDFs liegen verschlüsselt als BLOB in der Datenbank (eigene Tabelle). Damit ist
 die Akte in jeder Sicherung enthalten und bleibt mit dem Benutzer verknüpft. Gelöschte Dokumente
@@ -602,7 +619,7 @@ geben Platz in der Datei erst nach einer Sicherung frei (die Sicherung ist kompa
 
 Suchreihenfolge für `<name>.ui`:
 
-1. Benutzer-Formularordner (`<AppData>/VitaParms/forms`, z. B. `~/.local/share/VitaParms/VitaParms/forms`)
+1. Benutzer-Formularordner (`<AppData>/ViviaParms/forms`, z. B. `~/.local/share/ViviaParms/ViviaParms/forms`)
 2. `<Programmordner>/forms` (portable Installation, z. B. für ein ganzes Team)
 3. die im Programm eingebettete Standardversion
 
@@ -621,7 +638,7 @@ Suchreihenfolge für `<name>.ui`:
   Unterstützt: QLineEdit, QPlainTextEdit, QTextEdit, QComboBox, QSpinBox, QDoubleSpinBox,
   QCheckBox, QDateEdit, QTimeEdit, QDateTimeEdit, QSlider. Zusatzfelder der Messung erscheinen
   automatisch als eigene Spalte im Journal, im Ausdruck und im Excel-Export.
-* Die Eigenschaft `formVersion` am Wurzelelement nicht entfernen – darüber erkennt VitaParms,
+* Die Eigenschaft `formVersion` am Wurzelelement nicht entfernen – darüber erkennt ViviaParms,
   wenn eine Anpassung auf einer älteren Vorlage beruht.
 
 | Formular | ausgewertete Elemente |
@@ -652,36 +669,80 @@ Ist bei einer Messung keine Größe eingetragen, wird die zuletzt erfasste Grö�
 Der BMI wird mit der Messung gespeichert; ändern sich die Gliedmaßen-Angaben, fragt das
 Programm, ob ältere Messungen neu berechnet werden sollen.
 
-## VitaParms light
+## ViviaParms light
 
 Vereinfachte Ausgabe für **eine Person** (die zugleich das einzige Anmeldekonto ist, ohne Rollen),
 gebaut aus denselben Quellen mit `DEFINES += VP_LIGHT` (`src/edition.h`: `Edition::light()`,
-Programmname, eigener Einstellungs- und Datenbereich `VitaParmsLight`).
+Programmname, eigener Einstellungs- und Datenbereich `ViviaParmsLight`).
 
-| Bereich | VitaParms light |
+| Bereich | ViviaParms light |
 |---|---|
 | **Stammblatt** | Person, Ärzte & Angehörige, Diagnosen, Medikamentenplan, Aufnahme (eigene Formulare `forms/light/*.ui`, erzeugt mit `tools/make_light_forms.py`) |
 | **Messwerte** | RR, Puls, Temperatur, BZ, SpO₂, Gewicht, Größe, BMI (berechnet), **Schmerzskala** 0–10 als farbige Knöpfe |
 | **Assistenten** | BZ-Tagesprofil, RR-Tagesprofil, Medikamente stellen |
-| **wie VitaParms** | Termine und Erinnerungen, Medikamentenverwaltung mit Warnhinweisen, Bestand und Bestellungen, Apothekenliste, Krankenakte, Grafik, Verlauf, Druck/PDF/Excel, verschlüsselte Datenbank mit Anmeldung, automatische Sicherung, Demo (angepasst) |
+| **wie ViviaParms** | Termine und Erinnerungen, Medikamentenverwaltung mit Warnhinweisen, Bestand und Bestellungen, Apothekenliste, Krankenakte, Grafik, Verlauf, Druck/PDF/Excel, verschlüsselte Datenbank mit Anmeldung, automatische Sicherung, Demo (angepasst) |
 | **entfällt** | mehrere Personen, Rollen, Website, Peak Flow, INR, Ein-/Ausfuhr, Ödeme, Stuhlgang, Wunddokumentation, Pflege-/Vorsorgeangaben |
-| **Abgleich** | nur Computer ↔ Tablet/Smartphone über USB (eigener Port 47812, läuft neben VitaParms) |
-| **Umstieg** | gleiches Datenbankformat; in VitaParms *Datei → Datenbank der Light-Version importieren…* |
+| **Abgleich** | nur Computer ↔ Tablet/Smartphone über USB (eigener Port 47812, läuft neben ViviaParms) |
+| **Umstieg** | gleiches Datenbankformat; in ViviaParms *Datei → Datenbank der Light-Version importieren…* |
 | **Handbücher** | *Benutzerhandbuch* / *User Guide* und *Erste Schritte* / *Getting Started* (PDF, CHM) in `light/docs` |
 
 ```sh
-qmake6 light/VitaParmsLight.pro && make -j                 # Desktop (Programm „VitaParmsLight“)
-qmake6 light/mobile/VitaParmsLightMobile.pro && make -j    # Android (Paket de.mbergmann.vitaparms.light)
+qmake6 light/ViviaParmsLight.pro && make -j                 # Desktop (Programm „ViviaParmsLight“)
+qmake6 light/mobile/ViviaParmsLightMobile.pro && make -j    # Android (Paket de.mbergmann.viviaparms.light)
 ```
 
 Installer (Qt Installer Framework, Windows `C:\VPlight`, macOS `/Applications/VPlight`, Linux
 `~/VPlight`): siehe `light/installer/README.md`. Die Tablet-App ist für Tablet **und** Smartphone
 ausgelegt (schmale Ansicht mit ☰-Menü).
 
+## Von VitaParms auf ViviaParms umsteigen
+
+Bis 0.31.4 hieß das Programm **VitaParms**. Mit dem Namen ändern sich auch die Ordner, in denen
+Daten und Einstellungen liegen, die Programmdateien und die Paketnamen.
+
+**Am Computer (ViviaParms und ViviaParms light):** Beim ersten Start übernimmt ViviaParms
+einmalig (`src/legacymigration.*`)
+
+* die **Einstellungen** von VitaParms bzw. VitaParms light,
+* den **Datenordner** (Datenbank, Schlüsseldatei, automatische Sicherungen) als *Kopie* –
+  `vitaparms.sqlite…` heißt danach `viviaparms.sqlite…`; Einstellungen, die in den alten Ordner
+  zeigten, zeigen in den neuen. Eine Datenbank an einem selbst gewählten Ort bleibt, wo sie ist.
+
+Eine Meldung nennt den alten Ordner; er bleibt unverändert als Sicherung stehen und kann gelöscht
+werden, sobald ViviaParms läuft. Hat ViviaParms schon eine Datenbank bzw. Einstellungen, wird nichts
+übernommen. Das alte Programm danach deinstallieren (Windows: *VitaParms* in den Apps,
+Debian/Ubuntu: `sudo apt remove vitaparms`). `VP_NO_LEGACY_MIGRATION=1` schaltet die Übernahme ab.
+
+| | bisher (VitaParms) | jetzt (ViviaParms) |
+|---|---|---|
+| Daten (Linux) | `~/.local/share/VitaParms/VitaParms/` | `~/.local/share/ViviaParms/ViviaParms/` |
+| Daten (Windows) | `%APPDATA%\VitaParms\VitaParms\` | `%APPDATA%\ViviaParms\ViviaParms\` |
+| Daten (macOS) | `~/Library/Application Support/VitaParms/VitaParms/` | `~/Library/Application Support/ViviaParms/ViviaParms/` |
+| Light | `…/VitaParms/VitaParmsLight/` | `…/ViviaParms/ViviaParmsLight/` |
+| Programmordner | `C:\VitaParms`, `C:\VPlight` | `C:\ViviaParms`, `C:\VPlight` |
+| Android-Paket | `de.mbergmann.vitaparms(.light)` | `de.mbergmann.viviaparms(.light)` |
+| Debian-Paket | `vitaparms`, `vitaparms-light` | `viviaparms`, `viviaparms-light` |
+
+**Tablet und Smartphone:** Wegen des neuen Paketnamens ist ViviaParms mobile für Android eine
+*neue* App; sie kann nicht auf die Daten der alten App zugreifen. Umzug: in VitaParms mobile
+*Einstellungen → Verwaltung öffnen → Sicherung erstellen und ablegen* (bzw. vorher mit dem Computer abgleichen), in
+ViviaParms mobile beim ersten Start *Datenbank-Datei übernehmen* oder per USB/Website vom Computer
+abgleichen; danach die alte App deinstallieren.
+
+**Unverändert** bleiben – damit vorhandene Daten, Sicherungen, Abgleich, Website und
+Kalender weiter funktionieren – die Kürzel `VP` (Dateiendungen `.vpdb`, `.vpcouple`, Umgebungs-
+variablen `VP_…`) und einige interne Kennungen aus VitaParms-Zeiten: Schlüsselableitungen
+(`vitaparms-doc:`, `vitaparms-files-*`, `VitaParms-KeyStore-v1`, `vitaparms-usb-sync:`,
+`vitaparms-password-check`, `vitaparms-access-log`), die Kennung der Sicherungsdatei
+(`VITAPARMS-DB-BUNDLE`), das Kopplungsformat `vitaparms-coupling`, die HTTP-Köpfe
+`X-VitaParms-Key`/`-Access`, die Termin-Kennungen der iCalendar-Ausgabe (`…@vitaparms`) und die
+Speicherschlüssel der Website. Die Website-Adresse in den Beispielen bleibt vorerst
+`vitaparms.mbergmann-sh.de`.
+
 ## Projektaufbau
 
 ```
-VitaParms.pro            qmake-Projekt
+ViviaParms.pro            qmake-Projekt
 forms/*.ui               Standardformulare (zur Laufzeit geladen, als Ressource eingebettet)
 resources/               Symbole, .qrc
 src/
@@ -726,8 +787,8 @@ src/
   usbsyncdialog.*        Datei → Mit Tablet über USB abgleichen… (adb suchen, Port weiterleiten)
   quarterreminder.*      Erinnerung an den Quartalswechsel (Zeitraum, Bestätigung)
   glucoseprofile.*       BZ- und RR-Tagesprofil: Zeitpunkte, Termine anlegen (Dialog: glucoseprofiledialog.*)
-  lightimport.*          Datenbank aus VitaParms light übernehmen (prüfen, sichern, zusammenführen)
-  edition.h              Ausgabe (VitaParms / VitaParms light, Schalter VP_LIGHT)
+  lightimport.*          Datenbank aus ViviaParms light übernehmen (prüfen, sichern, zusammenführen)
+  edition.h              Ausgabe (ViviaParms / ViviaParms light, Schalter VP_LIGHT)
   stool.*                Stuhlgang: Bristol-Skala, Häufigkeit, Hinweis nach drei Tagen ohne
   inr.*                  INR: Zielbereich (Stammblatt), Bewertung und Hinweise
   fluid.*                Ein-/Ausfuhr, Tagesbilanz, Trinkmengen, Gewichtskontrolle, Ödeme (Grad, Ort, Hinweise)
@@ -746,14 +807,14 @@ src/
   mailer.*, mapi_win.cpp E-Mail mit Anhang (MAPI / Apple Mail / xdg-email)
   settingsdialog.*, formcustomizedialog.*, appsettings.*
 core.pri                 gemeinsamer Kern für Desktop und Tablet; version.pri: Versionsnummer
-desktop.pri              Quellen des Desktop-Programms (VitaParms und VitaParms light)
-light/                   VitaParms light: VitaParmsLight.pro, light.qrc, resources/, docs/,
+desktop.pri              Quellen des Desktop-Programms (ViviaParms und ViviaParms light)
+light/                   ViviaParms light: ViviaParmsLight.pro, light.qrc, resources/, docs/,
                          installer/ (Qt Installer Framework, Deploy), mobile/ (Tablet-App)
 forms/light/             vereinfachte Formulare der Light-Ausgabe
 mobile/                  Tablet-App (Qt Quick): src/, qml/, android/, translations/
 website/                 Website (index.html, assets/, api/upload.php, data/) – auf den Webspace hochladen
 docs/                    Handbücher (PDF, CHM) – werden neben das Programm kopiert
-installer/               Windows: windows_deploy.pri (Build-Schritt), VitaParms.iss.in (Inno Setup),
+installer/               Windows: windows_deploy.pri (Build-Schritt), ViviaParms.iss.in (Inno Setup),
                          qtifw/ (Qt Installer Framework), Lizenztexte, Assistenten-Bilder
 tools/
   make_chm.py            Windows-Hilfe (.chm) aus dem LaTeX-Handbuch erzeugen
@@ -764,7 +825,17 @@ tools/
 
 ## Lizenzhinweise
 
-VitaParms steht unter der MIT-Lizenz (siehe `LICENSE`). Qt (einschließlich Qt PDF) wird unter
+© 2026 Michael Bergmann. ViviaParms ist quelloffen und steht unter der **PolyForm Noncommercial
+License 1.0.0** (siehe `LICENSE`): kostenlos für jede **nicht-kommerzielle** Nutzung – privat sowie
+durch gemeinnützige Organisationen, Schulen und Behörden –, einschließlich Verändern und
+Weitergeben. **Kommerzielle Nutzung und Verkauf** nur mit Erlaubnis des Autors.
+<https://polyformproject.org/licenses/noncommercial/1.0.0>
+
+Bis Version 0.31.4 erschien das Programm unter dem Namen **VitaParms** unter der MIT-Lizenz; für
+diese bereits veröffentlichten Fassungen gilt sie weiter. Ab 0.32.0 gilt für alle Teile des
+Projekts (Programme, App, Website, Handbücher) die PolyForm Noncommercial License 1.0.0.
+
+Qt (einschließlich Qt PDF) wird unter
 LGPLv3 dynamisch gelinkt (ebenso Qt TextToSpeech und Qt Multimedia). SQLite3 Multiple Ciphers: MIT-Lizenz (`3rdparty/sqlite3mc/LICENSE`), OpenSSL 3 für die Android-App (vorgefertigt von KDAB): Apache-2.0-Lizenz (`3rdparty/android_openssl/LICENSE.txt`),
 SQLite selbst ist gemeinfrei.
 Bewusst **nicht** verwendet wurden *Qt Charts* und *Qt Graphs*, da diese Module in der

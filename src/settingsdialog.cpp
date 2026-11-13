@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "settingsdialog.h"
 #include "quarterreminder.h"
 #include "appsettings.h"
@@ -55,7 +55,7 @@ void editAutoBackup(QWidget *parent)
     d.setWindowTitle(SettingsDialog::tr("Automatische Sicherung"));
     const AutoBackup::Config c = AutoBackup::config();
     auto *lay = new QVBoxLayout(&d);
-    auto *intro = new QLabel(SettingsDialog::tr("VitaParms sichert die Datenbank (verschlüsselt, mit den Anmeldekonten) beim Beenden, "
+    auto *intro = new QLabel(SettingsDialog::tr("ViviaParms sichert die Datenbank (verschlüsselt, mit den Anmeldekonten) beim Beenden, "
                                 "wenn sich etwas geändert hat, und beim Start, wenn die letzte Sicherung älter als einen "
                                 "Tag ist. Zurückholen: Datei → Sicherung wiederherstellen / importieren."), &d);
     intro->setWordWrap(true);
@@ -179,7 +179,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
     for (int m : { 10, 20, 30, 60 })
         m_autoLock->addItem(tr("nach %1 Minuten").arg(m), m);
     m_autoLock->setCurrentIndex(std::max(0, m_autoLock->findData(AppSettings::autoLockMinutes())));
-    m_autoLock->setToolTip(tr("Nach dieser Zeit ohne Benutzung meldet VitaParms ab. Ungespeicherte "
+    m_autoLock->setToolTip(tr("Nach dieser Zeit ohne Benutzung meldet ViviaParms ab. Ungespeicherte "
                               "Eingaben in offenen Dialogen verfallen."));
     sf->addRow(tr("Automatisch &sperren:"), m_autoLock);
     m_voice = new QComboBox(sec);
@@ -307,7 +307,7 @@ void SettingsDialog::accept()
     if (lang != AppSettings::language()) {
         AppSettings::setLanguage(lang);
         m_restart = QMessageBox::question(this, tr("Sprache"),
-            tr("Die Sprache wird beim nächsten Start übernommen.\nVitaParms jetzt neu starten? "
+            tr("Die Sprache wird beim nächsten Start übernommen.\nViviaParms jetzt neu starten? "
                "(Sie müssen sich danach erneut anmelden.)")) == QMessageBox::Yes;
     }
     AppSettings::setAutoLockMinutes(m_autoLock->currentData().toInt());

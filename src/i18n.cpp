@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "i18n.h"
 #include "qtcompat.h"
 #include "appsettings.h"
@@ -41,7 +41,7 @@ QString install(QCoreApplication &app)
 
     if (lang == QLatin1String("en")) {
         auto *appTr = new QTranslator(&app);
-        if (appTr->load(QStringLiteral(":/i18n/vitaparms_en.qm")))
+        if (appTr->load(QStringLiteral(":/i18n/viviaparms_en.qm")))
             app.installTranslator(appTr);
         s_installed << appTr;
     }

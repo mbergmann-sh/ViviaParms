@@ -1,5 +1,5 @@
-// VitaParms – Dialog zur Erfassung von Vitalwerten (Formular: vitalform.ui)
-// SPDX-License-Identifier: MIT
+// ViviaParms – Dialog zur Erfassung von Vitalwerten (Formular: vitalform.ui)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"
@@ -54,7 +54,7 @@ private:
     void warnCareValues(const VitalRecord &r);   // nach dem Speichern: INR, Ödeme, Gewicht, Trinkmenge
     void setupStool();                 // Stuhlgang: Häkchen + Bristol-Auswahl (auch in älteren Formularen)
     void setupBreathCounter();         // 1-Minuten-Zähluhr neben "Atemfrequenz"
-    void setupPainScale();             // VitaParms light: Schmerzstärke 0–10 als Tasten (grün → rot)
+    void setupPainScale();             // ViviaParms light: Schmerzstärke 0–10 als Tasten (grün → rot)
     void startBreathCount();
     void stopBreathCount(bool finished);
     void updateBreathCount();

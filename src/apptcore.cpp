@@ -1,5 +1,5 @@
-// VitaParms – Termine: gemeinsame Fachlogik für Desktop und Tablet (siehe apptcore.h)
-// SPDX-License-Identifier: MIT
+// ViviaParms – Termine: gemeinsame Fachlogik für Desktop und Tablet (siehe apptcore.h)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "apptcore.h"
 
 #include "database.h"

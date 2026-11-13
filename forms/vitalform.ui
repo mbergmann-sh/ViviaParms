@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  VitaParms – Eingabemaske Vitalwerte
+  ViviaParms – Eingabemaske Vitalwerte
   Anpassbar mit Qt Designer.
    * Pflichtfeld: dateTimeEdit
    * Leere Werte: Spinboxen mit "specialValueText" (z. B. "—") gelten beim

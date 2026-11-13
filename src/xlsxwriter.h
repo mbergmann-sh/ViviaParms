@@ -1,8 +1,8 @@
-// VitaParms – Schreiben von Excel-Arbeitsmappen (.xlsx, Office Open XML)
+// ViviaParms – Schreiben von Excel-Arbeitsmappen (.xlsx, Office Open XML)
 // Eigenständig (nur QtCore/QtGui), unterstützt mehrere Tabellenblätter,
 // einfache Formate, fixierte Kopfzeilen, A4-Seiteneinrichtung und je Blatt
 // ein eingebettetes Bild (z. B. die Verlaufsgrafik).
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QImage>

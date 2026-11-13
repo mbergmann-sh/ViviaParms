@@ -1,5 +1,5 @@
-// VitaParms mobile – Anpassung an die Systemleisten (siehe systemui.h)
-// SPDX-License-Identifier: MIT
+// ViviaParms mobile – Anpassung an die Systemleisten (siehe systemui.h)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "systemui.h"
 
 #include <QMetaMethod>
@@ -64,7 +64,7 @@ void SystemUi::setLightBars(bool light)
     m_lightBars = light;
 #ifdef Q_OS_ANDROID
     const QJniObject activity(QNativeInterface::QAndroidApplication::context());
-    QJniObject::callStaticMethod<void>("de/mbergmann/vitaparms/SystemBars", "setLight",
+    QJniObject::callStaticMethod<void>("de/mbergmann/viviaparms/SystemBars", "setLight",
         "(Landroid/content/Context;Z)V", activity.object(), jboolean(light));
 #else
     Q_UNUSED(light)

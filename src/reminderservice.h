@@ -1,6 +1,6 @@
-// VitaParms – Termin-Erinnerungen (optisch, akustisch, per E-Mail)
+// ViviaParms – Termin-Erinnerungen (optisch, akustisch, per E-Mail)
 // Prüft alle 20 Sekunden die fälligen Erinnerungen des angemeldeten Kontos.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

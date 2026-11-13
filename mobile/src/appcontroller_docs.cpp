@@ -1,6 +1,6 @@
-// VitaParms Tablet – Krankenakte: Dokumente ansehen, fotografieren, aus Dateien übernehmen,
+// ViviaParms Tablet – Krankenakte: Dokumente ansehen, fotografieren, aus Dateien übernehmen,
 // bearbeiten, teilen (Teil von AppController)
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "appcontroller.h"
 
 #include "akteexportcore.h"
@@ -134,7 +134,7 @@ QString AppController::startCapture()
                          + QStringLiteral("/foto-%1.jpg").arg(QDateTime::currentMSecsSinceEpoch());
 #ifdef Q_OS_ANDROID
     const QJniObject ctx(QNativeInterface::QAndroidApplication::context());
-    const jboolean ok = QJniObject::callStaticMethod<jboolean>("de/mbergmann/vitaparms/Capture", "start",
+    const jboolean ok = QJniObject::callStaticMethod<jboolean>("de/mbergmann/viviaparms/Capture", "start",
         "(Landroid/content/Context;Ljava/lang/String;)Z", ctx.object(), QJniObject::fromString(path).object<jstring>());
     if (!ok) { setError(tr("Die Kamera lässt sich nicht öffnen.")); return {}; }
     return path;
@@ -158,7 +158,7 @@ QString AppController::captureState(const QString &path)
     // Ursache für die Meldung: keine Kamera-App, Berechtigung verweigert, kein Foto geliefert …
     if (r == QLatin1String("ok")) setError(tr("Die Kamera-App hat kein Foto geliefert."));
     else if (r.contains(QLatin1String("keine Kamera-App"))) setError(tr("Auf diesem Gerät ist keine Kamera-App verfügbar."));
-    else if (r.contains(QLatin1String("Berechtigung"))) setError(tr("Ohne Kamera-Berechtigung kann VitaParms kein Foto aufnehmen. Bitte in den Android-Einstellungen unter Apps → VitaParms → Berechtigungen erlauben."));
+    else if (r.contains(QLatin1String("Berechtigung"))) setError(tr("Ohne Kamera-Berechtigung kann ViviaParms kein Foto aufnehmen. Bitte in den Android-Einstellungen unter Apps → ViviaParms → Berechtigungen erlauben."));
     else setError(tr("Die Kamera ließ sich nicht starten (%1).").arg(r.mid(6)));
     return QStringLiteral("error");
 }

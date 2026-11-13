@@ -1,11 +1,11 @@
 #!/bin/sh
-# VitaParms light – Linux: Programm mit allen Qt-Bibliotheken und Plugins in einen Ordner stellen
+# ViviaParms light – Linux: Programm mit allen Qt-Bibliotheken und Plugins in einen Ordner stellen
 #
 #   linux_deploy.sh <Programm> <qmake> <Zielordner> [<Symbol.png>]
 #
 # Ergebnis (läuft ohne installiertes Qt):
-#   <Ziel>/VitaParmsLight          Programm
-#   <Ziel>/VitaParmsLight.sh       Startskript (setzt den Bibliothekspfad)
+#   <Ziel>/ViviaParmsLight          Programm
+#   <Ziel>/ViviaParmsLight.sh       Startskript (setzt den Bibliothekspfad)
 #   <Ziel>/lib/                    Qt-Bibliotheken (und ICU), aus dem Qt-Bibliotheksordner
 #   <Ziel>/plugins/                Plattform-, Bild-, Druck-, TLS-, Multimedia-Plugins …
 #   <Ziel>/translations/           Qt-Übersetzungen (deutsch)
@@ -21,7 +21,7 @@ QTTRANS=$("$QMAKE" -query QT_INSTALL_TRANSLATIONS)
 NAME=$(basename "$EXE")
 mkdir -p "$DEST/lib" "$DEST/plugins" "$DEST/translations"
 cp "$EXE" "$DEST/$NAME"
-[ -n "$ICON" ] && [ -f "$ICON" ] && cp "$ICON" "$DEST/vitaparms-light.png"
+[ -n "$ICON" ] && [ -f "$ICON" ] && cp "$ICON" "$DEST/viviaparms-light.png"
 
 # Plugins, die eine Widgets-Anwendung mit Druck, PDF, Netzwerk und Tönen braucht
 for d in platforms platforminputcontexts platformthemes xcbglintegrations imageformats iconengines \

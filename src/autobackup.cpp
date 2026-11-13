@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "autobackup.h"
 
 #include "database.h"
@@ -27,7 +27,7 @@ QString prefix()
 {
     QString base = QFileInfo(Database::instance().path()).completeBaseName();
     base.replace(QRegularExpression(QStringLiteral("[^\\w\\-]+")), QStringLiteral("_"));
-    return QStringLiteral("VitaParms-Auto_%1_").arg(base.isEmpty() ? QStringLiteral("db") : base);
+    return QStringLiteral("ViviaParms-Auto_%1_").arg(base.isEmpty() ? QStringLiteral("db") : base);
 }
 } // namespace
 

@@ -1,5 +1,5 @@
-// VitaParms – Reiter "Dokumente": digitale Krankenakte je Benutzer
-// SPDX-License-Identifier: MIT
+// ViviaParms – Reiter "Dokumente": digitale Krankenakte je Benutzer
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

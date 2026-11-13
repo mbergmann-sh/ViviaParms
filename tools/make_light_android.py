@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""VitaParms light – Android-Paketdateien aus denen der Tablet-App erzeugen.
+"""ViviaParms light – Android-Paketdateien aus denen der Tablet-App erzeugen.
 
 Kopiert mobile/android nach light/mobile/android und passt an: Paketname
-de.mbergmann.vitaparms.light, Name „VitaParms light“, grünes Programmsymbol. Die Java-Klassen
-bleiben im Paket de.mbergmann.vitaparms (die App ruft sie über diesen Namen auf).
+de.mbergmann.viviaparms.light, Name „ViviaParms light“, grünes Programmsymbol. Die Java-Klassen
+bleiben im Paket de.mbergmann.viviaparms (die App ruft sie über diesen Namen auf).
 Nach Änderungen an mobile/android erneut ausführen:  python3 tools/make_light_android.py
 """
 import shutil
@@ -31,10 +31,10 @@ if DST.exists():
     shutil.rmtree(DST)
 shutil.copytree(SRC, DST)
 m = (DST / 'AndroidManifest.xml').read_text(encoding='utf-8')
-m = m.replace('package="de.mbergmann.vitaparms"', 'package="de.mbergmann.vitaparms.light"')
-m = m.replace('android:label="VitaParms"', 'android:label="VitaParms light"')
-m = m.replace('<!-- VitaParms Tablet – Android-Manifest', '<!-- VitaParms light – Android-Manifest (erzeugt mit tools/make_light_android.py)')
-assert 'de.mbergmann.vitaparms.light' in m and 'VitaParms light' in m
+m = m.replace('package="de.mbergmann.viviaparms"', 'package="de.mbergmann.viviaparms.light"')
+m = m.replace('android:label="ViviaParms"', 'android:label="ViviaParms light"')
+m = m.replace('<!-- ViviaParms Tablet – Android-Manifest', '<!-- ViviaParms light – Android-Manifest (erzeugt mit tools/make_light_android.py)')
+assert 'de.mbergmann.viviaparms.light' in m and 'ViviaParms light' in m
 (DST / 'AndroidManifest.xml').write_text(m, encoding='utf-8')
 for icon in DST.glob('res/drawable-*/icon.png'):
     recolor(icon)

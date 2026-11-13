@@ -1,5 +1,5 @@
-// VitaParms – Protokoll "Medikamente stellen": wann, von wem, was gestellt wurde
-// SPDX-License-Identifier: MIT
+// ViviaParms – Protokoll "Medikamente stellen": wann, von wem, was gestellt wurde
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

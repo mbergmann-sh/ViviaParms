@@ -1,4 +1,4 @@
-// VitaParms mobile – Anpassung an die Systemleisten (Android 15+: Darstellung bis an den Rand)
+// ViviaParms mobile – Anpassung an die Systemleisten (Android 15+: Darstellung bis an den Rand)
 //
 // Ab Ziel-API 35 zeichnet Android jede App bis unter Statusleiste, Navigationsleiste und
 // Kameraaussparung. Diese Klasse meldet die Ränder, die frei bleiben müssen (QWindow::safeAreaMargins,
@@ -9,7 +9,7 @@
 // (Popups, Hinweise) liegen außerhalb dieser Polsterung und nutzen top/bottom/left/right direkt.
 //
 // Autopilot: VP_AUTOPILOT_SAFE="oben,rechts,unten,links" (Pixel) täuscht Ränder vor.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QMargins>

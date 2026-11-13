@@ -1,5 +1,5 @@
-// VitaParms – Datentypen
-// SPDX-License-Identifier: MIT
+// ViviaParms – Datentypen
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QDate>

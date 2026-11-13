@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "documentspage.h"
 #include "akteexport.h"
 #include "database.h"
@@ -64,7 +64,7 @@ QString haystack(const MedicalDocument &d)
 QString viewerTempDir()
 {
     const QString d = QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation))
-                          .filePath(QStringLiteral("VitaParms-Ansicht"));
+                          .filePath(QStringLiteral("ViviaParms-Ansicht"));
     QDir().mkpath(d);
     return d;
 }
@@ -442,7 +442,7 @@ void DocumentsPage::updatePreview()
 #ifdef VP_HAVE_QTPDF
     // Für jedes Dokument ein neues QPdfDocument – QPdfView verwirft sonst
     // zwischengespeicherte Seitenbilder des vorherigen Dokuments nicht zuverlässig.
-    auto file = std::make_unique<QTemporaryFile>(QDir::tempPath() + QStringLiteral("/vitaparms-XXXXXX.pdf"));
+    auto file = std::make_unique<QTemporaryFile>(QDir::tempPath() + QStringLiteral("/viviaparms-XXXXXX.pdf"));
     auto *doc = new QPdfDocument(this);
     bool ok = false;
     if (file->open()) {

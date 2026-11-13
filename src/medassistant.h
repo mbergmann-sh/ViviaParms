@@ -1,8 +1,8 @@
-// VitaParms – Assistent zum Stellen von Medikamenten mit Sprachausgabe
+// ViviaParms – Assistent zum Stellen von Medikamenten mit Sprachausgabe
 // Liest die aktuelle Medikamentenliste Schritt für Schritt vor:
 // "Weiter" → nächstes Medikament, "Wiederholen" → nochmals vorlesen.
 // Am Ende: optischer und akustischer Hinweis "Medikamente sind gerichtet".
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

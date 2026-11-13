@@ -1,11 +1,11 @@
-// VitaParms – Demo-Datenbank (Hilfe → Demo-Datenbank starten)
+// ViviaParms – Demo-Datenbank (Hilfe → Demo-Datenbank starten)
 //
 // Die Demo läuft als eigener Programmstart mit "--demo": eigene Einstellungen
-// (Anwendungsname "VitaParms-Demo"), eigene verschlüsselte Datenbank im Datenordner,
+// (Anwendungsname "ViviaParms-Demo"), eigene verschlüsselte Datenbank im Datenordner,
 // automatische Anmeldung mit dem Konto "demo". Bei jedem Start wird die Datenbank neu
 // erzeugt – 365 Tage Messwerte bis heute, Medikamentenplan, Termine, Krankenakte –,
 // Änderungen in der Demo gehen also nie in die eigenen Daten über.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QCoreApplication>

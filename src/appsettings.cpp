@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "appsettings.h"
 
 #include <QCoreApplication>
@@ -16,7 +16,7 @@ static QString dataDir()
 
 QString AppSettings::defaultDatabasePath()
 {
-    return QDir(dataDir()).filePath(QStringLiteral("vitaparms.sqlite"));
+    return QDir(dataDir()).filePath(QStringLiteral("viviaparms.sqlite"));
 }
 
 QString AppSettings::databasePath()

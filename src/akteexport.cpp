@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "akteexport.h"
 #include "appsettings.h"
 #include "chartwidget.h"
@@ -240,7 +240,7 @@ void AkteExportDialog::sendMail()
         return;
 
     const QString dir = QDir(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation))
-                            .filePath(QStringLiteral("VitaParms-Versand"));
+                            .filePath(QStringLiteral("ViviaParms-Versand"));
     QDir().mkpath(dir);
     const QString path = QDir(dir).filePath(AkteExport::defaultArchiveName(m_patient));
     if (!buildTo(path, o)) return;
@@ -272,7 +272,7 @@ void AkteExportDialog::sendMail()
     }
     if (!o.password.isEmpty())
         msg += tr("\n\nDenken Sie daran, dem Empfänger das Passwort auf anderem Weg mitzuteilen.");
-    msg += tr("\n\nDie Versandkopie bleibt im Ordner „VitaParms-Versand“ – nach dem Versand "
+    msg += tr("\n\nDie Versandkopie bleibt im Ordner „ViviaParms-Versand“ – nach dem Versand "
               "können Sie sie löschen.");
     QMessageBox::information(this, windowTitle(), msg);
 }

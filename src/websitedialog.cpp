@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "websitedialog.h"
 #include "websync.h"
 #include "dbsync.h"
@@ -32,7 +32,7 @@ WebsiteDialog::WebsiteDialog(QWidget *parent) : QDialog(parent)
     auto *v = new QVBoxLayout(this);
 
     auto *intro = new QLabel(tr(
-        "<p>VitaParms kann die Daten <b>aller Personen</b> – den gesamten Verlauf der Messwerte, "
+        "<p>ViviaParms kann die Daten <b>aller Personen</b> – den gesamten Verlauf der Messwerte, "
         "Medikamente, Termine und Berichte, aber <b>keine Krankenakte</b> – auf Ihrer eigenen Website "
         "zum Ansehen bereitstellen, etwa für Angehörige oder die Arztpraxis.</p>"
         "<p>Die Daten werden <b>vor dem Hochladen mit dem Master-Passwort verschlüsselt</b>. Auf dem "
@@ -51,7 +51,7 @@ WebsiteDialog::WebsiteDialog(QWidget *parent) : QDialog(parent)
     auto *f = new QFormLayout(box);
     m_url = new QLineEdit(c.url, box);
     m_url->setObjectName(QStringLiteral("webUrl"));
-    m_url->setPlaceholderText(QStringLiteral("https://vitaparms.example.de/"));
+    m_url->setPlaceholderText(QStringLiteral("https://viviaparms.example.de/"));
     f->addRow(tr("&Adresse:"), m_url);
 
     m_password = new QLineEdit(c.password, box);
@@ -75,7 +75,7 @@ WebsiteDialog::WebsiteDialog(QWidget *parent) : QDialog(parent)
     m_key = new QLineEdit(c.uploadKey.isEmpty() ? WebSync::generateUploadKey() : c.uploadKey, box);
     m_key->setObjectName(QStringLiteral("webUploadKey"));
     m_key->setReadOnly(true);
-    m_key->setToolTip(tr("Berechtigt VitaParms zum Hochladen. Die Website merkt sich beim ersten Hochladen "
+    m_key->setToolTip(tr("Berechtigt ViviaParms zum Hochladen. Die Website merkt sich beim ersten Hochladen "
                          "diesen Schlüssel und nimmt danach nur noch Daten mit demselben Schlüssel an."));
     auto *newKey = new QPushButton(tr("&Neu"), box);
     newKey->setToolTip(tr("Neuen Upload-Schlüssel erzeugen – danach auf dem Server die Datei "
@@ -103,7 +103,7 @@ WebsiteDialog::WebsiteDialog(QWidget *parent) : QDialog(parent)
     const DbSync::Config sc = DbSync::config();
     auto *syncBox = new QGroupBox(tr("Abgleich mit anderen Geräten (Tablet)"), this);
     auto *sv = new QVBoxLayout(syncBox);
-    auto *syncIntro = new QLabel(tr("Über dieselbe Adresse und denselben Upload-Schlüssel tauschen VitaParms am Desktop "
+    auto *syncIntro = new QLabel(tr("Über dieselbe Adresse und denselben Upload-Schlüssel tauschen ViviaParms am Desktop "
                                     "und die Tablet-App die <b>verschlüsselte Datenbank</b> aus. Änderungen beider Seiten "
                                     "werden zusammengeführt; bei gleichzeitiger Änderung derselben Angabe gilt die jüngere."),
                                  syncBox);
@@ -133,7 +133,7 @@ WebsiteDialog::WebsiteDialog(QWidget *parent) : QDialog(parent)
                    "und löschen Sie sie danach.\n\nJetzt speichern?")) != QMessageBox::Yes)
             return;
         const QString path = QFileDialog::getSaveFileName(this, tr("Kopplungsdatei speichern"),
-            QDir::home().filePath(QStringLiteral("VitaParms-Kopplung.vpcouple")), tr("Kopplungsdatei (*.vpcouple)"));
+            QDir::home().filePath(QStringLiteral("ViviaParms-Kopplung.vpcouple")), tr("Kopplungsdatei (*.vpcouple)"));
         if (path.isEmpty()) return;
         const WebSync::Config c = WebSync::config();
         QFile f(path);

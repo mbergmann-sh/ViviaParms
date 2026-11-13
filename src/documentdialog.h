@@ -1,5 +1,5 @@
-// VitaParms – Angaben zu einem Dokument der Krankenakte (Formular: documentform.ui)
-// SPDX-License-Identifier: MIT
+// ViviaParms – Angaben zu einem Dokument der Krankenakte (Formular: documentform.ui)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

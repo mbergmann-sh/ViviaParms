@@ -1,7 +1,7 @@
-/* VitaParms – Website: entschlüsselt das von VitaParms hochgeladene Datenpaket im Browser
+/* ViviaParms – Website: entschlüsselt das von ViviaParms hochgeladene Datenpaket im Browser
  * und zeigt es schreibgeschützt an. Kein Framework, keine externen Quellen.
  * Format "VPW1": "VPW1" | IV(16) | AES-256-CTR | HMAC-SHA256(32); Schlüssel per PBKDF2-SHA256.
- * SPDX-License-Identifier: MIT */
+ * SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0 */
 'use strict';
 
 (() => {
@@ -9,10 +9,10 @@
   const TEXT = {
     de: {
       locale: 'de-DE',
-      loginIntro: 'Diese Seite zeigt Gesundheitsdaten, die mit VitaParms erfasst wurden. Sie sind verschlüsselt und werden erst nach Eingabe des Passworts in diesem Browser lesbar.',
+      loginIntro: 'Diese Seite zeigt Gesundheitsdaten, die mit ViviaParms erfasst wurden. Sie sind verschlüsselt und werden erst nach Eingabe des Passworts in diesem Browser lesbar.',
       password: 'Passwort', show: 'Anzeigen', hide: 'Verbergen', open: 'Öffnen',
       wrongPassword: 'Das Passwort stimmt nicht.', decrypting: 'Daten werden entschlüsselt …',
-      noData: 'Hier sind noch keine Daten. In VitaParms unter Datei → „Website aktualisieren“ hochladen.',
+      noData: 'Hier sind noch keine Daten. In ViviaParms unter Datei → „Website aktualisieren“ hochladen.',
       loadError: 'Die Daten konnten nicht geladen werden: ', oldBrowser: 'Dieser Browser ist zu alt für die Entschlüsselung. Bitte einen aktuellen Browser verwenden.',
       insecure: 'Die Seite muss über https:// aufgerufen werden.',
       loginFoot: 'Ohne das Passwort sind die Daten auf dem Server nicht lesbar.',
@@ -37,7 +37,7 @@
       showArchived: 'Auch abgesetzte Medikamente zeigen', archived: 'abgesetzt',
       medCols: ['Präparat', 'Wirkstoff', 'Dosierung', 'Einnahme', 'Grund', 'Hinweise', 'seit'],
       upcoming: 'Anstehend', past: 'Vergangen', allDay: 'ganztägig', showAll: 'Alle anzeigen',
-      reportsIntro: 'Berichte, wie VitaParms sie druckt. Sie werden beim Herunterladen in diesem Browser entschlüsselt.',
+      reportsIntro: 'Berichte, wie ViviaParms sie druckt. Sie werden beim Herunterladen in diesem Browser entschlüsselt.',
       download: 'Herunterladen', csvReport: 'Alle Messwerte (CSV, für Excel)', csvType: 'CSV-Datei, wird im Browser erzeugt',
       personal: 'Persönliche Angaben',
       careLevel: 'Pflegegrad', careNone: 'kein Pflegegrad', careReview: 'nächste Überprüfung',
@@ -60,10 +60,10 @@
     },
     en: {
       locale: 'en-GB',
-      loginIntro: 'This page shows health data recorded with VitaParms. It is encrypted and only becomes readable in this browser after you enter the password.',
+      loginIntro: 'This page shows health data recorded with ViviaParms. It is encrypted and only becomes readable in this browser after you enter the password.',
       password: 'Password', show: 'Show', hide: 'Hide', open: 'Open',
       wrongPassword: 'The password is not correct.', decrypting: 'Decrypting data …',
-      noData: 'There is no data here yet. Upload it in VitaParms with File → “Update website”.',
+      noData: 'There is no data here yet. Upload it in ViviaParms with File → “Update website”.',
       loadError: 'The data could not be loaded: ', oldBrowser: 'This browser is too old for decryption. Please use a current browser.',
       insecure: 'This page must be opened via https://.',
       loginFoot: 'Without the password, the data on the server cannot be read.',
@@ -88,7 +88,7 @@
       showArchived: 'Also show discontinued medicines', archived: 'discontinued',
       medCols: ['Product', 'Active substance', 'Dosage', 'Intake', 'Reason', 'Instructions', 'since'],
       upcoming: 'Upcoming', past: 'Past', allDay: 'all day', showAll: 'Show all',
-      reportsIntro: 'Reports as VitaParms prints them. They are decrypted in this browser when you download them.',
+      reportsIntro: 'Reports as ViviaParms prints them. They are decrypted in this browser when you download them.',
       download: 'Download', csvReport: 'All readings (CSV, for Excel)', csvType: 'CSV file, created in the browser',
       personal: 'Personal details',
       careLevel: 'Care level', careNone: 'no care level', careReview: 'next review',
@@ -195,7 +195,7 @@
     return crypto.subtle.verify('HMAC', keys.mac, b64(checkB64), enc.encode('vitaparms-password-check'));
   }
   // Zugriffswert für das Zugriffsprotokoll: HMAC(macKey, "vitaparms-access-log") als Hex-Text.
-  // Der Server kennt nur dessen SHA-256 (von VitaParms beim Hochladen abgelegt).
+  // Der Server kennt nur dessen SHA-256 (von ViviaParms beim Hochladen abgelegt).
   async function accessToken(keys) {
     const sig = new Uint8Array(await crypto.subtle.sign('HMAC', keys.mac, enc.encode('vitaparms-access-log')));
     return Array.from(sig, (x) => x.toString(16).padStart(2, '0')).join('');
@@ -226,6 +226,7 @@
     meds: { archived: false }, appts: { allPast: false },
     user: '', access: '', logView: false, log: { entries: null, error: '', filter: 'all', query: '', shown: 200 },
   };
+  // Kennung aus der Zeit vor der Umbenennung (VitaParms) – nicht ändern: bestehende Schlüssel, Daten, Abgleich und Sicherungen hängen daran
   const USER = 'vitaparms.user';
 
   // ---------------------------------------------------------------- Zugriffsprotokoll (Server)
@@ -426,7 +427,7 @@
     for (const b of $('#rail').querySelectorAll('button')) b.setAttribute('aria-current', b.dataset.id === p?.id ? 'true' : 'false');
     $('#personSelect').value = p?.id ?? '';
     for (const b of $('#tabs').querySelectorAll('button')) b.setAttribute('aria-selected', b.dataset.tab === t ? 'true' : 'false');
-    document.title = p ? `${p.name} – VitaParms` : 'VitaParms';
+    document.title = p ? `${p.name} – ViviaParms` : 'ViviaParms';
     renderHead();
     renderView();
   }
@@ -1273,7 +1274,7 @@
   async function openLog() {
     const lg = state.log;
     lg.entries = null; lg.error = ''; lg.shown = 200;
-    document.title = `${L.log} – VitaParms`;
+    document.title = `${L.log} – ViviaParms`;
     for (const b of $('#rail').querySelectorAll('button')) b.setAttribute('aria-current', 'false');
     $('#personHead').replaceChildren(h('h1', { text: L.log }));
     renderLog();
@@ -1351,7 +1352,7 @@
       lines.push([isoDate(d), d.toLocaleTimeString(L.locale), e.user || '', e.ip || '', e.fwd || '', logEventText(e), e.detail || '', e.auth || '',
         e.event === 'login-failed' ? '' : e.unverified ? L.no : L.yes].map(q).join(sep));
     }
-    download(`VitaParms-${de ? 'Zugriffsprotokoll' : 'access-log'}-${isoDate(new Date())}.csv`,
+    download(`ViviaParms-${de ? 'Zugriffsprotokoll' : 'access-log'}-${isoDate(new Date())}.csv`,
       new Blob(['\ufeff' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' }));
     logEvent('log-download');
   }

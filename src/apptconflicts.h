@@ -1,4 +1,4 @@
-// VitaParms – Terminkollisions-Check (nur VitaParms und VitaParms mobile, nicht light)
+// ViviaParms – Terminkollisions-Check (nur ViviaParms und ViviaParms mobile, nicht light)
 //
 // Vergleicht nachträglich die Termine von zwei oder mehr Personen einer Datenbank in einem Zeitraum:
 // Termine verschiedener Personen, die sich zeitlich überschneiden (oder näher beieinander liegen als
@@ -8,7 +8,7 @@
 // Verschoben werden soll der Termin mit der niedrigeren Priorität, bei gleicher der spätere.
 // Ganztägige und erledigte Termine bleiben außen vor.
 // Übersetzungskontext „ApptConflicts“.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

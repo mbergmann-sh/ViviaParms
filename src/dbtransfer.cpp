@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "dbtransfer.h"
 #include "database.h"
 #include "keystore.h"
@@ -16,6 +16,7 @@
 
 namespace {
 QString tr(const char *s) { return QCoreApplication::translate("DbTransfer", s); }
+// Kennung aus der Zeit vor der Umbenennung (VitaParms) – nicht ändern: bestehende Schlüssel, Daten, Abgleich und Sicherungen hängen daran
 const QByteArray kMagic = QByteArrayLiteral("VITAPARMS-DB-BUNDLE\n");
 const QByteArray kSqlitePlain = QByteArrayLiteral("SQLite format 3");
 
@@ -79,7 +80,7 @@ bool exportBundle(const QString &target, QString *error)
 {
     Database &db = Database::instance();
     const QString tmp = QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation))
-                            .filePath(QStringLiteral("vitaparms-export-%1.sqlite").arg(QDateTime::currentMSecsSinceEpoch()));
+                            .filePath(QStringLiteral("viviaparms-export-%1.sqlite").arg(QDateTime::currentMSecsSinceEpoch()));
     if (!db.backupTo(tmp, error)) return false;
     QByteArray dbBytes, keys;
     const bool ok = readFile(tmp, &dbBytes, error);
@@ -119,11 +120,11 @@ bool importDatabase(const QString &source, const QString &keysSource, const QStr
     all.clear();
     // Plausibel? Eine SQLite-Datei (unverschlüsselt aus alter Version) oder verschlüsselt (zufällige Bytes, Seitengröße)
     if (dbBytes.size() < 4096 || (dbBytes.size() % 512) != 0) {
-        if (error) *error = tr("Das ist keine VitaParms-Datenbank.");
+        if (error) *error = tr("Das ist keine ViviaParms-Datenbank.");
         return false;
     }
     if (!keys.isEmpty() && !validKeys(keys)) {
-        if (error) *error = tr("Die Schlüsseldatei (.keys) ist beschädigt oder gehört nicht zu VitaParms.");
+        if (error) *error = tr("Die Schlüsseldatei (.keys) ist beschädigt oder gehört nicht zu ViviaParms.");
         return false;
     }
     if (!keys.isEmpty() && dbBytes.startsWith(kSqlitePlain)) keys.clear();   // unverschlüsselt: Konten entstehen neu

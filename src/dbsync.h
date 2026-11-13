@@ -1,4 +1,4 @@
-// VitaParms – Abgleich der Datenbank zwischen Geräten (Desktop, Tablet) über die eigene Website
+// ViviaParms – Abgleich der Datenbank zwischen Geräten (Desktop, Tablet) über die eigene Website
 //
 // Der Server (website/api/sync.php) verwahrt nur die verschlüsselte Datenbank und die
 // verschlüsselte Schlüsseldatei der Anmeldekonten; er zählt eine Revision hoch und lehnt
@@ -13,7 +13,7 @@
 //     Geräte dieselben Vorkommen erzeugen, ohne dass Doppelungen entstehen
 //
 // Gerätebezogen (nicht abgeglichen): Einstellungen, "erinnert"/"später erinnern" bei Terminen.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QDateTime>

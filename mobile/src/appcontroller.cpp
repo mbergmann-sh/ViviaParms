@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "appcontroller.h"
 #include "edition.h"
 #include "wounds.h"
@@ -173,7 +173,7 @@ void AppController::setLanguage(const QString &lang)
 bool AppController::openGettingStarted()
 {
     const bool de = language() == QLatin1String("de");
-    const QString pre = Edition::light() ? QStringLiteral("VitaParms-light-") : QStringLiteral("VitaParms-");
+    const QString pre = Edition::light() ? QStringLiteral("ViviaParms-light-") : QStringLiteral("ViviaParms-");
     const QStringList names = de ? QStringList{ pre + QStringLiteral("ErsteSchritte.pdf"), pre + QStringLiteral("GettingStarted.pdf") }
                                  : QStringList{ pre + QStringLiteral("GettingStarted.pdf"), pre + QStringLiteral("ErsteSchritte.pdf") };
     const QDir app(QCoreApplication::applicationDirPath());
@@ -520,7 +520,7 @@ QVariantMap AppController::readCouplingFile(const QString &fileUrl)
     if (!f.open(QIODevice::ReadOnly)) { setError(f.errorString()); return m; }
     const QJsonObject o = QJsonDocument::fromJson(f.read(64 * 1024)).object();
     if (o.value(QStringLiteral("format")).toString() != QLatin1String("vitaparms-coupling")) {
-        setError(tr("Das ist keine Kopplungsdatei von VitaParms."));
+        setError(tr("Das ist keine Kopplungsdatei von ViviaParms."));
         return m;
     }
     m.insert(QStringLiteral("url"), o.value(QStringLiteral("url")).toString());
@@ -980,7 +980,7 @@ QVariantList AppController::vitalFields() const
         { VitalKey::Inr, 0.5, 12, 0.1 },
     };
     for (const F &f : fields) {
-        if (Edition::light() && (f.k == VitalKey::PeakFlow || f.k == VitalKey::Inr)) continue;   // nicht in VitaParms light
+        if (Edition::light() && (f.k == VitalKey::PeakFlow || f.k == VitalKey::Inr)) continue;   // nicht in ViviaParms light
         l << QVariantMap{ { QStringLiteral("key"), VitalDefs::key(f.k) }, { QStringLiteral("label"), VitalDefs::label(f.k) },
                           { QStringLiteral("short"), VitalDefs::shortLabel(f.k) }, { QStringLiteral("unit"), VitalDefs::unit(f.k) },
                           { QStringLiteral("decimals"), VitalDefs::decimals(f.k) }, { QStringLiteral("color"), VitalDefs::color(f.k).name() },
@@ -1312,7 +1312,7 @@ QVariantList AppController::latest(qint64 pid)
                           { QStringLiteral("when"), when(*last) }, { QStringLiteral("colors"), swatches },
                           { QStringLiteral("series"), series } };
     }
-    if (Edition::light()) return l;      // VitaParms light: kein INR, keine Ein-/Ausfuhr, Ödeme, Stuhlgang
+    if (Edition::light()) return l;      // ViviaParms light: kein INR, keine Ein-/Ausfuhr, Ödeme, Stuhlgang
     const auto pat = Database::instance().patient(pid);
     {   // INR: letzter Wert, farbig außerhalb des Zielbereichs
         const VitalRecord *last = nullptr;
@@ -2021,7 +2021,7 @@ bool AppController::openFile(const QString &path)
                        : suffix == QLatin1String("xlsx") ? QStringLiteral("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
                        : suffix == QLatin1String("zip") ? QStringLiteral("application/zip") : QStringLiteral("*/*");
     const QJniObject ctx(QNativeInterface::QAndroidApplication::context());
-    const jboolean ok = QJniObject::callStaticMethod<jboolean>("de/mbergmann/vitaparms/Capture", "view",
+    const jboolean ok = QJniObject::callStaticMethod<jboolean>("de/mbergmann/viviaparms/Capture", "view",
         "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z",
         ctx.object(), QJniObject::fromString(path).object<jstring>(), QJniObject::fromString(mime).object<jstring>(),
         QJniObject::fromString(tr("Öffnen mit …")).object<jstring>());

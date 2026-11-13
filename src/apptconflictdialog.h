@@ -1,6 +1,6 @@
-// VitaParms – Terminkollisions-Check (Dialog, nur VitaParms – nicht light)
+// ViviaParms – Terminkollisions-Check (Dialog, nur ViviaParms – nicht light)
 // Personen und Zeitraum wählen, prüfen, Ergebnis mit Ausweichterminen anzeigen und drucken.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "apptconflicts.h"

@@ -1,5 +1,5 @@
-// VitaParms – Verlauf drucken: Zeitraum und Wertegruppen wählen
-// SPDX-License-Identifier: MIT
+// ViviaParms – Verlauf drucken: Zeitraum und Wertegruppen wählen
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

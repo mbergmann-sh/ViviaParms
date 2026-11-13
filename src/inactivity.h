@@ -1,5 +1,5 @@
-// VitaParms – automatische Sperre bei Nichtbenutzung
-// SPDX-License-Identifier: MIT
+// ViviaParms – automatische Sperre bei Nichtbenutzung
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QObject>

@@ -1,4 +1,4 @@
-// VitaParms – automatische Sicherung der Datenbank
+// ViviaParms – automatische Sicherung der Datenbank
 //
 // Schützt vor Datenverlust durch Bedienfehler, Absturz oder defekte Festplatte, ohne dass man
 // daran denken muss:
@@ -10,7 +10,7 @@
 // Schlüsseldatei der Anmeldekonten (*.sqlite.keys) und lässt sich über
 // „Datei → Sicherung wiederherstellen“ einspielen. Ordner, Anzahl und Ein/Aus sind
 // Geräte-Einstellungen; für Schutz vor Festplattendefekten einen USB-Stick oder Cloud-Ordner wählen.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QDateTime>

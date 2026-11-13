@@ -1,7 +1,7 @@
-// VitaParms – anstehende Termine einer Person:
+// ViviaParms – anstehende Termine einer Person:
 //  * Druck "Erinnerungen" (Benutzer → Drucken → Erinnerungen…)
 //  * Hinweisfenster beim Programmstart (Termine heute und morgen)
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

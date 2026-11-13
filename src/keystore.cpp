@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "keystore.h"
 #include "aes256.h"
 
@@ -168,6 +168,7 @@ static QByteArray canonical(const QList<Account> &accounts)
 
 static QByteArray fileMac(const QByteArray &dbKey, const QByteArray &data)
 {
+    // Kennung aus der Zeit vor der Umbenennung (VitaParms) – nicht ändern: bestehende Schlüssel, Daten, Abgleich und Sicherungen hängen daran
     const QByteArray k = QMessageAuthenticationCode::hash("VitaParms-KeyStore-v1", dbKey, QCryptographicHash::Sha256);
     return QMessageAuthenticationCode::hash(data, k, QCryptographicHash::Sha256);
 }

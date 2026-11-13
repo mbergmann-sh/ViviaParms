@@ -1,8 +1,8 @@
-// VitaParms – Impfpass im Stammblatt: erhaltene Impfungen mit Datum, Impfstoff (Präparat) und
+// ViviaParms – Impfpass im Stammblatt: erhaltene Impfungen mit Datum, Impfstoff (Präparat) und
 // Chargennummer, dazu Arzt/Praxis und Bemerkung. Gespeichert wie die Kontakte als JSON-Liste in
 // Patient::extra["vaccinations"] – damit geht der Impfpass ohne Schemaänderung mit dem Abgleich,
 // aufs Tablet und auf die Website.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

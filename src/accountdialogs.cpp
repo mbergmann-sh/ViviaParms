@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "accountdialogs.h"
 #include "edition.h"
 #include "demodata.h"
@@ -41,7 +41,7 @@
 LoginDialog::LoginDialog(const QString &dbPath, const KeyStore &ks, const QString &presetUser, QWidget *parent)
     : QDialog(parent), m_ks(ks)
 {
-    setWindowTitle(tr("VitaParms – Anmeldung"));
+    setWindowTitle(tr("ViviaParms – Anmeldung"));
     auto *lay = new QVBoxLayout(this);
     auto *head = new QLabel(tr("<b>Anmeldung</b><br><small>Datenbank: %1</small>")
                                 .arg(QDir::toNativeSeparators(dbPath).toHtmlEscaped()), this);
@@ -265,7 +265,7 @@ RecoveryCodeDialog::RecoveryCodeDialog(const QString &code, const QString &dbPat
 static QString recoveryHtml(const QString &code, const QString &dbPath)
 {
     return QCoreApplication::translate("RecoveryCodeDialog",
-        "<h2>VitaParms – Wiederherstellungsschlüssel</h2>"
+        "<h2>ViviaParms – Wiederherstellungsschlüssel</h2>"
         "<p>Datenbank: %1<br>Erstellt am: %2</p>"
         "<p style=\"font-family: monospace; font-size: 15pt; font-weight: bold;\">%3</p>"
         "<p>Dieser Schlüssel öffnet die verschlüsselte Datenbank ohne Passwort. "
@@ -290,7 +290,7 @@ void RecoveryCodeDialog::saveFile()
 {
     const QString path = QFileDialog::getSaveFileName(this, tr("Wiederherstellungsschlüssel speichern"),
         QDir(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation))
-            .filePath(QStringLiteral("VitaParms-Wiederherstellungsschluessel.html")),
+            .filePath(QStringLiteral("ViviaParms-Wiederherstellungsschluessel.html")),
         tr("HTML-Datei (*.html);;Textdatei (*.txt)"));
     if (path.isEmpty()) return;
     QSaveFile f(path);
@@ -374,7 +374,7 @@ AccountsDialog::AccountsDialog(QWidget *parent) : QDialog(parent)
     lay->addWidget(buttons);
     for (QWidget *w : m_adminOnly) w->setVisible(Session::isAdmin());
     if (Edition::light()) {
-        // VitaParms light: ein Konto ohne Rollen – nur Passwort ändern und Wiederherstellungsschlüssel
+        // ViviaParms light: ein Konto ohne Rollen – nur Passwort ändern und Wiederherstellungsschlüssel
         setWindowTitle(tr("Anmeldung und Passwort"));
         info->setText(tr("Angemeldet als <b>%1</b>. Das Passwort schützt die verschlüsselte Datenbank. Bewahren Sie "
                          "den Wiederherstellungsschlüssel sicher auf – er öffnet die Datenbank, falls Sie das Passwort "
@@ -516,15 +516,15 @@ void AccountsDialog::showRecovery()
 LanguageDialog::LanguageDialog(QWidget *parent) : QDialog(parent)
 {
     setObjectName(QStringLiteral("languageDialog"));
-    setWindowTitle(QStringLiteral("VitaParms – Sprache / Language"));
+    setWindowTitle(QStringLiteral("ViviaParms – Sprache / Language"));
     auto *lay = new QVBoxLayout(this);
     auto *head = new QHBoxLayout;
     auto *icon = new QLabel(this);
-    icon->setPixmap(QIcon(QStringLiteral(":/icons/vitaparms.png")).pixmap(48, 48));
+    icon->setPixmap(QIcon(QStringLiteral(":/icons/viviaparms.png")).pixmap(48, 48));
     head->addWidget(icon, 0, Qt::AlignTop);
     auto *lbl = new QLabel(QStringLiteral(
-        "<p><b>Willkommen bei VitaParms!</b><br>Bitte wählen Sie die Sprache.</p>"
-        "<p><b>Welcome to VitaParms!</b><br>Please choose your language.</p>"), this);
+        "<p><b>Willkommen bei ViviaParms!</b><br>Bitte wählen Sie die Sprache.</p>"
+        "<p><b>Welcome to ViviaParms!</b><br>Please choose your language.</p>"), this);
     head->addWidget(lbl, 1);
     lay->addLayout(head);
     auto *row = new QHBoxLayout;

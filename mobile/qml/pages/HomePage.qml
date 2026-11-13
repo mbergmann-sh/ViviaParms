@@ -83,7 +83,7 @@ Page {
 
         // ---------------- Personen
         Rectangle {
-            visible: win.wide && !app.light          // VitaParms light: eine Person, keine Liste
+            visible: win.wide && !app.light          // ViviaParms light: eine Person, keine Liste
             Layout.preferredWidth: Theme.railWidth
             Layout.fillHeight: true
             color: Theme.surface
@@ -94,8 +94,8 @@ Page {
                 RowLayout {
                     Layout.margins: 16
                     spacing: 10
-                    Image { source: "qrc:/icons/vitaparms.png"; sourceSize.width: 36; sourceSize.height: 36 }
-                    Label { text: "VitaParms"; font.pixelSize: Theme.fsL; font.bold: true; color: Theme.ink; Layout.fillWidth: true }
+                    Image { source: "qrc:/icons/viviaparms.png"; sourceSize.width: 36; sourceSize.height: 36 }
+                    Label { text: "ViviaParms"; font.pixelSize: Theme.fsL; font.bold: true; color: Theme.ink; Layout.fillWidth: true }
                 }
                 Label { text: qsTr("Personen"); color: Theme.muted; font.pixelSize: Theme.fsS; Layout.leftMargin: 20; Layout.bottomMargin: 4 }
                 ListView {
@@ -143,7 +143,7 @@ Page {
                 RowLayout {
                     anchors.fill: parent; anchors.leftMargin: 16; anchors.rightMargin: 12
                     spacing: 8
-                    Image { visible: !win.wide || app.light; source: app.light ? "qrc:/icons/vitaparms-light.png" : "qrc:/icons/vitaparms.png"
+                    Image { visible: !win.wide || app.light; source: app.light ? "qrc:/icons/viviaparms-light.png" : "qrc:/icons/viviaparms.png"
                             sourceSize.width: 32; sourceSize.height: 32 }
                     Label { visible: app.light; text: app.appName; font.pixelSize: Theme.fsL; font.bold: true; color: Theme.ink
                             Layout.fillWidth: true; elide: Text.ElideRight }
@@ -176,7 +176,7 @@ Page {
                                     color: Theme.ink2; font.pixelSize: Theme.fsS; anchors.verticalCenter: parent.verticalCenter }
                         }
                     }
-                    // Schmale Bildschirme (Smartphone) und VitaParms light: ein Menü statt drei Knöpfen
+                    // Schmale Bildschirme (Smartphone) und ViviaParms light: ein Menü statt drei Knöpfen
                     readonly property bool menuOnly: app.light || home.width < 700
                     VButton { visible: !parent.menuOnly; text: qsTr("Einstellungen"); kind: "flat"; onClicked: home.openSettings() }
                     VButton { objectName: "lockButton"; visible: !parent.menuOnly; text: qsTr("Sperren"); kind: "flat"
@@ -291,7 +291,7 @@ Page {
                     Repeater {
                         model: [qsTr("Übersicht"), qsTr("Messwerte"), qsTr("Verlaufskurven"), qsTr("Stammblatt"), qsTr("Medikamente"), qsTr("Termine"), qsTr("Wunden"), qsTr("Krankenakte"), qsTr("Berichte")]
                         delegate: AbstractButton {
-                            // VitaParms light: keine Wunddokumentation
+                            // ViviaParms light: keine Wunddokumentation
                             readonly property bool hidden: app.light && index === 6
                             visible: !hidden
                             height: 48

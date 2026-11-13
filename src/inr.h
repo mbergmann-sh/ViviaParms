@@ -1,9 +1,9 @@
-// VitaParms – Gerinnungswert INR (bei Vitamin-K-Antagonisten wie Phenprocoumon/Marcumar, Warfarin)
+// ViviaParms – Gerinnungswert INR (bei Vitamin-K-Antagonisten wie Phenprocoumon/Marcumar, Warfarin)
 //
 // Bewertet wird gegen den ärztlich festgelegten Zielbereich aus dem Stammblatt; ist keiner
-// eingetragen, gilt der häufigste Standard 2,0–3,0. VitaParms ist kein Medizinprodukt – die
+// eingetragen, gilt der häufigste Standard 2,0–3,0. ViviaParms ist kein Medizinprodukt – die
 // Dosis wird nur nach ärztlicher Anweisung geändert.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

@@ -154,7 +154,7 @@ Page {
                 Layout.fillWidth: true; wrapMode: Text.WordWrap
                 color: page.d.anyOpen ? Theme.warn : Theme.ink2; font.bold: page.d.anyOpen === true
                 text: page.d.anyOpen
-                      ? qsTr("Eine Bestellliste ist noch nicht als bestellt bestätigt. Rezept besorgen, bestellen und dann „Als bestellt bestätigen“ – bis dahin erinnert VitaParms daran.")
+                      ? qsTr("Eine Bestellliste ist noch nicht als bestellt bestätigt. Rezept besorgen, bestellen und dann „Als bestellt bestätigen“ – bis dahin erinnert ViviaParms daran.")
                       : qsTr("Bestelllisten bleiben hier gespeichert und lassen sich jederzeit erneut als PDF ausgeben.")
             }
             VButton { objectName: "createOrderButton"; text: qsTr("Bestellliste erstellen"); kind: "primary"
@@ -398,7 +398,7 @@ Page {
         contentItem: ColumnLayout {
             spacing: Theme.gap
             Label { text: qsTr("Bestellung bestätigen"); font.pixelSize: Theme.fsL; font.bold: true; color: Theme.ink }
-            Label { text: qsTr("Die Bestellung mit %1 Position(en) wurde aufgegeben. Danach erinnert VitaParms nicht mehr daran.").arg((confirmPopup.order.items || []).length)
+            Label { text: qsTr("Die Bestellung mit %1 Position(en) wurde aufgegeben. Danach erinnert ViviaParms nicht mehr daran.").arg((confirmPopup.order.items || []).length)
                     color: Theme.ink2; Layout.fillWidth: true; wrapMode: Text.WordWrap }
             DateField { id: orderedAt; label: qsTr("Bestellt am"); allowEmpty: false; Layout.fillWidth: true }
             VField { id: orderNote; label: qsTr("Bemerkung"); placeholder: qsTr("z. B. Rezept bei Dr. … angefordert, bestellt bei … Apotheke, Abholung Mi"); Layout.fillWidth: true }

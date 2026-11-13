@@ -1,9 +1,9 @@
-// VitaParms – Tablet oder Smartphone über das USB-Kabel abgleichen (Desktop-Seite)
+// ViviaParms – Tablet oder Smartphone über das USB-Kabel abgleichen (Desktop-Seite)
 //
 // Verbindet sich über das Android-Hilfsprogramm adb („adb forward“) mit der Tablet-App, die
 // unter Einstellungen → „USB-Abgleich mit dem Computer“ wartet (siehe usbsync.h).
 // Zum Testen ohne adb: Umgebungsvariable VP_USBSYNC_DIRECT=127.0.0.1:47811
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QDialog>

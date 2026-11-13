@@ -1,17 +1,17 @@
-# VitaParms – Windows-Installer
+# ViviaParms – Windows-Installer
 
 Ein Release-Build unter Windows (Qt Creator oder Konsole, MinGW oder MSVC) erledigt alles
-automatisch – gesteuert von `installer/windows_deploy.pri`, das `VitaParms.pro` unter Windows einbindet:
+automatisch – gesteuert von `installer/windows_deploy.pri`, das `ViviaParms.pro` unter Windows einbindet:
 
 | Schritt | Ergebnis |
 |---|---|
-| `windeployqt` nach **jedem** Build (Debug und Release) | Qt-DLLs, Plugins und Übersetzungen neben `VitaParms.exe` – das Programm startet direkt aus dem Build-Ordner |
-| Installationsverzeichnis (nur Release) | `installer/install_src`: `VitaParms.exe`, alle DLLs und windeployqt-Unterordner, `docs/` (Handbücher PDF + CHM), `LICENSE.txt`, `README.md` – ohne Makefiles, Objektdateien, `.qmake.stash` |
-| Inno Setup (falls installiert) | `installer/Output/VitaParms-<Version>-Setup.exe` |
-| Qt Installer Framework (falls installiert) | `installer/Output/VitaParms-<Version>-Setup-IFW.exe` |
+| `windeployqt` nach **jedem** Build (Debug und Release) | Qt-DLLs, Plugins und Übersetzungen neben `ViviaParms.exe` – das Programm startet direkt aus dem Build-Ordner |
+| Installationsverzeichnis (nur Release) | `installer/install_src`: `ViviaParms.exe`, alle DLLs und windeployqt-Unterordner, `docs/` (Handbücher PDF + CHM), `LICENSE.txt`, `README.md` – ohne Makefiles, Objektdateien, `.qmake.stash` |
+| Inno Setup (falls installiert) | `installer/Output/ViviaParms-<Version>-Setup.exe` |
+| Qt Installer Framework (falls installiert) | `installer/Output/ViviaParms-<Version>-Setup-IFW.exe` |
 
-Die Versionsnummer kommt aus `VERSION` in `VitaParms.pro`; qmake schreibt sie bei jedem Lauf in
-`VitaParms.iss` und die IFW-Dateien `config.xml`/`package.xml` (Vorlagen: `*.in`).
+Die Versionsnummer kommt aus `VERSION` in `ViviaParms.pro`; qmake schreibt sie bei jedem Lauf in
+`ViviaParms.iss` und die IFW-Dateien `config.xml`/`package.xml` (Vorlagen: `*.in`).
 **Änderungen bitte immer in den `.in`-Dateien vornehmen.**
 
 ## Werkzeuge
@@ -26,20 +26,20 @@ Die Versionsnummer kommt aus `VERSION` in `VitaParms.pro`; qmake schreibt sie be
 Werkzeuge werden beim **qmake-Lauf** gesucht (Qt Creator: *Erstellen → qmake ausführen*) – die
 Meldungen „Inno Setup gefunden …“ bzw. „… nicht gefunden“ stehen in der Ausgabe.
 Installer nicht bei jedem Release-Build erzeugen: `qmake CONFIG+=vp_no_installer`; dann
-`VitaParms.iss` von Hand übersetzen (Inno Setup öffnen, F9) bzw.
-`binarycreator --offline-only -c qtifw\config\config.xml -p qtifw\packages Output\VitaParms-Setup-IFW.exe`.
+`ViviaParms.iss` von Hand übersetzen (Inno Setup öffnen, F9) bzw.
+`binarycreator --offline-only -c qtifw\config\config.xml -p qtifw\packages Output\ViviaParms-Setup-IFW.exe`.
 
 Die Befehle verwenden Pfade mit `/` in Anführungszeichen und kopieren mit `qmake -install qinstall`
 statt `copy`/`xcopy`/`cp` – sie funktionieren deshalb unverändert mit `cmd.exe` und mit einer `sh.exe`,
 die eine fremde Toolchain (z. B. ein Cross-Compiler) in den `PATH` bringt.
 
-## Inno-Setup-Installer (`VitaParms.iss`)
+## Inno-Setup-Installer (`ViviaParms.iss`)
 
 * Sprachauswahl Deutsch/Englisch, Willkommensseite mit Bild, Lizenz und Haftungshinweis zum Annehmen
-* Zielordner wählbar, Vorgabe **`C:\VitaParms`**; Komponenten: Programm (fest) und Handbücher (abwählbar)
-* Startmenü: VitaParms, VitaParms Demo (`--demo`), Handbuch (CHM in Installationssprache), Deinstallieren;
-  Desktop-Verknüpfung wählbar; am Ende „VitaParms starten“ bzw. „Demo öffnen“
-* **Updater:** Ist VitaParms schon installiert, fragt das Setup: *Aktualisieren bzw. neu installieren*
+* Zielordner wählbar, Vorgabe **`C:\ViviaParms`**; Komponenten: Programm (fest) und Handbücher (abwählbar)
+* Startmenü: ViviaParms, ViviaParms Demo (`--demo`), Handbuch (CHM in Installationssprache), Deinstallieren;
+  Desktop-Verknüpfung wählbar; am Ende „ViviaParms starten“ bzw. „Demo öffnen“
+* **Updater:** Ist ViviaParms schon installiert, fragt das Setup: *Aktualisieren bzw. neu installieren*
   (gleiche AppId → Update im bisherigen Ordner) oder *Deinstallieren*
 * **Deinstaller:** entfernt Programm, Verknüpfungen und die Demo-Datenbank; die eigenen
   Datenbanken, Schlüsseldateien und Einstellungen bleiben erhalten
@@ -48,9 +48,9 @@ die eine fremde Toolchain (z. B. ein Cross-Compiler) in den `PATH` bringt.
 
 ## Qt-Installer-Framework-Installer (`qtifw/`)
 
-* Komponenten *VitaParms* (Pflicht) und *Handbücher* (abwählbar), Lizenz und Haftungshinweis
-* Zielordner Vorgabe **`C:\VitaParms`**, Startmenü- und Desktop-Verknüpfungen, Demo-Verknüpfung
-* Wartungsprogramm `VitaParms-Wartung.exe` (Komponenten ändern, deinstallieren)
+* Komponenten *ViviaParms* (Pflicht) und *Handbücher* (abwählbar), Lizenz und Haftungshinweis
+* Zielordner Vorgabe **`C:\ViviaParms`**, Startmenü- und Desktop-Verknüpfungen, Demo-Verknüpfung
+* Wartungsprogramm `ViviaParms-Wartung.exe` (Komponenten ändern, deinstallieren)
 * **Update mit einem neueren Offline-Installer:** Das Steuerskript erkennt eine vorhandene Installation,
   entfernt sie nach Rückfrage mit dem Wartungsprogramm (`purge`) und installiert die neue Version in
   denselben Ordner. Daten und Einstellungen liegen im Benutzerprofil und bleiben erhalten.

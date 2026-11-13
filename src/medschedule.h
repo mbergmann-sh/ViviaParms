@@ -1,6 +1,6 @@
-// VitaParms – Einnahme-Rhythmus von Medikamenten (täglich, alle N Tage, an Wochentagen,
+// ViviaParms – Einnahme-Rhythmus von Medikamenten (täglich, alle N Tage, an Wochentagen,
 // monatlich, nach Bedarf) und Erinnerung an die Einnahme über die Terminliste
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

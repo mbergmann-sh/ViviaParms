@@ -1,5 +1,5 @@
-// VitaParms – Einrichtung des E-Mail-Versands (SMTP) für Erinnerungen
-// SPDX-License-Identifier: MIT
+// ViviaParms – Einrichtung des E-Mail-Versands (SMTP) für Erinnerungen
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QDialog>

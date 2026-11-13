@@ -61,7 +61,7 @@ Page {
             Label { visible: app.isAdmin && !app.light; Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2
                     text: qsTr("Administratoren verwalten Konten, Sicherungen und die Website; Anwender erfassen und sehen Daten. Die Konten gelten für diese Datenbank – nach dem nächsten Abgleich bzw. Kopieren der Datenbank auch am Computer (Schlüsseldatei).") }
             Repeater {
-                model: app.isAdmin && !app.light ? page.accounts : []      // VitaParms light: ein Konto, keine Rollen
+                model: app.isAdmin && !app.light ? page.accounts : []      // ViviaParms light: ein Konto, keine Rollen
                 delegate: Rectangle {
                     objectName: "accountRow"
                     Layout.fillWidth: true
@@ -146,7 +146,7 @@ Page {
             SectionTitle { text: qsTr("Demo-Datenbank") }
             Label { Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2
                     text: app.demo ? qsTr("Die Demo läuft. „Demo beenden“ (oder Sperren) kehrt zur eigenen Datenbank zurück; dort melden Sie sich wie gewohnt an.")
-                                   : qsTr("Die Demo zeigt VitaParms mit der erfundenen Person Erika Mustermann: ein Jahr Messwerte, Medikamente, Termine und Befunde. Sie hat eine eigene Datenbank und wird bei jedem Start neu erzeugt – Ihre Daten bleiben unberührt. Die eigene Datenbank wird dafür gesperrt.") }
+                                   : qsTr("Die Demo zeigt ViviaParms mit der erfundenen Person Erika Mustermann: ein Jahr Messwerte, Medikamente, Termine und Befunde. Sie hat eine eigene Datenbank und wird bei jedem Start neu erzeugt – Ihre Daten bleiben unberührt. Die eigene Datenbank wird dafür gesperrt.") }
             VButton { objectName: "demoButton"; text: app.demo ? qsTr("Demo beenden") : qsTr("Demo starten")
                       onClicked: { if (app.demo) { app.stopDemo(); win.goStart() } else demoConfirm.open() } }
         }

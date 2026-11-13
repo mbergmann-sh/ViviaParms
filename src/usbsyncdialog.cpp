@@ -1,5 +1,5 @@
-// VitaParms – Tablet oder Smartphone über das USB-Kabel abgleichen (Desktop-Seite)
-// SPDX-License-Identifier: MIT
+// ViviaParms – Tablet oder Smartphone über das USB-Kabel abgleichen (Desktop-Seite)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "usbsyncdialog.h"
 
 #include "session.h"
@@ -144,7 +144,7 @@ UsbSyncDialog::UsbSyncDialog(QWidget *parent)
         "<p>So geht es:</p><ol>"
         "<li>Tablet mit dem USB-Kabel anschließen. Auf dem Tablet muss <b>USB-Debugging</b> eingeschaltet sein; "
         "die Rückfrage „USB-Debugging zulassen?“ bestätigen.</li>"
-        "<li>VitaParms auf dem Tablet öffnen und anmelden.</li>"
+        "<li>ViviaParms auf dem Tablet öffnen und anmelden.</li>"
         "<li><b>Verbinden</b> wählen. Verwenden beide Geräte dieselbe Datenbank, ist kein Code nötig. Für die erste "
         "Einrichtung auf dem Tablet <b>Einstellungen → USB-Abgleich mit dem Computer</b> öffnen und den dort "
         "angezeigten Code eingeben.</li></ol>"), this);
@@ -243,7 +243,7 @@ UsbSyncDialog::UsbSyncDialog(QWidget *parent)
     m_result->setTextInteractionFlags(Qt::TextSelectableByMouse);
     lay->addWidget(m_result);
 
-    m_askExit = new QCheckBox(tr("Beim &Beenden von VitaParms fragen, ob abgeglichen werden soll"), this);
+    m_askExit = new QCheckBox(tr("Beim &Beenden von ViviaParms fragen, ob abgeglichen werden soll"), this);
     m_askExit->setObjectName(QStringLiteral("usbAskExitCheck"));
     m_askExit->setChecked(askOnExit());
     connect(m_askExit, &QCheckBox::toggled, this, &UsbSyncDialog::setAskOnExit);
@@ -538,7 +538,7 @@ void UsbSyncDialog::doFetch()
     }
     // Datei aus dem temporären Ordner des Clients sichern, bevor der Dialog endet
     const QString keep = QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation))
-                             .filePath(QStringLiteral("vitaparms-tablet-%1.vpdb").arg(QCoreApplication::applicationPid()));
+                             .filePath(QStringLiteral("viviaparms-tablet-%1.vpdb").arg(QCoreApplication::applicationPid()));
     QFile::remove(keep);
     if (!QFile::copy(path, keep)) {
         setResult(tr("Die Datei konnte nicht gespeichert werden."), true);

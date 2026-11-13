@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "vitaldefs.h"
 #include "appsettings.h"
 #include "edition.h"
@@ -245,7 +245,7 @@ QString formatted(const VitalRecord &r, VitalKey k, bool withUnit)
 
 QList<Panel> panels()
 {
-    if (Edition::light())       // VitaParms light: nur die erfassten Werte
+    if (Edition::light())       // ViviaParms light: nur die erfassten Werte
         return {
             { QStringLiteral("bp"),      tr("Blutdruck & Puls"),
               { VitalKey::Systolic, VitalKey::Diastolic, VitalKey::Pulse, VitalKey::PulsePressure } },

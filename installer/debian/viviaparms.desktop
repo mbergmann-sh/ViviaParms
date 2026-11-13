@@ -1,0 +1,20 @@
+[Desktop Entry]
+Type=Application
+Name=ViviaParms
+GenericName=Vital Signs Diary
+GenericName[de]=Vitalwerte-Tagebuch
+Comment=Record, chart and print vital signs for several persons
+Comment[de]=Vitalwerte mehrerer Personen erfassen, auswerten und drucken
+Exec=viviaparms
+Icon=viviaparms
+Terminal=false
+Categories=Office;MedicalSoftware;
+Keywords=blood pressure;pulse;blood sugar;diary;health;
+Keywords[de]=Blutdruck;Puls;Blutzucker;Tagebuch;Gesundheit;Vitalwerte;
+StartupWMClass=ViviaParms
+Actions=demo;
+
+[Desktop Action demo]
+Name=Demo database
+Name[de]=Demo-Datenbank
+Exec=viviaparms --demo

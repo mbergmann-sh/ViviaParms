@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Fill translations/vitaparms_en.ts from translations/en_dict.py.
+"""Fill translations/viviaparms_en.ts from translations/en_dict.py.
 
 Usage (from the project root):
-    lupdate -no-obsolete VitaParms.pro
+    lupdate -no-obsolete ViviaParms.pro
     python3 tools/apply_translations.py
-    lupdate -no-obsolete mobile/VitaParmsMobile.pro
-    python3 tools/apply_translations.py mobile/translations/vitaparms_en.ts
+    lupdate -no-obsolete mobile/ViviaParmsMobile.pro
+    python3 tools/apply_translations.py mobile/translations/viviaparms_en.ts
 Strings without an entry stay 'unfinished' and are listed.
 """
 import os, sys
@@ -15,7 +15,7 @@ root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(root_dir, 'translations'))
 from en_dict import EN, CONTEXT
 
-ts = sys.argv[1] if len(sys.argv) > 1 else os.path.join(root_dir, 'translations', 'vitaparms_en.ts')
+ts = sys.argv[1] if len(sys.argv) > 1 else os.path.join(root_dir, 'translations', 'viviaparms_en.ts')
 tree = ET.parse(ts)
 missing = []
 for ctx in tree.getroot().findall('context'):

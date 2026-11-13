@@ -1,5 +1,5 @@
-// VitaParms – BZ- und RR-Tagesprofil (siehe glucoseprofile.h)
-// SPDX-License-Identifier: MIT
+// ViviaParms – BZ- und RR-Tagesprofil (siehe glucoseprofile.h)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "glucoseprofile.h"
 
 #include "database.h"

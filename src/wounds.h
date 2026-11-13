@@ -1,4 +1,4 @@
-// VitaParms – Wunddokumentation
+// ViviaParms – Wunddokumentation
 //
 // Aufbau nach dem Expertenstandard „Pflege von Menschen mit chronischen Wunden“ (DNQP) und den
 // üblichen Kriterien der Wunddokumentation (ICW):
@@ -13,9 +13,9 @@
 //    Verbandwechsel (Kurzdokumentation: Handzeichen, Beschreibung, Tendenz, Versorgung).
 //  * Hinweise: Beurteilung spätestens nach 4 Wochen, Infektionszeichen, Verschlechterung,
 //    fälliger Verbandwechsel.
-// VitaParms ist kein Medizinprodukt – die Hinweise ersetzen keine fachliche Beurteilung.
+// ViviaParms ist kein Medizinprodukt – die Hinweise ersetzen keine fachliche Beurteilung.
 // Übersetzungskontext „Wounds“.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

@@ -1,5 +1,5 @@
-// VitaParms – Tabellenmodell für Journal / Verlauf
-// SPDX-License-Identifier: MIT
+// ViviaParms – Tabellenmodell für Journal / Verlauf
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

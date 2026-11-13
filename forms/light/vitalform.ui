@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  VitaParms light – Messung: Blutdruck, Puls, Temperatur, SpO₂, Blutzucker, Gewicht, Größe, BMI, Schmerz.
+  ViviaParms light – Messung: Blutdruck, Puls, Temperatur, SpO₂, Blutzucker, Gewicht, Größe, BMI, Schmerz.
   Erzeugt mit tools/make_light_forms.py aus dem Standardformular – Änderungen dort vornehmen.
 -->
 <ui version="4.0">

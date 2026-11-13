@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  VitaParms – Angaben zu einem Dokument der Krankenakte
+  ViviaParms – Angaben zu einem Dokument der Krankenakte
   Anpassbar mit Qt Designer. Pflichtfeld: titleEdit.
   Eigene Felder: dynamische Eigenschaft "vpField" setzen.
 -->

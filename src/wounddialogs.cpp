@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "wounddialogs.h"
 #include "database.h"
 #include "formloader.h"
@@ -275,7 +275,7 @@ WoundDialog::WoundDialog(const Wound &w, QWidget *parent) : QDialog(parent), m_w
     auto *lay = new QVBoxLayout(this);
     lay->addWidget(FormLoader::scrollable(form, this), 1);
     auto *hint = new QLabel(tr("Nach dem Expertenstandard „Pflege von Menschen mit chronischen Wunden“. "
-                               "VitaParms ist kein Medizinprodukt – Einschätzung und Therapie gehören in fachliche Hände."), this);
+                               "ViviaParms ist kein Medizinprodukt – Einschätzung und Therapie gehören in fachliche Hände."), this);
     hint->setWordWrap(true);
     hint->setStyleSheet(QStringLiteral("color: palette(mid);"));
     lay->addWidget(hint);

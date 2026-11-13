@@ -1,5 +1,5 @@
-// VitaParms – Abgleich mit einem Tablet oder Smartphone über das USB-Kabel (siehe usbsync.h)
-// SPDX-License-Identifier: MIT
+// ViviaParms – Abgleich mit einem Tablet oder Smartphone über das USB-Kabel (siehe usbsync.h)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "usbsync.h"
 #include "docfiles.h"
 
@@ -27,8 +27,8 @@
 #include <QTimer>
 #include <QtEndian>
 
-#ifndef VITAPARMS_VERSION
-#define VITAPARMS_VERSION "?"
+#ifndef VIVIAPARMS_VERSION
+#define VIVIAPARMS_VERSION "?"
 #endif
 
 namespace {
@@ -56,6 +56,7 @@ QString statsText(int ins, int upd, int del)
 
 QByteArray UsbSync::proof(const QByteArray &dbKey, const QByteArray &nonce)
 {
+    // Kennung aus der Zeit vor der Umbenennung (VitaParms) – nicht ändern: bestehende Schlüssel, Daten, Abgleich und Sicherungen hängen daran
     return QMessageAuthenticationCode::hash(QByteArrayLiteral("vitaparms-usb-sync:") + nonce, dbKey,
                                             QCryptographicHash::Sha256);
 }
@@ -358,7 +359,7 @@ void UsbSyncServer::handle(const QJsonObject &h, const QMap<QString, QString> &f
         }
         QJsonObject r{ { QStringLiteral("ok"), true },
                        { QStringLiteral("proto"), UsbSync::kProtocol },
-                       { QStringLiteral("version"), QStringLiteral(VITAPARMS_VERSION) },
+                       { QStringLiteral("version"), QStringLiteral(VIVIAPARMS_VERSION) },
                        { QStringLiteral("device"), QSysInfo::prettyProductName() },
                        { QStringLiteral("loggedIn"), loggedIn } };
         const QByteArray nonce = QByteArray::fromBase64(h.value(QStringLiteral("nonce")).toString().toLatin1());
@@ -430,7 +431,7 @@ void UsbSyncServer::handle(const QJsonObject &h, const QMap<QString, QString> &f
         QString err;
         // vor dem Import beantworten wäre zu früh – erst ersetzen, dann Ergebnis melden
         if (!importBundle) { fail(tr("Nicht möglich.")); return; }
-        const QString keep = QDir::temp().filePath(QStringLiteral("vitaparms-usb-%1.vpdb").arg(QCoreApplication::applicationPid()));
+        const QString keep = QDir::temp().filePath(QStringLiteral("viviaparms-usb-%1.vpdb").arg(QCoreApplication::applicationPid()));
         QFile::remove(keep);
         if (!QFile::copy(bundle, keep)) { fail(tr("Die Datei konnte nicht gespeichert werden.")); return; }
         const bool ok = importBundle(keep, &err);
@@ -618,22 +619,22 @@ bool UsbSyncClient::connectTo(const QString &host, quint16 port, const QString &
     if (!request({ { QStringLiteral("cmd"), QStringLiteral("hello") }, { QStringLiteral("code"), code },
                    { QStringLiteral("proto"), UsbSync::kProtocol },
                    { QStringLiteral("nonce"), QString::fromLatin1(nonce.toBase64()) },
-                   { QStringLiteral("version"), QStringLiteral(VITAPARMS_VERSION) },
+                   { QStringLiteral("version"), QStringLiteral(VIVIAPARMS_VERSION) },
                    { QStringLiteral("host"), QSysInfo::machineHostName() } },
                  {}, &r, nullptr, 15000, &err)) {
         if (err == QLatin1String("code"))
             err = tr("Der Code stimmt nicht. Bitte den Code eingeben, den das Tablet gerade anzeigt.");
         else if (err == QLatin1String("nocode"))
-            err = tr("Am Tablet wurde seit dem Start von VitaParms noch kein Code angezeigt. Bitte dort Einstellungen → "
+            err = tr("Am Tablet wurde seit dem Start von ViviaParms noch kein Code angezeigt. Bitte dort Einstellungen → "
                      "„USB-Abgleich mit dem Computer“ öffnen – oder das Codefeld leer lassen, wenn beide Geräte dieselbe "
                      "Datenbank verwenden.");
         else if (err == QLatin1String("locked"))
-            err = tr("Am Tablet ist niemand angemeldet. Bitte VitaParms auf dem Tablet öffnen und anmelden – oder für die "
+            err = tr("Am Tablet ist niemand angemeldet. Bitte ViviaParms auf dem Tablet öffnen und anmelden – oder für die "
                      "erste Einrichtung dort „USB-Abgleich mit dem Computer“ öffnen und den Code eingeben.");
         else if (err == QLatin1String("proto"))
-            err = tr("VitaParms auf Computer und Tablet passen nicht zusammen. Bitte beide auf denselben Stand bringen.");
+            err = tr("ViviaParms auf Computer und Tablet passen nicht zusammen. Bitte beide auf denselben Stand bringen.");
         else if (r.isEmpty() && !isConnected())
-            err = tr("VitaParms auf dem Tablet antwortet nicht. Bitte das Tablet entsperren, VitaParms öffnen und "
+            err = tr("ViviaParms auf dem Tablet antwortet nicht. Bitte das Tablet entsperren, ViviaParms öffnen und "
                      "anmelden (die App muss im Vordergrund sein).");
         if (error) *error = err;
         disconnectFromDevice();

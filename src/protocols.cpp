@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "protocols.h"
 #include "qtcompat.h"
 #include "glucoseprofile.h"
@@ -479,10 +479,10 @@ QString toHtml(const Table &t, const QString &periodText)
 bool toXlsx(const Table &t, const Patient &p, const QString &periodText, const QString &path, QString *error)
 {
     XlsxWriter x;
-    x.setTitle(QStringLiteral("VitaParms – %1 %2").arg(t.title, p.displayName()));
+    x.setTitle(QStringLiteral("ViviaParms – %1 %2").arg(t.title, p.displayName()));
     const int sh = x.addSheet(t.title.left(31));
     x.setLandscape(sh, true);
-    x.setCell(sh, 0, 0, QStringLiteral("VitaParms – %1").arg(t.title), XlsxWriter::Title);
+    x.setCell(sh, 0, 0, QStringLiteral("ViviaParms – %1").arg(t.title), XlsxWriter::Title);
     QString who = p.displayName();
     if (p.birthDate.isValid()) who += QStringLiteral(", ") + tr("geb. %1").arg(QLocale().toString(p.birthDate, QStringLiteral("dd.MM.yyyy")));
     x.setCell(sh, 1, 0, who);

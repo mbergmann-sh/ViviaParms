@@ -1,7 +1,7 @@
 <?php
-// VitaParms – Upload-Schnittstelle der Website
+// ViviaParms – Upload-Schnittstelle der Website
 //
-// Nimmt das von VitaParms verschlüsselte Datenpaket an und tauscht es atomar aus.
+// Nimmt das von ViviaParms verschlüsselte Datenpaket an und tauscht es atomar aus.
 // Der Server sieht nur Chiffrat; einen Schlüssel zum Entschlüsseln gibt es hier nicht.
 //
 //   GET  upload.php?status=1   → Zustand (PHP-Version, eingerichtet?, Schlüssel gültig?)
@@ -9,7 +9,7 @@
 //
 // Beim allerersten Hochladen merkt sich die Website den Upload-Schlüssel (als Hash in
 // data/.uploadkey.php). Neuen Schlüssel übernehmen: diese Datei per FTP löschen.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 
 require __DIR__ . '/lib.php';
 

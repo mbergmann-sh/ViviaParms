@@ -1,6 +1,6 @@
-// VitaParms – Website: verschlüsseltes, schreibgeschütztes Datenpaket aller Personen
+// ViviaParms – Website: verschlüsseltes, schreibgeschütztes Datenpaket aller Personen
 //
-// VitaParms baut aus der Datenbank ein Paket (Messwerte des gesamten Verlaufs, Medikamente,
+// ViviaParms baut aus der Datenbank ein Paket (Messwerte des gesamten Verlaufs, Medikamente,
 // Termine, Berichte als PDF/Excel), verschlüsselt es mit dem Master-Passwort der Website und
 // lädt es per HTTPS hoch. Der Server speichert nur Chiffrat; entschlüsselt wird erst im
 // Browser nach Eingabe des Passworts (Web Crypto API).
@@ -10,7 +10,7 @@
 //   CTR: Zählerblock = IV, die unteren 64 Bit werden (big endian) hochgezählt
 //   HMAC über "VPW1" | IV | Chiffrat
 // data.vpw enthält zlib-komprimiertes JSON, Berichte liegen unkomprimiert darin.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QByteArray>
@@ -42,7 +42,7 @@ class WebSync : public QObject
 public:
     struct Config {
         bool    enabled = false;
-        QString url;              // z. B. https://vitaparms.example.de/
+        QString url;              // z. B. https://viviaparms.example.de/
         QString password;         // Master-Passwort der Website (Verschlüsselung)
         QString uploadKey;        // berechtigt zum Hochladen (getrennt vom Passwort)
         bool    autoPublish = true;   // nach Änderungen und beim Beenden

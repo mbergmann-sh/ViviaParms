@@ -1,8 +1,8 @@
-// VitaParms Tablet – Wunddokumentation (Teil von AppController). Fachlogik wie am Computer:
+// ViviaParms Tablet – Wunddokumentation (Teil von AppController). Fachlogik wie am Computer:
 // Wounds (Wundanamnese, Chronik aus Wundbeurteilungen und Verbandwechseln, Hinweise, Fotos,
 // Flächenverlauf, PDF/Excel). Fotos: Kamera-App oder Datei → verkleinertes JPEG.
 // Bilder für QML über image://wound/<Eintrag-ID | draft | chart-<Wunden-ID>>?r=<Revision>
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "appcontroller.h"
 
 #include "database.h"

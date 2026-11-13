@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "dbsync.h"
 #include "database.h"
 #include "docfiles.h"
@@ -166,14 +166,14 @@ bool mergeFrom(const QString &remotePath, const QByteArray &key, Stats *stats, Q
     // Version würde deren neue Tabellen beim Hochladen auf den Server nicht mitnehmen → ablehnen.
     if (const int remote = Database::schemaVersionOf(d, QStringLiteral("r")); remote > Database::kSchemaVersion) {
         detach();
-        return fail(tr("Das andere Gerät verwendet eine neuere VitaParms-Version (Datenbankformat %1, hier %2). "
-                       "Bitte VitaParms auf diesem Gerät aktualisieren – erst dann ist ein Abgleich möglich, "
+        return fail(tr("Das andere Gerät verwendet eine neuere ViviaParms-Version (Datenbankformat %1, hier %2). "
+                       "Bitte ViviaParms auf diesem Gerät aktualisieren – erst dann ist ein Abgleich möglich, "
                        "ohne dass Daten verloren gehen.").arg(remote).arg(Database::kSchemaVersion));
     }
     if (scalar(d, QStringLiteral("SELECT count(*) FROM r.sqlite_master WHERE name = 'sync_deleted'")) != 1) {
         detach();
-        return fail(tr("Die Datenbank des anderen Geräts stammt von einer älteren VitaParms-Version. "
-                       "Bitte VitaParms auf dem anderen Gerät aktualisieren."));
+        return fail(tr("Die Datenbank des anderen Geräts stammt von einer älteren ViviaParms-Version. "
+                       "Bitte ViviaParms auf dem anderen Gerät aktualisieren."));
     }
 
     if (!d.transaction()) { detach(); return fail(d.lastError().text()); }
@@ -317,10 +317,11 @@ QNetworkRequest request(const QString &baseUrl, const QString &key, const QUrlQu
     QUrl u(WebSync::normalizedUrl(baseUrl) + QStringLiteral("api/") + endpoint);
     u.setQuery(query);
     QNetworkRequest r(u);
+    // Kennung aus der Zeit vor der Umbenennung (VitaParms) – nicht ändern: bestehende Schlüssel, Daten, Abgleich und Sicherungen hängen daran
     r.setRawHeader("X-VitaParms-Key", key.toUtf8());
     r.setRawHeader("Accept-Language", QLocale().bcp47Name().toUtf8());
     r.setHeader(QNetworkRequest::UserAgentHeader,
-                QStringLiteral("VitaParms/%1").arg(QCoreApplication::applicationVersion()));
+                QStringLiteral("ViviaParms/%1").arg(QCoreApplication::applicationVersion()));
     r.setTransferTimeout(120000);
     return r;
 }
@@ -569,10 +570,10 @@ bool DbSync::runSync(QString *message)
             return false;
         }
         const qint64 serverRev = st.json().value(QStringLiteral("rev")).toVariant().toLongLong();
-        // Versionsschutz: Auf dem Server liegt eine Datenbank einer neueren VitaParms-Version
+        // Versionsschutz: Auf dem Server liegt eine Datenbank einer neueren ViviaParms-Version
         if (const int serverSchema = st.json().value(QStringLiteral("schema")).toInt(); serverSchema > Database::kSchemaVersion) {
-            *message = tr("Ein anderes Gerät verwendet eine neuere VitaParms-Version (Datenbankformat %1, hier %2). "
-                          "Bitte VitaParms auf diesem Gerät aktualisieren – erst dann ist ein Abgleich möglich, "
+            *message = tr("Ein anderes Gerät verwendet eine neuere ViviaParms-Version (Datenbankformat %1, hier %2). "
+                          "Bitte ViviaParms auf diesem Gerät aktualisieren – erst dann ist ein Abgleich möglich, "
                           "ohne dass Daten verloren gehen.").arg(serverSchema).arg(Database::kSchemaVersion);
             return false;
         }

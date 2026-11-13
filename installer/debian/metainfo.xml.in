@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- VitaParms – AppStream-Beschreibung (Vorlage für build_deb.sh) -->
+<!-- ViviaParms – AppStream-Beschreibung (Vorlage für build_deb.sh) -->
 <component type="desktop-application">
   <id>@APPID@</id>
-  <metadata_license>MIT</metadata_license>
-  <project_license>MIT</project_license>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>PolyForm-Noncommercial-1.0.0</project_license>
   <name>@NAME@</name>
   <summary>@SUMMARY_EN@</summary>
   <summary xml:lang="de">@SUMMARY_DE@</summary>
@@ -13,8 +13,8 @@
   <description>
     <p>@DESC_EN@</p>
     <p xml:lang="de">@DESC_DE@</p>
-    <p>VitaParms is a diary for health-related data, not a medical device. Use at your own risk.</p>
-    <p xml:lang="de">VitaParms ist ein Tagebuch für medizinisch relevante Daten, kein Medizinprodukt. Die Verwendung erfolgt auf eigene Gefahr.</p>
+    <p>ViviaParms is a diary for health-related data, not a medical device. Use at your own risk.</p>
+    <p xml:lang="de">ViviaParms ist ein Tagebuch für medizinisch relevante Daten, kein Medizinprodukt. Die Verwendung erfolgt auf eigene Gefahr.</p>
   </description>
   <!--HOMEPAGE-->
   <launchable type="desktop-id">@DESKTOP@</launchable>

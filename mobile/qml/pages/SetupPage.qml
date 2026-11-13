@@ -40,10 +40,10 @@ Page {
                 VButton { objectName: "gettingStartedButton"; text: qsTr("Erste Schritte – Kurzanleitung öffnen"); kind: "flat"
                           onClicked: if (!app.openGettingStarted()) win.toast(app.lastError, true) }
                 Repeater {
-                    // VitaParms light: kein Abgleich über die Website
+                    // ViviaParms light: kein Abgleich über die Website
                     model: [
-                        { title: qsTr("Daten vom Computer übernehmen"), text: qsTr("VitaParms am Computer gleicht die verschlüsselte Datenbank über Ihre Website ab. Sie brauchen die Adresse der Website und den Upload-Schlüssel (am Computer unter Extras → Website…)."), m: 1 },
-                        { title: qsTr("Über das USB-Kabel vom Computer übernehmen"), text: qsTr("Tablet per USB-Kabel an den Computer anschließen; VitaParms am Computer überträgt seine Datenbank direkt (Datei → Mit Tablet über USB abgleichen…). USB-Debugging muss eingeschaltet sein."), m: 4 },
+                        { title: qsTr("Daten vom Computer übernehmen"), text: qsTr("ViviaParms am Computer gleicht die verschlüsselte Datenbank über Ihre Website ab. Sie brauchen die Adresse der Website und den Upload-Schlüssel (am Computer unter Extras → Website…)."), m: 1 },
+                        { title: qsTr("Über das USB-Kabel vom Computer übernehmen"), text: qsTr("Tablet per USB-Kabel an den Computer anschließen; ViviaParms am Computer überträgt seine Datenbank direkt (Datei → Mit Tablet über USB abgleichen…). USB-Debugging muss eingeschaltet sein."), m: 4 },
                         { title: qsTr("Datenbank-Datei übernehmen"), text: qsTr("Eine Datei vom Computer übernehmen – ohne Website, z. B. per USB-Kabel oder eigenem Cloud-Speicher: am Computer „Datei → Datenbank exportieren…“ (*.vpdb) oder eine Sicherung (*.sqlite mit .keys-Datei)."), m: 3 },
                         { title: qsTr("Neu beginnen"), text: qsTr("Eine neue, leere Datenbank nur auf diesem Tablet anlegen. Den Abgleich können Sie später einrichten."), m: 2 }
                     ].filter(o => !(app.light && o.m === 1))
@@ -69,7 +69,7 @@ Page {
                 Layout.fillWidth: true
                 Label { Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2
                         text: qsTr("Am Computer: Extras → Website… → „Datenbank mit anderen Geräten abgleichen“ einschalten und einmal abgleichen. Mit „Kopplungsdatei speichern…“ lassen sich Adresse und Schlüssel auch als Datei übertragen.") }
-                VField { id: url; label: qsTr("Adresse der Website"); placeholder: "https://vitaparms.example.de"; Layout.fillWidth: true
+                VField { id: url; label: qsTr("Adresse der Website"); placeholder: "https://viviaparms.example.de"; Layout.fillWidth: true
                          inputMethodHints: Qt.ImhUrlCharactersOnly | Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText }
                 VField { id: key; label: qsTr("Upload-Schlüssel"); Layout.fillWidth: true
                          inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData }
@@ -175,7 +175,7 @@ Page {
     FileDialog {
         id: dbDlg
         title: qsTr("Datenbank-Datei wählen")
-        nameFilters: [qsTr("VitaParms-Datenbank (*.vpdb *.sqlite *.db)"), qsTr("Alle Dateien (*)")]
+        nameFilters: [qsTr("ViviaParms-Datenbank (*.vpdb *.sqlite *.db)"), qsTr("Alle Dateien (*)")]
         onAccepted: { page.dbFile = selectedFile.toString(); page.keysFile = ""; fileStatus.text = "" }
     }
     FileDialog {

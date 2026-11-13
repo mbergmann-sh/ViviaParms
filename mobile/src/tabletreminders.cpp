@@ -1,5 +1,5 @@
-// VitaParms Tablet – Termin-Erinnerungen als Android-Benachrichtigung (siehe tabletreminders.h)
-// SPDX-License-Identifier: MIT
+// ViviaParms Tablet – Termin-Erinnerungen als Android-Benachrichtigung (siehe tabletreminders.h)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "tabletreminders.h"
 
 #include "apptcore.h"
@@ -78,12 +78,12 @@ void TabletReminders::scheduleNow()
     if (planJson == m_lastPlan) return;          // z. B. neue Messung: an den Erinnerungen ändert sich nichts
     m_lastPlan = planJson;
     const QJniObject ctx(QNativeInterface::QAndroidApplication::context());
-    QJniObject::callStaticMethod<void>("de/mbergmann/vitaparms/Reminders", "ensureChannels",
+    QJniObject::callStaticMethod<void>("de/mbergmann/viviaparms/Reminders", "ensureChannels",
         "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
         ctx.object(), QJniObject::fromString(tr("Termin-Erinnerungen")).object<jstring>(),
         QJniObject::fromString(tr("Termin-Erinnerungen (ohne Ton)")).object<jstring>(),
-        QJniObject::fromString(tr("Erinnerungen an Termine und Medikamente aus VitaParms")).object<jstring>());
-    QJniObject::callStaticMethod<void>("de/mbergmann/vitaparms/Reminders", "replaceAll",
+        QJniObject::fromString(tr("Erinnerungen an Termine und Medikamente aus ViviaParms")).object<jstring>());
+    QJniObject::callStaticMethod<void>("de/mbergmann/viviaparms/Reminders", "replaceAll",
         "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V",
         ctx.object(), QJniObject::fromString(QString::fromUtf8(planJson)).object<jstring>(),
         QJniObject::fromString(tr("Termin-Erinnerung")).object<jstring>());
@@ -93,7 +93,7 @@ void TabletReminders::scheduleNow()
 void TabletReminders::requestPermission()
 {
 #ifdef Q_OS_ANDROID
-    QJniObject::callStaticMethod<jboolean>("de/mbergmann/vitaparms/Reminders", "ensurePermission",
+    QJniObject::callStaticMethod<jboolean>("de/mbergmann/viviaparms/Reminders", "ensurePermission",
         "(Landroid/content/Context;)Z", QJniObject(QNativeInterface::QAndroidApplication::context()).object());
 #endif
 }
@@ -101,7 +101,7 @@ void TabletReminders::requestPermission()
 bool TabletReminders::permissionGranted() const
 {
 #ifdef Q_OS_ANDROID
-    return QJniObject::callStaticMethod<jboolean>("de/mbergmann/vitaparms/Reminders", "permissionGranted",
+    return QJniObject::callStaticMethod<jboolean>("de/mbergmann/viviaparms/Reminders", "permissionGranted",
         "(Landroid/content/Context;)Z", QJniObject(QNativeInterface::QAndroidApplication::context()).object());
 #else
     return true;
@@ -111,7 +111,7 @@ bool TabletReminders::permissionGranted() const
 bool TabletReminders::exactAllowed() const
 {
 #ifdef Q_OS_ANDROID
-    return QJniObject::callStaticMethod<jboolean>("de/mbergmann/vitaparms/Reminders", "exactAllowed",
+    return QJniObject::callStaticMethod<jboolean>("de/mbergmann/viviaparms/Reminders", "exactAllowed",
         "(Landroid/content/Context;)Z", QJniObject(QNativeInterface::QAndroidApplication::context()).object());
 #else
     return true;
@@ -121,7 +121,7 @@ bool TabletReminders::exactAllowed() const
 void TabletReminders::openExactSettings()
 {
 #ifdef Q_OS_ANDROID
-    QJniObject::callStaticMethod<void>("de/mbergmann/vitaparms/Reminders", "openExactSettings",
+    QJniObject::callStaticMethod<void>("de/mbergmann/viviaparms/Reminders", "openExactSettings",
         "(Landroid/content/Context;)V", QJniObject(QNativeInterface::QAndroidApplication::context()).object());
 #endif
 }

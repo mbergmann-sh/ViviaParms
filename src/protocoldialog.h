@@ -1,5 +1,5 @@
-// VitaParms – Ausgabe von Stuhlprotokoll und BZ-Tagesprofilen der aktiven Person
-// SPDX-License-Identifier: MIT
+// ViviaParms – Ausgabe von Stuhlprotokoll und BZ-Tagesprofilen der aktiven Person
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

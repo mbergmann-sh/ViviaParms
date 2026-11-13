@@ -1,5 +1,5 @@
-// VitaParms – Programmeinstellungen (QSettings-Wrapper)
-// SPDX-License-Identifier: MIT
+// ViviaParms – Programmeinstellungen (QSettings-Wrapper)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QString>

@@ -113,7 +113,7 @@ Page {
         if (pfAlert) {        // gelber oder roter Bereich: deutlich hinweisen, dann weiter
             pfWarn.title = qsTr("Peak Flow – %1").arg(pfCheck.zoneName)
             pfWarn.message = pfCheck.text + "\n\n" + pfCheck.advice + "\n\n"
-                    + qsTr("Bezug: %1. VitaParms ist kein Medizinprodukt – maßgeblich ist Ihr ärztlicher Asthma-Aktionsplan.").arg(pfCheck.reference)
+                    + qsTr("Bezug: %1. ViviaParms ist kein Medizinprodukt – maßgeblich ist Ihr ärztlicher Asthma-Aktionsplan.").arg(pfCheck.reference)
             pfWarn.open()
             return
         }
@@ -287,7 +287,7 @@ Page {
                 // Atemfrequenz mit Minutenuhr
                 ValueCard {
                     id: resp
-                    visible: !app.light                // nicht in VitaParms light
+                    visible: !app.light                // nicht in ViviaParms light
                     Layout.fillWidth: true
                     label: page.field("Atemfrequenz").label || ""; unit: "/min"; accent: Theme.muted
                     minValue: 3; maxValue: 80
@@ -365,7 +365,7 @@ Page {
             // Ein- und Ausfuhr
             Frame {
                 objectName: "fluidSection"
-                visible: !app.light            // nicht in VitaParms light
+                visible: !app.light            // nicht in ViviaParms light
                 Layout.fillWidth: true
                 padding: 14
                 contentWidth: 300
@@ -431,7 +431,7 @@ Page {
             // Ödeme
             Frame {
                 objectName: "edemaSection"
-                visible: !app.light            // nicht in VitaParms light
+                visible: !app.light            // nicht in ViviaParms light
                 Layout.fillWidth: true
                 padding: 14
                 contentWidth: 300
@@ -478,7 +478,7 @@ Page {
             // Stuhlgang: Häkchen schaltet die Auswahl nach der Bristol-Skala frei
             Frame {
                 objectName: "stoolSection"
-                visible: !app.light            // nicht in VitaParms light
+                visible: !app.light            // nicht in ViviaParms light
                 Layout.fillWidth: true
                 padding: 14
                 contentWidth: 300                // Breite kommt vom Layout (fillWidth)

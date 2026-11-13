@@ -1,4 +1,4 @@
-// VitaParms Tablet – Farben, Schrift und Maße (wie die Website: ruhig, kontrastreich, gut lesbar)
+// ViviaParms Tablet – Farben, Schrift und Maße (wie die Website: ruhig, kontrastreich, gut lesbar)
 pragma Singleton
 import QtQuick
 

@@ -1,5 +1,5 @@
-// VitaParms – Laden benutzerveränderlicher Formulare (.ui) zur Laufzeit
-// SPDX-License-Identifier: MIT
+// ViviaParms – Laden benutzerveränderlicher Formulare (.ui) zur Laufzeit
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 //
 // Suchreihenfolge für <name>.ui:
 //   1. Benutzer-Formularordner  (AppSettings::userFormsDir())

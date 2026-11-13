@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "pdftools.h"
 
 #include <QBuffer>
@@ -43,7 +43,7 @@ class LoadedPdf
 public:
     explicit LoadedPdf(const QByteArray &data)
     {
-        m_tmp.setFileTemplate(QDir::tempPath() + QStringLiteral("/vitaparms-XXXXXX.pdf"));
+        m_tmp.setFileTemplate(QDir::tempPath() + QStringLiteral("/viviaparms-XXXXXX.pdf"));
         if (m_tmp.open()) {
             m_tmp.setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
             m_tmp.write(data);
@@ -113,7 +113,7 @@ QByteArray imagesToPdf(const QList<QImage> &images, const QString &title)
     buf.open(QIODevice::WriteOnly);
     QPdfWriter w(&buf);
     w.setTitle(title);
-    w.setCreator(QStringLiteral("VitaParms"));
+    w.setCreator(QStringLiteral("ViviaParms"));
     w.setResolution(200);
     QPainter p;
     bool first = true;

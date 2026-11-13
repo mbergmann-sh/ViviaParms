@@ -1,5 +1,5 @@
-// VitaParms Tablet – Verlaufskurven als QML-Element (gleiche Zeichenroutine wie am Desktop)
-// SPDX-License-Identifier: MIT
+// ViviaParms Tablet – Verlaufskurven als QML-Element (gleiche Zeichenroutine wie am Desktop)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "chartwidget.h"

@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "protocoldialog.h"
 #include "appsettings.h"
 #include "database.h"

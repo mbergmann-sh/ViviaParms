@@ -1,9 +1,9 @@
-// VitaParms – Erinnerung an den Quartalswechsel (Versichertenkarte in den Praxen einlesen lassen)
+// ViviaParms – Erinnerung an den Quartalswechsel (Versichertenkarte in den Praxen einlesen lassen)
 //
 // Zwei Tage vor bis zwei Tage nach dem Beginn eines Quartals (01.01., 01.04., 01.07., 01.10.)
-// erinnert VitaParms, bis der Benutzer sie bestätigt („Erledigt“). „Morgen wieder erinnern“
+// erinnert ViviaParms, bis der Benutzer sie bestätigt („Erledigt“). „Morgen wieder erinnern“
 // schiebt sie auf den nächsten Tag. Der Stand gehört zur Datenbank (Einstellungstabelle).
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QDate>

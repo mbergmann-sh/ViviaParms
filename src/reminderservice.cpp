@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "reminderservice.h"
 #include "appointmentdialog.h"
 #include "database.h"
@@ -254,7 +254,7 @@ QString ReminderService::mailSubject(const Appointment &a)
 {
     const QString prio = a.priority >= Appointment::High ? QStringLiteral(" [") + ApptUi::priorityName(a.priority) + QLatin1Char(']')
                                                           : QString();
-    return tr("VitaParms-Erinnerung: %1 am %2").arg(a.title, QLocale().toString(a.start,
+    return tr("ViviaParms-Erinnerung: %1 am %2").arg(a.title, QLocale().toString(a.start,
                a.allDay ? QStringLiteral("dd.MM.yyyy") : QStringLiteral("dd.MM.yyyy HH:mm"))) + prio;
 }
 
@@ -272,7 +272,7 @@ QString ReminderService::mailBody(const Appointment &a, bool details)
                 b += tr("Person:    %1\n").arg(p->displayName());
         if (!a.notes.isEmpty()) b += tr("\nNotiz:\n%1\n").arg(a.notes);
     }
-    b += tr("\n-- \nAutomatisch gesendet von VitaParms.\n");
+    b += tr("\n-- \nAutomatisch gesendet von ViviaParms.\n");
     return b;
 }
 

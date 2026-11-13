@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "formloader.h"
 #include "edition.h"
 #include "qtcompat.h"
@@ -106,7 +106,7 @@ std::optional<FormInfo> info(const QString &name)
 
 QString builtinPath(const QString &name)
 {
-    // VitaParms light: vereinfachte Formulare (forms/light, erzeugt mit tools/make_light_forms.py)
+    // ViviaParms light: vereinfachte Formulare (forms/light, erzeugt mit tools/make_light_forms.py)
     if (Edition::light()) {
         const QString light = QStringLiteral(":/forms/light/%1.ui").arg(name);
         if (QFile::exists(light)) return light;

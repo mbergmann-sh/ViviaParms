@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "docfiles.h"
 #include "aes256.h"
 #include "database.h"
@@ -45,6 +45,7 @@ static void ctr(const QByteArray &key32, const QByteArray &nonce16, QByteArray &
     }
 }
 
+// Kennung aus der Zeit vor der Umbenennung (VitaParms) – nicht ändern: bestehende Schlüssel, Daten, Abgleich und Sicherungen hängen daran
 static QByteArray encKey(const QByteArray &dbKey) { return hmac(dbKey, "vitaparms-files-enc"); }
 static QByteArray macKey(const QByteArray &dbKey) { return hmac(dbKey, "vitaparms-files-mac"); }
 

@@ -1,5 +1,5 @@
-// VitaParms – Reiter "Termine": Planer je Benutzer, Administratoren sehen alle Termine
-// SPDX-License-Identifier: MIT
+// ViviaParms – Reiter "Termine": Planer je Benutzer, Administratoren sehen alle Termine
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

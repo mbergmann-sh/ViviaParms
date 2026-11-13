@@ -1,4 +1,4 @@
-# VitaParms – Website (Apache)
+# ViviaParms – Website (Apache)
 Options -Indexes
 DirectoryIndex index.html
 AddDefaultCharset utf-8

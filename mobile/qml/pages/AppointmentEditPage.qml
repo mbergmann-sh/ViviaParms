@@ -257,8 +257,8 @@ Page {
             }
             Label {
                 Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.muted; font.pixelSize: Theme.fsS
-                text: page.rec.remindEmail ? qsTr("Die E-Mail-Erinnerung dieses Termins verschickt VitaParms am Computer.")
-                                           : qsTr("Das Tablet erinnert mit einer Benachrichtigung – auch wenn VitaParms im Hintergrund ist.")
+                text: page.rec.remindEmail ? qsTr("Die E-Mail-Erinnerung dieses Termins verschickt ViviaParms am Computer.")
+                                           : qsTr("Das Tablet erinnert mit einer Benachrichtigung – auch wenn ViviaParms im Hintergrund ist.")
             }
             VCheck { id: doneCheck; text: qsTr("erledigt"); font.pixelSize: Theme.fsM; visible: page.apptId }
         }

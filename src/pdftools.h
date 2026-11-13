@@ -1,8 +1,8 @@
-// VitaParms – Hilfsfunktionen für PDF-Dokumente der Krankenakte
+// ViviaParms – Hilfsfunktionen für PDF-Dokumente der Krankenakte
 // Nutzt Qt PDF (LGPLv3), falls beim Bauen vorhanden (VP_HAVE_QTPDF).
 // Ohne Qt PDF: keine Volltextsuche, keine eingebaute Vorschau, Druck über
 // das Standardprogramm des Systems.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QByteArray>

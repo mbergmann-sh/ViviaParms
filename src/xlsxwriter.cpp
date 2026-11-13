@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "xlsxwriter.h"
 #include "qtcompat.h"
 #include "zipwriter.h"
@@ -137,7 +137,7 @@ bool XlsxWriter::save(const QString &path, QString *error) const
         "<cp:coreProperties xmlns:cp=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" "
         "xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" "
         "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">"
-        "<dc:title>%1</dc:title><dc:creator>VitaParms</dc:creator>"
+        "<dc:title>%1</dc:title><dc:creator>ViviaParms</dc:creator>"
         "<dcterms:created xsi:type=\"dcterms:W3CDTF\">%2</dcterms:created>"
         "<dcterms:modified xsi:type=\"dcterms:W3CDTF\">%2</dcterms:modified>"
         "</cp:coreProperties>").arg(esc(m_title), now).toUtf8());

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<!-- VitaParms Tablet – Android-Manifest (Grundlage: Qt-6.12-Vorlage; die Platzhalter mit %%INSERT…%%
+<!-- ViviaParms Tablet – Android-Manifest (Grundlage: Qt-6.12-Vorlage; die Platzhalter mit %%INSERT…%%
      füllt androiddeployqt beim Bauen aus). Ergänzt: Paketname, Symbol, keine Google-Sicherung,
      Benachrichtigungen für Termin-Erinnerungen (Empfänger für Wecker und Neustart). -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.mbergmann.vitaparms"
+    package="de.mbergmann.viviaparms"
     android:installLocation="auto"
     android:versionCode="-- %%INSERT_VERSION_CODE%% --"
     android:versionName="-- %%INSERT_VERSION_NAME%% --">
@@ -42,7 +42,7 @@
     <application
         android:name="org.qtproject.qt.android.bindings.QtApplication"
         android:hardwareAccelerated="true"
-        android:label="VitaParms"
+        android:label="ViviaParms"
         android:icon="@drawable/icon"
         android:allowBackup="false"
         android:enableOnBackInvokedCallback="false">
@@ -51,7 +51,7 @@
         <activity
             android:name="org.qtproject.qt.android.bindings.QtActivity"
             android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density"
-            android:label="VitaParms"
+            android:label="ViviaParms"
             android:launchMode="singleTop"
             android:screenOrientation="unspecified"
             android:exported="true">
@@ -71,17 +71,17 @@
 
         <!-- Foto für die Krankenakte: öffnet die Kamera-App des Geräts und meldet das Ergebnis -->
         <activity
-            android:name="de.mbergmann.vitaparms.CaptureActivity"
+            android:name="de.mbergmann.viviaparms.CaptureActivity"
             android:exported="false"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- Termin-Erinnerung zur gestellten Zeit anzeigen (auch wenn die App nicht läuft) -->
         <receiver
-            android:name="de.mbergmann.vitaparms.ReminderReceiver"
+            android:name="de.mbergmann.viviaparms.ReminderReceiver"
             android:exported="false" />
         <!-- nach einem Neustart (oder wenn pünktliche Wecker erlaubt wurden) die Erinnerungen neu stellen -->
         <receiver
-            android:name="de.mbergmann.vitaparms.BootReceiver"
+            android:name="de.mbergmann.viviaparms.BootReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

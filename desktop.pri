@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------------------
-#  VitaParms – Desktop-Oberfläche (Qt Widgets): Hauptfenster, Dialoge, Erinnerungen.
-#  Eingebunden von VitaParms.pro und light/VitaParmsLight.pro (VitaParms light, Schalter VP_LIGHT).
+#  ViviaParms – Desktop-Oberfläche (Qt Widgets): Hauptfenster, Dialoge, Erinnerungen.
+#  Eingebunden von ViviaParms.pro und light/ViviaParmsLight.pro (ViviaParms light, Schalter VP_LIGHT).
 # ---------------------------------------------------------------------------
 SOURCES += \
     $$PWD/src/main.cpp \

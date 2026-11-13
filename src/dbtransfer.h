@@ -1,4 +1,4 @@
-// VitaParms – Datenbank lokal übertragen (ohne Website)
+// ViviaParms – Datenbank lokal übertragen (ohne Website)
 //
 //  * Export: eine einzige Datei (*.vpdb) mit der verschlüsselten Datenbank und der
 //    Schlüsseldatei (Anmeldekonten) – bequem per USB-Kabel oder Cloud-Speicher auf ein
@@ -6,7 +6,7 @@
 //    Passwort) oder Wiederherstellungsschlüssel lässt er sich nicht öffnen.
 //  * Import: *.vpdb oder eine Sicherung (*.sqlite, die .keys-Datei daneben bzw. separat
 //    gewählt). Die bisherige Datenbank des Geräts wird vorher als Kopie aufbewahrt.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QString>

@@ -1,9 +1,9 @@
-// VitaParms – minimaler ZIP-Schreiber (für .xlsx und die Akten-Archive), ohne
+// ViviaParms – minimaler ZIP-Schreiber (für .xlsx und die Akten-Archive), ohne
 // Fremdbibliothek. Komprimierung über zlib aus QtCore (qCompress), ansonsten "stored".
 // Optional AES-256-Verschlüsselung im WinZip-AES-Format (AE-2), lesbar u. a. mit
 // 7-Zip, WinRAR, WinZip, PeaZip, Keka/The Unarchiver (nicht: Windows-Explorer,
 // macOS-Archivierungsprogramm, Info-ZIP unzip 6.0).
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QByteArray>

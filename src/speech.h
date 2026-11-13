@@ -1,6 +1,6 @@
-// VitaParms – Sprachausgabe (Qt TextToSpeech, LGPLv3)
+// ViviaParms – Sprachausgabe (Qt TextToSpeech, LGPLv3)
 // Ohne Qt TextToSpeech (VP_HAVE_TTS nicht gesetzt) bleibt alles stumm.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QObject>

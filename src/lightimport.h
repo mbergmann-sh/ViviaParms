@@ -1,13 +1,13 @@
-// VitaParms – Datenbank von VitaParms light in VitaParms übernehmen
+// ViviaParms – Datenbank von ViviaParms light in ViviaParms übernehmen
 //
-// VitaParms light verwendet dasselbe Datenbankformat. Beim Import wird die Light-Datenbank (eigener
+// ViviaParms light verwendet dasselbe Datenbankformat. Beim Import wird die Light-Datenbank (eigener
 // Schlüssel; entsperrt mit ihrem Anmeldekonto oder dem Wiederherstellungsschlüssel) Zeile für Zeile
 // in die geöffnete Datenbank eingeführt – wie beim Abgleich: Die Person der Light-Version kommt mit
 // Stammblatt, Messungen, Medikamenten, Terminen, Kontakten und Dokumenten als weitere Person hinzu,
 // die vorhandenen Personen bleiben unverändert. Ein erneuter Import derselben Datenbank aktualisiert
 // die schon übernommenen Einträge (gleiche Kennungen), statt sie zu verdoppeln.
-// Vorher legt VitaParms eine Sicherung der geöffneten Datenbank an.
-// SPDX-License-Identifier: MIT
+// Vorher legt ViviaParms eine Sicherung der geöffneten Datenbank an.
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QList>
@@ -16,9 +16,9 @@
 
 namespace LightImport {
 
-// Datenordner von VitaParms light auf diesem Rechner (Vorschlag im Dateidialog)
+// Datenordner von ViviaParms light auf diesem Rechner (Vorschlag im Dateidialog)
 QString lightDataDir();
-// Pfad der Standard-Datenbank von VitaParms light (existiert evtl. nicht)
+// Pfad der Standard-Datenbank von ViviaParms light (existiert evtl. nicht)
 QString lightDatabasePath();
 
 struct Result {

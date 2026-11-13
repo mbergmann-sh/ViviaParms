@@ -1,4 +1,4 @@
-// VitaParms – E-Mail mit Dateianhang im Standard-Mailprogramm vorbereiten
+// ViviaParms – E-Mail mit Dateianhang im Standard-Mailprogramm vorbereiten
 //
 //  Windows: Simple MAPI (Outlook, Thunderbird, eM Client …)
 //  macOS:   Apple Mail ("open -a Mail <Datei>")
@@ -6,7 +6,7 @@
 //  Fallback: mailto:-Link ohne Anhang + Dateimanager mit markierter Datei
 //
 // Die Nachricht wird nur geöffnet, nicht automatisch gesendet.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QString>

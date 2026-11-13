@@ -1,5 +1,5 @@
-// VitaParms Tablet – Startpunkt
-// SPDX-License-Identifier: MIT
+// ViviaParms Tablet – Startpunkt
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "appcontroller.h"
 #include "systemui.h"
 #include "edition.h"
@@ -33,12 +33,12 @@ int main(int argc, char *argv[])
 #endif
     // QApplication (statt QGuiApplication): der gemeinsame Kern verwendet einzelne Widgets-Klassen
     QApplication app(argc, argv);
-    QApplication::setOrganizationName(QStringLiteral("VitaParms"));
-    QApplication::setApplicationName(Edition::settingsName());       // VitaParms light: eigene Daten
+    QApplication::setOrganizationName(QStringLiteral("ViviaParms"));
+    QApplication::setApplicationName(Edition::settingsName());       // ViviaParms light: eigene Daten
     QApplication::setApplicationDisplayName(Edition::appName());
-    QApplication::setApplicationVersion(QStringLiteral(VITAPARMS_VERSION));
-    QApplication::setWindowIcon(QIcon(Edition::light() ? QStringLiteral(":/icons/vitaparms-light.png")
-                                                       : QStringLiteral(":/icons/vitaparms.png")));
+    QApplication::setApplicationVersion(QStringLiteral(VIVIAPARMS_VERSION));
+    QApplication::setWindowIcon(QIcon(Edition::light() ? QStringLiteral(":/icons/viviaparms-light.png")
+                                                       : QStringLiteral(":/icons/viviaparms.png")));
 #ifdef VP_AUTOPILOT
     AppSettings::setLanguage(qEnvironmentVariable("VP_AUTOPILOT_LANG", QStringLiteral("de")));
 #endif
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
     QGuiApplication::setFont(font);
     QQuickStyle::setStyle(QStringLiteral("Basic"));
 
-    qmlRegisterType<ChartItem>("VitaParms", 1, 0, "Chart");
+    qmlRegisterType<ChartItem>("ViviaParms", 1, 0, "Chart");
     ChartRenderer::setScreenFontScale(1.45);      // Kurven mit dem Finger und aus Armlänge lesbar
 
 #ifdef VP_AUTOPILOT

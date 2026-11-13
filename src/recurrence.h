@@ -1,8 +1,8 @@
-// VitaParms – Wiederholungsregeln für Terminserien
+// ViviaParms – Wiederholungsregeln für Terminserien
 // Teilmenge von RFC 5545 (RRULE), die sich 1:1 nach iCalendar exportieren lässt:
 //   täglich / wöchentlich (Wochentage) / monatlich (Monatstag, n-ter oder letzter Wochentag) /
 //   jährlich, jeweils mit Intervall und Ende (unbegrenzt, bis Datum, Anzahl).
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QDate>

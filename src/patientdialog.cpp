@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "patientdialog.h"
 #include <QHBoxLayout>
 #include <QTabWidget>
@@ -423,7 +423,7 @@ void PatientDialog::advancePdfMenu(int k)
         m_advUnlink[k] = false;
     } else if (a == show) {
         const QByteArray data = !m_advNewPdf[k].isEmpty() ? m_advNewPdf[k] : Database::instance().documentData(docId);
-        const QString dir = QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation)).filePath(QStringLiteral("VitaParms-Ansicht"));
+        const QString dir = QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation)).filePath(QStringLiteral("ViviaParms-Ansicht"));
         QDir().mkpath(dir);
         const QString path = QDir(dir).filePath(CareInfo::advanceName(k) + QStringLiteral(".pdf"));
         QFile out(path);
@@ -939,7 +939,7 @@ void PatientDialog::setupWoundWidgets()
 {
     // Abschnitt direkt unter „Vitalwerte bei Aufnahme“ einfügen (auch bei angepassten Formularen,
     // solange die Gruppe „admissionGroup“ in einem Box-Layout steht)
-    if (Edition::light()) return;    // VitaParms light: keine Wunddokumentation
+    if (Edition::light()) return;    // ViviaParms light: keine Wunddokumentation
     auto *adm = m_form->findChild<QWidget *>(QStringLiteral("admissionGroup"));
     auto *box = adm && adm->parentWidget() ? qobject_cast<QBoxLayout *>(adm->parentWidget()->layout()) : nullptr;
     if (!box) return;

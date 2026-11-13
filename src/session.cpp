@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "session.h"
 #include "edition.h"
 #include <QPushButton>
@@ -172,7 +172,7 @@ static bool importInteractive(QWidget *parent, const QString &dbPath)
 {
     const QString src = QFileDialog::getOpenFileName(parent, tr("Datenbank importieren"),
         QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
-        tr("VitaParms-Datenbank (*.vpdb *.sqlite *.db);;Alle Dateien (*)"));
+        tr("ViviaParms-Datenbank (*.vpdb *.sqlite *.db);;Alle Dateien (*)"));
     if (src.isEmpty()) return false;
     QString keys;
     if (!DbTransfer::isBundle(src) && !QFile::exists(KeyStore::pathFor(src))) {
@@ -246,7 +246,7 @@ bool openInteractive(QWidget *parent, const QString &dbPath, bool createNew)
         return true;
     }
 
-    // ---- 2. Bisher unverschlüsselte Datenbank (ältere VitaParms-Version)
+    // ---- 2. Bisher unverschlüsselte Datenbank (ältere ViviaParms-Version)
     if (!Database::isEncryptedFile(dbPath)) {
         if (db.open(dbPath, {}, &err) != Database::OpenResult::OpenedPlain) {
             QMessageBox::critical(parent, tr("Datenbank"), tr("Die Datenbank kann nicht geöffnet werden:\n%1").arg(err));
@@ -254,7 +254,7 @@ bool openInteractive(QWidget *parent, const QString &dbPath, bool createNew)
         }
         if (QMessageBox::information(parent, tr("Datenbank verschlüsseln"),
                 tr("<p>Diese Datenbank ist noch <b>nicht verschlüsselt</b>.</p>"
-                   "<p>VitaParms verschlüsselt sie jetzt (ChaCha20-Poly1305, 256 Bit). Danach ist der "
+                   "<p>ViviaParms verschlüsselt sie jetzt (ChaCha20-Poly1305, 256 Bit). Danach ist der "
                    "Zugriff nur noch mit einem Anmeldekonto oder dem Wiederherstellungsschlüssel "
                    "möglich.</p><p>Tipp: Unverschlüsselte Sicherungskopien aus früheren Versionen "
                    "sollten Sie anschließend löschen.</p>"),
@@ -318,7 +318,7 @@ bool openInteractive(QWidget *parent, const QString &dbPath, bool createNew)
             Role role = login.role();
             if (!ks.verify(login.dbKey())) {
                 QMessageBox::warning(parent, tr("Anmeldung"),
-                    tr("Die Kontenliste in der Schlüsseldatei wurde außerhalb von VitaParms verändert.\n"
+                    tr("Die Kontenliste in der Schlüsseldatei wurde außerhalb von ViviaParms verändert.\n"
                        "Aus Sicherheitsgründen werden Sie nur mit Anwenderrechten angemeldet. Ein "
                        "Administrator sollte die Konten prüfen."));
                 role = Role::User;

@@ -1,8 +1,8 @@
-// VitaParms Tablet – Verwaltung (Stufe 6): Anmeldekonten, eigenes Passwort, Wiederherstellungs-
+// ViviaParms Tablet – Verwaltung (Stufe 6): Anmeldekonten, eigenes Passwort, Wiederherstellungs-
 // schlüssel, Sicherung erstellen/wiederherstellen, Wiederherstellung bei vergessenem Passwort und
 // die Demo-Datenbank (Teil von AppController). Wie am Computer dürfen nur Administratoren Konten
 // verwalten, den Wiederherstellungsschlüssel sehen und Sicherungen erstellen.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "appcontroller.h"
 
 #include "appsettings.h"
@@ -134,13 +134,13 @@ QString AppController::recoveryCodePdf()
 {
     const QString code = recoveryCode();
     if (code.isEmpty()) return {};
-    const QString path = exportDir() + QStringLiteral("/VitaParms-Wiederherstellungsschluessel.pdf");
+    const QString path = exportDir() + QStringLiteral("/ViviaParms-Wiederherstellungsschluessel.pdf");
     QPdfWriter pdf(path);
     pdf.setPageSize(QPageSize(QPageSize::A4));
     pdf.setResolution(150);
-    pdf.setTitle(tr("VitaParms – Wiederherstellungsschlüssel"));
+    pdf.setTitle(tr("ViviaParms – Wiederherstellungsschlüssel"));
     QTextDocument doc;
-    doc.setHtml(tr("<h2>VitaParms – Wiederherstellungsschlüssel</h2>"
+    doc.setHtml(tr("<h2>ViviaParms – Wiederherstellungsschlüssel</h2>"
                    "<p>Erstellt am: %1</p>"
                    "<p style=\"font-family: monospace; font-size: 15pt; font-weight: bold;\">%2</p>"
                    "<p>Dieser Schlüssel öffnet die verschlüsselte Datenbank ohne Passwort. "
@@ -166,7 +166,7 @@ bool AppController::recoverAccess(const QString &code, const QString &name, cons
 QString AppController::createBackup()
 {
     if (!isAdmin()) { setError(tr("Nur Administratoren können Sicherungen erstellen.")); return {}; }
-    const QString path = exportDir() + QStringLiteral("/VitaParms-Sicherung_%1.vpdb")
+    const QString path = exportDir() + QStringLiteral("/ViviaParms-Sicherung_%1.vpdb")
                                            .arg(QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd_HHmm")));
     QString err;
     if (!DbTransfer::exportBundle(path, &err)) { setError(err); return {}; }
@@ -176,7 +176,7 @@ QString AppController::createBackup()
 bool AppController::shareBackup()
 {
     const QString path = createBackup();
-    return !path.isEmpty() && shareFiles({ path }, tr("VitaParms-Sicherung"));
+    return !path.isEmpty() && shareFiles({ path }, tr("ViviaParms-Sicherung"));
 }
 
 // ---------------------------------------------------------------- Demo-Datenbank

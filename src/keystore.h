@@ -1,4 +1,4 @@
-// VitaParms – Anmeldekonten und Schlüsselbund einer Datenbank
+// ViviaParms – Anmeldekonten und Schlüsselbund einer Datenbank
 //
 // Jede Datenbank wird mit einem zufälligen 256-Bit-Datenbankschlüssel (K)
 // verschlüsselt. Die Datei "<datenbank>.keys" neben der Datenbank enthält je
@@ -14,7 +14,7 @@
 // verloren ging oder alle Administratoren ihr Passwort vergessen haben.
 // Die Kontenliste (Namen, Rollen) ist mit einem aus K abgeleiteten HMAC gegen
 // Manipulation geschützt.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QByteArray>

@@ -1,6 +1,6 @@
-// VitaParms Tablet – Terminplaner (Liste, anlegen, bearbeiten, Serien, erledigt)
+// ViviaParms Tablet – Terminplaner (Liste, anlegen, bearbeiten, Serien, erledigt)
 // Dieselbe Fachlogik wie am Computer (apptcore.h): Serienregeln, „nur dieser / alle folgenden / alle“.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "appcontroller.h"
 
 #include "apptcore.h"

@@ -1,5 +1,5 @@
 <?php
-// VitaParms – Zugriffsprotokoll der Website
+// ViviaParms – Zugriffsprotokoll der Website
 //
 // Hält fest, wer (Name bei der Anmeldung), wann (Datum und Uhrzeit des Servers) und von wo
 // (IP-Adresse) auf die Website zugegriffen hat. Das Protokoll liegt nur auf dem Server
@@ -13,11 +13,11 @@
 // auch die CSV-Datei zum Herunterladen.
 //
 // Berechtigung: Der Zugriffswert wird im Browser aus dem Master-Passwort abgeleitet
-// (HMAC-SHA256 mit dem MAC-Schlüssel über "vitaparms-access-log"). VitaParms legt beim Hochladen
+// (HMAC-SHA256 mit dem MAC-Schlüssel über "vitaparms-access-log"). ViviaParms legt beim Hochladen
 // dessen SHA-256 als Prüfwert ab (data/.access.php). Ohne das Passwort lässt sich das Protokoll
 // also weder lesen noch mit bestätigten Einträgen füllen. Fehlgeschlagene Anmeldungen werden
 // ohne Zugriffswert angenommen (je IP höchstens 20 pro Stunde).
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 
 require __DIR__ . '/lib.php';
 
@@ -55,8 +55,8 @@ function requireAccess(): void
 {
     $ok = accessValid();
     if ($ok === null) {
-        fail(409, 'Das Zugriffsprotokoll ist erst verfügbar, wenn VitaParms die Website einmal aktualisiert hat.',
-                  'The access log is only available after VitaParms has updated the website once.');
+        fail(409, 'Das Zugriffsprotokoll ist erst verfügbar, wenn ViviaParms die Website einmal aktualisiert hat.',
+                  'The access log is only available after ViviaParms has updated the website once.');
     }
     if (!$ok) {
         usleep(random_int(300000, 900000));

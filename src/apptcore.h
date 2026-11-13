@@ -1,9 +1,9 @@
-// VitaParms – Termine: gemeinsame Fachlogik für Desktop und Tablet
+// ViviaParms – Termine: gemeinsame Fachlogik für Desktop und Tablet
 //
 // Anzeigetexte (Priorität, Vorwarnung, Serienregel), Sichtbarkeit nach Konto, die Auswahl
 // „Wiederholung“ der Eingabemasken und das Speichern/Löschen mit Serien-Umfang
 // („nur dieser“, „dieser und alle folgenden“, „alle“).
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

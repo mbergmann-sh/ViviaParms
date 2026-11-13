@@ -1,11 +1,11 @@
-// VitaParms – Peak Flow: Sollwert (Normwerttabelle nach EGKS/ERS 1994) und individuelle Warnhinweise
+// ViviaParms – Peak Flow: Sollwert (Normwerttabelle nach EGKS/ERS 1994) und individuelle Warnhinweise
 //
 // Bezugswert ist der persönliche Bestwert, wenn er im Stammblatt eingetragen ist (so empfehlen es
 // die Asthma-Leitlinien), sonst der Sollwert für Geschlecht, Alter und Körpergröße. Die Bereiche
 // folgen dem üblichen Ampelschema: grün ab 80 %, gelb 50–79 %, rot unter 50 % des Bezugswerts.
-// VitaParms ist kein Medizinprodukt – die Hinweise ersetzen nicht den ärztlich vereinbarten
+// ViviaParms ist kein Medizinprodukt – die Hinweise ersetzen nicht den ärztlich vereinbarten
 // Asthma-Aktionsplan.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

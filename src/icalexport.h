@@ -1,8 +1,8 @@
-// VitaParms – Export von Terminen als iCalendar (RFC 5545, .ics)
+// ViviaParms – Export von Terminen als iCalendar (RFC 5545, .ics)
 // Einzeltermine als VEVENT; Serien als ein VEVENT mit RRULE, EXDATE (gelöschte Vorkommen)
 // und eigenen VEVENTs mit RECURRENCE-ID für einzeln geänderte Vorkommen. Zeiten in der
 // Systemzeitzone mit TZID und passendem VTIMEZONE, ganztägige Termine als DATE.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

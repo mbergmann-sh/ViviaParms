@@ -1,4 +1,4 @@
-// VitaParms – Bestandsführung für Medikamente ("Warenwirtschaft")
+// ViviaParms – Bestandsführung für Medikamente ("Warenwirtschaft")
 //
 //  * Bestand je Packung mit Stückzahl und Verfallsdatum; verbraucht wird die zuerst
 //    ablaufende Packung (FEFO).
@@ -9,7 +9,7 @@
 //    ein Wochenende, gilt der Freitag davor (am Wochenende kann nicht bestellt werden).
 //  * Bestellliste: offene Bestellung (Erinnerung, bis sie als „bestellt“ bestätigt ist) →
 //    bestellt → geliefert (Lieferung bucht eine neue Packung ein).
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

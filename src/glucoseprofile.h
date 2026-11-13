@@ -1,12 +1,12 @@
-// VitaParms – Tagesprofile: Blutzucker (BZ, sieben Zeitpunkte) bzw. Blutdruck (RR, sechs
+// ViviaParms – Tagesprofile: Blutzucker (BZ, sieben Zeitpunkte) bzw. Blutdruck (RR, sechs
 // Zeitpunkte) zu festen Zeiten eines Tages messen
 //
-// Für den gewählten Tag legt VitaParms je Zeitpunkt einen Termin mit Erinnerung an
-// („BZ-Tagesprofil 09:30 – 2 Stunden nach dem Frühstück“). Zur Zeit erinnert VitaParms wie bei
+// Für den gewählten Tag legt ViviaParms je Zeitpunkt einen Termin mit Erinnerung an
+// („BZ-Tagesprofil 09:30 – 2 Stunden nach dem Frühstück“). Zur Zeit erinnert ViviaParms wie bei
 // jedem Termin; „Messung erfassen…“ öffnet das Erfassungsfenster mit dem passenden
 // Messzeitpunkt. Weil es normale Termine sind, gehen sie mit dem Abgleich auch aufs Tablet.
 // Die Uhrzeiten sind einstellbar und werden gespeichert.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

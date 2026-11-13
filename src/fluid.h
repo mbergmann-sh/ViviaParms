@@ -1,11 +1,11 @@
-// VitaParms – Flüssigkeitshaushalt: Ein- und Ausfuhr (Bilanz), Trinkmenge, Gewichtszunahme, Ödeme
+// ViviaParms – Flüssigkeitshaushalt: Ein- und Ausfuhr (Bilanz), Trinkmenge, Gewichtszunahme, Ödeme
 //
 // Jede Messung kann eine Einfuhr (ml, Art) und eine Ausfuhr (ml, Art) enthalten; die Bilanz wird je
 // Kalendertag summiert. Im Stammblatt lassen sich eine Mindest-Trinkmenge, eine ärztlich verordnete
 // Trinkmengenbegrenzung und die Gewichtskontrolle (z. B. bei Herzschwäche: Warnung bei mehr als
 // 2 kg Zunahme in 3 Tagen) einstellen. Ödeme werden nach der üblichen Dellentiefe in Grad 0–4 erfasst.
-// VitaParms ist kein Medizinprodukt – die Hinweise ersetzen keine ärztliche Beurteilung.
-// SPDX-License-Identifier: MIT
+// ViviaParms ist kein Medizinprodukt – die Hinweise ersetzen keine ärztliche Beurteilung.
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

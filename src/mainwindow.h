@@ -1,5 +1,5 @@
-// VitaParms – Hauptfenster
-// SPDX-License-Identifier: MIT
+// ViviaParms – Hauptfenster
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "vitaldefs.h"

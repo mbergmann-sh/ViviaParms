@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  VitaParms – Medikament (Eintrag im Medikamentenplan)
+  ViviaParms – Medikament (Eintrag im Medikamentenplan)
   Anpassbar mit Qt Designer. Pflichtfeld: nameEdit.
   Eigene Felder: dynamische Eigenschaft "vpField" setzen.
 -->

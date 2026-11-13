@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "formcustomizedialog.h"
 #include "qtcompat.h"
 #include "appsettings.h"
@@ -27,7 +27,7 @@ FormCustomizeDialog::FormCustomizeDialog(QWidget *parent) : QDialog(parent)
     auto *lay = new QVBoxLayout(this);
 
     auto *intro = new QLabel(tr(
-        "Die Eingabeformulare von VitaParms sind Qt-Designer-Dateien (.ui) und werden beim "
+        "Die Eingabeformulare von ViviaParms sind Qt-Designer-Dateien (.ui) und werden beim "
         "Öffnen geladen. Sie können Felder umanordnen, umbenennen, entfernen oder eigene "
         "Felder hinzufügen.<br><br>"
         "<b>Eigene Felder:</b> Im Qt Designer beim neuen Eingabeelement eine dynamische "

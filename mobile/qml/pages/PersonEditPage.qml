@@ -168,7 +168,7 @@ Page {
                 VField { id: mobile; label: qsTr("Mobiltelefon"); text: d.mobile; Layout.fillWidth: true; inputMethodHints: Qt.ImhDialableCharactersOnly }
             }
 
-            ColumnLayout {   // Pflegegrad und Ausweis: nicht in VitaParms light
+            ColumnLayout {   // Pflegegrad und Ausweis: nicht in ViviaParms light
                 visible: !app.light
                 Layout.fillWidth: true
                 spacing: Theme.gap
@@ -265,7 +265,7 @@ Page {
             VButton { objectName: "addVaccinationButton"; text: qsTr("Impfung hinzufügen"); iconText: "+"
                       onClicked: vaccPopup.openWith(null, -1) }
 
-            ColumnLayout {   // Vorsorge: nicht in VitaParms light
+            ColumnLayout {   // Vorsorge: nicht in ViviaParms light
                 visible: !app.light
                 Layout.fillWidth: true
                 spacing: Theme.gap
@@ -321,7 +321,7 @@ Page {
             VArea { id: diagnoses; label: qsTr("Diagnosen (eine pro Zeile)"); text: d.diagnoses; Layout.fillWidth: true }
             VArea { id: notes; label: qsTr("Bemerkungen"); text: d.notes; Layout.fillWidth: true; minHeight: 80 }
 
-            ColumnLayout {   // Wunden: nicht in VitaParms light
+            ColumnLayout {   // Wunden: nicht in ViviaParms light
                 visible: !app.light
                 Layout.fillWidth: true
                 spacing: Theme.gap
@@ -359,7 +359,7 @@ Page {
                 }
             }
 
-            ColumnLayout {   // Normwerte, Peak Flow, INR, Trinkmenge: nicht in VitaParms light
+            ColumnLayout {   // Normwerte, Peak Flow, INR, Trinkmenge: nicht in ViviaParms light
                 visible: !app.light
                 Layout.fillWidth: true
                 spacing: Theme.gap

@@ -2,7 +2,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import VitaParms 1.0
+import ViviaParms 1.0
 import "../components"
 import ".."
 

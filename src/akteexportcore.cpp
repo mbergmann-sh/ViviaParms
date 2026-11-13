@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "akteexportcore.h"
 #include "appsettings.h"
 #include "chartwidget.h"
@@ -66,7 +66,7 @@ bool build(const QString &zipPath, const Patient &p, const Options &o, QString *
     QList<QPair<QString, QByteArray>> reportFiles;
     auto readFile = [](const QString &f) { QFile x(f); return x.open(QIODevice::ReadOnly) ? x.readAll() : QByteArray(); };
 
-    // ---- Berichte aus VitaParms
+    // ---- Berichte aus ViviaParms
     int no = 1;
     if (o.includeSheet) {
         const QString f = tmp.filePath(QStringLiteral("s.pdf"));

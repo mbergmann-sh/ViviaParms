@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "appointmentdialog.h"
 #include <QCoreApplication>
 #include "database.h"
@@ -146,10 +146,10 @@ AppointmentDialog::AppointmentDialog(const Appointment &a, QWidget *parent)
 
     const bool smtp = Smtp::loadConfig().isValid();
     FormIO::write(m_form, QStringLiteral("reminderHintLabel"), smtp
-        ? tr("<small>Erinnerungen erscheinen, solange VitaParms läuft und das zuständige Konto angemeldet "
+        ? tr("<small>Erinnerungen erscheinen, solange ViviaParms läuft und das zuständige Konto angemeldet "
              "ist. E-Mails sind nicht verschlüsselt – vertrauliche Details besser in die Notiz statt in den "
              "Titel schreiben.</small>")
-        : tr("<small>Erinnerungen erscheinen, solange VitaParms läuft und das zuständige Konto angemeldet "
+        : tr("<small>Erinnerungen erscheinen, solange ViviaParms läuft und das zuständige Konto angemeldet "
              "ist. Für E-Mail-Erinnerungen muss ein Administrator unter <i>Extras → Einstellungen → "
              "E-Mail-Versand</i> den Postausgangsserver einrichten.</small>"));
     updateEnabled();

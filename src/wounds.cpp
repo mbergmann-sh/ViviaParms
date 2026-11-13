@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "wounds.h"
 #include "database.h"
 #include "reportprinter.h"
@@ -731,10 +731,10 @@ bool toPdf(const Patient &p, const Wound &w, const QString &path)
 bool toXlsx(const Patient &p, const Wound &w, const QString &path, QString *error)
 {
     XlsxWriter x;
-    x.setTitle(QStringLiteral("VitaParms – %1 %2").arg(tr("Wunddokumentation"), p.displayName()));
+    x.setTitle(QStringLiteral("ViviaParms – %1 %2").arg(tr("Wunddokumentation"), p.displayName()));
     const int sh = x.addSheet(tr("Wunddokumentation").left(31));
     x.setLandscape(sh, true);
-    x.setCell(sh, 0, 0, QStringLiteral("VitaParms – %1").arg(tr("Wunddokumentation")), XlsxWriter::Title);
+    x.setCell(sh, 0, 0, QStringLiteral("ViviaParms – %1").arg(tr("Wunddokumentation")), XlsxWriter::Title);
     x.setCell(sh, 1, 0, p.displayName() + QStringLiteral(" – ") + w.title());
     x.setCell(sh, 2, 0, woundSummary(w));
     const QStringList heads = { tr("Zeitpunkt"), tr("Art"), tr("Hz."), tr("Länge cm"), tr("Breite cm"), tr("Tiefe cm"), tr("Fläche cm²"),

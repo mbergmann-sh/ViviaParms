@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "vitaldialog.h"
 #include "appsettings.h"
 #include "bmi.h"
@@ -459,7 +459,7 @@ void VitalDialog::setupStool()
 {
     m_stoolCheck = m_form->findChild<QCheckBox *>(QStringLiteral("stoolCheck"));
     m_stoolCombo = m_form->findChild<QComboBox *>(QStringLiteral("stoolCombo"));
-    if ((!m_stoolCheck || !m_stoolCombo) && Edition::light()) {   // VitaParms light erfasst keinen Stuhlgang
+    if ((!m_stoolCheck || !m_stoolCombo) && Edition::light()) {   // ViviaParms light erfasst keinen Stuhlgang
         m_stoolCheck = nullptr;
         m_stoolCombo = nullptr;
         return;
@@ -682,7 +682,7 @@ void VitalDialog::warnCareValues(const VitalRecord &r)
     if (items.isEmpty()) return;
     QMessageBox box(critical ? QMessageBox::Critical : QMessageBox::Warning, tr("Bitte beachten"),
                     items.join(QStringLiteral("<br><br>")) + QStringLiteral("<br><br><small>%1</small>")
-                        .arg(tr("VitaParms ist kein Medizinprodukt – maßgeblich sind die Anweisungen Ihrer Ärztin oder Ihres Arztes.").toHtmlEscaped()),
+                        .arg(tr("ViviaParms ist kein Medizinprodukt – maßgeblich sind die Anweisungen Ihrer Ärztin oder Ihres Arztes.").toHtmlEscaped()),
                     QMessageBox::Ok, this);
     box.setObjectName(QStringLiteral("careWarning"));
     box.exec();
@@ -708,7 +708,7 @@ void VitalDialog::warnPeakFlow(const VitalRecord &r)
                     tr("Peak Flow – %1").arg(PeakFlow::zoneName(a.zone)),
                     QStringLiteral("<b>%1</b><br><br>%2<br><br><small>%3</small>")
                         .arg(a.text.toHtmlEscaped(), a.advice.toHtmlEscaped(),
-                             tr("Bezug: %1. VitaParms ist kein Medizinprodukt – maßgeblich ist Ihr ärztlicher Asthma-Aktionsplan.")
+                             tr("Bezug: %1. ViviaParms ist kein Medizinprodukt – maßgeblich ist Ihr ärztlicher Asthma-Aktionsplan.")
                                  .arg(a.ref.description).toHtmlEscaped()),
                     QMessageBox::Ok, this);
     box.setObjectName(QStringLiteral("peakFlowWarning"));
@@ -753,7 +753,7 @@ static QLayout *layoutContaining(QLayout *l, QWidget *w)
     return nullptr;
 }
 
-// VitaParms light: Schmerzstärke mit elf Tasten 0–10 statt Drehfeld (große Ziele, Farbe von grün nach rot).
+// ViviaParms light: Schmerzstärke mit elf Tasten 0–10 statt Drehfeld (große Ziele, Farbe von grün nach rot).
 // Das Drehfeld bleibt verborgen als Datenfeld erhalten; nochmaliges Klicken auf die gewählte Zahl leert den Wert.
 void VitalDialog::setupPainScale()
 {

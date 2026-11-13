@@ -1,5 +1,5 @@
-// VitaParms – eine Impfung im Impfpass eintragen oder ändern
-// SPDX-License-Identifier: MIT
+// ViviaParms – eine Impfung im Impfpass eintragen oder ändern
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "vaccinations.h"

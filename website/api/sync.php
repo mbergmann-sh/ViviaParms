@@ -1,12 +1,12 @@
 <?php
-// VitaParms – Datenbank-Abgleich zwischen Geräten (Desktop, Tablet)
+// ViviaParms – Datenbank-Abgleich zwischen Geräten (Desktop, Tablet)
 //
 // Der Server verwahrt nur die verschlüsselte Datenbank (SQLite3 Multiple Ciphers) und die
 // verschlüsselte Schlüsseldatei der Anmeldekonten. Zusammengeführt wird auf den Geräten;
 // der Server zählt lediglich eine Revision hoch und lehnt veraltete Uploads ab.
 //
 //   GET  sync.php?state=1      → {rev, size, keysHash, updated, files}
-//        files = 1: Dokumentinhalte gehen getrennt über files.php (ab VitaParms 0.19)
+//        files = 1: Dokumentinhalte gehen getrennt über files.php (ab ViviaParms 0.19)
 //   GET  sync.php?get=db       → Datenbank (application/octet-stream)
 //   GET  sync.php?get=keys     → Schlüsseldatei
 //   POST sync.php  base=<rev>, schema=<Datenbankformat>, Dateien "db" und "keys"
@@ -14,10 +14,10 @@
 //        → 426, wenn das Gerät ein älteres Datenbankformat hat als der Server-Stand
 //
 // Versionsschutz: Der Server merkt sich das höchste Datenbankformat („schema“), das je
-// hochgeladen wurde. Uploads mit älterem Format – oder ohne Angabe (VitaParms vor 0.27) – lehnt er
+// hochgeladen wurde. Uploads mit älterem Format – oder ohne Angabe (ViviaParms vor 0.27) – lehnt er
 // ab: Ein älteres Programm kennt neuere Tabellen nicht und würde sie beim Hochladen entfernen.
 // Alle Aufrufe brauchen den Kopf "X-VitaParms-Key" (Upload-Schlüssel der Website).
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 
 require __DIR__ . '/lib.php';
 
@@ -80,10 +80,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
     $what = (string) ($_GET['get'] ?? '');
     if ($what === 'db') {
-        sendFile(DB_FILE, 'vitaparms.vpdb');
+        sendFile(DB_FILE, 'viviaparms.vpdb');
     }
     if ($what === 'keys') {
-        sendFile(KEYS_FILE, 'vitaparms.vpk');
+        sendFile(KEYS_FILE, 'viviaparms.vpk');
     }
     fail(400, 'Unbekannte Anfrage.', 'Unknown request.');
 }
@@ -106,9 +106,9 @@ $base = (int) ($_POST['base'] ?? -1);
 $schema = (int) ($_POST['schema'] ?? 0);
 if ($schema < (int) $state['schema']) {
     reply(426, ['ok' => false, 'schema' => (int) $state['schema'],
-                'error' => t('Ein anderes Gerät verwendet eine neuere VitaParms-Version. Bitte VitaParms auf diesem Gerät '
+                'error' => t('Ein anderes Gerät verwendet eine neuere ViviaParms-Version. Bitte ViviaParms auf diesem Gerät '
                              . 'aktualisieren – erst dann ist ein Abgleich möglich, ohne dass Daten verloren gehen.',
-                             'Another device uses a newer VitaParms version. Please update VitaParms on this device – '
+                             'Another device uses a newer ViviaParms version. Please update ViviaParms on this device – '
                              . 'only then can it synchronise without losing data.')]);
 }
 if ($base !== (int) $state['rev']) {

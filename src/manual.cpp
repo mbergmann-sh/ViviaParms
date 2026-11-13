@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "manual.h"
 #include "i18n.h"
 #include "edition.h"
@@ -16,15 +16,15 @@ namespace Manual {
 QString fileName(const QString &lang, Format format, Doc doc)
 {
     const bool de = lang == QLatin1String("de");
-    if (Edition::light()) {       // VitaParms light: eigene, einfache Handbücher
+    if (Edition::light()) {       // ViviaParms light: eigene, einfache Handbücher
         const QString base = doc == Doc::GettingStarted
-            ? (de ? QStringLiteral("VitaParms-light-ErsteSchritte") : QStringLiteral("VitaParms-light-GettingStarted"))
-            : (de ? QStringLiteral("VitaParms-light-Benutzerhandbuch") : QStringLiteral("VitaParms-light-UserGuide"));
+            ? (de ? QStringLiteral("ViviaParms-light-ErsteSchritte") : QStringLiteral("ViviaParms-light-GettingStarted"))
+            : (de ? QStringLiteral("ViviaParms-light-Benutzerhandbuch") : QStringLiteral("ViviaParms-light-UserGuide"));
         return base + (format == Format::Chm ? QStringLiteral(".chm") : QStringLiteral(".pdf"));
     }
     const QString base = doc == Doc::GettingStarted
-        ? (de ? QStringLiteral("VitaParms-ErsteSchritte") : QStringLiteral("VitaParms-GettingStarted"))
-        : (de ? QStringLiteral("VitaParms-Handbuch") : QStringLiteral("VitaParms-Manual"));
+        ? (de ? QStringLiteral("ViviaParms-ErsteSchritte") : QStringLiteral("ViviaParms-GettingStarted"))
+        : (de ? QStringLiteral("ViviaParms-Handbuch") : QStringLiteral("ViviaParms-Manual"));
     return base + (format == Format::Chm ? QStringLiteral(".chm") : QStringLiteral(".pdf"));
 }
 
@@ -42,8 +42,8 @@ QStringList searchDirs()
         app.filePath(QStringLiteral("docs")),                     // <Programmordner>/docs
         app.filePath(QStringLiteral("../docs")),                  // Build-Unterordner release/debug
         app.filePath(QStringLiteral("../Resources/docs")),        // macOS-Bundle
-        app.filePath(QStringLiteral("../share/vitaparms/docs")),  // Linux: /usr/local/bin → share
-        app.filePath(QStringLiteral("../share/vitaparms-light/docs")),
+        app.filePath(QStringLiteral("../share/viviaparms/docs")),  // Linux: /usr/local/bin → share
+        app.filePath(QStringLiteral("../share/viviaparms-light/docs")),
     };
     for (QString &d : dirs) d = QDir::cleanPath(d);
     dirs.removeDuplicates();

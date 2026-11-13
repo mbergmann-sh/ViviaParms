@@ -1,5 +1,5 @@
-// VitaParms – Stuhlgang: Bristol-Stuhlformen-Skala, Häufigkeit, Hinweis nach Tagen ohne Stuhlgang
-// SPDX-License-Identifier: MIT
+// ViviaParms – Stuhlgang: Bristol-Stuhlformen-Skala, Häufigkeit, Hinweis nach Tagen ohne Stuhlgang
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 //
 // Gespeichert wird je Messung (vitals.stool): leer = nicht erfasst, 0 = Stuhlgang ohne
 // nähere Angabe, 1–7 = Typ nach der Bristol-Stuhlformen-Skala (Lewis & Heaton 1997).

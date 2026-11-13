@@ -1,7 +1,7 @@
-// VitaParms Tablet – Medikamente stellen (Vorlese-Assistent), Bestand und Bestellungen
+// ViviaParms Tablet – Medikamente stellen (Vorlese-Assistent), Bestand und Bestellungen
 // (Teil von AppController). Fachlogik wie am Computer: MedPrep (Auswahl, Vorlesetexte,
 // Protokoll, Abbuchung) und MedStock (Packungen, Reichweite, Bestelllisten).
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "appcontroller.h"
 
 #include "appsettings.h"
@@ -101,7 +101,7 @@ void AppController::restartSpeech()
 
 void AppController::testSpeech()
 {
-    speech()->say(tr("Dies ist eine Probe der Sprachausgabe von VitaParms."));
+    speech()->say(tr("Dies ist eine Probe der Sprachausgabe von ViviaParms."));
 }
 
 void AppController::stopSpeech()

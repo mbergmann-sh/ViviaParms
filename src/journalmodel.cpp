@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "journalmodel.h"
 #include "stool.h"
 #include "edition.h"
@@ -28,14 +28,14 @@ void JournalModel::rebuildColumns()
     m_cols.append({ ColKind::BloodPressure, VitalKey::Systolic, {}, tr("RR\n[mmHg]") });
     for (VitalKey k : { VitalKey::Pulse, VitalKey::PulsePressure, VitalKey::Temperature, VitalKey::SpO2, VitalKey::PeakFlow, VitalKey::Glucose,
                         VitalKey::Weight, VitalKey::Height, VitalKey::Bmi })
-        if (!(Edition::light() && k == VitalKey::PeakFlow))   // VitaParms light erfasst keinen Peak Flow
+        if (!(Edition::light() && k == VitalKey::PeakFlow))   // ViviaParms light erfasst keinen Peak Flow
         m_cols.append({ ColKind::Vital, k, {},
                         VitalDefs::header(k, QStringLiteral("\n")) });
     // INR, Ein-/Ausfuhr, Ödeme und Stuhlgang nur, wenn sie erfasst werden
     auto any = [this](VitalKey k) {
         return std::any_of(m_records.cbegin(), m_records.cend(), [k](const VitalRecord &r) { return VitalDefs::value(r, k).has_value(); });
     };
-    // Schmerzstärke: in VitaParms light immer (fester Bestandteil der Messung)
+    // Schmerzstärke: in ViviaParms light immer (fester Bestandteil der Messung)
     if (Edition::light() || any(VitalKey::Pain))
         m_cols.append({ ColKind::Vital, VitalKey::Pain, {}, VitalDefs::header(VitalKey::Pain, QStringLiteral("\n")) });
     for (VitalKey k : { VitalKey::Inr, VitalKey::FluidIn, VitalKey::FluidOut, VitalKey::Edema })

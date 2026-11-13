@@ -1,7 +1,7 @@
 # ---------------------------------------------------------------------------
-#  VitaParms – gemeinsamer Kern: Datenbank, Verschlüsselung, Fachlogik, Berichte,
-#  Website und Datenbank-Abgleich. Wird vom Desktop-Programm (VitaParms.pro) und
-#  von der Tablet-App (mobile/VitaParmsMobile.pro) eingebunden.
+#  ViviaParms – gemeinsamer Kern: Datenbank, Verschlüsselung, Fachlogik, Berichte,
+#  Website und Datenbank-Abgleich. Wird vom Desktop-Programm (ViviaParms.pro) und
+#  von der Tablet-App (mobile/ViviaParmsMobile.pro) eingebunden.
 #
 #  Plattformschalter (von der Tablet-App gesetzt):
 #    VP_NO_PRINTSUPPORT  – kein Qt Print Support (Android/iOS): Ausgabe nur als PDF
@@ -12,6 +12,7 @@ include($$PWD/3rdparty/sqlite3mc/sqlite3mc.pri)
 
 SOURCES += \
     $$PWD/src/keystore.cpp \
+    $$PWD/src/legacymigration.cpp \
     $$PWD/src/session.cpp \
     $$PWD/src/sqlquery.cpp \
     $$PWD/src/aes256.cpp \
@@ -47,6 +48,7 @@ SOURCES += \
     $$PWD/src/themes.cpp
 
 HEADERS += \
+    $$PWD/src/legacymigration.h \
     $$PWD/src/keystore.h \
     $$PWD/src/session.h \
     $$PWD/src/sqlquery.h \

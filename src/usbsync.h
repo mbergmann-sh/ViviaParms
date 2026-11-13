@@ -1,4 +1,4 @@
-// VitaParms – Abgleich mit einem Tablet oder Smartphone über das USB-Kabel
+// ViviaParms – Abgleich mit einem Tablet oder Smartphone über das USB-Kabel
 //
 // Ablauf: Die Tablet-App wartet, solange sie angemeldet ist (UsbSyncServer, nur auf 127.0.0.1
 // des Tablets erreichbar). Das Desktop-Programm leitet mit dem
@@ -23,7 +23,7 @@
 // Ab 0.19 (Kopf "docFiles"): die Datenbank geht ohne Dokumentinhalte; die Inhalte, die einer Seite
 // fehlen, folgen einzeln und verschlüsselt (getFiles/putFiles, siehe docfiles.h). Ältere Apps
 // ignorieren das Kennzeichen und übertragen die Datenbank wie bisher vollständig.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "edition.h"
@@ -44,7 +44,7 @@ class QTemporaryDir;
 
 namespace UsbSync {
 
-// Port der App auf dem Tablet (nur 127.0.0.1); VitaParms light hat einen eigenen, damit sich die beiden Apps
+// Port der App auf dem Tablet (nur 127.0.0.1); ViviaParms light hat einen eigenen, damit sich die beiden Apps
 // auf einem Gerät nicht in die Quere kommen und jedes Desktop-Programm „seine“ App findet
 constexpr quint16 kDevicePort = Edition::light() ? 47812 : 47811;
 constexpr int kProtocol = 2;   // 2: Anmeldung auch über den Datenbankschlüssel (ohne Code)
@@ -153,7 +153,7 @@ public:
 
     struct Info {
         QString device;       // Gerätename
-        QString version;      // VitaParms-Version der App
+        QString version;      // ViviaParms-Version der App
         bool loggedIn = false;
         bool sameDatabase = false;
     };

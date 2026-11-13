@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "smtpdialog.h"
 #include "smtpclient.h"
 
@@ -96,8 +96,8 @@ void SmtpDialog::sendTest()
     if (!ok || to.isEmpty()) return;
     QApplication::setOverrideCursor(Qt::WaitCursor);
     setEnabled(false);
-    Smtp::sendAsync(c, to, tr("VitaParms: Test-E-Mail"),
-                    tr("Diese Test-E-Mail bestätigt, dass VitaParms Erinnerungen versenden kann.\n"), this,
+    Smtp::sendAsync(c, to, tr("ViviaParms: Test-E-Mail"),
+                    tr("Diese Test-E-Mail bestätigt, dass ViviaParms Erinnerungen versenden kann.\n"), this,
                     [this, to](bool sent, const QString &err) {
         setEnabled(true);
         QApplication::restoreOverrideCursor();

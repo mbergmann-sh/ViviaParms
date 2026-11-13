@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "database.h"
 #include "bmi.h"
 #include "medschedule.h"
@@ -197,7 +197,7 @@ Database::OpenResult Database::open(const QString &path, const QByteArray &key, 
     rc = probeReadable(h);
     if (rc == SQLITE_NOTADB) {
         sqlite3_close(h);
-        if (error) *error = tr("Falscher Schlüssel oder keine VitaParms-Datenbank.");
+        if (error) *error = tr("Falscher Schlüssel oder keine ViviaParms-Datenbank.");
         return key.isEmpty() ? OpenResult::NeedKey : OpenResult::WrongKey;
     }
     if (rc != SQLITE_OK) {
@@ -270,12 +270,12 @@ bool Database::createSchema(QString *error)
     q.exec(QStringLiteral("PRAGMA user_version"));
     const int version = q.next() ? q.value(0).toInt() : 0;
     q.finish();
-    // Versionsschutz: Eine Datenbank einer neueren VitaParms-Version nicht öffnen – diese Version
+    // Versionsschutz: Eine Datenbank einer neueren ViviaParms-Version nicht öffnen – diese Version
     // kennt deren Tabellen nicht und könnte beim Abgleich oder Ersetzen Daten verlieren.
     if (version > kSchemaVersion) {
         if (error)
-            *error = tr("Diese Datenbank stammt von einer neueren VitaParms-Version (Datenbankformat %1, "
-                        "diese Version kennt nur bis %2).\n\nBitte VitaParms auf diesem Gerät aktualisieren – "
+            *error = tr("Diese Datenbank stammt von einer neueren ViviaParms-Version (Datenbankformat %1, "
+                        "diese Version kennt nur bis %2).\n\nBitte ViviaParms auf diesem Gerät aktualisieren – "
                         "die Daten bleiben unverändert.").arg(version).arg(kSchemaVersion);
         return false;
     }

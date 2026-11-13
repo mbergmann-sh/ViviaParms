@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""VitaParms light – vereinfachte Formulare aus den Standardformularen erzeugen.
+"""ViviaParms light – vereinfachte Formulare aus den Standardformularen erzeugen.
 
 Erzeugt forms/light/patientform.ui und forms/light/vitalform.ui aus forms/*.ui, indem Bereiche
-entfernt werden, die VitaParms light nicht anbietet. Nach Änderungen an den Standardformularen
+entfernt werden, die ViviaParms light nicht anbietet. Nach Änderungen an den Standardformularen
 erneut ausführen:  python3 tools/make_light_forms.py
 """
 import re
@@ -123,7 +123,7 @@ def patient():
         if p.get('name') == 'formVersion':
             p.find('number').text = '1'
     write(t, ROOT / 'forms/light/patientform.ui',
-          '  VitaParms light – Stammblatt: Person, Ärzte und Angehörige, Diagnosen, Medikamente, Aufnahme.')
+          '  ViviaParms light – Stammblatt: Person, Ärzte und Angehörige, Diagnosen, Medikamente, Aufnahme.')
 
 
 def vital():
@@ -151,7 +151,7 @@ def vital():
         if n in left:
             raise SystemExit(f'{n} noch vorhanden')
     write(t, ROOT / 'forms/light/vitalform.ui',
-          '  VitaParms light – Messung: Blutdruck, Puls, Temperatur, SpO₂, Blutzucker, Gewicht, Größe, BMI, Schmerz.')
+          '  ViviaParms light – Messung: Blutdruck, Puls, Temperatur, SpO₂, Blutzucker, Gewicht, Größe, BMI, Schmerz.')
 
 
 if __name__ == '__main__':

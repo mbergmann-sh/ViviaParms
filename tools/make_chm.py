@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 """
-VitaParms – Windows-Hilfedatei (.chm) aus dem LaTeX-Handbuch erzeugen.
+ViviaParms – Windows-Hilfedatei (.chm) aus dem LaTeX-Handbuch erzeugen.
 
 Eine CHM-Datei ist kompiliertes HTML (Microsoft HTML Help). Das Skript setzt dieselben
 LaTeX-Quellen, aus denen das PDF entsteht, in HTML um – ein Kapitel je Seite, mit
@@ -9,15 +9,15 @@ Inhaltsverzeichnis, Stichwortverzeichnis (aus den \\index-Einträgen) und Vollte
 und kompiliert das Ergebnis.
 
 Aufruf:
-    python3 tools/make_chm.py ../VitaParms-Handbuch            → docs/VitaParms-Handbuch.chm
-    python3 tools/make_chm.py ../VitaParms-Manual              → docs/VitaParms-Manual.chm
-    python3 tools/make_chm.py ../VitaParms-ErsteSchritte       → docs/VitaParms-ErsteSchritte.chm
-    python3 tools/make_chm.py ../VitaParms-GettingStarted      → docs/VitaParms-GettingStarted.chm
-    VitaParms light (\\Ausgabe{light} in der Präambel; Ausgabe nach light/docs):
-    python3 tools/make_chm.py ../VitaParms-light-Benutzerhandbuch  → light/docs/VitaParms-light-Benutzerhandbuch.chm
-    python3 tools/make_chm.py ../VitaParms-light-UserGuide         → light/docs/VitaParms-light-UserGuide.chm
-    python3 tools/make_chm.py ../VitaParms-light-ErsteSchritte     → light/docs/VitaParms-light-ErsteSchritte.chm
-    python3 tools/make_chm.py ../VitaParms-light-GettingStarted    → light/docs/VitaParms-light-GettingStarted.chm
+    python3 tools/make_chm.py ../ViviaParms-Handbuch            → docs/ViviaParms-Handbuch.chm
+    python3 tools/make_chm.py ../ViviaParms-Manual              → docs/ViviaParms-Manual.chm
+    python3 tools/make_chm.py ../ViviaParms-ErsteSchritte       → docs/ViviaParms-ErsteSchritte.chm
+    python3 tools/make_chm.py ../ViviaParms-GettingStarted      → docs/ViviaParms-GettingStarted.chm
+    ViviaParms light (\\Ausgabe{light} in der Präambel; Ausgabe nach light/docs):
+    python3 tools/make_chm.py ../ViviaParms-light-Benutzerhandbuch  → light/docs/ViviaParms-light-Benutzerhandbuch.chm
+    python3 tools/make_chm.py ../ViviaParms-light-UserGuide         → light/docs/ViviaParms-light-UserGuide.chm
+    python3 tools/make_chm.py ../ViviaParms-light-ErsteSchritte     → light/docs/ViviaParms-light-ErsteSchritte.chm
+    python3 tools/make_chm.py ../ViviaParms-light-GettingStarted    → light/docs/ViviaParms-light-GettingStarted.chm
     python3 tools/make_chm.py <Handbuchordner> -o <Datei.chm> [--keep]
 
 Benötigt:
@@ -41,25 +41,25 @@ from pathlib import Path
 #  Sprachabhängige Texte
 # ----------------------------------------------------------------------------------------------
 LANG = {
-    'de': dict(name='VitaParms-Handbuch', title='VitaParms – Handbuch', lcid='0x407 German (Germany)',
+    'de': dict(name='ViviaParms-Handbuch', title='ViviaParms – Handbuch', lcid='0x407 German (Germany)',
                fig='Abb.', tab='Tabelle', chapter='Kapitel', appendix='Anhang', contents='Inhalt',
                start='Startseite', q=('„', '“'), prev='Zurück', next='Weiter', top='Inhalt',
                intro='Benutzerhandbuch', version='Version', see='siehe',
-               hint='Drücken Sie in VitaParms jederzeit <kbd>F1</kbd>, um diese Hilfe zu öffnen.'),
-    'en': dict(name='VitaParms-Manual', title='VitaParms – User Manual', lcid='0x809 English (United Kingdom)',
+               hint='Drücken Sie in ViviaParms jederzeit <kbd>F1</kbd>, um diese Hilfe zu öffnen.'),
+    'en': dict(name='ViviaParms-Manual', title='ViviaParms – User Manual', lcid='0x809 English (United Kingdom)',
                fig='Fig.', tab='Table', chapter='Chapter', appendix='Appendix', contents='Contents',
                start='Start page', q=('“', '”'), prev='Previous', next='Next', top='Contents',
                intro='User manual', version='Version', see='see',
-               hint='Press <kbd>F1</kbd> in VitaParms at any time to open this help.'),
+               hint='Press <kbd>F1</kbd> in ViviaParms at any time to open this help.'),
 }
 
 # Kurzanleitung „Erste Schritte“ / „Getting Started“
 GUIDE = {
-    'de': dict(name='VitaParms-ErsteSchritte', title='VitaParms – Erste Schritte', intro='Kurzanleitung mit Beispielen',
-               hint='In VitaParms öffnen Sie diese Kurzanleitung unter <i>Hilfe → Erste Schritte</i>, '
+    'de': dict(name='ViviaParms-ErsteSchritte', title='ViviaParms – Erste Schritte', intro='Kurzanleitung mit Beispielen',
+               hint='In ViviaParms öffnen Sie diese Kurzanleitung unter <i>Hilfe → Erste Schritte</i>, '
                     'das ausführliche Handbuch mit <kbd>F1</kbd>.'),
-    'en': dict(name='VitaParms-GettingStarted', title='VitaParms – Getting Started', intro='Quick guide with examples',
-               hint='In VitaParms, open this quick guide via <i>Help → Getting Started</i>, '
+    'en': dict(name='ViviaParms-GettingStarted', title='ViviaParms – Getting Started', intro='Quick guide with examples',
+               hint='In ViviaParms, open this quick guide via <i>Help → Getting Started</i>, '
                     'and the full user manual with <kbd>F1</kbd>.'),
 }
 
@@ -396,7 +396,7 @@ def simplify_rest(body, L, preamble):
     body = replace_macro(body, 'footnote', 1, lambda a: ' (' + a + ')')
     body = replace_macro(body, 'textsf', 1, lambda a: a)
     body = replace_macro(body, 'color', 1, lambda a: '')
-    body = re.sub(r'\\VP(\{\})?', 'VitaParms', body)
+    body = re.sub(r'\\VP(\{\})?', 'ViviaParms', body)
     body = re.sub(r'\\Version(\{\})?(?![A-Za-z])', L['version_str'], body)
     body = re.sub(r'\\(addcontentsline\{[^}]*\}\{[^}]*\}|markboth)\{[^}]*\}(\{[^}]*\})?', '', body)
     body = re.sub(r'\\(sffamily|bfseries|mdseries|itshape|ttfamily|small|footnotesize|Large|large|normalsize'
@@ -558,7 +558,7 @@ def postprocess(htm):
 def page(title, body, L, nav=''):
     return ('<!DOCTYPE html>\n<html lang="%s">\n<head>\n<meta http-equiv="Content-Type" content="text/html; charset=utf-8">\n'
             '<meta http-equiv="X-UA-Compatible" content="IE=edge">\n<title>%s</title>\n'
-            '<link rel="stylesheet" href="vitaparms.css">\n</head>\n<body>\n%s\n%s\n</body>\n</html>\n'
+            '<link rel="stylesheet" href="viviaparms.css">\n</head>\n<body>\n%s\n%s\n</body>\n</html>\n'
             % (L['code'], html.escape(title), body, nav))
 
 
@@ -580,19 +580,19 @@ def sitemap_obj(name, local=None, see=None):
     return '<LI><OBJECT type="text/sitemap">' + ''.join(p) + '</OBJECT>\n'
 
 
-# VitaParms light: Benutzerhandbuch / User Guide und Kurzanleitung
+# ViviaParms light: Benutzerhandbuch / User Guide und Kurzanleitung
 LIGHT = {
-    ('de', False): dict(name='VitaParms-light-Benutzerhandbuch', title='VitaParms light – Benutzerhandbuch',
-                        hint='Drücken Sie in VitaParms light jederzeit <kbd>F1</kbd>, um diese Hilfe zu öffnen.'),
-    ('en', False): dict(name='VitaParms-light-UserGuide', title='VitaParms light – User Guide', intro='User guide',
-                        hint='Press <kbd>F1</kbd> in VitaParms light at any time to open this help.'),
-    ('de', True): dict(name='VitaParms-light-ErsteSchritte', title='VitaParms light – Erste Schritte',
+    ('de', False): dict(name='ViviaParms-light-Benutzerhandbuch', title='ViviaParms light – Benutzerhandbuch',
+                        hint='Drücken Sie in ViviaParms light jederzeit <kbd>F1</kbd>, um diese Hilfe zu öffnen.'),
+    ('en', False): dict(name='ViviaParms-light-UserGuide', title='ViviaParms light – User Guide', intro='User guide',
+                        hint='Press <kbd>F1</kbd> in ViviaParms light at any time to open this help.'),
+    ('de', True): dict(name='ViviaParms-light-ErsteSchritte', title='ViviaParms light – Erste Schritte',
                        intro='Kurzanleitung',
-                       hint='In VitaParms light öffnen Sie diese Kurzanleitung unter <i>Hilfe → Erste Schritte</i>, '
+                       hint='In ViviaParms light öffnen Sie diese Kurzanleitung unter <i>Hilfe → Erste Schritte</i>, '
                             'das Benutzerhandbuch mit <kbd>F1</kbd>.'),
-    ('en', True): dict(name='VitaParms-light-GettingStarted', title='VitaParms light – Getting Started',
+    ('en', True): dict(name='ViviaParms-light-GettingStarted', title='ViviaParms light – Getting Started',
                        intro='Quick guide',
-                       hint='In VitaParms light, open this quick guide via <i>Help → Getting Started</i>, '
+                       hint='In ViviaParms light, open this quick guide via <i>Help → Getting Started</i>, '
                             'and the user guide with <kbd>F1</kbd>.'),
 }
 
@@ -621,7 +621,7 @@ def main():
     if guide:                                                            # Kurzanleitung
         L.update(GUIDE[lang])
     light = re.search(r'\\newcommand\*?\{\\Ausgabe\}\{light\}', preamble) is not None
-    if light:                                                            # VitaParms light
+    if light:                                                            # ViviaParms light
         L.update(LIGHT[(lang, guide)])
     version = re.search(r'\\newcommand\*?\{\\Version\}\{([^}]+)\}', preamble).group(1)
     L['version_str'] = version
@@ -739,15 +739,15 @@ def main():
             tl.append('<ul>' + ''.join(f'<li><a href="{fname}#{i}">{html.escape(t)}</a></li>' for i, t in secs) + '</ul>')
         tl.append('</li>')
     tl.append('</ul></div>')
-    logo = root / 'light' / 'resources' / 'vitaparms-light.png' if light else root / 'resources' / 'icons' / 'vitaparms.png'
+    logo = root / 'light' / 'resources' / 'viviaparms-light.png' if light else root / 'resources' / 'icons' / 'viviaparms.png'
     shutil.copy(logo, proj / 'img' / 'logo.png')
     start = (f'<div class="start"><img src="img/logo.png" width="96" height="96" alt="">'
-             f'<h1>{"VitaParms light" if light else "VitaParms"}</h1>'
+             f'<h1>{"ViviaParms light" if light else "ViviaParms"}</h1>'
              f'<p class="sub">{L["intro"]} · {L["version"]} {html.escape(version)}</p><p>{L["hint"]}</p></div>'
              f'<h2>{L["contents"]}</h2>' + ''.join(tl))
     (proj / 'index.htm').write_text(page(L['title'], start, L), encoding='utf-8')
     # light: Grün (vpblau der Light-Präambel) statt Blau
-    (proj / 'vitaparms.css').write_text(CSS.replace('#1F78B9', '#00785A').replace('#eaf3fa', '#e6f4ef')
+    (proj / 'viviaparms.css').write_text(CSS.replace('#1F78B9', '#00785A').replace('#eaf3fa', '#e6f4ef')
                                         .replace('#b9d4ea', '#a9d9c8') if light else CSS, encoding='utf-8')
 
     # Inhaltsverzeichnis (.hhc)
@@ -810,7 +810,7 @@ def main():
     (proj / (L['name'] + '.hhk')).write_bytes(''.join(hhk).encode('cp1252', 'xmlcharrefreplace'))
 
     # Projektdatei (.hhp)
-    allfiles = ['index.htm', 'vitaparms.css'] + [f for f, _, _ in files] + sorted('img/' + p.name for p in (proj / 'img').iterdir())
+    allfiles = ['index.htm', 'viviaparms.css'] + [f for f, _, _ in files] + sorted('img/' + p.name for p in (proj / 'img').iterdir())
     name = L['name']
     hhp = f"""[OPTIONS]
 Compatibility=1.1 or later

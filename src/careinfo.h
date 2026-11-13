@@ -1,5 +1,5 @@
-// VitaParms – Pflegegrad und Schwerbehindertenausweis: Merkzeichen und Anzeigetexte
-// SPDX-License-Identifier: MIT
+// ViviaParms – Pflegegrad und Schwerbehindertenausweis: Merkzeichen und Anzeigetexte
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

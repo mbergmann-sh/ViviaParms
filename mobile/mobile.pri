@@ -1,7 +1,7 @@
 # ---------------------------------------------------------------------------
-#  VitaParms Tablet – gemeinsamer Teil der Touch-Oberfläche (Qt Quick).
-#  Eingebunden von VitaParmsMobile.pro (VitaParms) und ../light/mobile/VitaParmsLightMobile.pro
-#  (VitaParms light, Schalter VP_LIGHT). Vor dem Einbinden setzbar: ANDROID_PACKAGE_SOURCE_DIR,
+#  ViviaParms Tablet – gemeinsamer Teil der Touch-Oberfläche (Qt Quick).
+#  Eingebunden von ViviaParmsMobile.pro (ViviaParms) und ../light/mobile/ViviaParmsLightMobile.pro
+#  (ViviaParms light, Schalter VP_LIGHT). Vor dem Einbinden setzbar: ANDROID_PACKAGE_SOURCE_DIR,
 #  VP_MOBILE_DOCS (Kurzanleitungen im Android-Paket), VP_SOURCE_DOCS_DIR (Desktop-Test).
 # ---------------------------------------------------------------------------
 QT += core gui widgets network qml quick quickcontrols2
@@ -24,7 +24,7 @@ CONFIG   += c++17
 TEMPLATE  = app
 
 include($$PWD/../version.pri)
-DEFINES  += VITAPARMS_VERSION=\\\"$$VERSION\\\"
+DEFINES  += VIVIAPARMS_VERSION=\\\"$$VERSION\\\"
 DEFINES  += QT_DISABLE_DEPRECATED_UP_TO=0x060400
 # Kein Qt Print Support und keine .ui-Formulare auf Tablets
 DEFINES  += VP_NO_PRINTSUPPORT VP_NO_UITOOLS VP_MOBILE
@@ -56,10 +56,10 @@ autopilot {
     SOURCES += $$PWD/src/autopilot.cpp
 }
 
-RESOURCES += $$PWD/mobile.qrc $$PWD/../resources/vitaparms.qrc
+RESOURCES += $$PWD/mobile.qrc $$PWD/../resources/viviaparms.qrc
 
 # Übersetzungen (Quellsprache Deutsch): Texte der QML-Oberfläche und des Kerns
-TRANSLATIONS = $$PWD/translations/vitaparms_en.ts
+TRANSLATIONS = $$PWD/translations/viviaparms_en.ts
 CONFIG += lrelease embed_translations
 QM_FILES_RESOURCE_PREFIX = /i18n
 lupdate_only { SOURCES += $$files($$PWD/qml/*.qml, true) }
@@ -73,12 +73,12 @@ android {
     isEmpty(ANDROID_PACKAGE_SOURCE_DIR): ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
     # Google Play verlangt seit 31.08.2026 Ziel-API 36 (Android 16) und 16-KB-Speicherseiten;
     # beides kann Qt erst ab 6.10. Qt 6.10 und neuer laufen ab Android 9 (API 28).
-    !versionAtLeast(QT_VERSION, 6.10.0): error("VitaParms mobile für Android braucht Qt 6.10 oder neuer (gefunden: $$QT_VERSION) – Ziel-API 36 und 16-KB-Speicherseiten")
+    !versionAtLeast(QT_VERSION, 6.10.0): error("ViviaParms mobile für Android braucht Qt 6.10 oder neuer (gefunden: $$QT_VERSION) – Ziel-API 36 und 16-KB-Speicherseiten")
     ANDROID_TARGET_SDK_VERSION = 36
     ANDROID_MIN_SDK_VERSION = 28
 
     # Kurzanleitung „Erste Schritte“ (PDF, deutsch und englisch) ins Paket: assets:/docs
-    isEmpty(VP_MOBILE_DOCS): VP_MOBILE_DOCS = $$PWD/../docs/VitaParms-ErsteSchritte.pdf $$PWD/../docs/VitaParms-GettingStarted.pdf
+    isEmpty(VP_MOBILE_DOCS): VP_MOBILE_DOCS = $$PWD/../docs/ViviaParms-ErsteSchritte.pdf $$PWD/../docs/ViviaParms-GettingStarted.pdf
     vpdocs.files = $$VP_MOBILE_DOCS
     vpdocs.path = /assets/docs
     INSTALLS += vpdocs
@@ -87,7 +87,7 @@ android {
     # Mitgeliefert in ../3rdparty/android_openssl (OpenSSL 3, KDAB, Apache-2.0) – kein Download in
     # Qt Creator nötig. Eine andere Version: Umgebungsvariable VP_ANDROID_OPENSSL auf einen Ordner
     # mit openssl.pri setzen (z. B. den Download aus Qt Creator).
-    # (VitaParms light gleicht nur per USB ab und braucht kein HTTPS)
+    # (ViviaParms light gleicht nur per USB ab und braucht kein HTTPS)
     contains(DEFINES, VP_LIGHT): VP_OPENSSL_DIRS =
     else: VP_OPENSSL_DIRS = $$(VP_ANDROID_OPENSSL) $$PWD/../3rdparty/android_openssl
     VP_OPENSSL_PRI =

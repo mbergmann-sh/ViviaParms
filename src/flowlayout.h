@@ -1,4 +1,4 @@
-// VitaParms – umbrechendes Layout (Zeilen wie Text): Elemente, die nicht mehr nebeneinander passen,
+// ViviaParms – umbrechendes Layout (Zeilen wie Text): Elemente, die nicht mehr nebeneinander passen,
 // rutschen in die nächste Zeile. Für Leisten mit vielen Schaltern (z. B. Bereiche der Grafik),
 // damit das Hauptfenster auch auf kleinen Bildschirmen (1366 × 768) ganz sichtbar bleibt.
 #pragma once

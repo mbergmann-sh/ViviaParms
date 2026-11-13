@@ -1,7 +1,11 @@
-# VitaParms – English translation table (German source -> English)
-# Used by tools/apply_translations.py to fill translations/vitaparms_en.ts.
-# Edit vitaparms_en.ts with Qt Linguist afterwards if you prefer.
+# ViviaParms – English translation table (German source -> English)
+# Used by tools/apply_translations.py to fill translations/viviaparms_en.ts.
+# Edit viviaparms_en.ts with Qt Linguist afterwards if you prefer.
 EN = {
+"Datei konnte nicht kopiert werden: %1": "File could not be copied: %1",
+"<p>VitaParms heißt jetzt <b>ViviaParms</b>.</p>": "<p>VitaParms is now called <b>ViviaParms</b>.</p>",
+"<p>Ihre Daten wurden übernommen. Der bisherige Ordner bleibt unverändert als Sicherung erhalten:<br><tt>%1</tt></p><p>Sobald ViviaParms wie gewohnt läuft, können Sie ihn löschen.</p>": "<p>Your data has been taken over. The previous folder is kept unchanged as a backup:<br><tt>%1</tt></p><p>Once ViviaParms runs as usual, you can delete it.</p>",
+"<p>Die Einstellungen wurden ebenfalls übernommen.</p>": "<p>The settings have been taken over as well.</p>",
 "Pünktliche Erinnerungen sind nicht erlaubt: Android zeigt sie dann ungefähr, unter Umständen einige Minuten später. Erlauben unter „Wecker und Erinnerungen“.": "On-time reminders are not allowed: Android then shows them approximately, possibly a few minutes late. Allow them under “Alarms & reminders”.",
 "Pünktliche Erinnerungen erlauben": "Allow on-time reminders",
 "Content stays clear of the system bars": "Content stays clear of the system bars",
@@ -91,7 +95,7 @@ EN = {
 "Das Mailprogramm unterstützt keine automatischen Anhänge. Bitte die Datei\n%1\naus dem geöffneten Ordner in die E-Mail ziehen.": "Your mail program does not support automatic attachments. Please drag the file\n%1\nfrom the opened folder into the e-mail.",
 "Es konnte kein Mailprogramm geöffnet werden. Das Archiv liegt hier:\n%1": "No mail program could be opened. The archive is located here:\n%1",
 "\n\nDenken Sie daran, dem Empfänger das Passwort auf anderem Weg mitzuteilen.": "\n\nRemember to send the password to the recipient by another channel.",
-"\n\nDie Versandkopie bleibt im Ordner „VitaParms-Versand“ – nach dem Versand können Sie sie löschen.": "\n\nThe copy for sending remains in the “VitaParms-Versand” folder – you can delete it after sending.",
+"\n\nDie Versandkopie bleibt im Ordner „ViviaParms-Versand“ – nach dem Versand können Sie sie löschen.": "\n\nThe copy for sending remains in the “ViviaParms-Versand” folder – you can delete it after sending.",
 "nüchtern": "fasting",
 "vor dem Frühstück": "before breakfast",
 "2 h nach dem Frühstück": "2 h after breakfast",
@@ -123,7 +127,7 @@ EN = {
 "rechts: %1": "right: %1",
 " (Korrektur %1 %)": " (correction %1 %)",
 "Datei kann nicht geöffnet werden.": "File cannot be opened.",
-"Falscher Schlüssel oder keine VitaParms-Datenbank.": "Wrong key or not a VitaParms database.",
+"Falscher Schlüssel oder keine ViviaParms-Datenbank.": "Wrong key or not a ViviaParms database.",
 "Zieldatei kann nicht überschrieben werden.": "Target file cannot be overwritten.",
 "Zieldatei kann nicht angelegt werden.": "Target file cannot be created.",
 "Dokument übernehmen %1": "Import document %1",
@@ -209,7 +213,7 @@ EN = {
 "Krankenakte – %1 Dokumente": "Medical record – %1 documents",
 "Drucken – %1 Dokument(e), %2 Seite(n)": "Print – %1 document(s), %2 page(s)",
 "Formulare anpassen": "Customize forms",
-"Die Eingabeformulare von VitaParms sind Qt-Designer-Dateien (.ui) und werden beim Öffnen geladen. Sie können Felder umanordnen, umbenennen, entfernen oder eigene Felder hinzufügen.<br><br><b>Eigene Felder:</b> Im Qt Designer beim neuen Eingabeelement eine dynamische Eigenschaft <tt>vpField</tt> (Typ String) hinzufügen und den Feldnamen eintragen. Der Wert wird automatisch gespeichert und im Verlauf/Export als eigene Spalte angezeigt.<br><b>Nicht ändern:</b> die Objektnamen (<tt>objectName</tt>) der Standardfelder.": "The input forms of VitaParms are Qt Designer files (.ui) that are loaded when a dialog opens. You can rearrange, rename or remove fields or add your own.<br><br><b>Custom fields:</b> in Qt Designer, add a dynamic property <tt>vpField</tt> (type string) to the new input widget and enter the field name. The value is saved automatically and shown as a separate column in the history/export.<br><b>Do not change:</b> the object names (<tt>objectName</tt>) of the standard fields.",
+"Die Eingabeformulare von ViviaParms sind Qt-Designer-Dateien (.ui) und werden beim Öffnen geladen. Sie können Felder umanordnen, umbenennen, entfernen oder eigene Felder hinzufügen.<br><br><b>Eigene Felder:</b> Im Qt Designer beim neuen Eingabeelement eine dynamische Eigenschaft <tt>vpField</tt> (Typ String) hinzufügen und den Feldnamen eintragen. Der Wert wird automatisch gespeichert und im Verlauf/Export als eigene Spalte angezeigt.<br><b>Nicht ändern:</b> die Objektnamen (<tt>objectName</tt>) der Standardfelder.": "The input forms of ViviaParms are Qt Designer files (.ui) that are loaded when a dialog opens. You can rearrange, rename or remove fields or add your own.<br><br><b>Custom fields:</b> in Qt Designer, add a dynamic property <tt>vpField</tt> (type string) to the new input widget and enter the field name. The value is saved automatically and shown as a separate column in the history/export.<br><b>Do not change:</b> the object names (<tt>objectName</tt>) of the standard fields.",
 "Formular": "Form",
 "Status": "Status",
 "Datei": "File",
@@ -263,7 +267,7 @@ EN = {
 "Ein Konto mit diesem Namen gibt es bereits.": "An account with this name already exists.",
 "Es muss mindestens ein Administrator-Konto geben.": "There must be at least one administrator account.",
 "Das letzte Administrator-Konto kann nicht gelöscht werden.": "The last administrator account cannot be deleted.",
-"VitaParms – Anmeldung": "VitaParms – Login",
+"ViviaParms – Anmeldung": "ViviaParms – Login",
 "<b>Anmeldung</b><br><small>Datenbank: %1</small>": "<b>Login</b><br><small>Database: %1</small>",
 "&Konto:": "&Account:",
 "&Anmelden": "&Log in",
@@ -328,7 +332,7 @@ EN = {
 "&Anmeldekonten…": "Login &accounts…",
 "&Hilfe": "&Help",
 "&Haftungshinweis…": "&Disclaimer…",
-"Ü&ber VitaParms…": "&About VitaParms…",
+"Ü&ber ViviaParms…": "&About ViviaParms…",
 "Über &Qt…": "About &Qt…",
 "Werkzeugleiste": "Toolbar",
 " Benutzer: ": " Person: ",
@@ -357,17 +361,17 @@ EN = {
 "Verlauf nach &Excel exportieren…": "Export history to &Excel…",
 "Excel-Datei gespeichert.": "Excel file saved.",
 "Datenbank": "Database",
-"Ohne geöffnete Datenbank wird VitaParms beendet.": "Without an open database VitaParms will quit.",
+"Ohne geöffnete Datenbank wird ViviaParms beendet.": "Without an open database ViviaParms will quit.",
 "🔒 %1 (%2)": "🔒 %1 (%2)",
 "Angemeldet als %1 – Datenbank verschlüsselt": "Logged in as %1 – database encrypted",
 "Neue Datenbank anlegen": "Create new database",
-"VitaParms-Datenbank (*.sqlite *.db)": "VitaParms database (*.sqlite *.db)",
+"ViviaParms-Datenbank (*.sqlite *.db)": "ViviaParms database (*.sqlite *.db)",
 "Neue Datenbank": "New database",
 "Die Datei existiert bereits und wird geöffnet.": "The file already exists and will be opened.",
 "Datenbank öffnen": "Open database",
-"VitaParms-Datenbank (*.sqlite *.db);;Alle Dateien (*)": "VitaParms database (*.sqlite *.db);;All files (*)",
+"ViviaParms-Datenbank (*.sqlite *.db);;Alle Dateien (*)": "ViviaParms database (*.sqlite *.db);;All files (*)",
 "Sicherung erstellen": "Create backup",
-"VitaParms-Datenbank (*.sqlite)": "VitaParms database (*.sqlite)",
+"ViviaParms-Datenbank (*.sqlite)": "ViviaParms database (*.sqlite)",
 "Die Schlüsseldatei konnte nicht kopiert werden.": "The key file could not be copied.",
 "Sicherung": "Backup",
 "Sicherung gespeichert (verschlüsselt):\n%1\n%2\n\nBeide Dateien gehören zusammen. Ohne die .keys-Datei lässt sich die Sicherung nur mit dem Wiederherstellungsschlüssel öffnen.": "Backup saved (encrypted):\n%1\n%2\n\nBoth files belong together. Without the .keys file the backup can only be opened with the recovery key.",
@@ -377,9 +381,9 @@ EN = {
 "\n\nZur Sicherung gibt es keine .keys-Datei – Sie benötigen den Wiederherstellungsschlüssel.": "\n\nThere is no .keys file for this backup – you will need the recovery key.",
 "Kopieren fehlgeschlagen – der vorherige Stand wird wiederhergestellt.": "Copying failed – the previous state is being restored.",
 "Haftungshinweis": "Disclaimer",
-"<p><b>VitaParms ist ein persönliches Tagebuch für gesundheitsbezogene Messwerte – kein Medizinprodukt.</b></p><p>Das Programm stellt keine Diagnosen, gibt keine Therapieempfehlungen und ersetzt keine ärztliche Beratung. Berechnete Werte (z.&nbsp;B. BMI) und Grafiken dienen nur der Übersicht. Die Verwendung erfolgt auf eigene Gefahr.</p><p>Bei Beschwerden oder auffälligen Werten wenden Sie sich bitte an Ihre Ärztin oder Ihren Arzt, im Notfall an den Notruf 112.</p>": "<p><b>VitaParms is a personal diary for health-related readings – not a medical device.</b></p><p>The program does not make diagnoses, give treatment recommendations or replace medical advice. Calculated values (e.g. BMI) and charts are for overview only. Use at your own risk.</p><p>If you have symptoms or unusual readings, please contact your doctor; in an emergency call your local emergency number (112 in Europe).</p>",
-"Über VitaParms": "About VitaParms",
-"<h3>VitaParms %1</h3><p>Tagebuch für Vitalwerte mit Verlauf, Grafiken, Druck, PDF- und Excel-Export.</p><p>Copyright © 2026 Michael Bergmann<br>Freie Software unter der <b>MIT-Lizenz</b>.</p><p>Erstellt mit Qt %2 (LGPLv3).</p><p><small>Kein Medizinprodukt – Verwendung auf eigene Gefahr.</small></p>": "<h3>VitaParms %1</h3><p>Diary for vital signs with history, charts, printing, PDF and Excel export.</p><p>Copyright © 2026 Michael Bergmann<br>Free software under the <b>MIT licence</b>.</p><p>Built with Qt %2 (LGPLv3).</p><p><small>Not a medical device – use at your own risk.</small></p>",
+"<p><b>ViviaParms ist ein persönliches Tagebuch für gesundheitsbezogene Messwerte – kein Medizinprodukt.</b></p><p>Das Programm stellt keine Diagnosen, gibt keine Therapieempfehlungen und ersetzt keine ärztliche Beratung. Berechnete Werte (z.&nbsp;B. BMI) und Grafiken dienen nur der Übersicht. Die Verwendung erfolgt auf eigene Gefahr.</p><p>Bei Beschwerden oder auffälligen Werten wenden Sie sich bitte an Ihre Ärztin oder Ihren Arzt, im Notfall an den Notruf 112.</p>": "<p><b>ViviaParms is a personal diary for health-related readings – not a medical device.</b></p><p>The program does not make diagnoses, give treatment recommendations or replace medical advice. Calculated values (e.g. BMI) and charts are for overview only. Use at your own risk.</p><p>If you have symptoms or unusual readings, please contact your doctor; in an emergency call your local emergency number (112 in Europe).</p>",
+"Über ViviaParms": "About ViviaParms",
+"<h3>ViviaParms %1</h3><p>Tagebuch für Vitalwerte mit Verlauf, Grafiken, Druck, PDF- und Excel-Export.</p><p>Copyright © 2026 Michael Bergmann<br>Quelloffen unter der <b>PolyForm Noncommercial License 1.0.0</b>: kostenlos für jede nicht-kommerzielle Nutzung – privat sowie durch gemeinnützige Organisationen, Schulen und Behörden –, einschließlich Verändern und Weitergeben. Kommerzielle Nutzung und Verkauf nur mit Erlaubnis des Autors.<br><a href=\"https://polyformproject.org/licenses/noncommercial/1.0.0\">polyformproject.org/licenses/noncommercial/1.0.0</a></p><p>Erstellt mit Qt %2 (LGPLv3).</p><p><small>Kein Medizinprodukt – Verwendung auf eigene Gefahr.</small></p>": "<h3>ViviaParms %1</h3><p>Diary for vital signs with history, charts, printing, PDF and Excel export.</p><p>Copyright © 2026 Michael Bergmann<br>Source-available under the <b>PolyForm Noncommercial License 1.0.0</b>: free of charge for any noncommercial use – privately and by charitable organisations, schools and public authorities – including modifying and passing it on. Commercial use and sale only with the author's permission.<br><a href=\"https://polyformproject.org/licenses/noncommercial/1.0.0\">polyformproject.org/licenses/noncommercial/1.0.0</a></p><p>Built with Qt %2 (LGPLv3).</p><p><small>Not a medical device – use at your own risk.</small></p>",
 "Medikament bearbeiten": "Edit medication",
 "Medikament hinzufügen": "Add medication",
 "OK": "OK",
@@ -503,7 +507,7 @@ EN = {
 "KW %1/%2: %3 – %4": "Week %1/%2: %3 – %4",
 "Bitte mindestens einen Bereich auswählen.": "Please select at least one panel.",
 "Keine Messwerte im Zeitraum": "No readings in this period",
-"<p><b>Willkommen bei VitaParms!</b></p><p>VitaParms ist ein <b>persönliches Tagebuch</b> für gesundheitsbezogene Messwerte – <b>kein Medizinprodukt</b>. Es stellt keine Diagnosen und ersetzt keine ärztliche Beratung. Die Verwendung erfolgt auf eigene Gefahr.</p><p>Die Daten werden verschlüsselt gespeichert. Bewahren Sie den Wiederherstellungsschlüssel sicher auf und legen Sie regelmäßig Sicherungen an.</p>": "<p><b>Welcome to VitaParms!</b></p><p>VitaParms is a <b>personal diary</b> for health-related readings – <b>not a medical device</b>. It makes no diagnoses and does not replace medical advice. Use at your own risk.</p><p>Data is stored encrypted. Keep the recovery key in a safe place and make regular backups.</p>",
+"<p><b>Willkommen bei ViviaParms!</b></p><p>ViviaParms ist ein <b>persönliches Tagebuch</b> für gesundheitsbezogene Messwerte – <b>kein Medizinprodukt</b>. Es stellt keine Diagnosen und ersetzt keine ärztliche Beratung. Die Verwendung erfolgt auf eigene Gefahr.</p><p>Die Daten werden verschlüsselt gespeichert. Bewahren Sie den Wiederherstellungsschlüssel sicher auf und legen Sie regelmäßig Sicherungen an.</p>": "<p><b>Welcome to ViviaParms!</b></p><p>ViviaParms is a <b>personal diary</b> for health-related readings – <b>not a medical device</b>. It makes no diagnoses and does not replace medical advice. Use at your own risk.</p><p>Data is stored encrypted. Keep the recovery key in a safe place and make regular backups.</p>",
 "Verstanden": "Understood",
 "Diesen Hinweis nicht mehr anzeigen": "Do not show this notice again",
 "Tagebuch für Vitalwerte": "Diary for vital signs",
@@ -515,7 +519,7 @@ EN = {
 "Als &Datei speichern…": "Save as &file…",
 "&Fertig": "&Done",
 "Ich habe den Wiederherstellungsschlüssel sicher aufbewahrt.": "I have stored the recovery key safely.",
-"<h2>VitaParms – Wiederherstellungsschlüssel</h2><p>Datenbank: %1<br>Erstellt am: %2</p><p style=\"font-family: monospace; font-size: 15pt; font-weight: bold;\">%3</p><p>Dieser Schlüssel öffnet die verschlüsselte Datenbank ohne Passwort. Sicher und getrennt vom Computer aufbewahren. Nicht weitergeben.</p><p>Verwendung: Anmeldedialog → „Wiederherstellungsschlüssel…“.</p>": "<h2>VitaParms – recovery key</h2><p>Database: %1<br>Created on: %2</p><p style=\"font-family: monospace; font-size: 15pt; font-weight: bold;\">%3</p><p>This key opens the encrypted database without a password. Keep it safe and separate from the computer. Do not pass it on.</p><p>Usage: login dialog → “Recovery key…”.</p>",
+"<h2>ViviaParms – Wiederherstellungsschlüssel</h2><p>Datenbank: %1<br>Erstellt am: %2</p><p style=\"font-family: monospace; font-size: 15pt; font-weight: bold;\">%3</p><p>Dieser Schlüssel öffnet die verschlüsselte Datenbank ohne Passwort. Sicher und getrennt vom Computer aufbewahren. Nicht weitergeben.</p><p>Verwendung: Anmeldedialog → „Wiederherstellungsschlüssel…“.</p>": "<h2>ViviaParms – recovery key</h2><p>Database: %1<br>Created on: %2</p><p style=\"font-family: monospace; font-size: 15pt; font-weight: bold;\">%3</p><p>This key opens the encrypted database without a password. Keep it safe and separate from the computer. Do not pass it on.</p><p>Usage: login dialog → “Recovery key…”.</p>",
 "Wiederherstellungsschlüssel speichern": "Save recovery key",
 "HTML-Datei (*.html);;Textdatei (*.txt)": "HTML file (*.html);;Text file (*.txt)",
 "Gespeichert. Bitte die Datei auf einen USB-Stick o. Ä. verschieben und nicht auf diesem Computer belassen.": "Saved. Please move the file to a USB stick or similar and do not leave it on this computer.",
@@ -525,7 +529,7 @@ EN = {
 " – Druckvorschau": " – print preview",
 "geb. %1": "born %1",
 " (%1 J.)": " (%1 y.)",
-"VitaParms · Ausdruck vom %1": "VitaParms · printed on %1",
+"ViviaParms · Ausdruck vom %1": "ViviaParms · printed on %1",
 "Seite %1 von %2": "Page %1 of %2",
 "%n Messung(en), aktuellste zuerst": "%n measurement(s), most recent first",
 "Keine Messungen im gewählten Zeitraum.": "No measurements in the selected period.",
@@ -551,15 +555,15 @@ EN = {
 "Datum/Uhrzeit": "Date/time",
 "Zeitraum: %1": "Period: %1",
 "Verlauf der Vitalwerte": "History of vital signs",
-"VitaParms – Verlauf %1": "VitaParms – history %1",
-"VitaParms – Verlauf der Vitalwerte": "VitaParms – history of vital signs",
+"ViviaParms – Verlauf %1": "ViviaParms – history %1",
+"ViviaParms – Verlauf der Vitalwerte": "ViviaParms – history of vital signs",
 "Verlauf nach Excel exportieren": "Export history to Excel",
 "Excel-Arbeitsmappe (*.xlsx)": "Excel workbook (*.xlsx)",
 "Export": "Export",
 "Export fehlgeschlagen:\n%1": "Export failed:\n%1",
-"VitaParms – Verlaufsgrafik %1": "VitaParms – trend chart %1",
+"ViviaParms – Verlaufsgrafik %1": "ViviaParms – trend chart %1",
 "Grafik": "Chart",
-"VitaParms – Verlaufsgrafik": "VitaParms – trend chart",
+"ViviaParms – Verlaufsgrafik": "ViviaParms – trend chart",
 "Kennwerte": "Statistics",
 "Kennwerte im Zeitraum": "Statistics for the period",
 "Messwerte": "Readings",
@@ -575,7 +579,7 @@ EN = {
 "Vitalwerte bei Aufnahme (%1)": "Vital signs on admission (%1)",
 "RR [mmHg]": "BP [mmHg]",
 "Aktueller Medikamentenplan": "Current medication plan",
-"Berichte aus VitaParms": "Reports from VitaParms",
+"Berichte aus ViviaParms": "Reports from ViviaParms",
 "Dokumente (%1)": "Documents (%1)",
 "Nr.": "No.",
 "Inhaltsverzeichnis der Krankenakte": "Medical record – table of contents",
@@ -589,7 +593,7 @@ EN = {
 "<p><b>Neue, verschlüsselte Datenbank</b></p><p>Legen Sie das erste <b>Administrator-Konto</b> an. Weitere Konten (Administratoren oder Anwender) können Sie danach unter <i>Extras → Anmeldekonten</i> hinzufügen.</p>": "<p><b>New encrypted database</b></p><p>Create the first <b>administrator account</b>. You can add further accounts (administrators or users) afterwards under <i>Tools → Login accounts</i>.</p>",
 "Die Datenbank kann nicht geöffnet werden:\n%1": "The database cannot be opened:\n%1",
 "Datenbank verschlüsseln": "Encrypt database",
-"<p>Diese Datenbank ist noch <b>nicht verschlüsselt</b>.</p><p>VitaParms verschlüsselt sie jetzt (ChaCha20-Poly1305, 256 Bit). Danach ist der Zugriff nur noch mit einem Anmeldekonto oder dem Wiederherstellungsschlüssel möglich.</p><p>Tipp: Unverschlüsselte Sicherungskopien aus früheren Versionen sollten Sie anschließend löschen.</p>": "<p>This database is <b>not encrypted</b> yet.</p><p>VitaParms will encrypt it now (ChaCha20-Poly1305, 256 bit). Afterwards access is only possible with a login account or the recovery key.</p><p>Tip: you should delete unencrypted backup copies from earlier versions afterwards.</p>",
+"<p>Diese Datenbank ist noch <b>nicht verschlüsselt</b>.</p><p>ViviaParms verschlüsselt sie jetzt (ChaCha20-Poly1305, 256 Bit). Danach ist der Zugriff nur noch mit einem Anmeldekonto oder dem Wiederherstellungsschlüssel möglich.</p><p>Tipp: Unverschlüsselte Sicherungskopien aus früheren Versionen sollten Sie anschließend löschen.</p>": "<p>This database is <b>not encrypted</b> yet.</p><p>ViviaParms will encrypt it now (ChaCha20-Poly1305, 256 bit). Afterwards access is only possible with a login account or the recovery key.</p><p>Tip: you should delete unencrypted backup copies from earlier versions afterwards.</p>",
 "Verschlüsselung fehlgeschlagen:\n%1": "Encryption failed:\n%1",
 "<p>Die Datenbank ist jetzt verschlüsselt. Legen Sie das erste <b>Administrator-Konto</b> an.</p>": "<p>The database is now encrypted. Create the first <b>administrator account</b>.</p>",
 "Zur Datenbank\n%1\nfehlt die Schlüsseldatei (%2).\nDie Datenbank kann nur mit dem Wiederherstellungsschlüssel geöffnet werden.": "The key file (%2) for the database\n%1\nis missing.\nThe database can only be opened with the recovery key.",
@@ -598,7 +602,7 @@ EN = {
 "<p>Datenbank entsperrt. Legen Sie ein neues <b>Administrator-Konto</b> an.</p>": "<p>Database unlocked. Create a new <b>administrator account</b>.</p>",
 "Anmeldung": "Login",
 "Die Anmeldung war korrekt, aber die Datenbank passt nicht zur Schlüsseldatei:\n%1": "The login was correct, but the database does not match the key file:\n%1",
-"Die Kontenliste in der Schlüsseldatei wurde außerhalb von VitaParms verändert.\nAus Sicherheitsgründen werden Sie nur mit Anwenderrechten angemeldet. Ein Administrator sollte die Konten prüfen.": "The account list in the key file was modified outside VitaParms.\nFor security reasons you are logged in with user rights only. An administrator should check the accounts.",
+"Die Kontenliste in der Schlüsseldatei wurde außerhalb von ViviaParms verändert.\nAus Sicherheitsgründen werden Sie nur mit Anwenderrechten angemeldet. Ein Administrator sollte die Konten prüfen.": "The account list in the key file was modified outside ViviaParms.\nFor security reasons you are logged in with user rights only. An administrator should check the accounts.",
 "Alle Passwörter vergessen?": "Forgot all passwords?",
 "<p>Datenbank entsperrt. Vergeben Sie ein neues Passwort für ein bestehendes Administrator-Konto oder legen Sie ein neues an.</p>": "<p>Database unlocked. Set a new password for an existing administrator account or create a new one.</p>",
 "Einstellungen": "Settings",
@@ -617,7 +621,7 @@ EN = {
 "Standardliste wiederherstellen": "Restore default list",
 "<small>Datenbank: %1</small>": "<small>Database: %1</small>",
 "Sprache": "Language",
-"Die Sprache wird beim nächsten Start übernommen.\nVitaParms jetzt neu starten? (Sie müssen sich danach erneut anmelden.)": "The language will be applied at the next start.\nRestart VitaParms now? (You will need to log in again.)",
+"Die Sprache wird beim nächsten Start übernommen.\nViviaParms jetzt neu starten? (Sie müssen sich danach erneut anmelden.)": "The language will be applied at the next start.\nRestart ViviaParms now? (You will need to log in again.)",
 "Systemstandard (%1)": "System default (%1)",
 "Dark (AmigaED)": "Dark (AmigaED)",
 "Visual Studio Code Dark (AmigaED)": "Visual Studio Code Dark (AmigaED)",
@@ -712,10 +716,10 @@ EN.update({
     "Termin bearbeiten": "Edit appointment",
     "Neuer Termin": "New appointment",
     "— keine Person —": "— no person —",
-    "<small>Erinnerungen erscheinen, solange VitaParms läuft und das zuständige Konto angemeldet ist. E-Mails sind nicht verschlüsselt – vertrauliche Details besser in die Notiz statt in den Titel schreiben.</small>":
-        "<small>Reminders appear while VitaParms is running and the responsible account is logged in. E-mails are not encrypted – better put confidential details into the note rather than the title.</small>",
-    "<small>Erinnerungen erscheinen, solange VitaParms läuft und das zuständige Konto angemeldet ist. Für E-Mail-Erinnerungen muss ein Administrator unter <i>Extras → Einstellungen → E-Mail-Versand</i> den Postausgangsserver einrichten.</small>":
-        "<small>Reminders appear while VitaParms is running and the responsible account is logged in. For e-mail reminders an administrator has to set up the outgoing mail server under <i>Tools → Settings → E-mail sending</i>.</small>",
+    "<small>Erinnerungen erscheinen, solange ViviaParms läuft und das zuständige Konto angemeldet ist. E-Mails sind nicht verschlüsselt – vertrauliche Details besser in die Notiz statt in den Titel schreiben.</small>":
+        "<small>Reminders appear while ViviaParms is running and the responsible account is logged in. E-mails are not encrypted – better put confidential details into the note rather than the title.</small>",
+    "<small>Erinnerungen erscheinen, solange ViviaParms läuft und das zuständige Konto angemeldet ist. Für E-Mail-Erinnerungen muss ein Administrator unter <i>Extras → Einstellungen → E-Mail-Versand</i> den Postausgangsserver einrichten.</small>":
+        "<small>Reminders appear while ViviaParms is running and the responsible account is logged in. For e-mail reminders an administrator has to set up the outgoing mail server under <i>Tools → Settings → E-mail sending</i>.</small>",
     "Das Ende liegt vor dem Beginn.": "The end is before the start.",
     "Bitte eine gültige E-Mail-Adresse für die Erinnerung angeben.": "Please enter a valid e-mail address for the reminder.",
     "Der E-Mail-Versand ist noch nicht eingerichtet. Die E-Mail-Erinnerung wird erst versendet, wenn ein Administrator den Postausgangsserver hinterlegt hat.":
@@ -823,7 +827,7 @@ EN.update({
     "Ö&ffnen…": "&Open…",
     "&Erledigt": "&Done",
     "&OK": "&OK",
-    "VitaParms-Erinnerung: %1 am %2": "VitaParms reminder: %1 on %2",
+    "ViviaParms-Erinnerung: %1 am %2": "ViviaParms reminder: %1 on %2",
     "Erinnerung an einen Termin:\n\n": "Appointment reminder:\n\n",
     "Termin:    %1\n": "Title:     %1\n",
     "Beginn:    %1\n": "Start:     %1\n",
@@ -831,14 +835,14 @@ EN.update({
     "Ort:       %1\n": "Location:  %1\n",
     "Person:    %1\n": "Person:    %1\n",
     "\nNotiz:\n%1\n": "\nNote:\n%1\n",
-    "\n-- \nAutomatisch gesendet von VitaParms.\n": "\n-- \nSent automatically by VitaParms.\n",
+    "\n-- \nAutomatisch gesendet von ViviaParms.\n": "\n-- \nSent automatically by ViviaParms.\n",
     "E-Mail-Erinnerung für „%1“ nicht gesendet: E-Mail-Versand nicht eingerichtet.": "E-mail reminder for “%1” not sent: e-mail sending is not set up.",
     "E-Mail-Erinnerung für „%1“ gesendet.": "E-mail reminder for “%1” sent.",
     "E-Mail-Erinnerung für „%1“ fehlgeschlagen: %2": "E-mail reminder for “%1” failed: %2",
     "Sicherheit && Sprachausgabe": "Security && speech output",
     "nach %1 Minuten": "after %1 minutes",
-    "Nach dieser Zeit ohne Benutzung meldet VitaParms ab. Ungespeicherte Eingaben in offenen Dialogen verfallen.":
-        "After this time without use VitaParms logs out. Unsaved input in open dialogs is discarded.",
+    "Nach dieser Zeit ohne Benutzung meldet ViviaParms ab. Ungespeicherte Eingaben in offenen Dialogen verfallen.":
+        "After this time without use ViviaParms logs out. Unsaved input in open dialogs is discarded.",
     "Automatisch &sperren:": "&Lock automatically:",
     "&Stimme (Vorlesen):": "&Voice (read aloud):",
     "Sprech&tempo:": "Speech &rate:",
@@ -876,8 +880,8 @@ EN.update({
     "&Test-E-Mail senden…": "Send &test e-mail…",
     "Bitte Server und eine gültige Absenderadresse angeben.": "Please enter a server and a valid sender address.",
     "Test-E-Mail senden an:": "Send test e-mail to:",
-    "VitaParms: Test-E-Mail": "VitaParms: test e-mail",
-    "Diese Test-E-Mail bestätigt, dass VitaParms Erinnerungen versenden kann.\n": "This test e-mail confirms that VitaParms can send reminders.\n",
+    "ViviaParms: Test-E-Mail": "ViviaParms: test e-mail",
+    "Diese Test-E-Mail bestätigt, dass ViviaParms Erinnerungen versenden kann.\n": "This test e-mail confirms that ViviaParms can send reminders.\n",
     "Test-E-Mail an %1 wurde versendet.": "Test e-mail to %1 has been sent.",
     "Versand fehlgeschlagen:\n%1": "Sending failed:\n%1",
     "Bitte eine gültige Absenderadresse angeben.": "Please enter a valid sender address.",
@@ -1458,7 +1462,7 @@ EN.update({
 # ---- v0.8.0: Demo-Datenbank, Jahresverlauf, Kurven einzeln
 EN.update({
     'Klicken: Kurve ein- oder ausblenden': 'Click: show or hide this curve',
-    'Beispieldokument der VitaParms-Demo – keine echten Befunddaten': 'Sample document of the VitaParms demo – no real medical data',
+    'Beispieldokument der ViviaParms-Demo – keine echten Befunddaten': 'Sample document of the ViviaParms demo – no real medical data',
     'Die alte Demo-Datenbank %1 lässt sich nicht löschen.': 'The old demo database %1 cannot be deleted.',
     'Arterielle Hypertonie (I10.90)\nDiabetes mellitus Typ 2 (E11.90)\nAsthma bronchiale (J45.9)\nAdipositas Grad I (E66.0)':
         'Essential hypertension (I10.90)\nType 2 diabetes mellitus (E11.90)\nBronchial asthma (J45.9)\nObesity class I (E66.0)',
@@ -1508,7 +1512,7 @@ EN.update({
     'Diabetesschulung begonnen': 'Started diabetes education course',
     'Gewicht stabil, Ernährungsumstellung zeigt Wirkung': 'Weight stable, change of diet is working',
     'Transaktion konnte nicht gestartet werden.': 'Could not start the transaction.',
-    'Aufnahme in VitaParms': 'Admission to VitaParms',
+    'Aufnahme in ViviaParms': 'Admission to ViviaParms',
     'Zittrig nach Gartenarbeit – Traubenzucker gegessen, nach 15 min 102 mg/dl': 'Shaky after gardening – took glucose tablets, 102 mg/dl after 15 min',
     'Die Demo-Daten konnten nicht gespeichert werden.': 'The demo data could not be saved.',
     'Praxis Dr. Sommer, Musterstadt': 'Dr Sommer’s practice, Musterstadt',
@@ -1572,7 +1576,7 @@ EN.update({
     'Öffnet ein zweites Fenster mit einer Beispielperson und 365 Tagen Messwerten': 'Opens a second window with a sample person and 365 days of readings',
     'Alle Kurven einblenden': 'Show all curves',
     '&Kurven (%1 ausgeblendet)': '&Curves (%1 hidden)',
-    'VitaParms – Demo': 'VitaParms – Demo',
+    'ViviaParms – Demo': 'ViviaParms – Demo',
     'Demo-Datenbank': 'Demo database',
     '<p>Die Demo öffnet ein <b>zweites Programmfenster</b> mit der erfundenen Person <i>Erika Mustermann</i>: %1 Tage Messwerte bis heute (mit Tagesprofilen und einem Infekt), Medikamentenplan, Termine und Befunde in der Krankenakte.</p><p>Die Demo hat eine eigene, verschlüsselte Datenbank und eigene Einstellungen; Sprache und Erscheinungsbild werden übernommen. Die Anmeldung erfolgt automatisch (Konto <tt>%2</tt>, Passwort <tt>%3</tt>). Bei jedem Start wird die Demo neu erzeugt – Sie können also nichts kaputt machen.</p><p>Ihre eigenen Daten bleiben unberührt.</p>':
         '<p>The demo opens a <b>second program window</b> with the fictitious person <i>Erika Mustermann</i>: %1 days of readings up to today (with daily profiles and an infection), medication plan, appointments and reports in the medical record.</p><p>The demo has its own encrypted database and its own settings; language and appearance are taken over. You are logged in automatically (account <tt>%2</tt>, password <tt>%3</tt>). The demo is recreated every time it starts – so you cannot break anything.</p><p>Your own data remains untouched.</p>',
@@ -1593,7 +1597,7 @@ EN.update({
     'Website jetzt einrichten?': 'Set up the website now?',
     'Lädt die verschlüsselten Daten aller Personen auf die eigene Website': 'Uploads the encrypted data of all persons to your own website',
     '&Website…': '&Website…',
-    'VitaParms': 'VitaParms',
+    'ViviaParms': 'ViviaParms',
     'Die Website konnte nicht aktualisiert werden:\n%1\n\nTrotzdem beenden?': 'The website could not be updated:\n%1\n\nQuit anyway?',
     '&Website einrichten…': 'Set up &website…',
     'Website:': 'Website:',
@@ -1617,14 +1621,14 @@ EN.update({
     'Upload-Schlüssel gültig': 'upload key valid',
     'Upload-Schlüssel passt NICHT': 'upload key does NOT match',
     'die Website wird beim ersten Hochladen mit diesem Schlüssel eingerichtet': 'the website will be set up with this key on the first upload',
-    '<p>VitaParms kann die Daten <b>aller Personen</b> – den gesamten Verlauf der Messwerte, Medikamente, Termine und Berichte, aber <b>keine Krankenakte</b> – auf Ihrer eigenen Website zum Ansehen bereitstellen, etwa für Angehörige oder die Arztpraxis.</p><p>Die Daten werden <b>vor dem Hochladen mit dem Master-Passwort verschlüsselt</b>. Auf dem Server liegt nur Zeichensalat; lesbar werden die Daten erst im Browser nach Eingabe des Passworts. Die Website kann nichts verändern.</p>': "<p>VitaParms can publish the data of <b>all persons</b> – the complete history of readings, medications, appointments and reports, but <b>no medical records</b> – on your own website for viewing, for example by relatives or the doctor's practice.</p><p>The data is <b>encrypted with the master password before uploading</b>. The server only stores scrambled data; it becomes readable only in the browser after entering the password. The website cannot change anything.</p>",
+    '<p>ViviaParms kann die Daten <b>aller Personen</b> – den gesamten Verlauf der Messwerte, Medikamente, Termine und Berichte, aber <b>keine Krankenakte</b> – auf Ihrer eigenen Website zum Ansehen bereitstellen, etwa für Angehörige oder die Arztpraxis.</p><p>Die Daten werden <b>vor dem Hochladen mit dem Master-Passwort verschlüsselt</b>. Auf dem Server liegt nur Zeichensalat; lesbar werden die Daten erst im Browser nach Eingabe des Passworts. Die Website kann nichts verändern.</p>': "<p>ViviaParms can publish the data of <b>all persons</b> – the complete history of readings, medications, appointments and reports, but <b>no medical records</b> – on your own website for viewing, for example by relatives or the doctor's practice.</p><p>The data is <b>encrypted with the master password before uploading</b>. The server only stores scrambled data; it becomes readable only in the browser after entering the password. The website cannot change anything.</p>",
     'Website &verwenden': '&Use website',
     'Zugang': 'Access',
     '&Adresse:': '&Address:',
     'Mit diesem Passwort melden sich alle Betrachter auf der Website an. Mindestens 10 Zeichen; ein langer Satz ist sicherer als ein kurzes, kompliziertes Wort.': 'All viewers sign in to the website with this password. At least 10 characters; a long sentence is safer than a short, complicated word.',
     '&Master-Passwort:': '&Master password:',
     'Passwort &anzeigen': '&Show password',
-    'Berechtigt VitaParms zum Hochladen. Die Website merkt sich beim ersten Hochladen diesen Schlüssel und nimmt danach nur noch Daten mit demselben Schlüssel an.': 'Authorises VitaParms to upload. The website remembers this key on the first upload and afterwards only accepts data with the same key.',
+    'Berechtigt ViviaParms zum Hochladen. Die Website merkt sich beim ersten Hochladen diesen Schlüssel und nimmt danach nur noch Daten mit demselben Schlüssel an.': 'Authorises ViviaParms to upload. The website remembers this key on the first upload and afterwards only accepts data with the same key.',
     '&Neu': '&New',
     'Neuen Upload-Schlüssel erzeugen – danach auf dem Server die Datei data/.uploadkey.php löschen, damit er übernommen wird.': 'Create a new upload key – then delete the file data/.uploadkey.php on the server so that it is accepted.',
     'Upload-Schlüssel': 'Upload key',
@@ -1673,7 +1677,7 @@ EN.update({
     'Abgesetzte zeigen': 'Show discontinued',
     'Abgleich fehlgeschlagen: %1': 'Synchronisation failed: %1',
     'Abgleich jetzt einrichten?': 'Set up synchronisation now?',
-    'Abgleich mit VitaParms am Computer': 'Synchronisation with VitaParms on the computer',
+    'Abgleich mit ViviaParms am Computer': 'Synchronisation with ViviaParms on the computer',
     'Abgleich mit anderen Geräten (Tablet)': 'Synchronisation with other devices (tablet)',
     'Abgleich verwenden': 'Use synchronisation',
     'Abgleich …': 'Synchronising …',
@@ -1715,7 +1719,7 @@ EN.update({
     'Blutdruck': 'Blood pressure',
     'Darreichungsform': 'Dosage form',
     'Das Stammblatt mit allen Messwerten, Medikamenten und Dokumenten wird gelöscht. Das lässt sich nicht rückgängig machen.': 'The master record with all readings, medications and documents will be deleted. This cannot be undone.',
-    'Das ist keine Kopplungsdatei von VitaParms.': 'This is not a VitaParms pairing file.',
+    'Das ist keine Kopplungsdatei von ViviaParms.': 'This is not a ViviaParms pairing file.',
     'Daten vom Computer übernehmen': 'Take over data from the computer',
     'Datenbank a&bgleichen': 'S&ynchronise database',
     'Datenbank anlegen': 'Create database',
@@ -1732,17 +1736,17 @@ EN.update({
     'Die Ausgabe konnte nicht erstellt werden.': 'The output could not be created.',
     'Die Datei %1 lässt sich nicht speichern.': 'The file %1 cannot be saved.',
     'Die Datei enthält den Upload-Schlüssel. Wer sie besitzt, kann die verschlüsselte Datenbank herunterladen (lesbar nur mit einem Anmeldekonto). Übertragen Sie sie nur auf eigene Geräte und löschen Sie sie danach.\n\nJetzt speichern?': 'The file contains the upload key. Whoever has it can download the encrypted database (readable only with a login account). Only transfer it to your own devices and delete it afterwards.\n\nSave now?',
-    'Die Daten werden auf diesem Tablet verschlüsselt gespeichert und – falls eingerichtet – verschlüsselt über Ihre eigene Website mit VitaParms am Computer abgeglichen.': 'The data is stored encrypted on this tablet and – if set up – synchronised encrypted with VitaParms on the computer via your own website.',
+    'Die Daten werden auf diesem Tablet verschlüsselt gespeichert und – falls eingerichtet – verschlüsselt über Ihre eigene Website mit ViviaParms am Computer abgeglichen.': 'The data is stored encrypted on this tablet and – if set up – synchronised encrypted with ViviaParms on the computer via your own website.',
     'Die Datenbank konnte nicht abgeglichen werden:\n%1\n\nTrotzdem beenden?': 'The database could not be synchronised:\n%1\n\nQuit anyway?',
     'Die Datenbank des anderen Geräts lässt sich nicht öffnen: %1': 'The database of the other device cannot be opened: %1',
     'Die Datenbank des anderen Geräts passt nicht zu dieser Datenbank (anderer Schlüssel).': 'The database of the other device does not match this database (different key).',
-    'Die Datenbank des anderen Geräts stammt von einer älteren VitaParms-Version. Bitte VitaParms auf dem anderen Gerät aktualisieren.': 'The database of the other device comes from an older VitaParms version. Please update VitaParms on the other device.',
+    'Die Datenbank des anderen Geräts stammt von einer älteren ViviaParms-Version. Bitte ViviaParms auf dem anderen Gerät aktualisieren.': 'The database of the other device comes from an older ViviaParms version. Please update ViviaParms on the other device.',
     'Die Messung wird endgültig gelöscht.': 'The reading will be deleted permanently.',
     'Die verschlüsselte Datenbank wird über Ihre eigene Website ausgetauscht. Änderungen beider Seiten werden zusammengeführt; bei gleichzeitiger Änderung derselben Angabe gilt die jüngere.': 'The encrypted database is exchanged via your own website. Changes on both sides are merged; if the same item was changed on both, the more recent change applies.',
     'Eigener Stand hochgeladen.': 'Own data uploaded.',
     'Ein Eintrag pro Zeile': 'One entry per line',
     'Eine neue, leere Datenbank nur auf diesem Tablet anlegen. Den Abgleich können Sie später einrichten.': 'Create a new, empty database on this tablet only. You can set up synchronisation later.',
-    'Einnahme-Rhythmus: %1 (änderbar in VitaParms am Computer)': 'Intake rhythm: %1 (can be changed in VitaParms on the computer)',
+    'Einnahme-Rhythmus: %1 (änderbar in ViviaParms am Computer)': 'Intake rhythm: %1 (can be changed in ViviaParms on the computer)',
     'Ende (optional)': 'End (optional)',
     'Ermäßigung des Rundfunkbeitrags': 'reduced broadcasting fee',
     'Excel': 'Excel',
@@ -1844,14 +1848,14 @@ EN.update({
     'Trotzdem speichern?': 'Save anyway?',
     'Verbindung prüfen': 'Check connection',
     'Verlaufskurven': 'Trend charts',
-    'VitaParms %1 – persönliches Gesundheitstagebuch, kein Medizinprodukt': 'VitaParms %1 – personal health diary, not a medical device',
-    'VitaParms %1 – persönliches Gesundheitstagebuch, kein Medizinprodukt. Open Source (MIT-Lizenz). Angemeldet als %2.': 'VitaParms %1 – personal health diary, not a medical device. Open source (MIT licence). Logged in as %2.',
-    'VitaParms am Computer gleicht die verschlüsselte Datenbank über Ihre Website ab. Sie brauchen die Adresse der Website und den Upload-Schlüssel (am Computer unter Extras → Website…).': 'VitaParms on the computer synchronises the encrypted database via your website. You need the website address and the upload key (on the computer under Tools → Website…).',
-    'VitaParms einrichten': 'Set up VitaParms',
-    'VitaParms ist ein <b>persönliches Tagebuch</b> für gesundheitsbezogene Messwerte – <b>kein Medizinprodukt</b>. Es stellt keine Diagnosen und ersetzt keine ärztliche Beratung. Die Verwendung erfolgt auf eigene Gefahr.': 'VitaParms is a <b>personal diary</b> for health-related readings – <b>not a medical device</b>. It makes no diagnoses and does not replace medical advice. Use at your own risk.',
+    'ViviaParms %1 – persönliches Gesundheitstagebuch, kein Medizinprodukt': 'ViviaParms %1 – personal health diary, not a medical device',
+    'ViviaParms %1 – persönliches Gesundheitstagebuch, kein Medizinprodukt. Quelloffen, PolyForm Noncommercial License 1.0.0 (nicht-kommerzielle Nutzung). Angemeldet als %2.': 'ViviaParms %1 – personal health diary, not a medical device. Source-available, PolyForm Noncommercial License 1.0.0 (noncommercial use). Logged in as %2.',
+    'ViviaParms am Computer gleicht die verschlüsselte Datenbank über Ihre Website ab. Sie brauchen die Adresse der Website und den Upload-Schlüssel (am Computer unter Extras → Website…).': 'ViviaParms on the computer synchronises the encrypted database via your website. You need the website address and the upload key (on the computer under Tools → Website…).',
+    'ViviaParms einrichten': 'Set up ViviaParms',
+    'ViviaParms ist ein <b>persönliches Tagebuch</b> für gesundheitsbezogene Messwerte – <b>kein Medizinprodukt</b>. Es stellt keine Diagnosen und ersetzt keine ärztliche Beratung. Die Verwendung erfolgt auf eigene Gefahr.': 'ViviaParms is a <b>personal diary</b> for health-related readings – <b>not a medical device</b>. It makes no diagnoses and does not replace medical advice. Use at your own risk.',
     'Wert ungewöhnlich (%1–%2)': 'Unusual value (%1–%2)',
     'Wie soll dieses Tablet beginnen?': 'How should this tablet start?',
-    'Willkommen bei VitaParms': 'Welcome to VitaParms',
+    'Willkommen bei ViviaParms': 'Welcome to ViviaParms',
     'Wird abgeglichen …': 'Synchronising …',
     'Wird geladen …': 'Loading …',
     'Zuletzt abgeglichen: %1 – %2': 'Last synchronised: %1 – %2',
@@ -1883,7 +1887,7 @@ EN.update({
     'unbefristet': 'unlimited',
     'wie das System': 'like the system',
     'z. B. Tablette': 'e.g. tablet',
-    'Über dieselbe Adresse und denselben Upload-Schlüssel tauschen VitaParms am Desktop und die Tablet-App die <b>verschlüsselte Datenbank</b> aus. Änderungen beider Seiten werden zusammengeführt; bei gleichzeitiger Änderung derselben Angabe gilt die jüngere.': 'Using the same address and upload key, VitaParms on the desktop and the tablet app exchange the <b>encrypted database</b>. Changes on both sides are merged; if the same item was changed on both, the more recent change applies.',
+    'Über dieselbe Adresse und denselben Upload-Schlüssel tauschen ViviaParms am Desktop und die Tablet-App die <b>verschlüsselte Datenbank</b> aus. Änderungen beider Seiten werden zusammengeführt; bei gleichzeitiger Änderung derselben Angabe gilt die jüngere.': 'Using the same address and upload key, ViviaParms on the desktop and the tablet app exchange the <b>encrypted database</b>. Changes on both sides are merged; if the same item was changed on both, the more recent change applies.',
     'Übernehmen': 'Apply',
     'Übersicht': 'Overview',
     # 0.10.1 – Medikationsliste für die Apotheke
@@ -1895,7 +1899,7 @@ EN.update({
     'Anlass': 'Occasion',
     'Bitte ergänzen – wird oft vergessen': 'Please add – often forgotten',
     'Bitte prüfen Sie diese Liste auf Wechselwirkungen, doppelte Wirkstoffe, Dosierung und Einnahmezeitpunkte. Ergänzungen und Notizen bitte unten eintragen.': 'Please check this list for interactions, duplicate active ingredients, dosage and intake times. Please enter additions and notes below.',
-    'Diese Liste wurde vom Anwender selbst mit VitaParms geführt. VitaParms prüft nicht auf Wechselwirkungen und ersetzt weder die Beratung in Apotheke oder Arztpraxis noch den bundeseinheitlichen Medikationsplan.': 'This list was kept by the user with VitaParms. VitaParms does not check for interactions and replaces neither advice from a pharmacy or doctor nor the official German medication plan (BMP).',
+    'Diese Liste wurde vom Anwender selbst mit ViviaParms geführt. ViviaParms prüft nicht auf Wechselwirkungen und ersetzt weder die Beratung in Apotheke oder Arztpraxis noch den bundeseinheitlichen Medikationsplan.': 'This list was kept by the user with ViviaParms. ViviaParms does not check for interactions and replaces neither advice from a pharmacy or doctor nor the official German medication plan (BMP).',
     'Fragen an die Apotheke': 'Questions for the pharmacy',
     'Gibt es Wechselwirkungen zwischen diesen Mitteln?': 'Are there interactions between these medicines?',
     'Hinweis: Apotheken prüfen Medikamente auf Wechselwirkungen. Bei fünf oder mehr dauerhaft ärztlich verordneten Arzneimitteln besteht alle zwölf Monate Anspruch auf eine erweiterte Medikationsberatung (pharmazeutische Dienstleistung, die Kosten trägt die Krankenkasse).': 'Note: pharmacies check medicines for interactions. In Germany, patients with five or more long-term prescribed medicines are entitled to an extended medication review every twelve months (pharmaceutical service paid by the health insurance).',
@@ -1940,7 +1944,7 @@ EN.update({
     'An Einnahme erinnern (in die Terminliste übernehmen)': 'Remind me to take it (add to the appointment list)',
     'Erinnern an': 'Remind on',
     'um': 'at',
-    'Die Erinnerungen erscheinen in der Terminliste und werden von VitaParms am Computer angezeigt.': 'The reminders appear in the appointment list and are shown by VitaParms on the computer.',
+    'Die Erinnerungen erscheinen in der Terminliste und werden von ViviaParms am Computer angezeigt.': 'The reminders appear in the appointment list and are shown by ViviaParms on the computer.',
 })
 CONTEXT.update({
     ('MedicationForm', 'morgens'): 'morning',
@@ -2038,7 +2042,7 @@ EN.update({
     ' von %1': ' by %1',
     'geliefert': 'delivered',
     'Rezept angefordert am: ____________ &nbsp;&nbsp; bestellt bei: ______________________ &nbsp;&nbsp; am: ____________ &nbsp;&nbsp; Abholung/Lieferung: ____________': 'Prescription requested on: ____________ &nbsp;&nbsp; ordered from: ______________________ &nbsp;&nbsp; on: ____________ &nbsp;&nbsp; collection/delivery: ____________',
-    'Erstellt mit VitaParms – Bestandsführung. Die Mengen sind Vorschläge; maßgeblich ist die ärztliche Verordnung.': 'Created with VitaParms – stock management. The quantities are suggestions; the prescription is what counts.',
+    'Erstellt mit ViviaParms – Bestandsführung. Die Mengen sind Vorschläge; maßgeblich ist die ärztliche Verordnung.': 'Created with ViviaParms – stock management. The quantities are suggestions; the prescription is what counts.',
     'Bestellliste Medikamente': 'Medication order list',
     'Medikamentenbestand – %1': 'Medication stock – %1',
     '&Bestand': '&Stock',
@@ -2065,7 +2069,7 @@ EN.update({
     '<small>Erfasst werden Medikamente, für die eine Packung eingebucht ist. Nach jedem Stellen mit dem Assistenten wird die gestellte Menge abgebucht, zuerst aus der Packung, die am frühesten verfällt; verfallene Packungen zählen nicht zum Bestand. „Bestellen bis“ = Reichweite minus Vorlauf (%1 Tage), an Wochenenden auf den Freitag davor.</small>': '<small>Medicines are tracked once a pack has been received. After every preparation with the assistant the prepared amount is deducted, first from the pack that expires earliest; expired packs do not count as stock. “Order by” = coverage minus lead time (%1 days), moved to the Friday before at weekends.</small>',
     '<br><b>Medikamente jetzt nachbestellen: %1</b>': '<br><b>Medicines to reorder now: %1</b>',
     '%1 (offen: %2)': '%1 (open: %2)',
-    '<b>Eine Bestellliste ist noch nicht als bestellt bestätigt.</b> Rezept besorgen, bestellen und dann „Als bestellt bestätigen“ – bis dahin erinnert VitaParms daran.': '<b>An order list has not yet been confirmed as ordered.</b> Get the prescription, order and then “Confirm as ordered” – until then VitaParms keeps reminding you.',
+    '<b>Eine Bestellliste ist noch nicht als bestellt bestätigt.</b> Rezept besorgen, bestellen und dann „Als bestellt bestätigen“ – bis dahin erinnert ViviaParms daran.': '<b>An order list has not yet been confirmed as ordered.</b> Get the prescription, order and then “Confirm as ordered” – until then ViviaParms keeps reminding you.',
     '<small>Bestelllisten bleiben hier gespeichert und lassen sich jederzeit erneut drucken oder als PDF speichern.</small>': '<small>Order lists remain stored here and can be printed or saved as PDF again at any time.</small>',
     '%1 (%2 Stück)': '%1 (%2 pcs)',
     'Packung einbuchen': 'Receive pack',
@@ -2093,7 +2097,7 @@ EN.update({
     'von Hand hinzugefügt': 'added manually',
     'Zurzeit muss kein Medikament nachbestellt werden.': 'No medicine needs to be reordered at the moment.',
     'Bestellung bestätigen': 'Confirm order',
-    'Die Bestellung mit %1 Position(en) wurde aufgegeben. Danach erinnert VitaParms nicht mehr daran.': 'The order with %1 item(s) has been placed. After this VitaParms no longer reminds you of it.',
+    'Die Bestellung mit %1 Position(en) wurde aufgegeben. Danach erinnert ViviaParms nicht mehr daran.': 'The order with %1 item(s) has been placed. After this ViviaParms no longer reminds you of it.',
     'Bestellt &am': 'Ordered &on',
     'z. B. Rezept bei Dr. … angefordert, bestellt bei … Apotheke, Abholung Mi': 'e.g. prescription requested from Dr …, ordered from … pharmacy, collect Wed',
     '&Bestätigen': '&Confirm',
@@ -2105,7 +2109,7 @@ EN.update({
     'Diese offene Bestellliste löschen?': 'Delete this open order list?',
     'Medikament %1: Der Bestand reichte beim Stellen nicht – bitte Bestand prüfen.': 'Medicine %1: the stock was insufficient when preparing – please check the stock.',
     'Medikamente nachbestellen – %1': 'Reorder medicines – %1',
-    'Die Bestellliste ist unter „Medikamentenbestand → Bestellungen“ gespeichert. Bis die Bestellung als bestellt bestätigt ist, erinnert VitaParms daran.': 'The order list is stored under “Medication stock → Orders”. VitaParms keeps reminding you until the order is confirmed as ordered.',
+    'Die Bestellliste ist unter „Medikamentenbestand → Bestellungen“ gespeichert. Bis die Bestellung als bestellt bestätigt ist, erinnert ViviaParms daran.': 'The order list is stored under “Medication stock → Orders”. ViviaParms keeps reminding you until the order is confirmed as ordered.',
     'Bestellliste &öffnen…': '&Open order list…',
     '&Später': '&Later',
 })
@@ -2126,8 +2130,8 @@ EN.update({
 EN.update({
     'Die Datei lässt sich nicht öffnen: %1': 'The file cannot be opened: %1',
     'Die Übertragungsdatei ist beschädigt oder unvollständig.': 'The transfer file is damaged or incomplete.',
-    'Das ist keine VitaParms-Datenbank.': 'This is not a VitaParms database.',
-    'Die Schlüsseldatei (.keys) ist beschädigt oder gehört nicht zu VitaParms.': 'The key file (.keys) is damaged or does not belong to VitaParms.',
+    'Das ist keine ViviaParms-Datenbank.': 'This is not a ViviaParms database.',
+    'Die Schlüsseldatei (.keys) ist beschädigt oder gehört nicht zu ViviaParms.': 'The key file (.keys) is damaged or does not belong to ViviaParms.',
     'Die bisherige Datenbank lässt sich nicht beiseitelegen.': 'The previous database cannot be moved aside.',
     'Datenbank &importieren…': '&Import database…',
     'Eine Datenbank von einem anderen Gerät oder eine Sicherung übernehmen (*.vpdb oder *.sqlite mit .keys-Datei)': 'Take over a database from another device or a backup (*.vpdb or *.sqlite with .keys file)',
@@ -2135,10 +2139,10 @@ EN.update({
     'Datenbank e&xportieren (für ein anderes Gerät)…': 'E&xport database (for another device)…',
     'Datenbank und Anmeldekonten als eine Datei (*.vpdb) – z. B. per USB auf das Tablet': 'Database and login accounts as one file (*.vpdb) – e.g. via USB to the tablet',
     'Sicherung wiederherstellen / Datenbank importieren': 'Restore backup / import database',
-    'VitaParms-Datenbank (*.vpdb *.sqlite *.db);;Alle Dateien (*)': 'VitaParms database (*.vpdb *.sqlite *.db);;All files (*)',
+    'ViviaParms-Datenbank (*.vpdb *.sqlite *.db);;Alle Dateien (*)': 'ViviaParms database (*.vpdb *.sqlite *.db);;All files (*)',
     'Die aktuelle Datenbank\n%1\nwird durch die gewählte ersetzt.\n\nDer bisherige Stand wird vorher als Kopie (*.vor-import-…) abgelegt.%2\n\nAnschließend ist eine Anmeldung mit den Konten der gewählten Datenbank nötig.\nFortfahren?': 'The current database\n%1\nwill be replaced by the selected one.\n\nThe previous state is first saved as a copy (*.vor-import-…).%2\n\nAfterwards you need to log in with an account of the selected database.\nContinue?',
     'Datenbank exportieren': 'Export database',
-    'VitaParms-Übertragungsdatei (*.vpdb)': 'VitaParms transfer file (*.vpdb)',
+    'ViviaParms-Übertragungsdatei (*.vpdb)': 'ViviaParms transfer file (*.vpdb)',
     'Gespeichert:\n%1\n\nDie Datei enthält die verschlüsselte Datenbank und die Anmeldekonten. Auf dem anderen Gerät (Computer oder Tablet) bei der Anmeldung „Datenbank importieren…“ wählen. Behandeln Sie die Datei wie eine Sicherung – ohne Kontopasswort lässt sie sich nicht öffnen.': 'Saved:\n%1\n\nThe file contains the encrypted database and the login accounts. On the other device (computer or tablet) choose “Import database…” at login. Treat the file like a backup – it cannot be opened without an account password.',
     'täglich (Tagesdosierer)': 'daily (daily pill box)',
     'wöchentlich (Wochendosierer, ab %1)': 'weekly (weekly pill box, from %1)',
@@ -2179,7 +2183,7 @@ EN.update({
     'keine Schlüsseldatei gewählt': 'no key file selected',
     'Datenbank übernehmen': 'Take over database',
     'Datenbank-Datei wählen': 'Select database file',
-    'VitaParms-Datenbank (*.vpdb *.sqlite *.db)': 'VitaParms database (*.vpdb *.sqlite *.db)',
+    'ViviaParms-Datenbank (*.vpdb *.sqlite *.db)': 'ViviaParms database (*.vpdb *.sqlite *.db)',
     'Schlüsseldatei (*.keys)': 'Key file (*.keys)',
 })
 
@@ -2227,7 +2231,7 @@ EN.update({
 # v0.12.0: Erste Schritte / Getting Started, Sprachwahl beim ersten Start
 EN.update({
     '<p>Es gibt noch keine Datenbank.</p><p>Eine <b>neue Datenbank</b> anlegen oder eine vorhandene – von einem anderen Gerät (*.vpdb) oder aus einer Sicherung (*.sqlite) – <b>importieren</b>?</p><p>Zum Kennenlernen: <b>Erste Schritte</b> erklärt die Bedienung an Beispielen, die <b>Demo</b> öffnet ein zweites Fenster mit Beispieldaten zum Ausprobieren.</p>':
-        '<p>There is no database yet.</p><p>Create a <b>new database</b> or <b>import</b> an existing one – from another device (*.vpdb) or from a backup (*.sqlite)?</p><p>To get to know VitaParms: <b>Getting Started</b> explains how to use it with examples, the <b>demo</b> opens a second window with sample data to try out.</p>',
+        '<p>There is no database yet.</p><p>Create a <b>new database</b> or <b>import</b> an existing one – from another device (*.vpdb) or from a backup (*.sqlite)?</p><p>To get to know ViviaParms: <b>Getting Started</b> explains how to use it with examples, the <b>demo</b> opens a second window with sample data to try out.</p>',
     '&Erste Schritte': '&Getting Started',
     'Erste Schritte': 'Getting Started',
     'Öffnet die Kurzanleitung „Erste Schritte“': 'Opens the quick guide “Getting Started”',
@@ -2304,8 +2308,8 @@ EN.update({
     'adb antwortet nicht.': 'adb does not respond.',
     'adb hat keinen Port weitergeleitet.': 'adb did not forward a port.',
     'Tablet oder Smartphone über USB abgleichen': 'Sync tablet or smartphone via USB',
-    '<p>So geht es:</p><ol><li>Auf dem Tablet in VitaParms <b>Einstellungen → USB-Abgleich mit dem Computer</b> öffnen. Dort steht ein sechsstelliger Code.</li><li>Tablet mit dem USB-Kabel anschließen. Auf dem Tablet muss <b>USB-Debugging</b> eingeschaltet sein; die Rückfrage „USB-Debugging zulassen?“ bestätigen.</li><li>Den Code hier eingeben und <b>Verbinden</b> wählen.</li></ol>':
-        '<p>How it works:</p><ol><li>On the tablet, open <b>Settings → USB sync with the computer</b> in VitaParms. It shows a six-digit code.</li><li>Connect the tablet with the USB cable. <b>USB debugging</b> must be switched on on the tablet; confirm the prompt “Allow USB debugging?”.</li><li>Enter the code here and choose <b>Connect</b>.</li></ol>',
+    '<p>So geht es:</p><ol><li>Auf dem Tablet in ViviaParms <b>Einstellungen → USB-Abgleich mit dem Computer</b> öffnen. Dort steht ein sechsstelliger Code.</li><li>Tablet mit dem USB-Kabel anschließen. Auf dem Tablet muss <b>USB-Debugging</b> eingeschaltet sein; die Rückfrage „USB-Debugging zulassen?“ bestätigen.</li><li>Den Code hier eingeben und <b>Verbinden</b> wählen.</li></ol>':
+        '<p>How it works:</p><ol><li>On the tablet, open <b>Settings → USB sync with the computer</b> in ViviaParms. It shows a six-digit code.</li><li>Connect the tablet with the USB cable. <b>USB debugging</b> must be switched on on the tablet; confirm the prompt “Allow USB debugging?”.</li><li>Enter the code here and choose <b>Connect</b>.</li></ol>',
     'Verbindung': 'Connection',
     'Android-Hilfsprogramm:': 'Android tool:',
     'Erneut suchen': 'Search again',
@@ -2363,8 +2367,8 @@ EN.update({
     'Wartet auf den Computer …': 'Waiting for the computer …',
     'Verbunden mit dem Computer %1.': 'Connected to the computer %1.',
     'Mehrmals ein falscher Code – es gilt jetzt ein neuer Code.': 'Wrong code several times – a new code is now valid.',
-    'VitaParms auf Computer und Tablet passen nicht zusammen. Bitte beide auf denselben Stand bringen.':
-        'VitaParms on the computer and on the tablet do not match. Please update both to the same version.',
+    'ViviaParms auf Computer und Tablet passen nicht zusammen. Bitte beide auf denselben Stand bringen.':
+        'ViviaParms on the computer and on the tablet do not match. Please update both to the same version.',
     'Nicht angemeldet.': 'Not logged in.',
     'Datenbank vom Computer wird übernommen …': 'Taking over the database from the computer …',
     'Nicht möglich.': 'Not possible.',
@@ -2388,8 +2392,8 @@ EN.update({
         'Switch on USB debugging once: Settings → About tablet → tap “Build number” 7 times. Then Settings → System → Developer options → switch on “USB debugging”.',
     'Tablet mit dem USB-Kabel an den Computer anschließen. Die Rückfrage „USB-Debugging zulassen?“ bestätigen (am besten mit „Immer von diesem Computer zulassen“).':
         'Connect the tablet to the computer with the USB cable. Confirm the prompt “Allow USB debugging?” (preferably with “Always allow from this computer”).',
-    'Am Computer in VitaParms „Datei → Mit Tablet über USB abgleichen…“ wählen, den Code oben eingeben und „Verbinden“ wählen.':
-        'On the computer, choose “File → Sync with tablet via USB…” in VitaParms, enter the code shown above and choose “Connect”.',
+    'Am Computer in ViviaParms „Datei → Mit Tablet über USB abgleichen…“ wählen, den Code oben eingeben und „Verbinden“ wählen.':
+        'On the computer, choose “File → Sync with tablet via USB…” in ViviaParms, enter the code shown above and choose “Connect”.',
     'Am Computer „Abgleichen“ wählen. Neue und geänderte Einträge beider Geräte werden zusammengeführt; bei gleichzeitiger Änderung gilt die jüngere. Diese Seite bleibt dabei geöffnet.':
         'On the computer, choose “Synchronise”. New and changed entries of both devices are merged; if the same item was changed on both, the more recent change wins. Keep this page open meanwhile.',
     'Übertragen wird nur die verschlüsselte Datenbank; ohne Kontopasswort lässt sie sich nicht öffnen. Die Verbindung ist nur über das USB-Kabel möglich, solange diese Seite geöffnet ist.':
@@ -2398,8 +2402,8 @@ EN.update({
     'Ohne Website: Tablet per USB-Kabel an den Computer anschließen und die Datenbank direkt abgleichen.':
         'Without a website: connect the tablet to the computer with a USB cable and synchronise the database directly.',
     'Über das USB-Kabel vom Computer übernehmen': 'Take over from the computer via USB cable',
-    'Tablet per USB-Kabel an den Computer anschließen; VitaParms am Computer überträgt seine Datenbank direkt (Datei → Mit Tablet über USB abgleichen…). USB-Debugging muss eingeschaltet sein.':
-        'Connect the tablet to the computer with a USB cable; VitaParms on the computer transfers its database directly (File → Sync with tablet via USB…). USB debugging must be switched on.',
+    'Tablet per USB-Kabel an den Computer anschließen; ViviaParms am Computer überträgt seine Datenbank direkt (Datei → Mit Tablet über USB abgleichen…). USB-Debugging muss eingeschaltet sein.':
+        'Connect the tablet to the computer with a USB cable; ViviaParms on the computer transfers its database directly (File → Sync with tablet via USB…). USB debugging must be switched on.',
 })
 CONTEXT.update({("UsbSyncDialog", "Auswählen…"): "Choose…", ("UsbSyncDialog", "nicht gefunden"): "not found"})
 
@@ -2410,7 +2414,7 @@ EN.update({
         'Synchronise the database with the tablet over the USB cable before quitting?\n\nOn the tablet, open Settings → “USB sync with the computer”; it shows the code for the connection.',
     '&Abgleichen…': '&Synchronise…',
     '&Ohne Abgleich beenden': '&Quit without syncing',
-    'Beim &Beenden von VitaParms fragen, ob abgeglichen werden soll': 'Ask whether to synchronise when &quitting VitaParms',
+    'Beim &Beenden von ViviaParms fragen, ob abgeglichen werden soll': 'Ask whether to synchronise when &quitting ViviaParms',
     '↻ %1 – Termine: %2': '↻ %1 – dates: %2',
     'Bitte Datum (TT.MM.JJJJ) und Uhrzeit (HH:MM) des Beginns prüfen.': 'Please check the start date (DD.MM.YYYY) and time (HH:MM).',
     'Den Termin gibt es nicht mehr.': 'This appointment no longer exists.',
@@ -2425,8 +2429,8 @@ EN.update({
     '%1 Termine': '%1 appointments',
     'Benachrichtigung': 'Notification',
     'Ton': 'Sound',
-    'Die E-Mail-Erinnerung dieses Termins verschickt VitaParms am Computer.': 'The e-mail reminder for this appointment is sent by VitaParms on the computer.',
-    'Das Tablet erinnert mit einer Benachrichtigung – auch wenn VitaParms im Hintergrund ist.': 'The tablet reminds you with a notification – even when VitaParms is in the background.',
+    'Die E-Mail-Erinnerung dieses Termins verschickt ViviaParms am Computer.': 'The e-mail reminder for this appointment is sent by ViviaParms on the computer.',
+    'Das Tablet erinnert mit einer Benachrichtigung – auch wenn ViviaParms im Hintergrund ist.': 'The tablet reminds you with a notification – even when ViviaParms is in the background.',
     'Kommende': 'Upcoming',
     'Diese Woche': 'This week',
     'Dieser Monat': 'This month',
@@ -2437,8 +2441,8 @@ EN.update({
     'Ohne Abgleich sperren': 'Lock without syncing',
     'Ohne Abgleich beenden': 'Quit without syncing',
     'Mit dem Computer abgleichen?': 'Sync with the computer?',
-    'Die Werte dieses Tablets über das USB-Kabel mit VitaParms am Computer abgleichen? Am Computer dazu „Datei → Mit Tablet über USB abgleichen…“ wählen und den Code eingeben, den das Tablet gleich anzeigt.':
-        'Synchronise this tablet’s data with VitaParms on the computer over the USB cable? On the computer choose “File → Sync with tablet via USB…” and enter the code the tablet is about to show.',
+    'Die Werte dieses Tablets über das USB-Kabel mit ViviaParms am Computer abgleichen? Am Computer dazu „Datei → Mit Tablet über USB abgleichen…“ wählen und den Code eingeben, den das Tablet gleich anzeigt.':
+        'Synchronise this tablet’s data with ViviaParms on the computer over the USB cable? On the computer choose “File → Sync with tablet via USB…” and enter the code the tablet is about to show.',
     'USB-Abgleich öffnen': 'Open USB sync',
     'Oder eigener Messzeitpunkt': 'Or your own time point',
     'z. B. nach dem Spaziergang': 'e.g. after the walk',
@@ -2451,7 +2455,7 @@ EN.update({
     'Termin: %1': 'Appointment: %1',
     'Termin-Erinnerungen': 'Appointment reminders',
     'Termin-Erinnerungen (ohne Ton)': 'Appointment reminders (silent)',
-    'Erinnerungen an Termine und Medikamente aus VitaParms': 'Reminders for appointments and medication from VitaParms',
+    'Erinnerungen an Termine und Medikamente aus ViviaParms': 'Reminders for appointments and medication from ViviaParms',
     'Termin-Erinnerung': 'Appointment reminder',
     'Beim Beenden und Sperren fragen, ob abgeglichen werden soll': 'Ask whether to synchronise when quitting or locking',
 })
@@ -2459,28 +2463,28 @@ CONTEXT.update({("AppointmentsPage", "erledigt"): "done", ("AppointmentEditPage"
 
 # ---- 0.14.0: USB ohne Code, Code bis Programmende, Beenden auf dem Tablet
 EN.update({
-    'Vor dem Beenden die Datenbank über das USB-Kabel mit dem Tablet abgleichen?\n\nDas Tablet muss angeschlossen sein, VitaParms darauf geöffnet und angemeldet.':
-        'Synchronise the database with the tablet over the USB cable before quitting?\n\nThe tablet must be connected, with VitaParms open and logged in.',
-    'Am Tablet wurde seit dem Start von VitaParms noch kein Code angezeigt. Bitte dort Einstellungen → „USB-Abgleich mit dem Computer“ öffnen – oder das Codefeld leer lassen, wenn beide Geräte dieselbe Datenbank verwenden.':
-        'No code has been shown on the tablet since VitaParms started. Please open Settings → “USB sync with the computer” there – or leave the code field empty if both devices use the same database.',
-    'Am Tablet ist niemand angemeldet. Bitte VitaParms auf dem Tablet öffnen und anmelden – oder für die erste Einrichtung dort „USB-Abgleich mit dem Computer“ öffnen und den Code eingeben.':
-        'Nobody is logged in on the tablet. Please open VitaParms on the tablet and log in – or, for the first setup, open “USB sync with the computer” there and enter the code.',
-    'VitaParms auf dem Tablet antwortet nicht. Bitte das Tablet entsperren, VitaParms öffnen und anmelden (die App muss im Vordergrund sein).':
-        'VitaParms on the tablet does not respond. Please unlock the tablet, open VitaParms and log in (the app must be in the foreground).',
+    'Vor dem Beenden die Datenbank über das USB-Kabel mit dem Tablet abgleichen?\n\nDas Tablet muss angeschlossen sein, ViviaParms darauf geöffnet und angemeldet.':
+        'Synchronise the database with the tablet over the USB cable before quitting?\n\nThe tablet must be connected, with ViviaParms open and logged in.',
+    'Am Tablet wurde seit dem Start von ViviaParms noch kein Code angezeigt. Bitte dort Einstellungen → „USB-Abgleich mit dem Computer“ öffnen – oder das Codefeld leer lassen, wenn beide Geräte dieselbe Datenbank verwenden.':
+        'No code has been shown on the tablet since ViviaParms started. Please open Settings → “USB sync with the computer” there – or leave the code field empty if both devices use the same database.',
+    'Am Tablet ist niemand angemeldet. Bitte ViviaParms auf dem Tablet öffnen und anmelden – oder für die erste Einrichtung dort „USB-Abgleich mit dem Computer“ öffnen und den Code eingeben.':
+        'Nobody is logged in on the tablet. Please open ViviaParms on the tablet and log in – or, for the first setup, open “USB sync with the computer” there and enter the code.',
+    'ViviaParms auf dem Tablet antwortet nicht. Bitte das Tablet entsperren, ViviaParms öffnen und anmelden (die App muss im Vordergrund sein).':
+        'ViviaParms on the tablet does not respond. Please unlock the tablet, open ViviaParms and log in (the app must be in the foreground).',
     'Das Tablet verwendet eine andere Datenbank. Für die erste Einrichtung bitte am Tablet „USB-Abgleich mit dem Computer“ öffnen und den angezeigten Code eingeben.':
         'The tablet uses a different database. For the first setup, please open “USB sync with the computer” on the tablet and enter the code shown.',
     'Die Anmeldung am Tablet ist fehlgeschlagen.': 'Logging in to the tablet failed.',
-    '<p>So geht es:</p><ol><li>Tablet mit dem USB-Kabel anschließen. Auf dem Tablet muss <b>USB-Debugging</b> eingeschaltet sein; die Rückfrage „USB-Debugging zulassen?“ bestätigen.</li><li>VitaParms auf dem Tablet öffnen und anmelden.</li><li><b>Verbinden</b> wählen. Verwenden beide Geräte dieselbe Datenbank, ist kein Code nötig. Für die erste Einrichtung auf dem Tablet <b>Einstellungen → USB-Abgleich mit dem Computer</b> öffnen und den dort angezeigten Code eingeben.</li></ol>':
-        '<p>How it works:</p><ol><li>Connect the tablet with the USB cable. <b>USB debugging</b> must be switched on on the tablet; confirm the prompt “Allow USB debugging?”.</li><li>Open VitaParms on the tablet and log in.</li><li>Choose <b>Connect</b>. If both devices use the same database, no code is needed. For the first setup, open <b>Settings → USB sync with the computer</b> on the tablet and enter the code shown there.</li></ol>',
+    '<p>So geht es:</p><ol><li>Tablet mit dem USB-Kabel anschließen. Auf dem Tablet muss <b>USB-Debugging</b> eingeschaltet sein; die Rückfrage „USB-Debugging zulassen?“ bestätigen.</li><li>ViviaParms auf dem Tablet öffnen und anmelden.</li><li><b>Verbinden</b> wählen. Verwenden beide Geräte dieselbe Datenbank, ist kein Code nötig. Für die erste Einrichtung auf dem Tablet <b>Einstellungen → USB-Abgleich mit dem Computer</b> öffnen und den dort angezeigten Code eingeben.</li></ol>':
+        '<p>How it works:</p><ol><li>Connect the tablet with the USB cable. <b>USB debugging</b> must be switched on on the tablet; confirm the prompt “Allow USB debugging?”.</li><li>Open ViviaParms on the tablet and log in.</li><li>Choose <b>Connect</b>. If both devices use the same database, no code is needed. For the first setup, open <b>Settings → USB sync with the computer</b> on the tablet and enter the code shown there.</li></ol>',
     'nur für die erste Einrichtung': 'only for the first setup',
     'Noch nicht verbunden: %1': 'Not connected yet: %1',
     'Code für den Computer – nur für die erste Einrichtung nötig': 'Code for the computer – only needed for the first setup',
-    'Am Computer in VitaParms „Datei → Mit Tablet über USB abgleichen…“ wählen und „Verbinden“. Verwenden beide Geräte dieselbe Datenbank, ist kein Code nötig – VitaParms muss hier nur geöffnet und angemeldet sein. Den Code oben braucht es für die erste Einrichtung oder eine andere Datenbank.':
-        'On the computer, choose “File → Sync with tablet via USB…” in VitaParms and “Connect”. If both devices use the same database, no code is needed – VitaParms just has to be open and logged in here. The code above is needed for the first setup or a different database.',
+    'Am Computer in ViviaParms „Datei → Mit Tablet über USB abgleichen…“ wählen und „Verbinden“. Verwenden beide Geräte dieselbe Datenbank, ist kein Code nötig – ViviaParms muss hier nur geöffnet und angemeldet sein. Den Code oben braucht es für die erste Einrichtung oder eine andere Datenbank.':
+        'On the computer, choose “File → Sync with tablet via USB…” in ViviaParms and “Connect”. If both devices use the same database, no code is needed – ViviaParms just has to be open and logged in here. The code above is needed for the first setup or a different database.',
     'Am Computer „Abgleichen“ wählen. Neue und geänderte Einträge beider Geräte werden zusammengeführt; bei gleichzeitiger Änderung gilt die jüngere.':
         'On the computer, choose “Synchronise”. New and changed entries of both devices are merged; if the same item was changed on both, the more recent change wins.',
-    'Übertragen wird nur die verschlüsselte Datenbank; ohne Kontopasswort lässt sie sich nicht öffnen. Verbinden kann sich nur ein Computer über das USB-Kabel: ohne Code nur mit derselben Datenbank, mit dem Code, solange VitaParms läuft (der Code bleibt bis zum Beenden gleich).':
-        'Only the encrypted database is transferred; it cannot be opened without an account password. Only a computer connected via the USB cable can connect: without a code only with the same database, with the code as long as VitaParms is running (the code stays the same until you quit).',
+    'Übertragen wird nur die verschlüsselte Datenbank; ohne Kontopasswort lässt sie sich nicht öffnen. Verbinden kann sich nur ein Computer über das USB-Kabel: ohne Code nur mit derselben Datenbank, mit dem Code, solange ViviaParms läuft (der Code bleibt bis zum Beenden gleich).':
+        'Only the encrypted database is transferred; it cannot be opened without an account password. Only a computer connected via the USB cable can connect: without a code only with the same database, with the code as long as ViviaParms is running (the code stays the same until you quit).',
 })
 
 # ---- 0.15.0: Quartalswechsel, BZ-Tagesprofil
@@ -2495,8 +2499,8 @@ EN.update({
     'BZ-Tagesprofil': 'BG day profile',
     'Blutzucker messen: %1': 'Measure blood glucose: %1',
     'BZ-Tagesprofil – %1': 'BG day profile – %1',
-    'VitaParms erinnert zu den gewählten Zeitpunkten an die Blutzuckermessung und öffnet auf Wunsch gleich das Erfassungsfenster mit dem passenden Messzeitpunkt. Die Erinnerungen stehen als Termine im Terminplaner (und kommen mit dem Abgleich aufs Tablet).':
-        'VitaParms reminds you to measure your blood glucose at the selected times and, if you like, opens the entry window with the matching time point right away. The reminders appear as appointments in the planner (and reach the tablet when synchronising).',
+    'ViviaParms erinnert zu den gewählten Zeitpunkten an die Blutzuckermessung und öffnet auf Wunsch gleich das Erfassungsfenster mit dem passenden Messzeitpunkt. Die Erinnerungen stehen als Termine im Terminplaner (und kommen mit dem Abgleich aufs Tablet).':
+        'ViviaParms reminds you to measure your blood glucose at the selected times and, if you like, opens the entry window with the matching time point right away. The reminders appear as appointments in the planner (and reach the tablet when synchronising).',
     '&Tag:': '&Day:',
     'Zeitpunkte': 'Time points',
     'Standardzeiten': 'Default times',
@@ -2540,8 +2544,8 @@ EN.update({
     'Bitte die Uhrzeiten prüfen (HH:MM).': 'Please check the times (HH:MM).',
     'Tagesprofil beenden': 'Stop day profile',
     'Tagesprofil starten': 'Start day profile',
-    'VitaParms erinnert zu den gewählten Zeitpunkten an die Blutzuckermessung und öffnet auf Wunsch gleich das Erfassungsfenster mit dem passenden Messzeitpunkt. Die Erinnerungen stehen als Termine im Terminplaner (und kommen mit dem Abgleich auf den Computer).':
-        'VitaParms reminds you to measure your blood glucose at the selected times and, if you like, opens the entry form with the matching time point right away. The reminders appear as appointments in the planner (and reach the computer when synchronising).',
+    'ViviaParms erinnert zu den gewählten Zeitpunkten an die Blutzuckermessung und öffnet auf Wunsch gleich das Erfassungsfenster mit dem passenden Messzeitpunkt. Die Erinnerungen stehen als Termine im Terminplaner (und kommen mit dem Abgleich auf den Computer).':
+        'ViviaParms reminds you to measure your blood glucose at the selected times and, if you like, opens the entry form with the matching time point right away. The reminders appear as appointments in the planner (and reach the computer when synchronising).',
     'Erinnerung mit Ton': 'Reminder with sound',
     'Zeit für die Blutzuckermessung (%1).': 'Time to measure blood glucose (%1).',
     'Später': 'Later',
@@ -2555,10 +2559,10 @@ EN.update({
     'Das Dokument selbst (PDF) legen Sie am Computer in der Krankenakte ab.': 'You file the document itself (PDF) in the medical record on the computer.',
     'Erinnerungen': 'Reminders',
     'An den Quartalswechsel erinnern (KV-Karte in den Praxen einlesen lassen)': 'Remind me of the change of quarter (have the health insurance card read at the practices)',
-    'Benachrichtigungen sind erlaubt: Termine und das BZ-Tagesprofil erinnern auch, wenn VitaParms im Hintergrund ist.':
-        'Notifications are allowed: appointments and the BG day profile remind you even when VitaParms is in the background.',
-    'Benachrichtigungen sind nicht erlaubt – Erinnerungen erscheinen nur, solange VitaParms geöffnet ist.':
-        'Notifications are not allowed – reminders only appear while VitaParms is open.',
+    'Benachrichtigungen sind erlaubt: Termine und das BZ-Tagesprofil erinnern auch, wenn ViviaParms im Hintergrund ist.':
+        'Notifications are allowed: appointments and the BG day profile remind you even when ViviaParms is in the background.',
+    'Benachrichtigungen sind nicht erlaubt – Erinnerungen erscheinen nur, solange ViviaParms geöffnet ist.':
+        'Notifications are not allowed – reminders only appear while ViviaParms is open.',
     'Benachrichtigungen erlauben': 'Allow notifications',
 })
 EN.update({
@@ -2624,8 +2628,8 @@ EN.update({
     'Sollwert %1 l/min (%2)': 'predicted value %1 l/min (%2)',
     'Bezugswert: %1 l/min (%2) – gelb unter %3, rot unter %4 l/min.': 'Reference value: %1 l/min (%2) – yellow below %3, red below %4 l/min.',
     'Peak Flow – %1': 'Peak flow – %1',
-    'Bezug: %1. VitaParms ist kein Medizinprodukt – maßgeblich ist Ihr ärztlicher Asthma-Aktionsplan.':
-        'Reference: %1. VitaParms is not a medical device – your asthma action plan from your doctor takes precedence.',
+    'Bezug: %1. ViviaParms ist kein Medizinprodukt – maßgeblich ist Ihr ärztlicher Asthma-Aktionsplan.':
+        'Reference: %1. ViviaParms is not a medical device – your asthma action plan from your doctor takes precedence.',
     'Persönlicher Bestwert (l/min)': 'Personal best (l/min)',
     'mit dem Arzt festgelegt': 'agreed with the doctor',
 })
@@ -2947,8 +2951,8 @@ EN.update({
     'Ein- und Ausfuhr (Tagesbilanz)': 'Intake and output (daily balance)',
     ': Einfuhr %1 ml, Ausfuhr %2 ml, Bilanz %3': ': intake %1 ml, output %2 ml, balance %3',
     'Ödeme: %1': 'Oedema: %1', 'Gewichtszunahme': 'Weight gain', 'Trinkmenge': 'Fluid intake', 'Bitte beachten': 'Please note',
-    'VitaParms ist kein Medizinprodukt – maßgeblich sind die Anweisungen Ihrer Ärztin oder Ihres Arztes.':
-        'VitaParms is not a medical device – your doctor’s instructions take precedence.',
+    'ViviaParms ist kein Medizinprodukt – maßgeblich sind die Anweisungen Ihrer Ärztin oder Ihres Arztes.':
+        'ViviaParms is not a medical device – your doctor’s instructions take precedence.',
     '&INR (Gerinnung)': '&INR (coagulation)',
     'Gerinnungswert INR (z. B. bei Marcumar/Phenprocoumon) – Selbstmessung oder Laborwert':
         'Coagulation value INR (e.g. with warfarin/phenprocoumon) – self-test or laboratory value',
@@ -2995,8 +2999,8 @@ EN.update({
     'geliefert am %1 (%2)': 'delivered on %1 (%2)',
     'Bitte eine Menge angeben.': 'Please enter a quantity.',
     'Bestand und Bestellungen': 'Stock and orders',
-    'Die Bestellliste steht unter „Bestand und Bestellungen“. Bis die Bestellung als bestellt bestätigt ist, erinnert VitaParms daran.':
-        'The order list is under “Stock and orders”. VitaParms keeps reminding you until the order is confirmed as placed.',
+    'Die Bestellliste steht unter „Bestand und Bestellungen“. Bis die Bestellung als bestellt bestätigt ist, erinnert ViviaParms daran.':
+        'The order list is under “Stock and orders”. ViviaParms keeps reminding you until the order is confirmed as placed.',
     '%1: Dokument aus der Krankenakte': '%1: document from the medical record',
     'In der Krankenakte liegt noch kein Dokument. Nehmen Sie es dort zuerst auf (Reiter „Krankenakte“).':
         'There is no document in the medical record yet. Add it there first (“Medical record” tab).',
@@ -3045,8 +3049,8 @@ EN.update({
     'Packungen und Buchungen': 'Packs and bookings',
     'Zur Bestellliste': 'Add to order list',
     'Zur Bestellliste hinzugefügt.': 'Added to the order list.',
-    'Eine Bestellliste ist noch nicht als bestellt bestätigt. Rezept besorgen, bestellen und dann „Als bestellt bestätigen“ – bis dahin erinnert VitaParms daran.':
-        'An order list has not been confirmed as placed yet. Get the prescription, place the order and then “Confirm as ordered” – until then VitaParms keeps reminding you.',
+    'Eine Bestellliste ist noch nicht als bestellt bestätigt. Rezept besorgen, bestellen und dann „Als bestellt bestätigen“ – bis dahin erinnert ViviaParms daran.':
+        'An order list has not been confirmed as placed yet. Get the prescription, place the order and then “Confirm as ordered” – until then ViviaParms keeps reminding you.',
     'Bestelllisten bleiben hier gespeichert und lassen sich jederzeit erneut als PDF ausgeben.':
         'Order lists stay stored here and can be output as a PDF again at any time.',
     'Bestellliste erstellen': 'Create order list',
@@ -3101,7 +3105,7 @@ EN.update({
     'Einträge mit Tagessummen und Bilanz': 'entries with daily totals and balance',
     'wann von wem was gestellt wurde': 'what was prepared when and by whom',
     'Bitte mindestens einen Bericht wählen.': 'Please choose at least one report.',
-    'VitaParms – %1': 'VitaParms – %1',
+    'ViviaParms – %1': 'ViviaParms – %1',
     'Berichte': 'Reports',
     'Website aktualisiert.': 'Website updated.',
     'Liste an die Apotheke senden': 'Send list to the pharmacy',
@@ -3131,8 +3135,8 @@ EN.update({
     'Master-Passwort (leer = unverändert)': 'Master password (empty = unchanged)',
     'Master-Passwort der Website': 'Master password of the website',
     'Nach jedem Abgleich automatisch aktualisieren': 'Update automatically after each synchronisation',
-    'Das Master-Passwort ist dasselbe wie am Computer (VitaParms → Extras → Website). Es bleibt verschlüsselt in der Datenbank dieses Tablets.':
-        'The master password is the same as on the computer (VitaParms → Tools → Website). It stays encrypted in this tablet’s database.',
+    'Das Master-Passwort ist dasselbe wie am Computer (ViviaParms → Extras → Website). Es bleibt verschlüsselt in der Datenbank dieses Tablets.':
+        'The master password is the same as on the computer (ViviaParms → Tools → Website). It stays encrypted in this tablet’s database.',
     'Wird aktualisiert …': 'Updating …',
     'Website jetzt aktualisieren': 'Update website now',
     'Zuletzt aktualisiert: %1': 'Last updated: %1',
@@ -3144,8 +3148,8 @@ EN.update({
         'No speech output available – the assistant only shows the details. Please install a speech app (e.g. “Speech Services by Google”) with a voice for your language; search the Android settings for “text-to-speech”.',
     'Die Sprachausgabe wird gestartet …': 'Speech output is starting …',
     'Die Kamera-App hat kein Foto geliefert.': 'The camera app did not deliver a photo.',
-    'Ohne Kamera-Berechtigung kann VitaParms kein Foto aufnehmen. Bitte in den Android-Einstellungen unter Apps → VitaParms → Berechtigungen erlauben.':
-        'Without camera permission VitaParms cannot take a photo. Please allow it in the Android settings under Apps → VitaParms → Permissions.',
+    'Ohne Kamera-Berechtigung kann ViviaParms kein Foto aufnehmen. Bitte in den Android-Einstellungen unter Apps → ViviaParms → Berechtigungen erlauben.':
+        'Without camera permission ViviaParms cannot take a photo. Please allow it in the Android settings under Apps → ViviaParms → Permissions.',
     'Die Kamera ließ sich nicht starten (%1).': 'The camera could not be started (%1).',
     'Öffnen mit …': 'Open with …',
 })
@@ -3158,10 +3162,10 @@ EN.update({
     'Sprache: %1, Stimmen: %2, Sprachen: %3': 'Language: %1, voices: %2, languages: %3',
     'Stimme: %1': 'Voice: %1',
     'Ohne Qt TextToSpeech gebaut.': 'Built without Qt TextToSpeech.',
-    'Dies ist eine Probe der Sprachausgabe von VitaParms.': 'This is a sample of the VitaParms speech output.',
+    'Dies ist eine Probe der Sprachausgabe von ViviaParms.': 'This is a sample of the ViviaParms speech output.',
     'Sprachausgabe (Medikamente stellen)': 'Speech output (preparing medication)',
-    'VitaParms nutzt die Sprachausgabe von Android. Bleibt es stumm: „Probe vorlesen“ tippen und – falls nötig – „Neu starten“. Die Angaben darunter helfen bei der Fehlersuche.':
-        'VitaParms uses the Android speech output. If it stays silent, tap “Read sample” and – if necessary – “Restart”. The details below help with troubleshooting.',
+    'ViviaParms nutzt die Sprachausgabe von Android. Bleibt es stumm: „Probe vorlesen“ tippen und – falls nötig – „Neu starten“. Die Angaben darunter helfen bei der Fehlersuche.':
+        'ViviaParms uses the Android speech output. If it stays silent, tap “Read sample” and – if necessary – “Restart”. The details below help with troubleshooting.',
     'Probe vorlesen': 'Read sample',
     'Neu starten': 'Restart',
     'Aktualisieren': 'Refresh',
@@ -3196,8 +3200,8 @@ EN.update({
     'Sicherung wiederherstellen …': 'Restore backup …',
     'Die Demo läuft. „Demo beenden“ (oder Sperren) kehrt zur eigenen Datenbank zurück; dort melden Sie sich wie gewohnt an.':
         'The demo is running. “End demo” (or Lock) returns to your own database, where you sign in as usual.',
-    'Die Demo zeigt VitaParms mit der erfundenen Person Erika Mustermann: ein Jahr Messwerte, Medikamente, Termine und Befunde. Sie hat eine eigene Datenbank und wird bei jedem Start neu erzeugt – Ihre Daten bleiben unberührt. Die eigene Datenbank wird dafür gesperrt.':
-        'The demo shows VitaParms with the fictitious person Erika Mustermann: one year of readings, medication, appointments and reports. It has its own database and is created afresh at every start – your data remain untouched. Your own database is locked meanwhile.',
+    'Die Demo zeigt ViviaParms mit der erfundenen Person Erika Mustermann: ein Jahr Messwerte, Medikamente, Termine und Befunde. Sie hat eine eigene Datenbank und wird bei jedem Start neu erzeugt – Ihre Daten bleiben unberührt. Die eigene Datenbank wird dafür gesperrt.':
+        'The demo shows ViviaParms with the fictitious person Erika Mustermann: one year of readings, medication, appointments and reports. It has its own database and is created afresh at every start – your data remain untouched. Your own database is locked meanwhile.',
     'Demo beenden': 'End demo',
     'Demo starten': 'Start demo',
     'Konto löschen': 'Delete account',
@@ -3217,11 +3221,11 @@ EN.update({
     'Das eigene Konto lässt sich nicht löschen.': 'You cannot delete your own account.',
     'Das bisherige Passwort stimmt nicht.': 'The current password is wrong.',
     'Nur Administratoren sehen den Wiederherstellungsschlüssel.': 'Only administrators can see the recovery key.',
-    'VitaParms – Wiederherstellungsschlüssel': 'VitaParms – recovery key',
-    '<h2>VitaParms – Wiederherstellungsschlüssel</h2><p>Erstellt am: %1</p><p style="font-family: monospace; font-size: 15pt; font-weight: bold;">%2</p><p>Dieser Schlüssel öffnet die verschlüsselte Datenbank ohne Passwort. Sicher und getrennt vom Gerät aufbewahren. Nicht weitergeben.</p><p>Verwendung: Anmeldung → „Passwort vergessen?“ (Tablet) bzw. „Wiederherstellungsschlüssel…“ (Computer).</p>':
-        '<h2>VitaParms – recovery key</h2><p>Created on: %1</p><p style="font-family: monospace; font-size: 15pt; font-weight: bold;">%2</p><p>This key opens the encrypted database without a password. Keep it safe and separate from the device. Do not pass it on.</p><p>Use: sign-in → “Forgot password?” (tablet) or “Recovery key…” (computer).</p>',
+    'ViviaParms – Wiederherstellungsschlüssel': 'ViviaParms – recovery key',
+    '<h2>ViviaParms – Wiederherstellungsschlüssel</h2><p>Erstellt am: %1</p><p style="font-family: monospace; font-size: 15pt; font-weight: bold;">%2</p><p>Dieser Schlüssel öffnet die verschlüsselte Datenbank ohne Passwort. Sicher und getrennt vom Gerät aufbewahren. Nicht weitergeben.</p><p>Verwendung: Anmeldung → „Passwort vergessen?“ (Tablet) bzw. „Wiederherstellungsschlüssel…“ (Computer).</p>':
+        '<h2>ViviaParms – recovery key</h2><p>Created on: %1</p><p style="font-family: monospace; font-size: 15pt; font-weight: bold;">%2</p><p>This key opens the encrypted database without a password. Keep it safe and separate from the device. Do not pass it on.</p><p>Use: sign-in → “Forgot password?” (tablet) or “Recovery key…” (computer).</p>',
     'Nur Administratoren können Sicherungen erstellen.': 'Only administrators can create backups.',
-    'VitaParms-Sicherung': 'VitaParms backup',
+    'ViviaParms-Sicherung': 'ViviaParms backup',
     'Die Demo konnte nicht erstellt werden.': 'The demo could not be created.',
     'Demo – erfundene Daten': 'Demo – fictitious data',
     'Passwort vergessen?': 'Forgot password?',
@@ -3437,10 +3441,10 @@ EN.update({
     'Medizinische Diagnose': 'Medical diagnosis',
     'Mobilität': 'Mobility',
     'Muskel': 'Muscle',
-    'Nach dem Expertenstandard „Pflege von Menschen mit chronischen Wunden“. VitaParms ist kein Medizinprodukt – Einschätzung und Therapie gehören in fachliche Hände.':
-        'Following the German expert standard “Care of people with chronic wounds”. VitaParms is not a medical device – assessment and treatment belong in professional hands.',
-    'Nach dem Expertenstandard „Pflege von Menschen mit chronischen Wunden“: vollständige Wundbeurteilung spätestens alle vier Wochen, jeder Verbandwechsel mit Handzeichen. VitaParms ist kein Medizinprodukt – die Hinweise ersetzen keine fachliche Beurteilung.':
-        'Following the German expert standard “Care of people with chronic wounds”: full wound assessment at least every four weeks, each dressing change with initials. VitaParms is not a medical device – the notices do not replace a professional assessment.',
+    'Nach dem Expertenstandard „Pflege von Menschen mit chronischen Wunden“. ViviaParms ist kein Medizinprodukt – Einschätzung und Therapie gehören in fachliche Hände.':
+        'Following the German expert standard “Care of people with chronic wounds”. ViviaParms is not a medical device – assessment and treatment belong in professional hands.',
+    'Nach dem Expertenstandard „Pflege von Menschen mit chronischen Wunden“: vollständige Wundbeurteilung spätestens alle vier Wochen, jeder Verbandwechsel mit Handzeichen. ViviaParms ist kein Medizinprodukt – die Hinweise ersetzen keine fachliche Beurteilung.':
+        'Following the German expert standard “Care of people with chronic wounds”: full wound assessment at least every four weeks, each dressing change with initials. ViviaParms is not a medical device – the notices do not replace a professional assessment.',
     'Nekrose %': 'Necrosis %',
     'Nekrose %1 %': 'necrosis %1 %',
     'Nekrose': 'Necrosis',
@@ -3522,7 +3526,7 @@ EN.update({
     'Vermutete tiefe Gewebeschädigung': 'Suspected deep tissue injury',
     'Versorgung': 'Care',
     'Versorgung: %1': 'care: %1',
-    'VitaParms ist kein Medizinprodukt – Einschätzung und Therapie gehören in fachliche Hände.': 'VitaParms is not a medical device – assessment and treatment belong in professional hands.',
+    'ViviaParms ist kein Medizinprodukt – Einschätzung und Therapie gehören in fachliche Hände.': 'ViviaParms is not a medical device – assessment and treatment belong in professional hands.',
     'Wagner 0 – Risikofuß, keine offene Läsion': 'Wagner 0 – foot at risk, no open lesion',
     'Wagner 1 – oberflächliche Wunde': 'Wagner 1 – superficial ulcer',
     'Wagner 2 – Wunde bis Sehne oder Kapsel': 'Wagner 2 – ulcer down to tendon or capsule',
@@ -3683,12 +3687,12 @@ EN.update({
     'Die letzte automatische Sicherung ist vom %1 – seit %2 Tagen konnte keine Sicherung erstellt werden.':
         'The last automatic backup is from %1 – no backup could be created for %2 days.',
     'Es gibt noch keine automatische Sicherung dieser Datenbank.': 'There is no automatic backup of this database yet.',
-    'Diese Datenbank stammt von einer neueren VitaParms-Version (Datenbankformat %1, diese Version kennt nur bis %2).\n\nBitte VitaParms auf diesem Gerät aktualisieren – die Daten bleiben unverändert.':
-        'This database comes from a newer VitaParms version (database format %1, this version only knows up to %2).\n\nPlease update VitaParms on this device – the data remain unchanged.',
-    'Das andere Gerät verwendet eine neuere VitaParms-Version (Datenbankformat %1, hier %2). Bitte VitaParms auf diesem Gerät aktualisieren – erst dann ist ein Abgleich möglich, ohne dass Daten verloren gehen.':
-        'The other device uses a newer VitaParms version (database format %1, here %2). Please update VitaParms on this device – only then can it synchronise without losing data.',
-    'Ein anderes Gerät verwendet eine neuere VitaParms-Version (Datenbankformat %1, hier %2). Bitte VitaParms auf diesem Gerät aktualisieren – erst dann ist ein Abgleich möglich, ohne dass Daten verloren gehen.':
-        'Another device uses a newer VitaParms version (database format %1, here %2). Please update VitaParms on this device – only then can it synchronise without losing data.',
+    'Diese Datenbank stammt von einer neueren ViviaParms-Version (Datenbankformat %1, diese Version kennt nur bis %2).\n\nBitte ViviaParms auf diesem Gerät aktualisieren – die Daten bleiben unverändert.':
+        'This database comes from a newer ViviaParms version (database format %1, this version only knows up to %2).\n\nPlease update ViviaParms on this device – the data remain unchanged.',
+    'Das andere Gerät verwendet eine neuere ViviaParms-Version (Datenbankformat %1, hier %2). Bitte ViviaParms auf diesem Gerät aktualisieren – erst dann ist ein Abgleich möglich, ohne dass Daten verloren gehen.':
+        'The other device uses a newer ViviaParms version (database format %1, here %2). Please update ViviaParms on this device – only then can it synchronise without losing data.',
+    'Ein anderes Gerät verwendet eine neuere ViviaParms-Version (Datenbankformat %1, hier %2). Bitte ViviaParms auf diesem Gerät aktualisieren – erst dann ist ein Abgleich möglich, ohne dass Daten verloren gehen.':
+        'Another device uses a newer ViviaParms version (database format %1, here %2). Please update ViviaParms on this device – only then can it synchronise without losing data.',
     'Automatische Sicherung erstellt: %1': 'Automatic backup created: %1',
     'Automatische Sicherung fehlgeschlagen: %1': 'Automatic backup failed: %1',
     'Automatische Sicherung': 'Automatic backup',
@@ -3699,8 +3703,8 @@ EN.update({
     'Automatische Sicherung:': 'Automatic backup:',
     'noch keine': 'none yet',
     'ein – letzte: %1, %2 von %3 Ständen': 'on – last: %1, %2 of %3 versions',
-    'VitaParms sichert die Datenbank (verschlüsselt, mit den Anmeldekonten) beim Beenden, wenn sich etwas geändert hat, und beim Start, wenn die letzte Sicherung älter als einen Tag ist. Zurückholen: Datei → Sicherung wiederherstellen / importieren.':
-        'VitaParms backs up the database (encrypted, with the login accounts) when quitting if something has changed, and at start-up if the last backup is more than a day old. To get it back: File → Restore backup / import.',
+    'ViviaParms sichert die Datenbank (verschlüsselt, mit den Anmeldekonten) beim Beenden, wenn sich etwas geändert hat, und beim Start, wenn die letzte Sicherung älter als einen Tag ist. Zurückholen: Datei → Sicherung wiederherstellen / importieren.':
+        'ViviaParms backs up the database (encrypted, with the login accounts) when quitting if something has changed, and at start-up if the last backup is more than a day old. To get it back: File → Restore backup / import.',
     'Automatisch &sichern': 'Back up &automatically',
     '&Ändern…': '&Change…',
     '&Ordner:': '&Folder:',
@@ -3716,7 +3720,7 @@ EN.update({
     'Sicherung erstellt:\n%1': 'Backup created:\n%1',
 })
 
-# ---- v0.28.0: VitaParms light, Schmerzskala, RR-Tagesprofil, Import aus VitaParms light
+# ---- v0.28.0: ViviaParms light, Schmerzskala, RR-Tagesprofil, Import aus ViviaParms light
 EN.update({
     'Anmeldung einrichten': 'Set up sign-in',
     '&Ihr Name:': '&Your name:',
@@ -3735,10 +3739,10 @@ EN.update({
     'RR-Tagesprofil': 'BP day profile',
     'Blutdruck und Puls messen: %1 – nach 5 Minuten Ruhe im Sitzen, immer am selben Arm':
         'Measure blood pressure and pulse: %1 – after resting seated for 5 minutes, always on the same arm',
-    'VitaParms erinnert zu den gewählten Zeitpunkten an die Blutdruckmessung und öffnet auf Wunsch gleich das Erfassungsfenster mit dem passenden Messzeitpunkt. Messen Sie nach 5 Minuten Ruhe im Sitzen und immer am selben Arm. Die Erinnerungen stehen als Termine im Terminplaner (und kommen mit dem Abgleich aufs Tablet).':
-        'VitaParms reminds you to measure your blood pressure at the chosen times and, if you like, opens the entry window with the matching time point right away. Measure after resting seated for 5 minutes and always on the same arm. The reminders are appointments in the planner (and reach the tablet with the synchronisation).',
-    'VitaParms erinnert zu den gewählten Zeitpunkten an die Blutdruckmessung und öffnet auf Wunsch gleich das Erfassungsfenster mit dem passenden Messzeitpunkt. Messen Sie nach 5 Minuten Ruhe im Sitzen und immer am selben Arm. Die Erinnerungen stehen als Termine im Terminplaner (und kommen mit dem Abgleich auf den Computer).':
-        'VitaParms reminds you to measure your blood pressure at the chosen times and, if you like, opens the entry form with the matching time point right away. Measure after resting seated for 5 minutes and always on the same arm. The reminders are appointments in the planner (and reach the computer with the synchronisation).',
+    'ViviaParms erinnert zu den gewählten Zeitpunkten an die Blutdruckmessung und öffnet auf Wunsch gleich das Erfassungsfenster mit dem passenden Messzeitpunkt. Messen Sie nach 5 Minuten Ruhe im Sitzen und immer am selben Arm. Die Erinnerungen stehen als Termine im Terminplaner (und kommen mit dem Abgleich aufs Tablet).':
+        'ViviaParms reminds you to measure your blood pressure at the chosen times and, if you like, opens the entry window with the matching time point right away. Measure after resting seated for 5 minutes and always on the same arm. The reminders are appointments in the planner (and reach the tablet with the synchronisation).',
+    'ViviaParms erinnert zu den gewählten Zeitpunkten an die Blutdruckmessung und öffnet auf Wunsch gleich das Erfassungsfenster mit dem passenden Messzeitpunkt. Messen Sie nach 5 Minuten Ruhe im Sitzen und immer am selben Arm. Die Erinnerungen stehen als Termine im Terminplaner (und kommen mit dem Abgleich auf den Computer).':
+        'ViviaParms reminds you to measure your blood pressure at the chosen times and, if you like, opens the entry form with the matching time point right away. Measure after resting seated for 5 minutes and always on the same arm. The reminders are appointments in the planner (and reach the computer with the synchronisation).',
     'Das ist die geöffnete Datenbank selbst.': 'This is the open database itself.',
     'Die Datenbank lässt sich mit diesem Konto bzw. Schlüssel nicht öffnen.': 'The database cannot be opened with this account or key.',
     'Vor dem Import konnte keine Sicherung angelegt werden – der Import wurde nicht ausgeführt.\n%1':
@@ -3747,8 +3751,8 @@ EN.update({
     '<p>Willkommen! Bitte legen Sie zuerst Ihr <b>Stammblatt</b> an: Name, Geburtsdatum und – wenn Sie möchten – Adresse, Ärzte, Angehörige, Diagnosen und Medikamente.</p><p>Sie können alles später unter <i>Person → Stammblatt</i> ergänzen.</p>':
         '<p>Welcome! Please create your <b>master record</b> first: name, date of birth and – if you like – address, doctors, relatives, diagnoses and medication.</p><p>You can add everything later under <i>Person → Master record</i>.</p>',
     'Datenbank der &Light-Version importieren…': 'Import database of the &light edition…',
-    'Übernimmt die Person aus VitaParms light mit allen Daten als weitere Person in diese Datenbank':
-        'Adds the person from VitaParms light with all data as a further person to this database',
+    'Übernimmt die Person aus ViviaParms light mit allen Daten als weitere Person in diese Datenbank':
+        'Adds the person from ViviaParms light with all data as a further person to this database',
     '&RR-Tagesprofil…': 'B&P day profile…',
     'Blutdruck und Puls zu sechs Zeitpunkten eines Tages messen – mit Erinnerung und Erfassungsfenster':
         'Measure blood pressure and pulse at six times of a day – with reminders and entry window',
@@ -3760,17 +3764,17 @@ EN.update({
         '<b>No master record yet.</b> Enter your personal details via <i>Person → Master record</i>.',
     'RR-Tagesprofil: %1 Erinnerung(en) gestellt.': 'BP day profile: %1 reminder(s) set.',
     'Datenbank der Light-Version importieren': 'Import database of the light edition',
-    'Datenbank von VitaParms light (*.sqlite *.vpdb);;Alle Dateien (*)': 'VitaParms light database (*.sqlite *.vpdb);;All files (*)',
+    'Datenbank von ViviaParms light (*.sqlite *.vpdb);;Alle Dateien (*)': 'ViviaParms light database (*.sqlite *.vpdb);;All files (*)',
     'Die Datei lässt sich nicht lesen:\n%1': 'The file cannot be read:\n%1',
-    'Melden Sie sich mit dem Konto von <b>VitaParms light</b> an, um die Datenbank<br>%1<br>zu entsperren.':
-        'Sign in with the <b>VitaParms light</b> account to unlock the database<br>%1',
+    'Melden Sie sich mit dem Konto von <b>ViviaParms light</b> an, um die Datenbank<br>%1<br>zu entsperren.':
+        'Sign in with the <b>ViviaParms light</b> account to unlock the database<br>%1',
     '&Name:': '&Name:',
     '&Entsperren': '&Unlock',
-    'Datenbank von VitaParms light entsperren': 'Unlock VitaParms light database',
-    'Zur Datenbank\n%1\nfehlt die Schlüsseldatei (%2). Sie lässt sich nur mit dem Wiederherstellungsschlüssel von VitaParms light öffnen.':
-        'The key file (%2) of the database\n%1\nis missing. It can only be opened with the VitaParms light recovery key.',
-    '<p>Die Person aus VitaParms light wird mit Stammblatt, Messungen, Medikamenten, Terminen, Kontakten und Dokumenten als <b>weitere Person</b> in diese Datenbank übernommen. Vorhandene Personen bleiben unverändert.</p><p>Vorher legt VitaParms eine Sicherung dieser Datenbank an. Jetzt importieren?</p>':
-        '<p>The person from VitaParms light is added to this database as a <b>further person</b>, with master record, readings, medication, appointments, contacts and documents. Existing persons remain unchanged.</p><p>VitaParms first creates a backup of this database. Import now?</p>',
+    'Datenbank von ViviaParms light entsperren': 'Unlock ViviaParms light database',
+    'Zur Datenbank\n%1\nfehlt die Schlüsseldatei (%2). Sie lässt sich nur mit dem Wiederherstellungsschlüssel von ViviaParms light öffnen.':
+        'The key file (%2) of the database\n%1\nis missing. It can only be opened with the ViviaParms light recovery key.',
+    '<p>Die Person aus ViviaParms light wird mit Stammblatt, Messungen, Medikamenten, Terminen, Kontakten und Dokumenten als <b>weitere Person</b> in diese Datenbank übernommen. Vorhandene Personen bleiben unverändert.</p><p>Vorher legt ViviaParms eine Sicherung dieser Datenbank an. Jetzt importieren?</p>':
+        '<p>The person from ViviaParms light is added to this database as a <b>further person</b>, with master record, readings, medication, appointments, contacts and documents. Existing persons remain unchanged.</p><p>ViviaParms first creates a backup of this database. Import now?</p>',
     'Die Daten waren schon übernommen – %1 Eintrag/Einträge aktualisiert, %2 neu.': 'The data had already been imported – %1 entry/entries updated, %2 new.',
     'Übernommen: %1 (%2 Einträge).': 'Imported: %1 (%2 entries).',
     'Sicherung vor dem Import: %1': 'Backup before the import: %1',
@@ -3778,8 +3782,8 @@ EN.update({
         '<p><b>%1 is a personal diary for health-related readings – not a medical device.</b></p><p>The program makes no diagnoses, gives no treatment recommendations and does not replace medical advice. Calculated values (e.g. BMI) and charts are for overview only. Use at your own risk.</p><p>If you have complaints or unusual readings, please contact your doctor; in an emergency call 112 (UK: 999).</p>',
     '%1 – Demo': '%1 – Demo',
     'Über %1': 'About %1',
-    '<h3>%3 %1</h3><p>Tagebuch für Vitalwerte mit Verlauf, Grafiken, Druck, PDF- und Excel-Export.</p><p>Copyright © 2026 Michael Bergmann<br>Freie Software unter der <b>MIT-Lizenz</b>.</p><p>Erstellt mit Qt %2 (LGPLv3).</p><p><small>Kein Medizinprodukt – Verwendung auf eigene Gefahr.</small></p>':
-        '<h3>%3 %1</h3><p>Vital signs diary with history, charts, printing, PDF and Excel export.</p><p>Copyright © 2026 Michael Bergmann<br>Free software under the <b>MIT licence</b>.</p><p>Built with Qt %2 (LGPLv3).</p><p><small>Not a medical device – use at your own risk.</small></p>',
+    '<h3>%3 %1</h3><p>Tagebuch für Vitalwerte mit Verlauf, Grafiken, Druck, PDF- und Excel-Export.</p><p>Copyright © 2026 Michael Bergmann<br>Quelloffen unter der <b>PolyForm Noncommercial License 1.0.0</b>: kostenlos für jede nicht-kommerzielle Nutzung – privat sowie durch gemeinnützige Organisationen, Schulen und Behörden –, einschließlich Verändern und Weitergeben. Kommerzielle Nutzung und Verkauf nur mit Erlaubnis des Autors.<br><a href="https://polyformproject.org/licenses/noncommercial/1.0.0">polyformproject.org/licenses/noncommercial/1.0.0</a></p><p>Erstellt mit Qt %2 (LGPLv3).</p><p><small>Kein Medizinprodukt – Verwendung auf eigene Gefahr.</small></p>':
+        '<h3>%3 %1</h3><p>Vital signs diary with history, charts, printing, PDF and Excel export.</p><p>Copyright © 2026 Michael Bergmann<br>Source-available under the <b>PolyForm Noncommercial License 1.0.0</b>: free of charge for any noncommercial use – privately and by charitable organisations, schools and public authorities – including modifying and passing it on. Commercial use and sale only with the author\'s permission.<br><a href="https://polyformproject.org/licenses/noncommercial/1.0.0">polyformproject.org/licenses/noncommercial/1.0.0</a></p><p>Built with Qt %2 (LGPLv3).</p><p><small>Not a medical device – use at your own risk.</small></p>',
     'Ü&ber %1…': '&About %1…',
     'Benutzerhandbuch': 'User Guide',
     'Ärzte && Angehörige': 'Doctors && relatives',
@@ -3819,8 +3823,8 @@ EN.update({
     'Willkommen bei %1': 'Welcome to %1',
     '%1 ist ein <b>persönliches Tagebuch</b> für gesundheitsbezogene Messwerte – <b>kein Medizinprodukt</b>. Es stellt keine Diagnosen und ersetzt keine ärztliche Beratung. Die Verwendung erfolgt auf eigene Gefahr.':
         '%1 is a <b>personal diary</b> for health-related readings – <b>not a medical device</b>. It makes no diagnoses and does not replace medical advice. Use at your own risk.',
-    'Die Daten werden auf diesem Gerät verschlüsselt gespeichert und – wenn Sie möchten – über das USB-Kabel mit VitaParms light am Computer abgeglichen.':
-        'The data are stored encrypted on this device and – if you like – synchronised with VitaParms light on the computer via the USB cable.',
+    'Die Daten werden auf diesem Gerät verschlüsselt gespeichert und – wenn Sie möchten – über das USB-Kabel mit ViviaParms light am Computer abgeglichen.':
+        'The data are stored encrypted on this device and – if you like – synchronised with ViviaParms light on the computer via the USB cable.',
     'Starten': 'Start',
     'Menü': 'Menu',
     'Mit dem Computer abgleichen (USB)': 'Synchronise with the computer (USB)',
@@ -3833,16 +3837,16 @@ EN.update({
     'Schmerzstärke (0 = kein Schmerz, 10 = stärkster vorstellbarer Schmerz)': 'Pain intensity (0 = no pain, 10 = worst pain imaginable)',
     'Passwort ändern, Wiederherstellungsschlüssel, Sicherung und Demo-Datenbank.': 'Change password, recovery key, backup and demo database.',
     'Abgleich mit dem Computer (USB-Kabel)': 'Synchronisation with the computer (USB cable)',
-    'Tablet oder Smartphone per USB-Kabel an den Computer mit VitaParms light anschließen und die Daten abgleichen.':
-        'Connect the tablet or smartphone to the computer running VitaParms light with a USB cable and synchronise the data.',
+    'Tablet oder Smartphone per USB-Kabel an den Computer mit ViviaParms light anschließen und die Daten abgleichen.':
+        'Connect the tablet or smartphone to the computer running ViviaParms light with a USB cable and synchronise the data.',
     'An den Quartalswechsel erinnern': 'Remind me of the new quarter',
     'Zu Beginn jedes Quartals: KV-Karte in den Praxen einlesen lassen.': 'At the start of each quarter: have the health insurance card read at the practices.',
-    '%3 %1 – persönliches Gesundheitstagebuch, kein Medizinprodukt. Open Source (MIT-Lizenz). Angemeldet als %2.':
-        '%3 %1 – personal health diary, not a medical device. Open source (MIT licence). Signed in as %2.',
+    '%3 %1 – persönliches Gesundheitstagebuch, kein Medizinprodukt. Quelloffen, PolyForm Noncommercial License 1.0.0 (nicht-kommerzielle Nutzung). Angemeldet als %2.':
+        '%3 %1 – personal health diary, not a medical device. Source-available, PolyForm Noncommercial License 1.0.0 (noncommercial use). Signed in as %2.',
 })
 EN.update({
     '&Benutzerhandbuch': '&User Guide',
-    # 0.28: Programmname als Platzhalter (VitaParms / VitaParms light)
+    # 0.28: Programmname als Platzhalter (ViviaParms / ViviaParms light)
     '%1 erinnert zu den gewählten Zeitpunkten an die Blutzuckermessung und öffnet auf Wunsch gleich das Erfassungsfenster mit dem passenden Messzeitpunkt. Die Erinnerungen stehen als Termine im Terminplaner (und kommen mit dem Abgleich aufs Tablet).':
         '%1 reminds you to measure your blood glucose at the selected times and, if you like, opens the entry window with the matching time point right away. The reminders appear as appointments in the planner (and reach the tablet when synchronising).',
     '%1 erinnert zu den gewählten Zeitpunkten an die Blutzuckermessung und öffnet auf Wunsch gleich das Erfassungsfenster mit dem passenden Messzeitpunkt. Die Erinnerungen stehen als Termine im Terminplaner (und kommen mit dem Abgleich auf den Computer).':

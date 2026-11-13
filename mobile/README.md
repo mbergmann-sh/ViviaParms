@@ -1,6 +1,6 @@
-# VitaParms Tablet
+# ViviaParms Tablet
 
-Touch-Version von VitaParms für Android-Tablets (iOS folgt). Sie verwendet denselben Kern wie
+Touch-Version von ViviaParms für Android-Tablets (iOS folgt). Sie verwendet denselben Kern wie
 das Desktop-Programm (`../core.pri`): dieselbe verschlüsselte Datenbank, dieselben Berichte und
 den Abgleich über die eigene Website.
 
@@ -29,10 +29,10 @@ gekürzt; alle Seiten passen auch auf 390 px Breite. Der Autopilot prüft Quer-,
 Smartphone auf zu breite Elemente und auf verdeckte, nur wischbare Leisten.
 **Folgt:** iOS.
 
-## VitaParms light (Tablet und Smartphone)
+## ViviaParms light (Tablet und Smartphone)
 
-Dieselben Quellen bauen auch die App **VitaParms light** (`../light/mobile/VitaParmsLightMobile.pro`,
-Schalter `VP_LIGHT`, Paket `de.mbergmann.vitaparms.light`, grünes Symbol, eigene Daten). Gemeinsam
+Dieselben Quellen bauen auch die App **ViviaParms light** (`../light/mobile/ViviaParmsLightMobile.pro`,
+Schalter `VP_LIGHT`, Paket `de.mbergmann.viviaparms.light`, grünes Symbol, eigene Daten). Gemeinsam
 genutzt wird alles über `mobile.pri`; die Light-App setzt nur `ANDROID_PACKAGE_SOURCE_DIR`,
 `VP_MOBILE_DOCS` und `VP_SOURCE_DOCS_DIR`. Unterschiede: eine Person ohne Personenauswahl, keine
 Konten/Rollen, kein Website-Abgleich (nur USB, Port 47812), vereinfachte Messung mit Schmerzskala
@@ -42,7 +42,7 @@ Tablet **und** Smartphone ausgelegt: unter 700 px Breite ☰-Menü statt Seitenl
 auf zu breite Elemente).
 
 ```sh
-qmake6 ../light/mobile/VitaParmsLightMobile.pro && make -j        # bzw. Qt Creator mit Android-Kit
+qmake6 ../light/mobile/ViviaParmsLightMobile.pro && make -j        # bzw. Qt Creator mit Android-Kit
 ```
 
 ## Voraussetzungen
@@ -61,25 +61,25 @@ Play Store ist sie vorbereitet (Abschnitt *Google Play* unten).
 
 ## Bauen und auf das Tablet bringen
 
-1. `mobile/VitaParmsMobile.pro` in Qt Creator öffnen und das Kit **Android Qt 6.x arm64-v8a**
+1. `mobile/ViviaParmsMobile.pro` in Qt Creator öffnen und das Kit **Android Qt 6.x arm64-v8a**
    wählen (für ältere 32-Bit-Tablets zusätzlich *armeabi-v7a*).
 2. Das Android-Manifest liegt bei (`android/AndroidManifest.xml`, Grundlage: Qt-6.12-Vorlage):
-   Paketname `de.mbergmann.vitaparms`, Symbol `@drawable/icon`, keine Google-Sicherung
+   Paketname `de.mbergmann.viviaparms`, Symbol `@drawable/icon`, keine Google-Sicherung
    (`allowBackup=false`), dazu die Rechte und Empfänger für die Termin-Erinnerungen
-   (`android/src/de/mbergmann/vitaparms/*.java`). **Nicht** mit *Create Templates* überschreiben.
+   (`android/src/de/mbergmann/viviaparms/*.java`). **Nicht** mit *Create Templates* überschreiben.
 3. Tablet per USB anschließen, die Rückfrage „USB-Debugging zulassen?“ bestätigen.
 4. In Qt Creator **Ausführen** (Strg+R). Die App wird gebaut, installiert und gestartet.
 
-**Umstieg von 0.13 (Paket `org.qtproject.example.VitaParms`):** Seit 0.14 heißt das Paket
-`de.mbergmann.vitaparms`. Android installiert die neue App deshalb *neben* der alten; die Daten der
+**Umstieg von 0.13 (Paket `org.qtproject.example.ViviaParms`):** Seit 0.14 heißt das Paket
+`de.mbergmann.viviaparms`. Android installiert die neue App deshalb *neben* der alten; die Daten der
 alten App übernimmt sie nicht. Vorgehen: (1) mit der alten App am Computer abgleichen (USB oder
 Website), (2) die neue App installieren und *Über das USB-Kabel vom Computer übernehmen* bzw.
 am Computer *Computer → Tablet…*, (3) die alte App deinstallieren.
 
-**Termin-Erinnerungen:** Beim ersten Anmelden fragt Android (ab Version 13), ob VitaParms
+**Termin-Erinnerungen:** Beim ersten Anmelden fragt Android (ab Version 13), ob ViviaParms
 Benachrichtigungen senden darf. Die App stellt für die Erinnerungen der nächsten 14 Tage je einen
 Wecker (`AlarmManager`); Android zeigt sie auch an, wenn die App nicht läuft, und stellt sie nach
-einem Neustart wieder (`BootReceiver`). Auf dem Sperrbildschirm steht nur „VitaParms –
+einem Neustart wieder (`BootReceiver`). Auf dem Sperrbildschirm steht nur „ViviaParms –
 Termin-Erinnerung“. Pünktlich (`setExactAndAllowWhileIdle`) mit dem Recht `SCHEDULE_EXACT_ALARM`
 („Wecker und Erinnerungen“): bis Android 13 automatisch erteilt, ab Android 14 vom Anwender –
 *Einstellungen → Erinnerungen → Pünktliche Erinnerungen erlauben* öffnet die Android-Einstellung;
@@ -108,8 +108,8 @@ wird nicht erneut übergeben.
 dem Debug-Schlüssel signiert; ein *Release*-Build bleibt unsigniert, bis ein eigener Schlüssel
 eingestellt ist – sonst meldet `adb` beim Installieren
 `INSTALL_PARSE_FAILED_NO_CERTIFICATES`. Einmalig unter *Projekte → Build (Release) → Build Android
-APK → Application Signature*: *Keystore → Erstellen…* (Datei z. B. `vitaparms-release.keystore`
-außerhalb des Projektordners, Alias `vitaparms`, Gültigkeit 25 Jahre), dann *Sign package*
+APK → Application Signature*: *Keystore → Erstellen…* (Datei z. B. `viviaparms-release.keystore`
+außerhalb des Projektordners, Alias `viviaparms`, Gültigkeit 25 Jahre), dann *Sign package*
 anhaken. Keystore und Passwörter gehören **nicht** in das Projekt oder in die Versionsverwaltung;
 gut aufbewahren – nur mit demselben Schlüssel lassen sich spätere Versionen als Update installieren.
 War vorher eine Debug-Version installiert, diese zuerst auf dem Tablet deinstallieren (anderer
@@ -119,16 +119,16 @@ Schlüssel; die Datenbank auf dem Tablet geht dabei verloren – vorher abgleich
 Build-Konfiguration*. Unter *Projekte → Build (Release)* prüfen:
 * *Build-Schritte → qmake → ABIs*: dieselbe Architektur wie im Debug-Build (für aktuelle Tablets
   **arm64-v8a**). Wird für eine andere Architektur gebaut als installiert, fehlt im Paket die
-  Programmbibliothek, und die App beendet sich sofort („dlopen failed … libVitaParms_….so“).
+  Programmbibliothek, und die App beendet sich sofort („dlopen failed … libViviaParms_….so“).
 * danach *Erstellen → Bereinigen* und neu erstellen.
 
 Die Fehlermeldung eines Release-Builds erscheint nicht in Qt Creator, sondern nur im Protokoll des
-Tablets: `adb logcat -d -t 1500 > vitaparms-log.txt` (im Ordner `…\Android\Sdk\platform-tools`),
+Tablets: `adb logcat -d -t 1500 > viviaparms-log.txt` (im Ordner `…\Android\Sdk\platform-tools`),
 direkt nachdem die App abgestürzt ist.
 
-**HTTPS (Abgleich über die Website):** Android bringt kein OpenSSL für Qt mit. VitaParms liefert
+**HTTPS (Abgleich über die Website):** Android bringt kein OpenSSL für Qt mit. ViviaParms liefert
 die Bibliotheken deshalb selbst mit (`3rdparty/android_openssl`, OpenSSL 3.1.8 von KDAB,
-Apache-2.0-Lizenz); `VitaParmsMobile.pro` nimmt sie für Debug und Release ins Paket – ein Download
+Apache-2.0-Lizenz); `ViviaParmsMobile.pro` nimmt sie für Debug und Release ins Paket – ein Download
 in Qt Creator ist nicht nötig. Beim qmake-Lauf erscheinen „OpenSSL fuer Android: …/openssl.pri“
 und die einzelnen Bibliotheken („OpenSSL-Bibliothek: …/ssl_3/arm64-v8a/libssl_3.so“). Den Haken
 *Include prebuilt OpenSSL libraries* in *Android-APK erstellen* **nicht** zusätzlich setzen (sonst
@@ -141,7 +141,7 @@ In der App zeigt *Einstellungen → Abgleich über die Website* unter den Knöpf
 neu erstellen* und die App neu installieren. Ohne OpenSSL schlägt nur der Abgleich über die Website
 fehl; alles andere – auch der USB-Abgleich – funktioniert.
 
-Die Meldung *„QML import could not be resolved in any of the import paths: VitaParms“* ist
+Die Meldung *„QML import could not be resolved in any of the import paths: ViviaParms“* ist
 harmlos: Der Typ `Chart` wird erst beim Programmstart registriert (`qmlRegisterType`), die
 Prüfung beim Bauen kennt ihn deshalb nicht.
 
@@ -191,12 +191,18 @@ für 64-Bit-Geräte **16-KB-Speicherseiten** und ein **App Bundle** (`.aab`) sta
   Kamera-App nur mit erteilter Berechtigung – `CaptureActivity` fragt dann danach.
 * **Sprachausgabe:** Android 11+ zeigt Apps die Sprachausgabe-Engines nur mit
   `<queries><intent><action android:name="android.intent.action.TTS_SERVICE"/>` im Manifest. Die
-  Engine startet asynchron; VitaParms liest den ersten Text vor, sobald sie bereit ist.
+  Engine startet asynchron; ViviaParms liest den ersten Text vor, sobald sie bereit ist.
 * **Vorschau und Volltext** der PDFs mit Qt PDF, falls installiert (Qt Maintenance Tool:
   *Additional Libraries → Qt PDF*); sonst öffnet „In PDF-App öffnen“ das Dokument.
 * Beim Abgleich (Website, USB) gehen die Inhalte getrennt von der Datenbank – nur die fehlenden.
 
 ## Erster Start auf dem Tablet
+
+* **Umstieg von VitaParms mobile (bis 0.31.4):** ViviaParms mobile hat einen neuen Paketnamen
+  (`de.mbergmann.viviaparms`) und ist für Android eine neue App ohne Zugriff auf die Daten der
+  alten. In VitaParms mobile *Einstellungen → Verwaltung öffnen → Sicherung erstellen und ablegen* (oder vorher mit dem
+  Computer abgleichen) und die Datei in ViviaParms mobile mit *Datenbank-Datei übernehmen* öffnen –
+  oder per USB/Website vom Computer abgleichen. Danach VitaParms mobile deinstallieren.
 
 * **Daten vom Computer übernehmen:** Am Computer *Extras → Website…* öffnen, „Datenbank mit
   anderen Geräten abgleichen“ einschalten, *Jetzt abgleichen*. Danach am Tablet Adresse der
@@ -234,14 +240,14 @@ Die App lässt sich mit einem normalen Desktop-Kit bauen und starten (Fenstergr�
 Tablet im Querformat). Für Bildschirmfotos und automatische Prüfungen gibt es einen Testbau:
 
 ```
-qmake CONFIG+=autopilot VitaParmsMobile.pro && make
-VP_AUTOPILOT_DB=… VP_AUTOPILOT_USER=… VP_AUTOPILOT_PASSWORD=… VP_AUTOPILOT_OUT=shots ./VitaParms
+qmake CONFIG+=autopilot ViviaParmsMobile.pro && make
+VP_AUTOPILOT_DB=… VP_AUTOPILOT_USER=… VP_AUTOPILOT_PASSWORD=… VP_AUTOPILOT_OUT=shots ./ViviaParms
 ```
 
 ## Aufbau
 
 ```
-VitaParmsMobile.pro   Projekt (bindet ../core.pri ein)
+ViviaParmsMobile.pro   Projekt (bindet ../core.pri ein)
 src/main.cpp          Start, Schrift, Lebenszyklus (Sperre/Abgleich beim Wechsel in den Hintergrund)
 src/appcontroller.*   Brücke Kern ↔ QML (Personen, Messungen, Medikamente, Ausgaben, Abgleich)
 src/appcontroller_appts.cpp  Terminplaner (Liste, Eingabe, Serien – Logik aus ../src/apptcore.*)

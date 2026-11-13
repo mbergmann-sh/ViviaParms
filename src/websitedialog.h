@@ -1,6 +1,6 @@
-// VitaParms – Einstellungen der Website (Adresse, Master-Passwort, Upload-Schlüssel)
+// ViviaParms – Einstellungen der Website (Adresse, Master-Passwort, Upload-Schlüssel)
 //              und des Datenbank-Abgleichs mit anderen Geräten
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QDialog>

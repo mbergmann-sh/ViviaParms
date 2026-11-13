@@ -1,5 +1,5 @@
-// VitaParms – Bestandsliste Medikamente und Bestellungen (Desktop)
-// SPDX-License-Identifier: MIT
+// ViviaParms – Bestandsliste Medikamente und Bestellungen (Desktop)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

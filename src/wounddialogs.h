@@ -1,8 +1,8 @@
-// VitaParms – Wunddokumentation am Computer
+// ViviaParms – Wunddokumentation am Computer
 //   WoundsDialog      Wunden einer Person mit Chronik, Flächenverlauf, Foto, Druck/PDF/Excel
 //   WoundDialog       Wunde hinzufügen / bearbeiten (Wundanamnese, auch „bei Aufnahme vorhanden“)
 //   WoundEntryDialog  Wundbeurteilung bzw. Verbandwechsel erfassen / bearbeiten
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

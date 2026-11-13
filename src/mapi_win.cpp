@@ -1,6 +1,6 @@
-// VitaParms – Simple-MAPI-Aufruf für Windows (ohne Qt, ohne mapi.h)
+// ViviaParms – Simple-MAPI-Aufruf für Windows (ohne Qt, ohne mapi.h)
 // Öffnet im Standard-Mailprogramm eine neue Nachricht mit Anhang.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #ifdef _WIN32
 #include <windows.h>
 

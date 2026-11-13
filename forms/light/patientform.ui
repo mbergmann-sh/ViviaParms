@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  VitaParms light – Stammblatt: Person, Ärzte und Angehörige, Diagnosen, Medikamente, Aufnahme.
+  ViviaParms light – Stammblatt: Person, Ärzte und Angehörige, Diagnosen, Medikamente, Aufnahme.
   Erzeugt mit tools/make_light_forms.py aus dem Standardformular – Änderungen dort vornehmen.
 -->
 <ui version="4.0">

@@ -1,14 +1,14 @@
-// VitaParms – Beipackzettel (Gebrauchsinformation) im Internet nachschlagen und anzeigen
+// ViviaParms – Beipackzettel (Gebrauchsinformation) im Internet nachschlagen und anzeigen
 //
 // Quellen:
 //   * Webseiten (im Browser): Apotheken Umschau per PZN, Gelbe Liste, Websuche – plus eigene
 //     Quellen als URL-Vorlage mit {pzn}, {pzn7}, {name}, {substance}, {slug}
-//   * direkt in VitaParms: EMA-Produktinformation (PDF mit Packungsbeilage, nur zentral
+//   * direkt in ViviaParms: EMA-Produktinformation (PDF mit Packungsbeilage, nur zentral
 //     zugelassene Arzneimittel), openFDA (US-Arzneimittelinformation, englisch, gemeinfrei),
 //     eine beliebige PDF-Adresse oder Datei (z. B. die Original-Gebrauchsinformation)
 // Ein abgerufener Beipackzettel kann in der (verschlüsselten) Krankenakte gespeichert und mit
 // dem Medikament verknüpft werden – dann ist er auch ohne Internet verfügbar.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

@@ -1,4 +1,4 @@
-// VitaParms – Fenster an kleine Bildschirme anpassen (z. B. 1366 × 768)
+// ViviaParms – Fenster an kleine Bildschirme anpassen (z. B. 1366 × 768)
 //
 // Für alle Fenster des Programms (app-weiter Ereignisfilter, beim Anzeigen):
 //  * Ist der Inhalt eines Dialogs höher oder breiter als der freie Bildschirmbereich, kommt er in eine

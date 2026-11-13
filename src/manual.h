@@ -1,5 +1,5 @@
-// VitaParms – Handbuch und „Erste Schritte“ öffnen (Hilfe → Handbuch, F1; Hilfe → Erste Schritte)
-// SPDX-License-Identifier: MIT
+// ViviaParms – Handbuch und „Erste Schritte“ öffnen (Hilfe → Handbuch, F1; Hilfe → Erste Schritte)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QString>
@@ -12,8 +12,8 @@ namespace Manual {
 enum class Format { Pdf, Chm };
 enum class Doc { Manual, GettingStarted };   // Handbuch bzw. Heft „Erste Schritte“
 
-// Dateiname für die Sprache: Handbuch "de" → VitaParms-Handbuch, sonst VitaParms-Manual;
-// Erste Schritte "de" → VitaParms-ErsteSchritte, sonst VitaParms-GettingStarted
+// Dateiname für die Sprache: Handbuch "de" → ViviaParms-Handbuch, sonst ViviaParms-Manual;
+// Erste Schritte "de" → ViviaParms-ErsteSchritte, sonst ViviaParms-GettingStarted
 QString fileName(const QString &lang, Format format, Doc doc = Doc::Manual);
 QString title(Doc doc);                      // „Handbuch“ / „Erste Schritte“ (übersetzt)
 

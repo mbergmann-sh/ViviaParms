@@ -1,7 +1,7 @@
-// VitaParms Tablet – automatischer Rundgang für Bildschirmfotos und Tests
+// ViviaParms Tablet – automatischer Rundgang für Bildschirmfotos und Tests
 // Nur im Testbau (qmake CONFIG+=autopilot); nicht Teil der ausgelieferten App.
 //   VP_AUTOPILOT_DB   Datenbank (mit .keys), VP_AUTOPILOT_USER / _PASSWORD, VP_AUTOPILOT_OUT Zielordner
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "appcontroller.h"
 #include "dbsync.h"
 #include <QElapsedTimer>
@@ -292,7 +292,7 @@ static int vaccinationChecks(QQuickWindow *win, AppController &app, QObject *hom
     return fails;
 }
 
-// Terminkollisions-Check (nur VitaParms, nicht light)
+// Terminkollisions-Check (nur ViviaParms, nicht light)
 // 0.31.2: „Zurück“ (Android) geht eine Seite bzw. zur Übersicht zurück statt die App zu schließen;
 // vorgetäuschte Systemleisten (VP_AUTOPILOT_SAFE): Inhalt bleibt frei von Status- und Navigationsleiste
 static int systemChecks(QQuickWindow *win, AppController &app, QObject *home, const QString &out, const QString &prefix)
@@ -462,7 +462,7 @@ static int conflictChecks(QQuickWindow *win, AppController &app, QObject *home, 
 }
 
 #ifdef VP_LIGHT
-// VitaParms light: Rundgang auf dem Tablet (quer) und dem Smartphone (hoch) – Bildschirmfotos lt_… und lp_…
+// ViviaParms light: Rundgang auf dem Tablet (quer) und dem Smartphone (hoch) – Bildschirmfotos lt_… und lp_…
 static int runLightTour(QQuickWindow *win, AppController &app, const QString &out, int fails)
 {
     auto check = [&](bool ok, const char *what) { if (!ok) { ++fails; qWarning("FEHLER: %s", what); } };
@@ -495,7 +495,7 @@ static int runLightTour(QQuickWindow *win, AppController &app, const QString &ou
     };
     // ---- Prüfungen
     check(app.light(), "Light-Ausgabe");
-    check(app.appName() == QStringLiteral("VitaParms light"), "Programmname");
+    check(app.appName() == QStringLiteral("ViviaParms light"), "Programmname");
     const QVariantList ps = app.persons();
     check(ps.size() == 1, "eine Person");
     const qint64 pid = ps.value(0).toMap().value(QStringLiteral("id")).toLongLong();
@@ -932,8 +932,8 @@ int runAutopilot(QQmlApplicationEngine &engine, AppController &app)
         check(app.language() == QStringLiteral("en") && app.languageChosen(), "Sprache Englisch");
         app.setLanguage(l0);
         check(app.language() == l0, "Sprache zurück");
-        check(QFile::exists(QStringLiteral(VP_SOURCE_DOCS "/VitaParms-ErsteSchritte.pdf"))
-              && QFile::exists(QStringLiteral(VP_SOURCE_DOCS "/VitaParms-GettingStarted.pdf")), "Erste Schritte (PDF) vorhanden");
+        check(QFile::exists(QStringLiteral(VP_SOURCE_DOCS "/ViviaParms-ErsteSchritte.pdf"))
+              && QFile::exists(QStringLiteral(VP_SOURCE_DOCS "/ViviaParms-GettingStarted.pdf")), "Erste Schritte (PDF) vorhanden");
     }
     {   // v0.14.0: Messzeitpunkt als Freitext
         QVariantMap v = app.newVital(pid);
@@ -2036,7 +2036,7 @@ int runAutopilot(QQmlApplicationEngine &engine, AppController &app)
                 std::function<void(QQuickItem *)> walk = [&](QQuickItem *i) {
                     for (QQuickItem *c : i->childItems()) {
                         const QString t = QQmlProperty::read(c, QStringLiteral("text")).toString();
-                        if (c->inherits("QQuickTextField") && t == webUrl) QQmlProperty::write(c, QStringLiteral("text"), QStringLiteral("https://vitaparms.example.de/"));
+                        if (c->inherits("QQuickTextField") && t == webUrl) QQmlProperty::write(c, QStringLiteral("text"), QStringLiteral("https://viviaparms.example.de/"));
                         else if (c->inherits("QQuickTextField") && t == key) QQmlProperty::write(c, QStringLiteral("text"), key.left(6) + QStringLiteral("…"));
                         walk(c);
                     }

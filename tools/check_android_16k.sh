@@ -1,5 +1,5 @@
 #!/bin/bash
-# VitaParms – prüft ein fertiges Android-Paket (.apk oder .aab) auf 16-KB-Speicherseiten
+# ViviaParms – prüft ein fertiges Android-Paket (.apk oder .aab) auf 16-KB-Speicherseiten
 #
 # Google Play verlangt seit 01.11.2025 für 64-Bit-Geräte (arm64-v8a, x86_64), dass jede native
 # Bibliothek (.so) mit Segmenten auf 16-KB-Grenzen gebaut ist (ELF-LOAD-Ausrichtung ≥ 0x4000) und
@@ -9,7 +9,7 @@
 # Braucht: unzip, readelf (binutils) oder llvm-readelf (NDK); für APKs zusätzlich zipalign aus den
 #          Android-Build-Tools 35 oder neuer (wird in $ANDROID_HOME bzw. $ANDROID_SDK_ROOT gesucht).
 # Ergebnis: Exit 0 = alles in Ordnung, 1 = mindestens eine Bibliothek passt nicht, 2 = Aufruffehler
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 set -u
 PKG=${1:-}
 if [ -z "$PKG" ] || [ ! -f "$PKG" ]; then

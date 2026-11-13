@@ -1,10 +1,10 @@
 #!/bin/bash
-# VitaParms / VitaParms light – natives Debian-Paket (.deb) für die laufende Distribution bauen
+# ViviaParms / ViviaParms light – natives Debian-Paket (.deb) für die laufende Distribution bauen
 #
 #   installer/debian/build_deb.sh [full|light|all] [Optionen]
 #
-#   full            VitaParms                  → vitaparms_<V>-<R>~<Distribution>_<Arch>.deb
-#   light           VitaParms light            → vitaparms-light_<V>-<R>~<Distribution>_<Arch>.deb
+#   full            ViviaParms                  → viviaparms_<V>-<R>~<Distribution>_<Arch>.deb
+#   light           ViviaParms light            → viviaparms-light_<V>-<R>~<Distribution>_<Arch>.deb
 #   all             beide (Vorgabe)
 #
 #   --qt6 | --qt5   Qt-Version erzwingen (Vorgabe: Qt 6.4+ wenn vorhanden, sonst Qt 5.15)
@@ -129,7 +129,7 @@ if [ -z "$QMAKE" ] && [ "$INSTALL_DEPS" = 1 ]; then
     pick_qt
 fi
 if [ -z "$QMAKE" ]; then
-    echo "Kein passendes Qt gefunden (VitaParms braucht Qt 6.4 oder neuer, ersatzweise Qt 5.15)." >&2
+    echo "Kein passendes Qt gefunden (ViviaParms braucht Qt 6.4 oder neuer, ersatzweise Qt 5.15)." >&2
     echo "Installieren mit:" >&2
     echo "  sudo apt install $PKGS_COMMON $PKGS_QT6 $PKGS_QT6_OPT" >&2
     echo "oder (ältere Distributionen, z. B. Debian 11, Ubuntu 22.04):" >&2
@@ -216,21 +216,21 @@ HAS() { case " $MISSING_MODS " in *" $1 "*) return 1 ;; *) return 0 ;; esac; }
 build_edition() {
     local ed="$1" SYNOPSIS PKG BIN TARGET PRO NAME APPID SETTINGS DOCDIR SUM_EN SUM_DE DESC_EN DESC_DE
     if [ "$ed" = full ]; then
-        PKG=vitaparms; BIN=vitaparms; TARGET=VitaParms; PRO="$ROOT/VitaParms.pro"; NAME="VitaParms"
-        APPID=de.mbergmann.vitaparms; SETTINGS=VitaParms; DOCDIR="$ROOT/docs"
+        PKG=viviaparms; BIN=viviaparms; TARGET=ViviaParms; PRO="$ROOT/ViviaParms.pro"; NAME="ViviaParms"
+        APPID=de.mbergmann.viviaparms; SETTINGS=ViviaParms; DOCDIR="$ROOT/docs"
         SUM_EN="Vital signs diary for several persons"
         SYNOPSIS="vital signs diary for several persons"
         SUM_DE="Vitalwerte-Tagebuch für mehrere Personen"
         DESC_EN="records vital signs (blood pressure, pulse, temperature, oxygen saturation, blood sugar, weight, pain and more) for several persons, with master record, medication plan, vaccination record, appointments and reminders, charts, statistics, print, PDF and Excel export, synchronisation with the tablet app and an optional website."
         DESC_DE="erfasst Vitalwerte (Blutdruck, Puls, Temperatur, Sauerstoffsättigung, Blutzucker, Gewicht, Schmerz u. a.) für mehrere Personen, mit Stammblatt, Medikamentenplan, Impfpass, Terminen und Erinnerungen, Grafiken, Statistiken, Druck, PDF- und Excel-Export, Abgleich mit der Tablet-App und optionaler Website."
     else
-        PKG=vitaparms-light; BIN=vitaparms-light; TARGET=VitaParmsLight; PRO="$ROOT/light/VitaParmsLight.pro"; NAME="VitaParms light"
-        APPID=de.mbergmann.vitaparms.light; SETTINGS=VitaParmsLight; DOCDIR="$ROOT/light/docs"
+        PKG=viviaparms-light; BIN=viviaparms-light; TARGET=ViviaParmsLight; PRO="$ROOT/light/ViviaParmsLight.pro"; NAME="ViviaParms light"
+        APPID=de.mbergmann.viviaparms.light; SETTINGS=ViviaParmsLight; DOCDIR="$ROOT/light/docs"
         SUM_EN="Simple vital signs diary for one person"
-        SYNOPSIS="simple vital signs diary for one person (VitaParms light)"
+        SYNOPSIS="simple vital signs diary for one person (ViviaParms light)"
         SUM_DE="Einfaches Vitalwerte-Tagebuch für eine Person"
-        DESC_EN="is the simplified edition of VitaParms for one person: vital signs with charts and statistics, master record with contacts, diagnoses, vaccination record and medication plan, day profiles, appointments and reminders, print, PDF and Excel export and synchronisation with the tablet or phone app."
-        DESC_DE="ist die vereinfachte Ausgabe von VitaParms für eine Person: Vitalwerte mit Grafiken und Statistiken, Stammblatt mit Kontakten, Diagnosen, Impfpass und Medikamentenplan, Tagesprofile, Termine und Erinnerungen, Druck, PDF- und Excel-Export sowie Abgleich mit der App für Tablet oder Smartphone."
+        DESC_EN="is the simplified edition of ViviaParms for one person: vital signs with charts and statistics, master record with contacts, diagnoses, vaccination record and medication plan, day profiles, appointments and reminders, print, PDF and Excel export and synchronisation with the tablet or phone app."
+        DESC_DE="ist die vereinfachte Ausgabe von ViviaParms für eine Person: Vitalwerte mit Grafiken und Statistiken, Stammblatt mit Kontakten, Diagnosen, Impfpass und Medikamentenplan, Tagesprofile, Termine und Erinnerungen, Druck, PDF- und Excel-Export sowie Abgleich mit der App für Tablet oder Smartphone."
     fi
     local B="$OUT/build/$PKG-qt$QTMAJOR" P="$OUT/build/$PKG-root"
     info "$NAME: übersetzen (Qt $QTVER, $JOBS Prozesse) in $B"
@@ -268,10 +268,10 @@ build_edition() {
         | sed "s|  <!--HOMEPAGE-->|$( [ -n "${VP_HOMEPAGE:-}" ] && echo "  <url type=\"homepage\">$VP_HOMEPAGE</url>" )|" \
         | sed '/^$/d' > "$P/usr/share/metainfo/$APPID.metainfo.xml"
     # Manpage: Beschreibung beginnt mit dem fett gesetzten Programmnamen (.B), daher dort ohne Namen
-    subst "$DATE_MAN" < "$HERE/man/vitaparms.1.in" | sed "s|^$NAME $DESC_EN|$DESC_EN|" | gzip -9n > "$P/usr/share/man/man1/$BIN.1.gz"
-    subst "$DATE_MAN" < "$HERE/man/vitaparms.de.1.in" | sed "s|^$NAME $DESC_DE|$DESC_DE|" | gzip -9n > "$P/usr/share/man/de/man1/$BIN.1.gz"
+    subst "$DATE_MAN" < "$HERE/man/viviaparms.1.in" | sed "s|^$NAME $DESC_EN|$DESC_EN|" | gzip -9n > "$P/usr/share/man/man1/$BIN.1.gz"
+    subst "$DATE_MAN" < "$HERE/man/viviaparms.de.1.in" | sed "s|^$NAME $DESC_DE|$DESC_DE|" | gzip -9n > "$P/usr/share/man/de/man1/$BIN.1.gz"
     install -m644 "$HERE/copyright" "$P/usr/share/doc/$PKG/copyright"
-    printf '%s (%s) %s; urgency=medium\n\n  * Build of VitaParms %s for %s (Qt %s).\n\n -- %s <%s>  %s\n' \
+    printf '%s (%s) %s; urgency=medium\n\n  * Build of ViviaParms %s for %s (Qt %s).\n\n -- %s <%s>  %s\n' \
         "$PKG" "$DEBVER" "${DIST_CODE:-unstable}" "$UPSTREAM" "${PRETTY_NAME:-$DIST_ID}" "$QTVER" \
         "$MAINT_NAME" "$MAINT_MAIL" "$DATE_R" | gzip -9n > "$P/usr/share/doc/$PKG/changelog.Debian.gz"
 

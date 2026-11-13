@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "reportprinter.h"
 #include "wounds.h"
 #include "peakflow.h"
@@ -90,7 +90,7 @@ QString safe(const QString &s)
 
 QString suggestName(const QString &kind, const Patient &p, const QString &ext)
 {
-    return QDir(exportDir()).filePath(QStringLiteral("VitaParms_%1_%2_%3.%4")
+    return QDir(exportDir()).filePath(QStringLiteral("ViviaParms_%1_%2_%3.%4")
         .arg(kind, safe(p.lastName + QLatin1Char('_') + p.firstName),
              QDate::currentDate().toString(Qt::ISODate), ext));
 }
@@ -113,7 +113,7 @@ void run(QWidget *parent, Target t, const QString &title, const QString &kind, c
         QPdfWriter w(path);
         w.setResolution(300);
         w.setTitle(title);
-        w.setCreator(QStringLiteral("VitaParms"));
+        w.setCreator(QStringLiteral("ViviaParms"));
         configure(&w, o, margins);
         fn(&w);
         break;
@@ -197,7 +197,7 @@ QRectF paintFrame(QPainter &pa, QPagedPaintDevice *dev, const QString &title, co
     pa.setPen(QPen(QColor(0xBB, 0xBB, 0xBB), ptPx(dev, 0.5)));
     pa.drawLine(foot.topLeft(), foot.topRight());
     pa.setPen(QColor(0x66, 0x66, 0x66));
-    const QString leftText = tr("VitaParms · Ausdruck vom %1").arg(loc.toString(QDateTime::currentDateTime(), QStringLiteral("dd.MM.yyyy HH:mm")));
+    const QString leftText = tr("ViviaParms · Ausdruck vom %1").arg(loc.toString(QDateTime::currentDateTime(), QStringLiteral("dd.MM.yyyy HH:mm")));
     const QString rightText = tr("Seite %1 von %2").arg(page).arg(pages);
     pa.drawText(foot, Qt::AlignLeft | Qt::AlignVCenter, leftText);
     pa.drawText(foot, Qt::AlignRight | Qt::AlignVCenter, rightText);
@@ -838,7 +838,7 @@ bool preparationListToPdf(const QString &path, const Patient &p, const QList<Med
     const QList<MedPrep::ListRow> rows = MedPrep::listRows(MedPrep::select(meds, day, days, slot).list, day, days, slot);
     QPdfWriter w(path);
     w.setResolution(300);
-    w.setCreator(QStringLiteral("VitaParms"));
+    w.setCreator(QStringLiteral("ViviaParms"));
     w.setTitle(tr("Medikamente stellen – Liste"));
     configure(&w, QPageLayout::Portrait, kStandardMarginsMm);
     printHtml(&w, tr("Medikamente stellen – Liste"), p, preparationListHtml(&w, rows, MedPrep::listSubtitle(day, days, slot), 9), 9);
@@ -857,7 +857,7 @@ bool appointmentConflictsToPdf(const QString &path, const ApptConflicts::Options
 {
     QPdfWriter w(path);
     w.setResolution(300);
-    w.setCreator(QStringLiteral("VitaParms"));
+    w.setCreator(QStringLiteral("ViviaParms"));
     w.setTitle(tr("Terminkollisionen"));
     configure(&w, QPageLayout::Portrait, kStandardMarginsMm);
     printHtml(&w, tr("Terminkollisionen"), conflictsHeaderPerson(r), conflictsHtml(&w, o, r), 9);
@@ -874,7 +874,7 @@ bool vaccinationRecordToPdf(const QString &path, const Patient &p)
 {
     QPdfWriter w(path);
     w.setResolution(300);
-    w.setCreator(QStringLiteral("VitaParms"));
+    w.setCreator(QStringLiteral("ViviaParms"));
     configure(&w, QPageLayout::Portrait);
     printHtml(&w, tr("Impfpass"), p, vaccinationHtml(&w, p), 9);
     return true;
@@ -913,7 +913,7 @@ bool historyToPdf(const QString &path, const Patient &p, const QList<VitalRecord
 {
     QPdfWriter w(path);
     w.setResolution(300);
-    w.setCreator(QStringLiteral("VitaParms"));
+    w.setCreator(QStringLiteral("ViviaParms"));
     configure(&w, QPageLayout::Portrait);
     printHtml(&w, tr("Verlauf der Vitalwerte"), p, historyHtml(&w, records, groups, periodText), 9);
     return true;
@@ -923,7 +923,7 @@ bool journalToPdf(const QString &path, const Patient &p, const JournalModel &mod
 {
     QPdfWriter w(path);
     w.setResolution(300);
-    w.setCreator(QStringLiteral("VitaParms"));
+    w.setCreator(QStringLiteral("ViviaParms"));
     configure(&w, QPageLayout::Landscape);
     printHtml(&w, tr("Verlauf der Vitalwerte"), p, journalHtml(&w, model, periodText), 7.5);
     return true;
@@ -933,10 +933,10 @@ bool journalToXlsx(const QString &path, const Patient &p, const JournalModel &mo
                    const QString &periodText, QString *error)
 {
     XlsxWriter x;
-    x.setTitle(tr("VitaParms – Verlauf %1").arg(p.displayName()));
+    x.setTitle(tr("ViviaParms – Verlauf %1").arg(p.displayName()));
     const int sh = x.addSheet(tr("Verlauf"));
     x.setLandscape(sh, true);
-    writeTitle(x, sh, tr("VitaParms – Verlauf der Vitalwerte"), p, periodText);
+    writeTitle(x, sh, tr("ViviaParms – Verlauf der Vitalwerte"), p, periodText);
     writeMeasurements(x, sh, 4, model.records(), model.extraKeys());
     x.freezeRows(sh, 5);
     return x.save(path, error);
@@ -972,7 +972,7 @@ bool chartsToPdf(const QString &path, const Patient &p, const ChartSpec &spec)
 {
     QPdfWriter w(path);
     w.setResolution(300);
-    w.setCreator(QStringLiteral("VitaParms"));
+    w.setCreator(QStringLiteral("ViviaParms"));
     configure(&w, QPageLayout::Portrait);
     renderCharts(&w, p, spec);
     return true;
@@ -983,12 +983,12 @@ bool chartsToXlsx(const QString &path, const Patient &p, const ChartSpec &spec0,
     ChartSpec spec = spec0;
     if (spec.inrHigh <= 0) spec.setPatient(p);
     XlsxWriter x;
-    x.setTitle(tr("VitaParms – Verlaufsgrafik %1").arg(p.displayName()));
+    x.setTitle(tr("ViviaParms – Verlaufsgrafik %1").arg(p.displayName()));
     const QLocale loc;
 
     // Blatt 1: Grafik (DIN-A4-Seitenverhältnis)
     const int g = x.addSheet(tr("Grafik"));
-    writeTitle(x, g, tr("VitaParms – Verlaufsgrafik"), p, spec.periodText());
+    writeTitle(x, g, tr("ViviaParms – Verlaufsgrafik"), p, spec.periodText());
     const qreal dpi = 150;
     const QSize imgSize(qRound(180 / 25.4 * dpi), qRound(230 / 25.4 * dpi));   // 18 × 23 cm
     x.setImage(g, ChartRenderer::renderImage(spec, imgSize, dpi), 4, 0, dpi);
@@ -1386,7 +1386,7 @@ QString pharmacyListHtml(QPaintDevice *dev, const Patient &p, const QList<Medica
              "(pharmazeutische Dienstleistung, die Kosten trägt die Krankenkasse).");
     h += QStringLiteral("<p style=\"margin-top:8px;\"><b>%1</b></p>").arg(advice.toHtmlEscaped());
     h += QStringLiteral("<p><small>%1</small></p>")
-             .arg(tr("Diese Liste wurde vom Anwender selbst mit VitaParms geführt. VitaParms prüft nicht auf "
+             .arg(tr("Diese Liste wurde vom Anwender selbst mit ViviaParms geführt. ViviaParms prüft nicht auf "
                      "Wechselwirkungen und ersetzt weder die Beratung in Apotheke oder Arztpraxis noch den "
                      "bundeseinheitlichen Medikationsplan.").toHtmlEscaped());
     return h;
@@ -1441,7 +1441,7 @@ QString orderListHtml(QPaintDevice *dev, const Patient &p, const MedStock::Order
     h += QStringLiteral("<br><p>%1</p><p>%2</p>")
              .arg(tr("Rezept angefordert am: ______________ &nbsp;&nbsp;&nbsp; bestellt bei: ______________________________"),
                   tr("bestellt am: ______________ &nbsp;&nbsp;&nbsp; Abholung/Lieferung am: ______________"));
-    h += QStringLiteral("<p><small>%1</small></p>").arg(tr("Erstellt mit VitaParms – Bestandsführung. Die Mengen sind Vorschläge; "
+    h += QStringLiteral("<p><small>%1</small></p>").arg(tr("Erstellt mit ViviaParms – Bestandsführung. Die Mengen sind Vorschläge; "
                                                            "maßgeblich ist die ärztliche Verordnung.").toHtmlEscaped());
     return h;
 }
@@ -1456,7 +1456,7 @@ bool orderListToPdf(const QString &path, const Patient &p, const MedStock::Order
 {
     QPdfWriter w(path);
     w.setResolution(300);
-    w.setCreator(QStringLiteral("VitaParms"));
+    w.setCreator(QStringLiteral("ViviaParms"));
     w.setTitle(tr("Bestellliste Medikamente"));
     configure(&w, QPageLayout::Portrait);
     printHtml(&w, tr("Bestellliste Medikamente"), p, orderListHtml(&w, p, o), 9);
@@ -1475,7 +1475,7 @@ bool patientSheetToPdf(const QString &path, const Patient &p, const QList<Medica
 {
     QPdfWriter w(path);
     w.setResolution(300);
-    w.setCreator(QStringLiteral("VitaParms"));
+    w.setCreator(QStringLiteral("ViviaParms"));
     configure(&w, QPageLayout::Portrait);
     printHtml(&w, tr("Stammblatt"), p, patientSheetHtml(&w, p, meds, admission));
     return true;
@@ -1489,7 +1489,7 @@ QString documentIndexHtml(QPaintDevice *dev, const QList<MedicalDocument> &docs,
     if (!note.isEmpty())
         h += QStringLiteral("<p>%1</p>").arg(note.toHtmlEscaped());
     if (!reports.isEmpty()) {
-        h += QStringLiteral("<h3>%1</h3>").arg(tr("Berichte aus VitaParms"));
+        h += QStringLiteral("<h3>%1</h3>").arg(tr("Berichte aus ViviaParms"));
         h += tableOpen(dev);
         h += QStringLiteral("<thead><tr>") + th(tr("Datei"), QStringLiteral("width=\"45%\""))
            + th(tr("Inhalt")) + QStringLiteral("</tr></thead>");
@@ -1521,7 +1521,7 @@ bool documentIndexToPdf(const QString &path, const Patient &p, const QList<Medic
 {
     QPdfWriter w(path);
     w.setResolution(300);
-    w.setCreator(QStringLiteral("VitaParms"));
+    w.setCreator(QStringLiteral("ViviaParms"));
     configure(&w, QPageLayout::Portrait);
     printHtml(&w, tr("Inhaltsverzeichnis der Krankenakte"), p, documentIndexHtml(&w, docs, reports, note));
     return true;

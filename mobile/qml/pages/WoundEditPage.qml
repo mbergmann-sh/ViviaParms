@@ -122,7 +122,7 @@ Page {
             VArea { id: notes; label: qsTr("Bemerkung"); text: page.w.notes; minHeight: 80; Layout.fillWidth: true }
             Label { visible: !!page.w.createdText; text: page.w.createdText || ""; color: Theme.muted; font.pixelSize: Theme.fsXs }
             Label { Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.muted; font.pixelSize: Theme.fsXs
-                    text: qsTr("VitaParms ist kein Medizinprodukt – Einschätzung und Therapie gehören in fachliche Hände.") }
+                    text: qsTr("ViviaParms ist kein Medizinprodukt – Einschätzung und Therapie gehören in fachliche Hände.") }
         }
     }
     Confirm {

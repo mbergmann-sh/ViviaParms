@@ -1,7 +1,7 @@
-// VitaParms – AES-256 (nur Verschlüsselungsrichtung, für CTR-Modus)
+// ViviaParms – AES-256 (nur Verschlüsselungsrichtung, für CTR-Modus)
 // Kompakte Referenzimplementierung nach FIPS-197, ohne Fremdbibliothek.
 // Wird für passwortgeschützte ZIP-Archive (WinZip-AES, AE-2) verwendet.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <cstdint>

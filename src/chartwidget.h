@@ -1,10 +1,10 @@
-// VitaParms – Verlaufsdiagramme (eigene QPainter-Implementierung)
+// ViviaParms – Verlaufsdiagramme (eigene QPainter-Implementierung)
 //
 // Bewusst ohne Qt Charts / Qt Graphs: diese Module stehen in der
-// Open-Source-Variante nur unter GPLv3 zur Verfügung, VitaParms ist MIT-lizenziert.
+// Open-Source-Variante nur unter GPLv3 zur Verfügung, ViviaParms steht unter der PolyForm Noncommercial License.
 // Dieselbe Zeichenroutine wird für Bildschirm, Drucker (DIN A4), PDF und das
 // in die Excel-Datei eingebettete Bild verwendet.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

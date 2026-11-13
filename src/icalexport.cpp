@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "icalexport.h"
 #include "database.h"
 #include "mailer.h"
@@ -101,7 +101,7 @@ struct Writer
             if (!desc.isEmpty()) lines << QStringLiteral("DESCRIPTION:") + escapeText(desc.join(QLatin1Char('\n')));
         }
         lines << QStringLiteral("PRIORITY:%1").arg(priorityValue(a.priority));
-        lines << QStringLiteral("CATEGORIES:VitaParms");
+        lines << QStringLiteral("CATEGORIES:ViviaParms");
         lines << QStringLiteral("CLASS:PRIVATE");
         lines << QStringLiteral("STATUS:CONFIRMED");
         if (o.alarms && a.remindMinutes >= 0) {
@@ -196,6 +196,7 @@ Result build(const QList<Appointment> &appointments, const Options &o)
     Database &db = Database::instance();
     Writer w{ o, !o.timeZone.isValid() || o.timeZone.id() == "UTC" || o.timeZone.id() == "Etc/UTC", {}, {} };
     w.tzid = QString::fromLatin1(o.timeZone.id());
+    // Kennung aus der Zeit vor der Umbenennung (VitaParms) – nicht ändern: bestehende Schlüssel, Daten, Abgleich und Sicherungen hängen daran
     const QString uidBase = QStringLiteral("vitaparms-") + (db.isOpen() ? db.databaseUuid() : QStringLiteral("local"));
     const QString stamp = QStringLiteral("DTSTAMP:") + formatUtc(QDateTime::currentDateTime());
 
@@ -216,10 +217,10 @@ Result build(const QList<Appointment> &appointments, const Options &o)
         }
 
     w.lines << QStringLiteral("BEGIN:VCALENDAR") << QStringLiteral("VERSION:2.0")
-            << (QStringLiteral("PRODID:-//VitaParms//VitaParms %1//DE").arg(QCoreApplication::applicationVersion())
+            << (QStringLiteral("PRODID:-//ViviaParms//ViviaParms %1//DE").arg(QCoreApplication::applicationVersion())
                     .replace(QStringLiteral(" //"), QStringLiteral("//")))
             << QStringLiteral("CALSCALE:GREGORIAN") << QStringLiteral("METHOD:PUBLISH")
-            << QStringLiteral("X-WR-CALNAME:VitaParms");
+            << QStringLiteral("X-WR-CALNAME:ViviaParms");
     if (!w.utc && (!singles.isEmpty() || !series.isEmpty()))
         w.lines << vtimezone(o.timeZone, minYear).split(QLatin1Char('\n'));
 
@@ -385,7 +386,7 @@ void ICalExportDialog::save()
     const QString dir = st.value(QStringLiteral("ical/lastDir"),
                                  QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)).toString();
     const QString path = QFileDialog::getSaveFileName(this, tr("Termine exportieren"),
-        dir + QStringLiteral("/VitaParms-Termine.ics"), tr("iCalendar (*.ics)"));
+        dir + QStringLiteral("/ViviaParms-Termine.ics"), tr("iCalendar (*.ics)"));
     if (path.isEmpty()) return;
     st.setValue(QStringLiteral("ical/lastDir"), QFileInfo(path).absolutePath());
     const ICal::Result r = ICal::build(items, options());
@@ -404,9 +405,9 @@ void ICalExportDialog::mail()
 {
     const auto items = chosen();
     if (items.isEmpty()) return;
-    const QString dir = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QStringLiteral("/VitaParms");
+    const QString dir = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QStringLiteral("/ViviaParms");
     QDir().mkpath(dir);
-    const QString path = dir + QStringLiteral("/VitaParms-Termine.ics");
+    const QString path = dir + QStringLiteral("/ViviaParms-Termine.ics");
     const ICal::Result r = ICal::build(items, options());
     QString err;
     if (!ICal::writeFile(path, r.data, &err)) {

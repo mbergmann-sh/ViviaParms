@@ -1,6 +1,6 @@
 <?php
-// VitaParms – gemeinsame Hilfsfunktionen der Schnittstellen (upload.php, sync.php, files.php)
-// SPDX-License-Identifier: MIT
+// ViviaParms – gemeinsame Hilfsfunktionen der Schnittstellen (upload.php, sync.php, files.php)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 
 declare(strict_types=1);
 
@@ -48,6 +48,7 @@ function storedHash(): ?string
 
 function givenKey(): string
 {
+    // Kennung aus der Zeit vor der Umbenennung (VitaParms) – nicht ändern: bestehende Schlüssel, Daten, Abgleich und Sicherungen hängen daran
     return trim((string) ($_SERVER['HTTP_X_VITAPARMS_KEY'] ?? ''));
 }
 

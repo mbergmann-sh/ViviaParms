@@ -1,9 +1,9 @@
-// VitaParms – Protokolle aus den erfassten Messwerten: Stuhlprotokoll, BZ- und RR-Tagesprofile, Bilanz
+// ViviaParms – Protokolle aus den erfassten Messwerten: Stuhlprotokoll, BZ- und RR-Tagesprofile, Bilanz
 //
 // Beide Protokolle werden nicht eigens geführt, sondern aus dem Journal zusammengestellt
 // (gefiltert, nach Datum und Uhrzeit sortiert, tabellarisch). Ausgabe als Druck/PDF (HTML)
 // und als Excel-Tabelle; dieselben Tabellen nutzt die Tablet-App.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "websync.h"
 #include "contacts.h"
 #include "vaccinations.h"
@@ -101,6 +101,7 @@ QByteArray decrypt(const QByteArray &blob, const QByteArray &keys, bool *ok)
 
 QByteArray checkValue(const QByteArray &keys)
 {
+    // Kennung aus der Zeit vor der Umbenennung (VitaParms) – nicht ändern: bestehende Schlüssel, Daten, Abgleich und Sicherungen hängen daran
     return QMessageAuthenticationCode::hash(QByteArrayLiteral("vitaparms-password-check"), keys.mid(32, 32),
                                             QCryptographicHash::Sha256);
 }
@@ -476,7 +477,7 @@ static WebSync::Bundle buildFromSnapshot(const WebSnapshot &snap)
                 { QStringLiteral("notes"), a.notes }, { QStringLiteral("done"), a.done } });
         pj.insert(QStringLiteral("appointments"), aj);
 
-        // Berichte, wie VitaParms sie druckt – nur bei geänderten Daten neu erzeugen
+        // Berichte, wie ViviaParms sie druckt – nur bei geänderten Daten neu erzeugen
         const QByteArray hash = QCryptographicHash::hash(
             QJsonDocument(pj).toJson(QJsonDocument::Compact) + root.value(QStringLiteral("lang")).toString().toUtf8()
                 + QByteArray::number(qHash(sp.extraKeys.join(QLatin1Char('|')))),
@@ -615,7 +616,7 @@ QNetworkReply *WebSync::startUpload(const Config &c, const Bundle &b)
     QNetworkRequest req(QUrl(normalizedUrl(c.url) + QStringLiteral("api/upload.php")));
     req.setRawHeader("X-VitaParms-Key", c.uploadKey.toUtf8());
     req.setRawHeader("Accept-Language", QLocale().bcp47Name().toLatin1());
-    req.setHeader(QNetworkRequest::UserAgentHeader, QStringLiteral("VitaParms/%1").arg(QCoreApplication::applicationVersion()));
+    req.setHeader(QNetworkRequest::UserAgentHeader, QStringLiteral("ViviaParms/%1").arg(QCoreApplication::applicationVersion()));
     req.setTransferTimeout(120 * 1000);
     QNetworkReply *r = m_nam->post(req, multi);
     multi->setParent(r);

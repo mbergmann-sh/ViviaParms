@@ -1,11 +1,11 @@
-// VitaParms Tablet – Termin-Erinnerungen als Android-Benachrichtigung
+// ViviaParms Tablet – Termin-Erinnerungen als Android-Benachrichtigung
 //
 // Plant für die angemeldete Person (zuständiges Konto) die Erinnerungen der nächsten 14 Tage
-// und übergibt sie Android (Java: de.mbergmann.vitaparms.Reminders → AlarmManager). Android
-// zeigt sie pünktlich an – auch wenn VitaParms im Hintergrund ist, gesperrt oder beendet wurde.
+// und übergibt sie Android (Java: de.mbergmann.viviaparms.Reminders → AlarmManager). Android
+// zeigt sie pünktlich an – auch wenn ViviaParms im Hintergrund ist, gesperrt oder beendet wurde.
 // Neu geplant wird nach der Anmeldung, nach Änderungen und beim Zurückkehren in die App.
-// Auf dem Sperrbildschirm erscheint nur „VitaParms – Termin-Erinnerung“.
-// SPDX-License-Identifier: MIT
+// Auf dem Sperrbildschirm erscheint nur „ViviaParms – Termin-Erinnerung“.
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QByteArray>

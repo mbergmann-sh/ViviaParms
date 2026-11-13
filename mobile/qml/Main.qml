@@ -1,4 +1,4 @@
-// VitaParms Tablet – Hauptfenster: Anmeldung/Einrichtung → Arbeitsbereich
+// ViviaParms Tablet – Hauptfenster: Anmeldung/Einrichtung → Arbeitsbereich
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Window
@@ -117,7 +117,7 @@ ApplicationWindow {
         id: usbQuestion
         objectName: "usbQuestion"
         title: qsTr("Mit dem Computer abgleichen?")
-        message: qsTr("Die Werte dieses Tablets über das USB-Kabel mit VitaParms am Computer abgleichen? Am Computer dazu „Datei → Mit Tablet über USB abgleichen…“ wählen und den Code eingeben, den das Tablet gleich anzeigt.")
+        message: qsTr("Die Werte dieses Tablets über das USB-Kabel mit ViviaParms am Computer abgleichen? Am Computer dazu „Datei → Mit Tablet über USB abgleichen…“ wählen und den Code eingeben, den das Tablet gleich anzeigt.")
         acceptText: qsTr("USB-Abgleich öffnen")
         onAccepted: win.openUsbSync()
         onRejected: if (win.afterUsbQuestion) win.afterUsbQuestion()

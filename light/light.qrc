@@ -5,6 +5,6 @@
         <file alias="vitalform.ui">../forms/light/vitalform.ui</file>
     </qresource>
     <qresource prefix="/icons">
-        <file alias="vitaparms-light.png">resources/vitaparms-light.png</file>
+        <file alias="viviaparms-light.png">resources/viviaparms-light.png</file>
     </qresource>
 </RCC>

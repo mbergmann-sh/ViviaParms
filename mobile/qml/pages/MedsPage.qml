@@ -58,7 +58,7 @@ Flickable {
                 x: 14; y: 12; width: parent.width - 28
                 spacing: 4
                 Repeater { model: page.reminder; Label { text: modelData; color: Theme.ink; wrapMode: Text.WordWrap; Layout.fillWidth: true } }
-                Label { text: qsTr("Die Bestellliste steht unter „Bestand und Bestellungen“. Bis die Bestellung als bestellt bestätigt ist, erinnert VitaParms daran.")
+                Label { text: qsTr("Die Bestellliste steht unter „Bestand und Bestellungen“. Bis die Bestellung als bestellt bestätigt ist, erinnert ViviaParms daran.")
                         color: Theme.ink2; font.pixelSize: Theme.fsS; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             }
             MouseArea { anchors.fill: parent; onClicked: page.stock() }

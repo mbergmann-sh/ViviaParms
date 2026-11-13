@@ -1,9 +1,9 @@
-// VitaParms – Zuordnung von Medikamenten zu Gruppen (BtM, Schmerzmittel, Blutverdünner)
+// ViviaParms – Zuordnung von Medikamenten zu Gruppen (BtM, Schmerzmittel, Blutverdünner)
 // anhand von Wirkstoff- und Handelsnamen; je Medikament manuell korrigierbar.
 // Grundlage BtM: Anlage III BtMG einschließlich der „ausgenommenen Zubereitungen“
 // (z. B. Codein ≤ 100 mg je Einheit, Tilidin retard mit Naloxon). Medizinal-Cannabis und
 // Dronabinol sind seit dem MedCanG (04/2024) keine Betäubungsmittel mehr. Ohne Gewähr.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

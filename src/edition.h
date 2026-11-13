@@ -1,10 +1,10 @@
-// VitaParms – Ausgabe (Edition) des Programms: VitaParms oder VitaParms light
+// ViviaParms – Ausgabe (Edition) des Programms: ViviaParms oder ViviaParms light
 //
-// VitaParms light (qmake-Projekte unter light/, Schalter VP_LIGHT) baut auf demselben Code und
+// ViviaParms light (qmake-Projekte unter light/, Schalter VP_LIGHT) baut auf demselben Code und
 // derselben Datenbank auf, zeigt aber nur einen Teil der Funktionen – für eine Person, mit
 // vereinfachter Oberfläche. Die Datenbank bleibt vollständig kompatibel: Eine Light-Datenbank lässt
-// sich mit VitaParms öffnen (Umstieg) und umgekehrt.
-// SPDX-License-Identifier: MIT
+// sich mit ViviaParms öffnen (Umstieg) und umgekehrt.
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include <QString>
@@ -23,13 +23,13 @@ constexpr bool light()
 // Name für Fenstertitel, Meldungen und Berichte
 inline QString appName()
 {
-    return light() ? QStringLiteral("VitaParms light") : QStringLiteral("VitaParms");
+    return light() ? QStringLiteral("ViviaParms light") : QStringLiteral("ViviaParms");
 }
 
 // Name für Einstellungen und Datenordner (getrennt, damit beide Ausgaben nebeneinander laufen)
 inline QString settingsName()
 {
-    return light() ? QStringLiteral("VitaParmsLight") : QStringLiteral("VitaParms");
+    return light() ? QStringLiteral("ViviaParmsLight") : QStringLiteral("ViviaParms");
 }
 
 } // namespace Edition

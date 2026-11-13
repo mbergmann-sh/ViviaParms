@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "stockdialog.h"
 #include "qtcompat.h"
 #include "appsettings.h"
@@ -269,7 +269,7 @@ void StockDialog::fillOrders()
     const bool anyOpen = std::any_of(m_orderList.begin(), m_orderList.end(), [](const Order &o) { return o.status == Open; });
     m_orderInfo->setText(anyOpen
         ? tr("<b>Eine Bestellliste ist noch nicht als bestellt bestätigt.</b> Rezept besorgen, bestellen und dann "
-             "„Als bestellt bestätigen“ – bis dahin erinnert VitaParms daran.")
+             "„Als bestellt bestätigen“ – bis dahin erinnert ViviaParms daran.")
         : tr("<small>Bestelllisten bleiben hier gespeichert und lassen sich jederzeit erneut drucken oder als PDF speichern.</small>"));
     updateButtons();
 }
@@ -518,7 +518,7 @@ void StockDialog::confirmOrder()
     QDialog dlg(this);
     dlg.setWindowTitle(tr("Bestellung bestätigen"));
     auto *f = new QFormLayout(&dlg);
-    f->addRow(new QLabel(tr("Die Bestellung mit %1 Position(en) wurde aufgegeben. Danach erinnert VitaParms nicht mehr daran.")
+    f->addRow(new QLabel(tr("Die Bestellung mit %1 Position(en) wurde aufgegeben. Danach erinnert ViviaParms nicht mehr daran.")
                              .arg(o->items.size()), &dlg));
     auto *at = new QDateEdit(QDate::currentDate(), &dlg);
     at->setDisplayFormat(QStringLiteral("dd.MM.yyyy"));
@@ -647,7 +647,7 @@ bool StockDialog::remind(QWidget *parent, const Patient &p, const QStringList &s
     box.setObjectName(QStringLiteral("stockReminder"));
     if (!lines.isEmpty())
         box.setInformativeText(tr("Die Bestellliste ist unter „Medikamentenbestand → Bestellungen“ gespeichert. "
-                                  "Bis die Bestellung als bestellt bestätigt ist, erinnert VitaParms daran."));
+                                  "Bis die Bestellung als bestellt bestätigt ist, erinnert ViviaParms daran."));
     QPushButton *openBtn = box.addButton(tr("Bestellliste &öffnen…"), QMessageBox::AcceptRole);
     box.addButton(tr("&Später"), QMessageBox::RejectRole);
     box.exec();

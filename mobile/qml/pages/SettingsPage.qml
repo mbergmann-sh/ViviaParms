@@ -53,11 +53,11 @@ Page {
                           onClicked: if (!app.openGettingStarted()) win.toast(app.lastError, true) }
             }
 
-ColumnLayout {   // Abgleich und Website: nicht in VitaParms light (dort nur USB)
+ColumnLayout {   // Abgleich und Website: nicht in ViviaParms light (dort nur USB)
                 visible: !app.light
                 Layout.fillWidth: true
                 spacing: Theme.gap
-            SectionTitle { text: qsTr("Abgleich mit VitaParms am Computer") }
+            SectionTitle { text: qsTr("Abgleich mit ViviaParms am Computer") }
                 Label { Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2
                         text: qsTr("Die verschlüsselte Datenbank wird über Ihre eigene Website ausgetauscht. Änderungen beider Seiten werden zusammengeführt; bei gleichzeitiger Änderung derselben Angabe gilt die jüngere.") }
                 VCheck { id: syncOn; text: qsTr("Abgleich verwenden"); checked: page.cfg.enabled === true; font.pixelSize: Theme.fsM }
@@ -101,7 +101,7 @@ ColumnLayout {   // Abgleich und Website: nicht in VitaParms light (dort nur USB
                 }
                 VCheck { id: webAfter; visible: webOn.checked; text: qsTr("Nach jedem Abgleich automatisch aktualisieren"); checked: page.web.afterSync === true; font.pixelSize: Theme.fsM }
                 Label { visible: webOn.checked; Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.muted; font.pixelSize: Theme.fsS
-                        text: qsTr("Das Master-Passwort ist dasselbe wie am Computer (VitaParms → Extras → Website). Es bleibt verschlüsselt in der Datenbank dieses Tablets.") }
+                        text: qsTr("Das Master-Passwort ist dasselbe wie am Computer (ViviaParms → Extras → Website). Es bleibt verschlüsselt in der Datenbank dieses Tablets.") }
                 Flow {
                     Layout.fillWidth: true
                     spacing: Theme.gapS
@@ -118,7 +118,7 @@ ColumnLayout {   // Abgleich und Website: nicht in VitaParms light (dort nur USB
 
                         SectionTitle { text: qsTr("Sprachausgabe (Medikamente stellen)") }
             Label { Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2
-                    text: qsTr("VitaParms nutzt die Sprachausgabe von Android. Bleibt es stumm: „Probe vorlesen“ tippen und – falls nötig – „Neu starten“. Die Angaben darunter helfen bei der Fehlersuche.") }
+                    text: qsTr("ViviaParms nutzt die Sprachausgabe von Android. Bleibt es stumm: „Probe vorlesen“ tippen und – falls nötig – „Neu starten“. Die Angaben darunter helfen bei der Fehlersuche.") }
             Flow {
                 Layout.fillWidth: true
                 spacing: Theme.gapS
@@ -134,7 +134,7 @@ ColumnLayout {   // Abgleich und Website: nicht in VitaParms light (dort nur USB
 
             SectionTitle { text: app.light ? qsTr("Abgleich mit dem Computer (USB-Kabel)") : qsTr("Abgleich über das USB-Kabel") }
             Label { Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2
-                    text: app.light ? qsTr("Tablet oder Smartphone per USB-Kabel an den Computer mit VitaParms light anschließen und die Daten abgleichen.")
+                    text: app.light ? qsTr("Tablet oder Smartphone per USB-Kabel an den Computer mit ViviaParms light anschließen und die Daten abgleichen.")
                                     : qsTr("Ohne Website: Tablet per USB-Kabel an den Computer anschließen und die Datenbank direkt abgleichen.") }
             VButton { objectName: "usbSyncButton"; text: qsTr("USB-Abgleich mit dem Computer"); onClicked: win.openUsbSync() }
 
@@ -146,8 +146,8 @@ ColumnLayout {   // Abgleich und Website: nicht in VitaParms light (dort nur USB
             // app.permissionRevision: neu prüfen, wenn die App aus den Systemeinstellungen zurückkommt
             Label { Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2
                     text: (app.permissionRevision, app.notificationsAllowed())
-                          ? qsTr("Benachrichtigungen sind erlaubt: Termine und das BZ-Tagesprofil erinnern auch, wenn VitaParms im Hintergrund ist.")
-                          : qsTr("Benachrichtigungen sind nicht erlaubt – Erinnerungen erscheinen nur, solange VitaParms geöffnet ist.") }
+                          ? qsTr("Benachrichtigungen sind erlaubt: Termine und das BZ-Tagesprofil erinnern auch, wenn ViviaParms im Hintergrund ist.")
+                          : qsTr("Benachrichtigungen sind nicht erlaubt – Erinnerungen erscheinen nur, solange ViviaParms geöffnet ist.") }
             VButton { visible: (app.permissionRevision, !app.notificationsAllowed()); text: qsTr("Benachrichtigungen erlauben"); onClicked: app.requestNotifications() }
             Label { objectName: "exactAlarmLabel"; Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2
                     visible: (app.permissionRevision, !app.remindersExact())
@@ -192,7 +192,7 @@ ColumnLayout {   // Abgleich und Website: nicht in VitaParms light (dort nur USB
 
             SectionTitle { text: qsTr("Über %1").arg(app.appName) }
             Label { Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2
-                    text: qsTr("%3 %1 – persönliches Gesundheitstagebuch, kein Medizinprodukt. Open Source (MIT-Lizenz). Angemeldet als %2.").arg(app.version).arg(app.userName).arg(app.appName) }
+                    text: qsTr("%3 %1 – persönliches Gesundheitstagebuch, kein Medizinprodukt. Quelloffen, PolyForm Noncommercial License 1.0.0 (nicht-kommerzielle Nutzung). Angemeldet als %2.").arg(app.version).arg(app.userName).arg(app.appName) }
         }
     }
 }

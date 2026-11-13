@@ -1,5 +1,5 @@
-// VitaParms – akustische Hinweise (Qt Multimedia, sonst Systemton)
-// SPDX-License-Identifier: MIT
+// ViviaParms – akustische Hinweise (Qt Multimedia, sonst Systemton)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 namespace Sounds {

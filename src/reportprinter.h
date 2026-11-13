@@ -1,5 +1,5 @@
-// VitaParms – Ausgaben: Druck (DIN A4), PDF und Excel
-// SPDX-License-Identifier: MIT
+// ViviaParms – Ausgaben: Druck (DIN A4), PDF und Excel
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "chartwidget.h"
@@ -37,7 +37,7 @@ bool chartsExcel(QWidget *parent, const Patient &p, const ChartSpec &spec);
 
 // Medikationsliste für die Apotheke: alle aktuellen Medikamente mit Wirkstoff, PZN und den
 // Angaben, die eine Apotheke für die Prüfung auf Wechselwirkungen braucht (Gewicht, Allergien,
-// Diagnosen …), dazu Platz für Ergänzungen und Notizen. VitaParms prüft selbst nicht.
+// Diagnosen …), dazu Platz für Ergänzungen und Notizen. ViviaParms prüft selbst nicht.
 void pharmacyList(QWidget *parent, const Patient &p, const QList<Medication> &meds, Target t);
 bool pharmacyListToPdf(const QString &path, const Patient &p, const QList<Medication> &meds);
 // Bestellliste (Bestandsführung) – A4 hoch
@@ -52,7 +52,7 @@ void preparationList(QWidget *parent, const Patient &p, const QList<Medication> 
 bool preparationListToPdf(const QString &path, const Patient &p, const QList<Medication> &meds, const QDate &day,
                           int days, int slot);
 
-// Terminkollisionen mehrerer Personen mit Ausweichterminen – A4 hoch (nur VitaParms, nicht light)
+// Terminkollisionen mehrerer Personen mit Ausweichterminen – A4 hoch (nur ViviaParms, nicht light)
 void appointmentConflicts(QWidget *parent, const ApptConflicts::Options &o, const ApptConflicts::Result &r, Target t);
 bool appointmentConflictsToPdf(const QString &path, const ApptConflicts::Options &o, const ApptConflicts::Result &r);
 

@@ -1,5 +1,5 @@
-// VitaParms – Erinnerung an den Quartalswechsel (siehe quarterreminder.h)
-// SPDX-License-Identifier: MIT
+// ViviaParms – Erinnerung an den Quartalswechsel (siehe quarterreminder.h)
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "quarterreminder.h"
 
 #include "database.h"

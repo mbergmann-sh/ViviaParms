@@ -1,4 +1,4 @@
-// VitaParms – Fenster an kleine Bildschirme anpassen (siehe screenfit.h)
+// ViviaParms – Fenster an kleine Bildschirme anpassen (siehe screenfit.h)
 #include "screenfit.h"
 
 #include <QApplication>

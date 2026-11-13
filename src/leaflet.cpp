@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #include "leaflet.h"
 #include "database.h"
 #include "pdftools.h"
@@ -263,7 +263,7 @@ QByteArray htmlToPdf(const QString &html, const QString &title)
     buf.open(QIODevice::WriteOnly);
     QPdfWriter w(&buf);
     w.setTitle(title);
-    w.setCreator(QStringLiteral("VitaParms"));
+    w.setCreator(QStringLiteral("ViviaParms"));
     w.setPageSize(QPageSize(QPageSize::A4));
     w.setPageMargins(QMarginsF(18, 15, 18, 15), QPageLayout::Millimeter);
     w.setResolution(150);
@@ -495,7 +495,7 @@ void LeafletDialog::loadUrl(const QUrl &url, Leaflet::Kind kind)
     if (!url.isValid() || busy()) return;
     QNetworkRequest req(url);
     req.setHeader(QNetworkRequest::UserAgentHeader,
-                  QStringLiteral("VitaParms/%1 (Qt)").arg(QCoreApplication::applicationVersion()));
+                  QStringLiteral("ViviaParms/%1 (Qt)").arg(QCoreApplication::applicationVersion()));
     req.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
     req.setTransferTimeout(30000);
     m_reply = m_net->get(req);
@@ -565,7 +565,7 @@ bool LeafletDialog::showPdf(const QByteArray &pdf, const QString &origin)
     m_origin = origin;
     m_title = tr("Beipackzettel %1").arg(m_med.name + (m_med.strength.isEmpty() ? QString() : QLatin1Char(' ') + m_med.strength));
 #ifdef VP_HAVE_QTPDF
-    auto file = std::make_unique<QTemporaryFile>(QDir::tempPath() + QStringLiteral("/vitaparms-XXXXXX.pdf"));
+    auto file = std::make_unique<QTemporaryFile>(QDir::tempPath() + QStringLiteral("/viviaparms-XXXXXX.pdf"));
     auto *doc = new QPdfDocument(this);
     if (file->open()) {
         file->setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
@@ -697,7 +697,7 @@ void LeafletDialog::openExternally()
     if (m_pdf.isEmpty()) return;
     // gleicher Ordner wie die Ansichtskopien der Krankenakte – wird beim Abmelden geleert
     const QString dir = QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation))
-                            .filePath(QStringLiteral("VitaParms-Ansicht"));
+                            .filePath(QStringLiteral("ViviaParms-Ansicht"));
     QDir().mkpath(dir);
     const QString path = dir + QStringLiteral("/Beipackzettel_%1.pdf").arg(Leaflet::slug(m_med.name));
     QFile f(path);

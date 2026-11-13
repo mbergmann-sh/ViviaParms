@@ -1,4 +1,4 @@
-# VitaParms und VitaParms light als Debian-Paket (.deb)
+# ViviaParms und ViviaParms light als Debian-Paket (.deb)
 
 `build_deb.sh` baut **native Installationspakete** für Debian und seine Derivate (Ubuntu, Linux Mint,
 Raspberry Pi OS, MX Linux, Pop!_OS …). Das Paket wird mit dem Qt der Distribution übersetzt und
@@ -11,15 +11,15 @@ also je einmal bauen (auf dem Rechner selbst, in einer virtuellen Maschine oder 
 Die Abhängigkeiten (`Depends:`) ermittelt `dpkg-shlibdeps` automatisch aus den tatsächlich
 gelinkten Bibliotheken, die Distribution steht in der Versionsnummer:
 
-    vitaparms_0.31.4-1~deb12_amd64.deb            VitaParms für Debian 12
-    vitaparms-light_0.31.4-1~deb13_amd64.deb      VitaParms light für Debian 13
-    vitaparms_0.31.4-1~ubuntu24.04_amd64.deb      VitaParms für Ubuntu 24.04
+    viviaparms_0.32.0-1~deb12_amd64.deb            ViviaParms für Debian 12
+    viviaparms-light_0.32.0-1~deb13_amd64.deb      ViviaParms light für Debian 13
+    viviaparms_0.32.0-1~ubuntu24.04_amd64.deb      ViviaParms für Ubuntu 24.04
 
 Das Bauen ist bewusst **nicht** in den qmake-Build eingebunden, sondern wird von Hand gestartet.
 
 ## 1. Voraussetzungen (Pakete zum Bauen)
 
-VitaParms braucht **Qt 6.4 oder neuer**; auf älteren Distributionen ersatzweise **Qt 5.15**
+ViviaParms braucht **Qt 6.4 oder neuer**; auf älteren Distributionen ersatzweise **Qt 5.15**
 (dann ohne Qt PDF, siehe unten).
 
 | Distribution | Qt | Bauen mit |
@@ -78,9 +78,9 @@ Im entpackten Projektordner:
 
 ```sh
 installer/debian/build_deb.sh --check        # nur prüfen, ob alles da ist
-installer/debian/build_deb.sh                # VitaParms und VitaParms light
-installer/debian/build_deb.sh full           # nur VitaParms
-installer/debian/build_deb.sh light          # nur VitaParms light
+installer/debian/build_deb.sh                # ViviaParms und ViviaParms light
+installer/debian/build_deb.sh full           # nur ViviaParms
+installer/debian/build_deb.sh light          # nur ViviaParms light
 installer/debian/build_deb.sh --qt5          # mit Qt 5.15 (ältere Distributionen)
 ```
 
@@ -95,28 +95,28 @@ Ein Durchlauf für beide Ausgaben dauert je nach Rechner etwa 5–15 Minuten.
 ## 3. Installieren, aktualisieren, entfernen
 
 ```sh
-sudo apt install ./dist-deb/vitaparms_0.31.4-1~deb12_amd64.deb
-sudo apt install ./dist-deb/vitaparms-light_0.31.4-1~deb12_amd64.deb
+sudo apt install ./dist-deb/viviaparms_0.32.0-1~deb12_amd64.deb
+sudo apt install ./dist-deb/viviaparms-light_0.32.0-1~deb12_amd64.deb
 ```
 
 `apt` (nicht `dpkg -i`) installiert die fehlenden Qt-Laufzeitpakete gleich mit. Eine neuere
-Version wird genauso installiert und ersetzt die alte; entfernen mit `sudo apt remove vitaparms`
-bzw. `vitaparms-light`. **Daten und Einstellungen bleiben dabei erhalten** – sie liegen im
-Benutzerordner (`~/.local/share/VitaParms/…`, `~/.config/VitaParms/…`), nicht im Paket.
+Version wird genauso installiert und ersetzt die alte; entfernen mit `sudo apt remove viviaparms`
+bzw. `viviaparms-light`. **Daten und Einstellungen bleiben dabei erhalten** – sie liegen im
+Benutzerordner (`~/.local/share/ViviaParms/…`, `~/.config/ViviaParms/…`), nicht im Paket.
 
-VitaParms und VitaParms light lassen sich nebeneinander installieren.
+ViviaParms und ViviaParms light lassen sich nebeneinander installieren.
 
 ## 4. Inhalt des Pakets
 
 | Pfad | Inhalt |
 |---|---|
-| `/usr/bin/vitaparms`, `/usr/bin/vitaparms-light` | Programm (Option `--demo` startet die Demo-Datenbank) |
+| `/usr/bin/viviaparms`, `/usr/bin/viviaparms-light` | Programm (Option `--demo` startet die Demo-Datenbank) |
 | `/usr/share/applications/*.desktop` | Eintrag im Anwendungsmenü (Kategorie Büro), Zusatzaktion „Demo-Datenbank“ |
 | `/usr/share/icons/hicolor/<Größe>/apps/` | Programmsymbol in 16–256 Pixeln |
-| `/usr/share/metainfo/de.mbergmann.vitaparms*.metainfo.xml` | Beschreibung für Software-Center (AppStream) |
-| `/usr/share/vitaparms/docs/`, `/usr/share/vitaparms-light/docs/` | Handbücher als PDF (F1, Menü Hilfe) |
+| `/usr/share/metainfo/de.mbergmann.viviaparms*.metainfo.xml` | Beschreibung für Software-Center (AppStream) |
+| `/usr/share/viviaparms/docs/`, `/usr/share/viviaparms-light/docs/` | Handbücher als PDF (F1, Menü Hilfe) |
 | `/usr/share/man/man1/`, `/usr/share/man/de/man1/` | Manpage englisch und deutsch |
-| `/usr/share/doc/<paket>/copyright` | Lizenzen (MIT; SQLite3 Multiple Ciphers und Bestandteile) |
+| `/usr/share/doc/<paket>/copyright` | Lizenzen (PolyForm Noncommercial 1.0.0; SQLite3 Multiple Ciphers und Bestandteile) |
 
 Zur Laufzeit lädt Qt einige Teile nur bei Bedarf; das Paket **empfiehlt** sie (`Recommends:`,
 von `apt` standardmäßig mitinstalliert): deutsche Qt-Texte (`qt6-translations-l10n`),

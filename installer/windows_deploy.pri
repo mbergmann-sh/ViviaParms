@@ -1,16 +1,16 @@
 # ---------------------------------------------------------------------------
-#  VitaParms – Windows: DLLs bereitstellen, Installationsverzeichnis und Installer bauen
+#  ViviaParms – Windows: DLLs bereitstellen, Installationsverzeichnis und Installer bauen
 #
 #  Nach jedem erfolgreichen Windows-Build (Qt Creator oder Konsole):
 #    1. windeployqt kopiert die nötigen Qt-DLLs, Plugins und Übersetzungen neben
-#       VitaParms.exe – das Programm startet direkt aus dem Build-Ordner.
+#       ViviaParms.exe – das Programm startet direkt aus dem Build-Ordner.
 #  Zusätzlich beim Release-Build:
-#    2. installer/install_src wird neu befüllt: VitaParms.exe, alle DLLs und
+#    2. installer/install_src wird neu befüllt: ViviaParms.exe, alle DLLs und
 #       windeployqt-Unterordner, docs/ (Handbücher PDF + CHM), LICENSE, README
 #       – ohne Makefiles, Objektdateien, .qmake.stash usw.
 #    3. Qt-Installer-Framework-Pakete: installer/qtifw/packages/*/data
-#    4. Ist Inno Setup installiert (Fehler beim Installerbau brechen den Build nicht ab): installer/Output/VitaParms-<Version>-Setup.exe
-#       Ist das Qt Installer Framework installiert: installer/Output/VitaParms-<Version>-Setup-IFW.exe
+#    4. Ist Inno Setup installiert (Fehler beim Installerbau brechen den Build nicht ab): installer/Output/ViviaParms-<Version>-Setup.exe
+#       Ist das Qt Installer Framework installiert: installer/Output/ViviaParms-<Version>-Setup-IFW.exe
 #
 #  Werkzeuge werden beim qmake-Lauf gesucht; abweichende Orte über Umgebungsvariablen:
 #    VP_ISCC            Pfad zu ISCC.exe            (Vorgabe: Inno Setup 6 in Programme/Programme (x86))
@@ -28,17 +28,17 @@ defineReplace(vpQuote) {
 
 VP_INST     = $$clean_path($$PWD)
 VP_STAGE    = $$VP_INST/install_src
-VP_IFW_MAIN = $$VP_INST/qtifw/packages/de.mbergmann.vitaparms/data
-VP_IFW_DOCS = $$VP_INST/qtifw/packages/de.mbergmann.vitaparms.docs/data
+VP_IFW_MAIN = $$VP_INST/qtifw/packages/de.mbergmann.viviaparms/data
+VP_IFW_DOCS = $$VP_INST/qtifw/packages/de.mbergmann.viviaparms.docs/data
 VP_OUTPUT   = $$VP_INST/Output
 
 VP_WINDEPLOYQT = $$vpQuote($$[QT_INSTALL_BINS]/windeployqt.exe) --verbose 0
 
-# Schlank ausliefern: VitaParms ist eine reine Widgets-Anwendung (Raster-Zeichnung, kein
+# Schlank ausliefern: ViviaParms ist eine reine Widgets-Anwendung (Raster-Zeichnung, kein
 # OpenGL/Direct3D/Qt Quick) und spielt nur zwei kurze WAV-Signaltöne ab. Nicht benötigt werden:
 #   opengl32sw.dll (Software-OpenGL), d3dcompiler_47.dll, dxcompiler.dll/dxil.dll (Direct3D 12),
 #   das FFmpeg-Multimedia-Backend samt FFmpeg-DLLs (die Signaltöne laufen über das
-#   Windows-Media-Backend; ohne Backend piept VitaParms ersatzweise), Qt-Übersetzungen außer Deutsch.
+#   Windows-Media-Backend; ohne Backend piept ViviaParms ersatzweise), Qt-Übersetzungen außer Deutsch.
 # Vollständige Bereitstellung wie von windeployqt vorgesehen:  qmake CONFIG+=vp_full_deploy
 !vp_full_deploy {
     VP_WINDEPLOYQT += --no-opengl-sw --no-system-d3d-compiler --translations de
@@ -56,7 +56,7 @@ CONFIG(release, debug|release) {
     # 2. Installationsverzeichnis frisch aufbauen (führendes "-": Fehler ignorieren, wenn es fehlt)
     QMAKE_POST_LINK += $$VP_NL-$$QMAKE_DEL_TREE $$shell_quote($$shell_path($$VP_STAGE))
     QMAKE_POST_LINK += $$VP_NL$$VP_WINDEPLOYQT --dir $$vpQuote($$VP_STAGE) $$VP_EXE
-    QMAKE_POST_LINK += $$VP_NL$$VP_QINSTALL -exe $$VP_EXE $$vpQuote($$VP_STAGE/VitaParms.exe)
+    QMAKE_POST_LINK += $$VP_NL$$VP_QINSTALL -exe $$VP_EXE $$vpQuote($$VP_STAGE/ViviaParms.exe)
     QMAKE_POST_LINK += $$VP_NL$$VP_QINSTALL $$vpQuote($$PWD/../docs) $$vpQuote($$VP_STAGE/docs)
     QMAKE_POST_LINK += $$VP_NL$$VP_QINSTALL $$vpQuote($$PWD/../LICENSE) $$vpQuote($$VP_STAGE/LICENSE.txt)
     QMAKE_POST_LINK += $$VP_NL$$VP_QINSTALL $$vpQuote($$PWD/../README.md) $$vpQuote($$VP_STAGE/README.md)
@@ -65,7 +65,7 @@ CONFIG(release, debug|release) {
     QMAKE_POST_LINK += $$VP_NL-$$QMAKE_DEL_TREE $$shell_quote($$shell_path($$VP_IFW_MAIN))
     QMAKE_POST_LINK += $$VP_NL-$$QMAKE_DEL_TREE $$shell_quote($$shell_path($$VP_IFW_DOCS))
     QMAKE_POST_LINK += $$VP_NL$$VP_WINDEPLOYQT --dir $$vpQuote($$VP_IFW_MAIN) $$VP_EXE
-    QMAKE_POST_LINK += $$VP_NL$$VP_QINSTALL -exe $$VP_EXE $$vpQuote($$VP_IFW_MAIN/VitaParms.exe)
+    QMAKE_POST_LINK += $$VP_NL$$VP_QINSTALL -exe $$VP_EXE $$vpQuote($$VP_IFW_MAIN/ViviaParms.exe)
     QMAKE_POST_LINK += $$VP_NL$$VP_QINSTALL $$vpQuote($$PWD/../LICENSE) $$vpQuote($$VP_IFW_MAIN/LICENSE.txt)
     QMAKE_POST_LINK += $$VP_NL$$VP_QINSTALL $$vpQuote($$PWD/../docs) $$vpQuote($$VP_IFW_DOCS/docs)
 
@@ -81,10 +81,10 @@ CONFIG(release, debug|release) {
             for(c, VP_ISCC_CANDIDATES): isEmpty(VP_ISCC): exists($$c): VP_ISCC = $$c
         }
         !isEmpty(VP_ISCC) {
-            message("VitaParms: Inno Setup gefunden – $$VP_ISCC")
-            QMAKE_POST_LINK += $$VP_NL-$$vpQuote($$VP_ISCC) /Q $$vpQuote($$VP_INST/VitaParms.iss)
+            message("ViviaParms: Inno Setup gefunden – $$VP_ISCC")
+            QMAKE_POST_LINK += $$VP_NL-$$vpQuote($$VP_ISCC) /Q $$vpQuote($$VP_INST/ViviaParms.iss)
         } else {
-            message("VitaParms: Inno Setup nicht gefunden – installer/VitaParms.iss bei Bedarf von Hand übersetzen")
+            message("ViviaParms: Inno Setup nicht gefunden – installer/ViviaParms.iss bei Bedarf von Hand übersetzen")
         }
 
         VP_BINARYCREATOR = $$(VP_BINARYCREATOR)
@@ -98,12 +98,12 @@ CONFIG(release, debug|release) {
             for(d, VP_IFW_VERSIONS): exists($$d/bin/binarycreator.exe): VP_BINARYCREATOR = $$d/bin/binarycreator.exe
         }
         !isEmpty(VP_BINARYCREATOR) {
-            message("VitaParms: Qt Installer Framework gefunden – $$VP_BINARYCREATOR")
+            message("ViviaParms: Qt Installer Framework gefunden – $$VP_BINARYCREATOR")
             QMAKE_POST_LINK += $$VP_NL-$$vpQuote($$VP_BINARYCREATOR) --offline-only --compression 9 \
                 -c $$vpQuote($$VP_INST/qtifw/config/config.xml) -p $$vpQuote($$VP_INST/qtifw/packages) \
-                $$vpQuote($$VP_OUTPUT/VitaParms-$${VERSION}-Setup-IFW.exe)
+                $$vpQuote($$VP_OUTPUT/ViviaParms-$${VERSION}-Setup-IFW.exe)
         } else {
-            message("VitaParms: Qt Installer Framework nicht gefunden – kein IFW-Installer")
+            message("ViviaParms: Qt Installer Framework nicht gefunden – kein IFW-Installer")
         }
     }
 }

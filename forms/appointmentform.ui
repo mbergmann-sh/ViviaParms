@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  VitaParms – Termin
+  ViviaParms – Termin
   Anpassbar mit Qt Designer. Pflichtfelder: titleEdit, startEdit.
   Auswahllisten (Person, Zuständig, Priorität, Erinnerung, Wiederholung) füllt das Programm.
   Ohne die Felder der Gruppe "Wiederholung" lassen sich keine Serien anlegen.

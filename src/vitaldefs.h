@@ -1,6 +1,6 @@
-// VitaParms – zentrale Beschreibung der Vitalparameter
+// ViviaParms – zentrale Beschreibung der Vitalparameter
 // (Beschriftung, Einheit, Nachkommastellen, Farbe/Markerform für Diagramme)
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

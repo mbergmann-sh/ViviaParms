@@ -180,7 +180,7 @@ Flickable {
             }
         }
         Label { Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.muted; font.pixelSize: Theme.fsXs; visible: page.wounds.length > 0
-                text: qsTr("Nach dem Expertenstandard „Pflege von Menschen mit chronischen Wunden“: vollständige Wundbeurteilung spätestens alle vier Wochen, jeder Verbandwechsel mit Handzeichen. VitaParms ist kein Medizinprodukt – die Hinweise ersetzen keine fachliche Beurteilung.") }
+                text: qsTr("Nach dem Expertenstandard „Pflege von Menschen mit chronischen Wunden“: vollständige Wundbeurteilung spätestens alle vier Wochen, jeder Verbandwechsel mit Handzeichen. ViviaParms ist kein Medizinprodukt – die Hinweise ersetzen keine fachliche Beurteilung.") }
     }
     Confirm {
         id: confirmHealed

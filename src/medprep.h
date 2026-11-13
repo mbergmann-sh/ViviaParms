@@ -1,4 +1,4 @@
-// VitaParms – Medikamente stellen: gemeinsame Fachlogik für den Assistenten am Computer
+// ViviaParms – Medikamente stellen: gemeinsame Fachlogik für den Assistenten am Computer
 // (MedicationAssistant) und in der Tablet-App (Seite „Medikamente stellen“).
 //
 //  * Auswahl: welche Medikamente an einem Tag bzw. in einer Woche (Wochendosierer) und zu
@@ -7,7 +7,7 @@
 //  * Vorlesetexte (Tagesdosierer, Wochendosierer mit zusammengefassten Tagen und Wochenmenge).
 //  * Protokoll und Abbuchung aus dem Bestand (MedStock) nach dem Stellen.
 // Übersetzungskontext „MedPrep“.
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "datatypes.h"

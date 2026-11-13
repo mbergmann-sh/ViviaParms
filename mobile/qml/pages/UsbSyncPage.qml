@@ -106,7 +106,7 @@ Page {
                 model: [
                     qsTr("Einmalig USB-Debugging einschalten: Einstellungen → Über das Tablet → 7 × auf „Build-Nummer“ tippen. Danach Einstellungen → System → Entwickleroptionen → „USB-Debugging“ einschalten."),
                     qsTr("Tablet mit dem USB-Kabel an den Computer anschließen. Die Rückfrage „USB-Debugging zulassen?“ bestätigen (am besten mit „Immer von diesem Computer zulassen“)."),
-                    qsTr("Am Computer in VitaParms „Datei → Mit Tablet über USB abgleichen…“ wählen und „Verbinden“. Verwenden beide Geräte dieselbe Datenbank, ist kein Code nötig – VitaParms muss hier nur geöffnet und angemeldet sein. Den Code oben braucht es für die erste Einrichtung oder eine andere Datenbank."),
+                    qsTr("Am Computer in ViviaParms „Datei → Mit Tablet über USB abgleichen…“ wählen und „Verbinden“. Verwenden beide Geräte dieselbe Datenbank, ist kein Code nötig – ViviaParms muss hier nur geöffnet und angemeldet sein. Den Code oben braucht es für die erste Einrichtung oder eine andere Datenbank."),
                     qsTr("Am Computer „Abgleichen“ wählen. Neue und geänderte Einträge beider Geräte werden zusammengeführt; bei gleichzeitiger Änderung gilt die jüngere.")
                 ]
                 delegate: RowLayout {
@@ -123,7 +123,7 @@ Page {
             }
             Label {
                 Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.muted; font.pixelSize: Theme.fsS
-                text: qsTr("Übertragen wird nur die verschlüsselte Datenbank; ohne Kontopasswort lässt sie sich nicht öffnen. Verbinden kann sich nur ein Computer über das USB-Kabel: ohne Code nur mit derselben Datenbank, mit dem Code, solange VitaParms läuft (der Code bleibt bis zum Beenden gleich).")
+                text: qsTr("Übertragen wird nur die verschlüsselte Datenbank; ohne Kontopasswort lässt sie sich nicht öffnen. Verbinden kann sich nur ein Computer über das USB-Kabel: ohne Code nur mit derselben Datenbank, mit dem Code, solange ViviaParms läuft (der Code bleibt bis zum Beenden gleich).")
             }
         }
     }

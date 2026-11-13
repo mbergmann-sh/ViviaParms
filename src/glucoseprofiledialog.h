@@ -1,5 +1,5 @@
-// VitaParms – Messwerte → BZ- bzw. RR-Tagesprofil: Zeitpunkte wählen und Erinnerungen für einen Tag stellen
-// SPDX-License-Identifier: MIT
+// ViviaParms – Messwerte → BZ- bzw. RR-Tagesprofil: Zeitpunkte wählen und Erinnerungen für einen Tag stellen
+// SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 #pragma once
 
 #include "glucoseprofile.h"
