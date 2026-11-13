@@ -23,6 +23,17 @@ QTime fromHhmm(const QVariant &v)
     return t;
 }
 
+// Uhrzeit je Wochentag für QML: {"1": {from: "08:00", to: "09:00"}, …}
+static QVariantMap dayTimesToMap(const Recurrence &r)
+{
+    QVariantMap m;
+    for (auto it = r.dayTimes.cbegin(); it != r.dayTimes.cend(); ++it)
+        m.insert(QString::number(it.key()),
+                 QVariantMap{ { QStringLiteral("from"), it->start.toString(QStringLiteral("HH:mm")) },
+                              { QStringLiteral("to"), it->minutes >= 0 ? it->start.addSecs(it->minutes * 60).toString(QStringLiteral("HH:mm")) : QString() } });
+    return m;
+}
+
 QVariantMap ruleToMap(const Recurrence &r, const QDate &start)
 {
     const int choice = ApptUi::repeatChoiceOf(r);
@@ -33,15 +44,32 @@ QVariantMap ruleToMap(const Recurrence &r, const QDate &start)
              { QStringLiteral("weekdays"), weekdays }, { QStringLiteral("monthMode"), r.monthMode },
              { QStringLiteral("endMode"), r.count > 0 ? ApptUi::EndCount : r.until.isValid() ? ApptUi::EndUntil : ApptUi::EndNever },
              { QStringLiteral("until"), iso(r.until.isValid() ? r.until : start.addMonths(3)) },
-             { QStringLiteral("count"), r.count > 0 ? r.count : 10 } };
+             { QStringLiteral("count"), r.count > 0 ? r.count : 10 },
+             { QStringLiteral("perDay"), r.hasDayTimes() }, { QStringLiteral("dayTimes"), dayTimesToMap(r) } };
 }
 
 Recurrence mapToRule(const QVariantMap &m, const QDate &start)
 {
-    return ApptUi::makeRecurrence(m.value(QStringLiteral("repeat")).toInt(), m.value(QStringLiteral("interval"), 1).toInt(),
+    Recurrence r = ApptUi::makeRecurrence(m.value(QStringLiteral("repeat")).toInt(), m.value(QStringLiteral("interval"), 1).toInt(),
                                   m.value(QStringLiteral("weekdays")).toInt(), m.value(QStringLiteral("monthMode")).toInt(),
                                   m.value(QStringLiteral("endMode")).toInt(), fromIso(m.value(QStringLiteral("until"))),
                                   m.value(QStringLiteral("count")).toInt(), start);
+    if (r.freq == Recurrence::Weekly && m.value(QStringLiteral("perDay")).toBool() && !m.value(QStringLiteral("allDay")).toBool()) {
+        const QVariantMap dt = m.value(QStringLiteral("dayTimes")).toMap();
+        for (int i = 1; i <= 7; ++i) {
+            if (!(r.weekdays & (1 << (i - 1)))) continue;
+            const QVariantMap d = dt.value(QString::number(i)).toMap();
+            Recurrence::DayTime t;
+            t.start = fromHhmm(d.value(QStringLiteral("from")));
+            if (!t.start.isValid()) continue;
+            const QTime to = fromHhmm(d.value(QStringLiteral("to")));
+            const int mins = to.isValid() ? int(t.start.secsTo(to) / 60) : -1;
+            t.minutes = mins > 0 ? mins : -1;
+            r.dayTimes.insert(i, t);
+        }
+        r.normalize(start);
+    }
+    return r;
 }
 
 ApptUi::SeriesScope scopeOf(const QString &s)
@@ -214,7 +242,8 @@ QString AppController::apptRulePreview(const QVariantMap &rule, const QString &i
     const QList<QDate> next = r.dates(start, start.addYears(5), 6);
     QStringList ds;
     for (int i = 0; i < std::min<qsizetype>(5, next.size()); ++i)
-        ds << QLocale().toString(next[i], QStringLiteral("ddd dd.MM."));
+        ds << QLocale().toString(next[i], QStringLiteral("ddd dd.MM."))
+              + (r.hasDayTimes() ? QLatin1Char(' ') + r.startTimeOn(next[i], QTime()).toString(QStringLiteral("HH:mm")) : QString());
     return tr("↻ %1 – Termine: %2").arg(r.describe(start), ds.join(QStringLiteral(", ")) + (next.size() > 5 ? QStringLiteral(" …") : QString()));
 }
 

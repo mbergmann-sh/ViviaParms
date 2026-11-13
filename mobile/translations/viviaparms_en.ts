@@ -519,7 +519,7 @@
         <location filename="../src/appcontroller.cpp" line="1271" />
         <location filename="../src/appcontroller.cpp" line="1384" />
         <location filename="../src/appcontroller.cpp" line="1833" />
-        <location filename="../src/appcontroller_appts.cpp" line="90" />
+        <location filename="../src/appcontroller_appts.cpp" line="118" />
         <source>heute</source>
         <translation>today</translation>
     </message>
@@ -621,7 +621,7 @@
     </message>
     <message>
         <location filename="../src/appcontroller.cpp" line="1833" />
-        <location filename="../src/appcontroller_appts.cpp" line="90" />
+        <location filename="../src/appcontroller_appts.cpp" line="118" />
         <source>morgen</source>
         <translation>tomorrow</translation>
     </message>
@@ -661,52 +661,52 @@
         <translation>Open with …</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller_appts.cpp" line="92" />
+        <location filename="../src/appcontroller_appts.cpp" line="120" />
         <source>ganztägig</source>
         <translation>all day</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller_appts.cpp" line="101" />
+        <location filename="../src/appcontroller_appts.cpp" line="129" />
         <source>später: %1</source>
         <translation>later: %1</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller_appts.cpp" line="154" />
+        <location filename="../src/appcontroller_appts.cpp" line="182" />
         <source>— keine Person —</source>
         <translation>— no person —</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller_appts.cpp" line="218" />
+        <location filename="../src/appcontroller_appts.cpp" line="247" />
         <source>↻ %1 – Termine: %2</source>
         <translation>↻ %1 – dates: %2</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller_appts.cpp" line="226" />
+        <location filename="../src/appcontroller_appts.cpp" line="255" />
         <source>Bitte einen Titel angeben.</source>
         <translation>Please enter a title.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller_appts.cpp" line="232" />
+        <location filename="../src/appcontroller_appts.cpp" line="261" />
         <source>Bitte Datum (TT.MM.JJJJ) und Uhrzeit (HH:MM) des Beginns prüfen.</source>
         <translation>Please check the start date (DD.MM.YYYY) and time (HH:MM).</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller_appts.cpp" line="236" />
+        <location filename="../src/appcontroller_appts.cpp" line="265" />
         <source>Das Ende liegt vor dem Beginn.</source>
         <translation>The end is before the start.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller_appts.cpp" line="247" />
+        <location filename="../src/appcontroller_appts.cpp" line="276" />
         <source>Bitte mindestens eine Art der Erinnerung wählen.</source>
         <translation>Please choose at least one kind of reminder.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller_appts.cpp" line="268" />
+        <location filename="../src/appcontroller_appts.cpp" line="297" />
         <source>Den Termin gibt es nicht mehr.</source>
         <translation>This appointment no longer exists.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller_appts.cpp" line="282" />
+        <location filename="../src/appcontroller_appts.cpp" line="311" />
         <source>Speichern fehlgeschlagen.</source>
         <translation>Saving failed.</translation>
     </message>
@@ -1424,7 +1424,7 @@
         <translation>on the last %1</translation>
     </message>
     <message>
-        <location filename="../../src/apptcore.cpp" line="165" />
+        <location filename="../../src/apptcore.cpp" line="191" />
         <source>Das Ende der Serie liegt vor dem ersten Termin.</source>
         <translation>The end of the series is before the first appointment.</translation>
     </message>
@@ -1432,213 +1432,223 @@
 <context>
     <name>AppointmentEditPage</name>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="49" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="65" />
         <source>Bitte einen Titel angeben.</source>
         <translation>Please enter a title.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="59" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="75" />
         <source>Termin gespeichert.</source>
         <translation>Appointment saved.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="67" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="83" />
         <source>Termin gelöscht.</source>
         <translation>Appointment deleted.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="109" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="125" />
         <source>Termin löschen</source>
         <translation>Delete appointment</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="110" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="126" />
         <source>Termin „%1“ löschen?</source>
         <translation>Delete appointment “%1”?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="111" />
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="129" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="127" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="145" />
         <source>Löschen</source>
         <translation>Delete</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="126" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="142" />
         <source>Abbrechen</source>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="127" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="143" />
         <source>Termin bearbeiten</source>
         <translation>Edit appointment</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="127" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="143" />
         <source>Neuer Termin</source>
         <translation>New appointment</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="130" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="146" />
         <source>Speichern</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="144" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="160" />
         <source>Titel</source>
         <translation>Title</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="145" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="161" />
         <source>z. B. Hausarzt – Blutabnahme</source>
         <translation>e.g. GP – blood test</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="148" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="164" />
         <source>ganztägig</source>
         <translation>all day</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="152" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="168" />
         <source>Beginn</source>
         <translation>Start</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="157" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="173" />
         <source>Ende</source>
         <translation>End</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="163" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="179" />
         <source>Wiederholung</source>
         <translation>Recurrence</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="167" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="183" />
         <source>Dieser Termin gehört zu einer Serie: %1. Beim Speichern wird gefragt, ob die Änderung nur für ihn, für alle folgenden oder für die ganze Serie gilt.</source>
         <translation>This appointment belongs to a series: %1. When saving you will be asked whether the change applies only to it, to all following ones or to the whole series.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="188" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="204" />
         <source>jeden Tag</source>
         <translation>every day</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="188" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="204" />
         <source>alle %1 Tage</source>
         <translation>every %1 days</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="189" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="205" />
         <source>jede Woche</source>
         <translation>every week</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="189" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="205" />
         <source>alle %1 Wochen</source>
         <translation>every %1 weeks</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="190" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="206" />
         <source>jeden Monat</source>
         <translation>every month</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="190" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="206" />
         <source>alle %1 Monate</source>
         <translation>every %1 months</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="191" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="207" />
         <source>jedes Jahr</source>
         <translation>every year</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="191" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="207" />
         <source>alle %1 Jahre</source>
         <translation>every %1 years</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="213" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="224" />
+        <source>Eigene Uhrzeit je Wochentag</source>
+        <translation>Own time per weekday</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="239" />
+        <source>bis</source>
+        <translation>to</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="252" />
         <source>Ende der Serie</source>
         <translation>End of series</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="214" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="253" />
         <source>ohne Ende</source>
         <translation>no end</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="214" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="253" />
         <source>bis einschließlich</source>
         <translation>until (inclusive)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="214" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="253" />
         <source>nach Anzahl Terminen</source>
         <translation>after a number of appointments</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="217" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="256" />
         <source>%1 Termine</source>
         <translation>%1 appointments</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="227" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="266" />
         <source>Angaben</source>
         <translation>Details</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="232" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="271" />
         <source>Ort</source>
         <translation>Location</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="233" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="272" />
         <source>Person</source>
         <translation>Person</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="234" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="273" />
         <source>Zuständig</source>
         <translation>Responsible</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="237" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="276" />
         <source>Priorität</source>
         <translation>Priority</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="247" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="286" />
         <source>Notiz</source>
         <translation>Note</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="250" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="289" />
         <source>Erinnerung</source>
         <translation>Reminder</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="255" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="294" />
         <source>Benachrichtigung</source>
         <translation>Notification</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="256" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="295" />
         <source>Ton</source>
         <translation>Sound</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="260" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="299" />
         <source>Die E-Mail-Erinnerung dieses Termins verschickt ViviaParms am Computer.</source>
         <translation>The e-mail reminder for this appointment is sent by ViviaParms on the computer.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="261" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="300" />
         <source>Das Tablet erinnert mit einer Benachrichtigung – auch wenn ViviaParms im Hintergrund ist.</source>
         <translation>The tablet reminds you with a notification – even when ViviaParms is in the background.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppointmentEditPage.qml" line="263" />
+        <location filename="../qml/pages/AppointmentEditPage.qml" line="302" />
         <source>erledigt</source>
         <translation>done</translation>
     </message>
@@ -2017,7 +2027,7 @@
         <translation> (this appointment changed individually)</translation>
     </message>
     <message>
-        <location filename="../../src/apptcore.cpp" line="187" />
+        <location filename="../../src/apptcore.cpp" line="219" />
         <source>Eine geänderte Wiederholung gilt immer für mehrere Termine.</source>
         <translation>A changed recurrence always applies to several appointments.</translation>
     </message>
@@ -8194,7 +8204,7 @@ You can take over the current template again via “Tools → Customize forms…
     <name>PatientDialog</name>
     <message>
         <location filename="../src/appcontroller_docs.cpp" line="408" />
-        <location filename="../src/autopilot.cpp" line="1723" />
+        <location filename="../src/autopilot.cpp" line="1779" />
         <source>Vorsorge</source>
         <translation>Advance directive</translation>
     </message>
@@ -10209,88 +10219,88 @@ You can take over the current template again via “Tools → Customize forms…
 <context>
     <name>Recurrence</name>
     <message>
-        <location filename="../../src/recurrence.cpp" line="149" />
+        <location filename="../../src/recurrence.cpp" line="170" />
         <source>keine Wiederholung</source>
         <translation>no recurrence</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="154" />
+        <location filename="../../src/recurrence.cpp" line="175" />
         <source>täglich</source>
         <translation>daily</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="154" />
+        <location filename="../../src/recurrence.cpp" line="175" />
         <source>alle %1 Tage</source>
         <translation>every %1 days</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="157" />
+        <location filename="../../src/recurrence.cpp" line="178" />
         <source>werktags (Mo–Fr)</source>
         <translation>on weekdays (Mon–Fri)</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="161" />
+        <location filename="../../src/recurrence.cpp" line="193" />
         <source>wöchentlich</source>
         <translation>weekly</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="161" />
+        <location filename="../../src/recurrence.cpp" line="193" />
         <source>alle %1 Wochen</source>
         <translation>every %1 weeks</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="162" />
-        <location filename="../../src/recurrence.cpp" line="175" />
+        <location filename="../../src/recurrence.cpp" line="194" />
+        <location filename="../../src/recurrence.cpp" line="207" />
         <source> am %1</source>
         <translation> on %1</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="166" />
+        <location filename="../../src/recurrence.cpp" line="198" />
         <source>monatlich</source>
         <translation>monthly</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="166" />
+        <location filename="../../src/recurrence.cpp" line="198" />
         <source>alle %1 Monate</source>
         <translation>every %1 months</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="168" />
+        <location filename="../../src/recurrence.cpp" line="200" />
         <source> am %1.</source>
         <translation> on day %1</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="169" />
+        <location filename="../../src/recurrence.cpp" line="201" />
         <source> am %1 %2</source>
         <translation> on the %1 %2</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="170" />
+        <location filename="../../src/recurrence.cpp" line="202" />
         <source> am letzten %1</source>
         <translation> on the last %1</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="174" />
+        <location filename="../../src/recurrence.cpp" line="206" />
         <source>jährlich</source>
         <translation>yearly</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="174" />
+        <location filename="../../src/recurrence.cpp" line="206" />
         <source>alle %1 Jahre</source>
         <translation>every %1 years</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="175" />
+        <location filename="../../src/recurrence.cpp" line="207" />
         <source>d. MMMM</source>
         <translation>MMMM d</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="180" />
+        <location filename="../../src/recurrence.cpp" line="212" />
         <source>, %1-mal</source>
         <translation>, %1 times</translation>
     </message>
     <message>
-        <location filename="../../src/recurrence.cpp" line="181" />
+        <location filename="../../src/recurrence.cpp" line="213" />
         <source>, bis %1</source>
         <translation>, until %1</translation>
     </message>

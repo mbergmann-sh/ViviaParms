@@ -617,223 +617,238 @@ The copy for sending remains in the “ViviaParms-Versand” folder – you can 
 <context>
     <name>AppointmentDialog</name>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="77" />
+        <location filename="../src/appointmentdialog.cpp" line="80" />
         <source>Termin bearbeiten</source>
         <translation>Edit appointment</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="77" />
+        <location filename="../src/appointmentdialog.cpp" line="80" />
         <source>Neuer Termin</source>
         <translation>New appointment</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="82" />
+        <location filename="../src/appointmentdialog.cpp" line="85" />
         <source>&amp;Speichern</source>
         <translation>&amp;Save</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="83" />
+        <location filename="../src/appointmentdialog.cpp" line="86" />
         <source>Abbrechen</source>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="91" />
+        <location filename="../src/appointmentdialog.cpp" line="94" />
         <source>— keine Person —</source>
         <translation>— no person —</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="149" />
+        <location filename="../src/appointmentdialog.cpp" line="154" />
         <source>&lt;small&gt;Erinnerungen erscheinen, solange ViviaParms läuft und das zuständige Konto angemeldet ist. E-Mails sind nicht verschlüsselt – vertrauliche Details besser in die Notiz statt in den Titel schreiben.&lt;/small&gt;</source>
         <translation>&lt;small&gt;Reminders appear while ViviaParms is running and the responsible account is logged in. E-mails are not encrypted – better put confidential details into the note rather than the title.&lt;/small&gt;</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="152" />
+        <location filename="../src/appointmentdialog.cpp" line="157" />
         <source>&lt;small&gt;Erinnerungen erscheinen, solange ViviaParms läuft und das zuständige Konto angemeldet ist. Für E-Mail-Erinnerungen muss ein Administrator unter &lt;i&gt;Extras → Einstellungen → E-Mail-Versand&lt;/i&gt; den Postausgangsserver einrichten.&lt;/small&gt;</source>
         <translation>&lt;small&gt;Reminders appear while ViviaParms is running and the responsible account is logged in. For e-mail reminders an administrator has to set up the outgoing mail server under &lt;i&gt;Tools → Settings → E-mail sending&lt;/i&gt;.&lt;/small&gt;</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="181" />
+        <location filename="../src/appointmentdialog.cpp" line="186" />
         <source>Bitte einen Titel angeben.</source>
         <translation>Please enter a title.</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="192" />
+        <location filename="../src/appointmentdialog.cpp" line="197" />
         <source>Das Ende liegt vor dem Beginn.</source>
         <translation>The end is before the start.</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="214" />
+        <location filename="../src/appointmentdialog.cpp" line="219" />
         <source>Bitte eine gültige E-Mail-Adresse für die Erinnerung angeben.</source>
         <translation>Please enter a valid e-mail address for the reminder.</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="219" />
+        <location filename="../src/appointmentdialog.cpp" line="224" />
         <source>Der E-Mail-Versand ist noch nicht eingerichtet. Die E-Mail-Erinnerung wird erst versendet, wenn ein Administrator den Postausgangsserver hinterlegt hat.</source>
         <translation>E-mail sending has not been set up yet. The e-mail reminder will only be sent once an administrator has configured the outgoing mail server.</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="224" />
+        <location filename="../src/appointmentdialog.cpp" line="229" />
         <source>Bitte mindestens eine Art der Erinnerung wählen.</source>
         <translation>Please choose at least one kind of reminder.</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="238" />
+        <location filename="../src/appointmentdialog.cpp" line="243" />
         <source>Speichern fehlgeschlagen:
 %1</source>
         <translation>Saving failed:
 %1</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="269" />
+        <location filename="../src/appointmentdialog.cpp" line="274" />
         <location filename="../src/apptcore.cpp" line="77" />
         <source>keine</source>
         <translation>none</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="270" />
+        <location filename="../src/appointmentdialog.cpp" line="275" />
         <location filename="../src/apptcore.cpp" line="77" />
         <source>täglich</source>
         <translation>daily</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="271" />
+        <location filename="../src/appointmentdialog.cpp" line="276" />
         <location filename="../src/apptcore.cpp" line="77" />
         <source>alle … Tage</source>
         <translation>every … days</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="272" />
+        <location filename="../src/appointmentdialog.cpp" line="277" />
         <location filename="../src/apptcore.cpp" line="78" />
         <source>werktags (Mo–Fr)</source>
         <translation>on weekdays (Mon–Fri)</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="273" />
+        <location filename="../src/appointmentdialog.cpp" line="278" />
         <location filename="../src/apptcore.cpp" line="78" />
         <source>wöchentlich</source>
         <translation>weekly</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="274" />
+        <location filename="../src/appointmentdialog.cpp" line="279" />
         <location filename="../src/apptcore.cpp" line="79" />
         <source>alle … Wochen (am Wochentag)</source>
         <translation>every … weeks (on weekday)</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="275" />
+        <location filename="../src/appointmentdialog.cpp" line="280" />
         <location filename="../src/apptcore.cpp" line="79" />
         <source>monatlich</source>
         <translation>monthly</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="276" />
+        <location filename="../src/appointmentdialog.cpp" line="281" />
         <location filename="../src/apptcore.cpp" line="80" />
         <source>jährlich</source>
         <translation>yearly</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="279" />
+        <location filename="../src/appointmentdialog.cpp" line="284" />
         <source>ohne Ende</source>
         <translation>no end</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="280" />
+        <location filename="../src/appointmentdialog.cpp" line="285" />
         <source>bis einschließlich</source>
         <translation>until (inclusive)</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="281" />
+        <location filename="../src/appointmentdialog.cpp" line="286" />
         <source>nach Anzahl Terminen</source>
         <translation>after a number of appointments</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="290" />
+        <location filename="../src/appointmentdialog.cpp" line="295" />
         <source> Termine</source>
         <translation> appointments</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="343" />
+        <location filename="../src/appointmentdialog.cpp" line="358" />
+        <source>Eigene Uhrzeit je Wochentag</source>
+        <translation>Own time per weekday</translation>
+    </message>
+    <message>
+        <location filename="../src/appointmentdialog.cpp" line="360" />
+        <source>Zum Beispiel Montag 8:00, Mittwoch 14:30 und Freitag 10:00 – in einer Serie</source>
+        <translation>For example Monday 8:00, Wednesday 14:30 and Friday 10:00 – in one series</translation>
+    </message>
+    <message>
+        <location filename="../src/appointmentdialog.cpp" line="388" />
+        <source>bis</source>
+        <translation>to</translation>
+    </message>
+    <message>
+        <location filename="../src/appointmentdialog.cpp" line="416" />
         <location filename="../src/apptcore.cpp" line="123" />
         <source>am %1 des Monats</source>
         <translation>on the %1 of the month</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="345" />
+        <location filename="../src/appointmentdialog.cpp" line="418" />
         <location filename="../src/apptcore.cpp" line="125" />
         <source>am %1 %2</source>
         <translation>on the %1 %2</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="347" />
+        <location filename="../src/appointmentdialog.cpp" line="420" />
         <location filename="../src/apptcore.cpp" line="127" />
         <source>am letzten %1</source>
         <translation>on the last %1</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="437" />
+        <location filename="../src/appointmentdialog.cpp" line="529" />
         <source>alle </source>
         <translation>every </translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="439" />
-        <location filename="../src/appointmentdialog.cpp" line="441" />
+        <location filename="../src/appointmentdialog.cpp" line="531" />
+        <location filename="../src/appointmentdialog.cpp" line="533" />
         <source> Tage</source>
         <translation> days</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="439" />
+        <location filename="../src/appointmentdialog.cpp" line="531" />
         <source>jeden Tag</source>
         <translation>every day</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="444" />
-        <location filename="../src/appointmentdialog.cpp" line="446" />
+        <location filename="../src/appointmentdialog.cpp" line="536" />
+        <location filename="../src/appointmentdialog.cpp" line="538" />
         <source> Wochen</source>
         <translation> weeks</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="444" />
+        <location filename="../src/appointmentdialog.cpp" line="536" />
         <source>jede Woche</source>
         <translation>every week</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="449" />
+        <location filename="../src/appointmentdialog.cpp" line="541" />
         <source> Monate</source>
         <translation> months</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="449" />
+        <location filename="../src/appointmentdialog.cpp" line="541" />
         <source>jeden Monat</source>
         <translation>every month</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="450" />
+        <location filename="../src/appointmentdialog.cpp" line="542" />
         <source> Jahre</source>
         <translation> years</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="450" />
+        <location filename="../src/appointmentdialog.cpp" line="542" />
         <source>jedes Jahr</source>
         <translation>every year</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="466" />
+        <location filename="../src/appointmentdialog.cpp" line="559" />
         <source>↻ %1&lt;br&gt;Termine: %2</source>
         <translation>↻ %1&lt;br&gt;Dates: %2</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="471" />
+        <location filename="../src/appointmentdialog.cpp" line="564" />
         <source>&lt;i&gt;Dieser Termin gehört zu einer Serie. Beim Speichern wird gefragt, ob die Änderung nur für ihn, für alle folgenden oder für die ganze Serie gilt.&lt;/i&gt;</source>
         <translation>&lt;i&gt;This appointment belongs to a series. When saving you will be asked whether the change applies to it only, to all following ones or to the whole series.&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="473" />
+        <location filename="../src/appointmentdialog.cpp" line="566" />
         <source>&lt;br&gt;&lt;i&gt;Er wurde bereits einzeln geändert.&lt;/i&gt;</source>
         <translation>&lt;br&gt;&lt;i&gt;It has already been changed individually.&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="487" />
-        <location filename="../src/apptcore.cpp" line="165" />
+        <location filename="../src/appointmentdialog.cpp" line="580" />
+        <location filename="../src/apptcore.cpp" line="191" />
         <source>Das Ende der Serie liegt vor dem ersten Termin.</source>
         <translation>The end of the series is before the first appointment.</translation>
     </message>
@@ -1525,59 +1540,59 @@ The copy for sending remains in the “ViviaParms-Versand” folder – you can 
         <translation>%1 minutes before</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="27" />
-        <location filename="../src/appointmentdialog.cpp" line="62" />
-        <location filename="../src/appointmentdialog.cpp" line="68" />
+        <location filename="../src/appointmentdialog.cpp" line="30" />
+        <location filename="../src/appointmentdialog.cpp" line="65" />
+        <location filename="../src/appointmentdialog.cpp" line="71" />
         <source>Termin löschen</source>
         <translation>Delete appointment</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="28" />
+        <location filename="../src/appointmentdialog.cpp" line="31" />
         <source>Terminserie ändern</source>
         <translation>Change recurring appointment</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="29" />
+        <location filename="../src/appointmentdialog.cpp" line="32" />
         <source>„%1“ am %2 gehört zu einer Terminserie.
 Welche Termine sollen gelöscht werden?</source>
         <translation>“%1” on %2 belongs to a series.
 Which appointments should be deleted?</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="33" />
+        <location filename="../src/appointmentdialog.cpp" line="36" />
         <source>„%1“ gehört zu einer Terminserie.
 Für welche Termine sollen die Änderungen gelten?</source>
         <translation>“%1” belongs to a series.
 Which appointments should the changes apply to?</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="37" />
-        <location filename="../src/apptcore.cpp" line="187" />
+        <location filename="../src/appointmentdialog.cpp" line="40" />
+        <location filename="../src/apptcore.cpp" line="219" />
         <source>Eine geänderte Wiederholung gilt immer für mehrere Termine.</source>
         <translation>A changed recurrence always applies to several appointments.</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="40" />
+        <location filename="../src/appointmentdialog.cpp" line="43" />
         <source>&amp;Nur diesen Termin</source>
         <translation>&amp;Only this appointment</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="41" />
+        <location filename="../src/appointmentdialog.cpp" line="44" />
         <source>&amp;Diesen und alle folgenden</source>
         <translation>This and all &amp;following</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="43" />
+        <location filename="../src/appointmentdialog.cpp" line="46" />
         <source>&amp;Alle Termine der Serie</source>
         <translation>&amp;All appointments in the series</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="45" />
+        <location filename="../src/appointmentdialog.cpp" line="48" />
         <source>Abbrechen</source>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="../src/appointmentdialog.cpp" line="63" />
+        <location filename="../src/appointmentdialog.cpp" line="66" />
         <source>Termin „%1“ am %2 löschen?</source>
         <translation>Delete appointment “%1” on %2?</translation>
     </message>
@@ -5803,7 +5818,7 @@ You can take over the current template again via “Tools → Customize forms…
 <context>
     <name>ICal</name>
     <message>
-        <location filename="../src/icalexport.cpp" line="98" />
+        <location filename="../src/icalexport.cpp" line="100" />
         <source>Person: %1</source>
         <translation>Person: %1</translation>
     </message>
@@ -5811,110 +5826,110 @@ You can take over the current template again via “Tools → Customize forms…
 <context>
     <name>ICalExportDialog</name>
     <message>
-        <location filename="../src/icalexport.cpp" line="303" />
+        <location filename="../src/icalexport.cpp" line="343" />
         <source>Termine exportieren (iCalendar)</source>
         <translation>Export appointments (iCalendar)</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="305" />
+        <location filename="../src/icalexport.cpp" line="345" />
         <source>Exportiert Termine als &lt;b&gt;.ics-Datei&lt;/b&gt; für Kalender-Programme und Smartphones (Outlook, Thunderbird, Apple/Google Kalender …). Serien werden mit ihrer Wiederholungsregel vollständig übernommen.</source>
         <translation>Exports appointments as an &lt;b&gt;.ics file&lt;/b&gt; for calendar programs and smartphones (Outlook, Thunderbird, Apple/Google Calendar …). Series are exported completely with their recurrence rule.</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="311" />
+        <location filename="../src/icalexport.cpp" line="351" />
         <source>Umfang</source>
         <translation>Scope</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="314" />
+        <location filename="../src/icalexport.cpp" line="354" />
         <source>%1 (%2)</source>
         <translation>%1 (%2)</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="327" />
+        <location filename="../src/icalexport.cpp" line="367" />
         <source>Optionen</source>
         <translation>Options</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="330" />
+        <location filename="../src/icalexport.cpp" line="370" />
         <source>&amp;Erledigte Termine einschließen</source>
         <translation>Include &amp;completed appointments</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="332" />
+        <location filename="../src/icalexport.cpp" line="372" />
         <source>&amp;Vorwarnungen als Kalender-Erinnerung übernehmen</source>
         <translation>Export advance &amp;notices as calendar alarms</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="334" />
+        <location filename="../src/icalexport.cpp" line="374" />
         <source>&amp;Ort, Person und Notiz übernehmen</source>
         <translation>Include &amp;location, person and note</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="339" />
+        <location filename="../src/icalexport.cpp" line="379" />
         <source>&lt;small&gt;⚠ Die .ics-Datei ist &lt;b&gt;nicht verschlüsselt&lt;/b&gt;. Ohne die letzte Option enthält sie nur Titel, Zeit, Priorität und Wiederholung.&lt;/small&gt;</source>
         <translation>&lt;small&gt;⚠ The .ics file is &lt;b&gt;not encrypted&lt;/b&gt;. Without the last option it only contains title, time, priority and recurrence.&lt;/small&gt;</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="346" />
+        <location filename="../src/icalexport.cpp" line="386" />
         <source>&amp;Speichern…</source>
         <translation>&amp;Save…</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="347" />
+        <location filename="../src/icalexport.cpp" line="387" />
         <source>Per &amp;E-Mail senden…</source>
         <translation>Send by &amp;e-mail…</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="348" />
+        <location filename="../src/icalexport.cpp" line="388" />
         <source>Abbrechen</source>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="388" />
+        <location filename="../src/icalexport.cpp" line="428" />
         <source>Termine exportieren</source>
         <translation>Export appointments</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="389" />
+        <location filename="../src/icalexport.cpp" line="429" />
         <source>iCalendar (*.ics)</source>
         <translation>iCalendar (*.ics)</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="395" />
+        <location filename="../src/icalexport.cpp" line="435" />
         <source>Speichern fehlgeschlagen:
 %1</source>
         <translation>Saving failed:
 %1</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="399" />
+        <location filename="../src/icalexport.cpp" line="439" />
         <source>%1 Kalendereinträge (davon %2 Serien) gespeichert:
 %3</source>
         <translation>%1 calendar entries (%2 of them series) saved:
 %3</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="417" />
+        <location filename="../src/icalexport.cpp" line="457" />
         <source>Termine</source>
         <translation>Appointments</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="418" />
+        <location filename="../src/icalexport.cpp" line="458" />
         <source>Im Anhang %1 Termin(e) als iCalendar-Datei.
 </source>
         <translation>Attached: %1 appointment(s) as an iCalendar file.
 </translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="421" />
+        <location filename="../src/icalexport.cpp" line="461" />
         <source>Das Mailprogramm wurde ohne Anhang geöffnet. Bitte die Datei anhängen:
 %1</source>
         <translation>The mail program was opened without an attachment. Please attach the file:
 %1</translation>
     </message>
     <message>
-        <location filename="../src/icalexport.cpp" line="424" />
+        <location filename="../src/icalexport.cpp" line="464" />
         <source>Es konnte kein Mailprogramm geöffnet werden.</source>
         <translation>No mail program could be opened.</translation>
     </message>
@@ -11857,88 +11872,88 @@ Choose “No” if the physical condition has actually only changed now – the 
 <context>
     <name>Recurrence</name>
     <message>
-        <location filename="../src/recurrence.cpp" line="149" />
+        <location filename="../src/recurrence.cpp" line="170" />
         <source>keine Wiederholung</source>
         <translation>no recurrence</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="154" />
+        <location filename="../src/recurrence.cpp" line="175" />
         <source>täglich</source>
         <translation>daily</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="154" />
+        <location filename="../src/recurrence.cpp" line="175" />
         <source>alle %1 Tage</source>
         <translation>every %1 days</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="157" />
+        <location filename="../src/recurrence.cpp" line="178" />
         <source>werktags (Mo–Fr)</source>
         <translation>on weekdays (Mon–Fri)</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="161" />
+        <location filename="../src/recurrence.cpp" line="193" />
         <source>wöchentlich</source>
         <translation>weekly</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="161" />
+        <location filename="../src/recurrence.cpp" line="193" />
         <source>alle %1 Wochen</source>
         <translation>every %1 weeks</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="162" />
-        <location filename="../src/recurrence.cpp" line="175" />
+        <location filename="../src/recurrence.cpp" line="194" />
+        <location filename="../src/recurrence.cpp" line="207" />
         <source> am %1</source>
         <translation> on %1</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="166" />
+        <location filename="../src/recurrence.cpp" line="198" />
         <source>monatlich</source>
         <translation>monthly</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="166" />
+        <location filename="../src/recurrence.cpp" line="198" />
         <source>alle %1 Monate</source>
         <translation>every %1 months</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="168" />
+        <location filename="../src/recurrence.cpp" line="200" />
         <source> am %1.</source>
         <translation> on day %1</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="169" />
+        <location filename="../src/recurrence.cpp" line="201" />
         <source> am %1 %2</source>
         <translation> on the %1 %2</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="170" />
+        <location filename="../src/recurrence.cpp" line="202" />
         <source> am letzten %1</source>
         <translation> on the last %1</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="174" />
+        <location filename="../src/recurrence.cpp" line="206" />
         <source>jährlich</source>
         <translation>yearly</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="174" />
+        <location filename="../src/recurrence.cpp" line="206" />
         <source>alle %1 Jahre</source>
         <translation>every %1 years</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="175" />
+        <location filename="../src/recurrence.cpp" line="207" />
         <source>d. MMMM</source>
         <translation>MMMM d</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="180" />
+        <location filename="../src/recurrence.cpp" line="212" />
         <source>, %1-mal</source>
         <translation>, %1 times</translation>
     </message>
     <message>
-        <location filename="../src/recurrence.cpp" line="181" />
+        <location filename="../src/recurrence.cpp" line="213" />
         <source>, bis %1</source>
         <translation>, until %1</translation>
     </message>

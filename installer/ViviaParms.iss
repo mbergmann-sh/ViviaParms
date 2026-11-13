@@ -11,7 +11,7 @@
 ; ===========================================================================
 
 #define AppName      "ViviaParms"
-#define AppVersion   "0.32.0"
+#define AppVersion   "0.33.0"
 #define AppPublisher "Michael Bergmann"
 #define AppExe       "ViviaParms.exe"
 #define AppGuid      "4F346EA8-615A-4A56-8988-ABB44ED91A10"   ; neue AppId ab 0.32.0 (ViviaParms): eigenes Produkt, VitaParms bleibt bis zur Deinstallation

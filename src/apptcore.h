@@ -46,4 +46,6 @@ bool ruleChanged(const Appointment &before, const std::function<Recurrence(const
 bool saveWithScope(Appointment &a, const Appointment &before, const std::function<Recurrence(const QDate &)> &rule,
                    SeriesScope scope, QString *error);
 bool deleteWithScope(const Appointment &a, SeriesScope scope, QString *error);
+// Eigene Uhrzeit je Wochentag (Recurrence::dayTimes): Beginn/Ende an den Wochentag anpassen
+void applyDayTime(Appointment &a, const Recurrence &r);
 }

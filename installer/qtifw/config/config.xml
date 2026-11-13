@@ -2,8 +2,8 @@
 <!-- ERZEUGT von qmake aus config.xml.in – Änderungen bitte dort vornehmen -->
 <Installer>
     <Name>ViviaParms</Name>
-    <Version>0.32.0</Version>
-    <Title>ViviaParms 0.32.0</Title>
+    <Version>0.33.0</Version>
+    <Title>ViviaParms 0.33.0</Title>
     <Publisher>Michael Bergmann</Publisher>
     <StartMenuDir>ViviaParms</StartMenuDir>
     <TargetDir>C:/ViviaParms</TargetDir>

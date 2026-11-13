@@ -37,6 +37,13 @@ void Recurrence::normalize(const QDate &start)
         if (monthMode == ByLastWeekday && !isLastOfMonth(start)) monthMode = ByNthWeekday;
     }
     if (freq != Weekly) weekdays = 0;
+    // Uhrzeiten nur für gewählte Wochentage einer wöchentlichen Serie
+    for (auto it = dayTimes.begin(); it != dayTimes.end();) {
+        if (freq != Weekly || it.key() < 1 || it.key() > 7 || !(weekdays & (1 << (it.key() - 1))) || !it->start.isValid())
+            it = dayTimes.erase(it);
+        else
+            ++it;
+    }
     if (freq != Monthly) monthMode = ByMonthDay;
     if (until.isValid() && until < start) until = start;
 }
@@ -103,6 +110,20 @@ QList<QDate> Recurrence::dates(const QDate &start, const QDate &to, int maxCount
     return out;
 }
 
+QTime Recurrence::startTimeOn(const QDate &d, const QTime &fallback) const
+{
+    if (!hasDayTimes()) return fallback;
+    const auto it = dayTimes.constFind(d.dayOfWeek());
+    return it != dayTimes.cend() && it->start.isValid() ? it->start : fallback;
+}
+
+qint64 Recurrence::durationOn(const QDate &d, qint64 fallbackSecs) const
+{
+    if (!hasDayTimes()) return fallbackSecs;
+    const auto it = dayTimes.constFind(d.dayOfWeek());
+    return it != dayTimes.cend() && it->minutes >= 0 ? qint64(it->minutes) * 60 : fallbackSecs;
+}
+
 QString Recurrence::ordinal(int n)
 {
     if (QLocale().language() != QLocale::English) return QString::number(n) + QLatin1Char('.');
@@ -156,8 +177,19 @@ QString Recurrence::describe(const QDate &start) const
     case Weekly: {
         if (weekdays == 0x1f && interval == 1) { s = tr("werktags (Mo–Fr)"); break; }
         QStringList days;
-        for (int i = 0; i < 7; ++i)
-            if (weekdays & (1 << i)) days << loc.dayName(i + 1, QLocale::ShortFormat);
+        for (int i = 0; i < 7; ++i) {
+            if (!(weekdays & (1 << i))) continue;
+            QString d = loc.dayName(i + 1, QLocale::ShortFormat);
+            if (hasDayTimes()) {
+                const auto it = dayTimes.constFind(i + 1);
+                if (it != dayTimes.cend()) {
+                    d += QLatin1Char(' ') + it->start.toString(QStringLiteral("HH:mm"));
+                    if (it->minutes >= 0)
+                        d += QStringLiteral("–") + it->start.addSecs(it->minutes * 60).toString(QStringLiteral("HH:mm"));
+                }
+            }
+            days << d;
+        }
         s = (interval == 1 ? tr("wöchentlich") : tr("alle %1 Wochen").arg(interval))
             + tr(" am %1").arg(days.join(QStringLiteral(", ")));
         break;
@@ -191,6 +223,13 @@ QJsonObject Recurrence::toJson() const
     if (freq == Monthly) o[QStringLiteral("monthMode")] = monthMode;
     if (until.isValid()) o[QStringLiteral("until")] = until.toString(Qt::ISODate);
     if (count > 0) o[QStringLiteral("count")] = count;
+    if (hasDayTimes()) {
+        QJsonObject t;
+        for (auto it = dayTimes.cbegin(); it != dayTimes.cend(); ++it)
+            t[QString::number(it.key())] = it->start.toString(QStringLiteral("HH:mm"))
+                + (it->minutes >= 0 ? QStringLiteral("/%1").arg(it->minutes) : QString());
+        o[QStringLiteral("times")] = t;
+    }
     return o;
 }
 
@@ -203,6 +242,15 @@ Recurrence Recurrence::fromJson(const QJsonObject &o)
     r.monthMode = std::clamp(o.value(QStringLiteral("monthMode")).toInt(), 0, 2);
     r.until = QDate::fromString(o.value(QStringLiteral("until")).toString(), Qt::ISODate);
     r.count = std::max(0, o.value(QStringLiteral("count")).toInt());
+    const QJsonObject t = o.value(QStringLiteral("times")).toObject();
+    for (auto it = t.begin(); it != t.end(); ++it) {
+        const int wd = it.key().toInt();
+        const QStringList p = it.value().toString().split(QLatin1Char('/'));
+        DayTime dt;
+        dt.start = QTime::fromString(p.value(0), QStringLiteral("HH:mm"));
+        dt.minutes = p.size() > 1 ? p.value(1).toInt() : -1;
+        if (wd >= 1 && wd <= 7 && dt.start.isValid()) r.dayTimes.insert(wd, dt);
+    }
     return r;
 }
 
@@ -211,5 +259,6 @@ bool Recurrence::operator==(const Recurrence &o) const
     if (freq != o.freq) return false;
     if (freq == None) return true;
     return interval == o.interval && weekdays == o.weekdays && monthMode == o.monthMode
-        && until == o.until && count == o.count;
+        && until == o.until && count == o.count
+        && (freq == Weekly ? dayTimes == o.dayTimes : true);
 }

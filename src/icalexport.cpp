@@ -19,6 +19,8 @@
 #include <QStandardPaths>
 #include <QVBoxLayout>
 
+#include <algorithm>
+
 namespace ICal {
 
 namespace {
@@ -248,35 +250,73 @@ Result build(const QList<Appointment> &appointments, const Options &o)
         std::sort(ex.begin(), ex.end());
         ex.erase(std::unique(ex.begin(), ex.end()), ex.end());
 
-        const QString uid = QStringLiteral("UID:%1-s%2@vitaparms").arg(uidBase).arg(s.id);
         const qint64 dur = tmpl.end.isValid() ? tmpl.start.secsTo(tmpl.end) : -1;
-        w.lines << QStringLiteral("BEGIN:VEVENT") << uid << stamp;
-        w.times(tmpl, s.dtstart, dur >= 0 ? s.dtstart.addSecs(dur) : QDateTime());
-        QString until;
-        if (s.rule.until.isValid())
-            until = tmpl.allDay ? s.rule.until.toString(QStringLiteral("yyyyMMdd"))
-                                : formatUtc(QDateTime(s.rule.until, s.dtstart.time()));
-        w.lines << QStringLiteral("RRULE:") + s.rule.rrule(s.dtstart.date(), until);
-        if (!ex.isEmpty()) {
+        // Eigene Uhrzeit je Wochentag lässt sich nicht in einer RRULE ausdrücken: die Serie nach
+        // Uhrzeiten aufteilen – je Gruppe von Wochentagen mit gleicher Zeit ein VEVENT. Die Gruppe des
+        // ersten Termins behält die bisherige UID, die anderen bekommen „-w<Wochentage>“.
+        struct Group { int mask = 0; QTime time; qint64 dur = -1; QDateTime dtstart; };
+        QList<Group> groups;
+        if (s.rule.hasDayTimes() && !tmpl.allDay) {
+            for (int i = 0; i < 7; ++i) {
+                if (!(s.rule.weekdays & (1 << i))) continue;
+                const QDate probe = s.dtstart.date().addDays((i + 1 - s.dtstart.date().dayOfWeek() + 7) % 7);
+                const QTime t = s.rule.startTimeOn(probe, s.dtstart.time());
+                const qint64 d = s.rule.durationOn(probe, dur);
+                auto it = std::find_if(groups.begin(), groups.end(), [&](const Group &g) { return g.time == t && g.dur == d; });
+                if (it == groups.end()) { groups << Group{ 0, t, d, {} }; it = groups.end() - 1; }
+                it->mask |= 1 << i;
+            }
+        } else {
+            groups << Group{ s.rule.weekdays, s.dtstart.time(), dur, s.dtstart };
+        }
+        const QDate lastDay = s.rule.lastDate(s.dtstart.date());   // ungültig: unbegrenzt
+        const int firstBit = 1 << (s.dtstart.date().dayOfWeek() - 1);
+        for (Group &g : groups) {
+            const bool primary = groups.size() == 1 || (g.mask & firstBit);
+            Recurrence rule = s.rule;
+            rule.dayTimes.clear();
+            if (groups.size() > 1) {
+                rule.weekdays = g.mask;
+                QDate d0 = s.dtstart.date();
+                while (!(g.mask & (1 << (d0.dayOfWeek() - 1)))) d0 = d0.addDays(1);
+                g.dtstart = QDateTime(d0, g.time);
+                if (rule.count > 0) { rule.count = 0; rule.until = lastDay; }   // Anzahl → Enddatum
+                if (rule.until.isValid() && rule.until < d0) continue;          // Gruppe kommt nie vor
+            } else if (!g.dtstart.isValid()) {
+                g.dtstart = QDateTime(s.dtstart.date(), g.time);
+            }
+            const QString uid = primary ? QStringLiteral("UID:%1-s%2@vitaparms").arg(uidBase).arg(s.id)
+                                        : QStringLiteral("UID:%1-s%2-w%3@vitaparms").arg(uidBase).arg(s.id).arg(g.mask);
+            auto inGroup = [&](const QDate &d) { return groups.size() == 1 || (g.mask & (1 << (d.dayOfWeek() - 1))); };
+            w.lines << QStringLiteral("BEGIN:VEVENT") << uid << stamp;
+            w.times(tmpl, g.dtstart, g.dur >= 0 ? g.dtstart.addSecs(g.dur) : QDateTime());
+            QString until;
+            if (rule.until.isValid())
+                until = tmpl.allDay ? rule.until.toString(QStringLiteral("yyyyMMdd"))
+                                    : formatUtc(QDateTime(rule.until, g.time));
+            w.lines << QStringLiteral("RRULE:") + rule.rrule(g.dtstart.date(), until);
             QStringList v;
             for (const QDate &d : ex)
-                v << (tmpl.allDay ? d.toString(QStringLiteral("yyyyMMdd")) : w.localValue(QDateTime(d, s.dtstart.time())));
-            w.lines << (tmpl.allDay ? QStringLiteral("EXDATE;VALUE=DATE:") : QStringLiteral("EXDATE") + w.tzParam() + QLatin1Char(':'))
-                       + v.join(QLatin1Char(','));
-        }
-        w.common(tmpl);
-        w.lines << QStringLiteral("END:VEVENT");
-        ++r.events;
-        ++r.series;
-
-        for (const Appointment &a : overrides) {
-            w.lines << QStringLiteral("BEGIN:VEVENT") << uid << stamp;
-            w.dateTimeProp(QStringLiteral("RECURRENCE-ID"), a.seriesOrig, tmpl.allDay);
-            w.times(a, a.start, a.end);
-            w.common(a);
+                if (inGroup(d))
+                    v << (tmpl.allDay ? d.toString(QStringLiteral("yyyyMMdd")) : w.localValue(QDateTime(d, g.time)));
+            if (!v.isEmpty())
+                w.lines << (tmpl.allDay ? QStringLiteral("EXDATE;VALUE=DATE:") : QStringLiteral("EXDATE") + w.tzParam() + QLatin1Char(':'))
+                           + v.join(QLatin1Char(','));
+            w.common(tmpl);
             w.lines << QStringLiteral("END:VEVENT");
             ++r.events;
+
+            for (const Appointment &a : overrides) {
+                if (!inGroup(a.seriesOrig.date())) continue;
+                w.lines << QStringLiteral("BEGIN:VEVENT") << uid << stamp;
+                w.dateTimeProp(QStringLiteral("RECURRENCE-ID"), a.seriesOrig, tmpl.allDay);
+                w.times(a, a.start, a.end);
+                w.common(a);
+                w.lines << QStringLiteral("END:VEVENT");
+                ++r.events;
+            }
         }
+        ++r.series;
     }
     w.lines << QStringLiteral("END:VCALENDAR");
     for (const QString &l : std::as_const(w.lines)) r.data += foldLine(l);

@@ -11,6 +11,9 @@
 #include <QDateTimeEdit>
 #include <QDateEdit>
 #include <QDialogButtonBox>
+#include <QFormLayout>
+#include <QGridLayout>
+#include <QTimeEdit>
 #include <QSpinBox>
 #include <QLabel>
 #include <QLineEdit>
@@ -141,6 +144,8 @@ AppointmentDialog::AppointmentDialog(const Appointment &a, QWidget *parent)
     for (const char *n : { "allDayCheck", "remindEmailCheck" })
         if (auto *c = m_form->findChild<QCheckBox *>(QLatin1String(n)))
             connect(c, &QCheckBox::toggled, this, &AppointmentDialog::updateEnabled);
+    if (auto *c = m_form->findChild<QCheckBox *>(QStringLiteral("allDayCheck")))
+        connect(c, &QCheckBox::toggled, this, [this] { if (hasRecurrenceUi()) updateRecurrenceUi(); });
     if (auto *c = m_form->findChild<QComboBox *>(QStringLiteral("remindCombo")))
         connect(c, qOverload<int>(&QComboBox::currentIndexChanged), this, &AppointmentDialog::updateEnabled);
 
@@ -288,6 +293,7 @@ void AppointmentDialog::setupRecurrence()
         }
     if (auto *sp = m_form->findChild<QSpinBox *>(QStringLiteral("repeatCountSpin")))
         sp->setSuffix(tr(" Termine"));
+    setupDayTimes();
 
     // Vorbelegen
     const Recurrence &r = m_origRule;
@@ -329,6 +335,73 @@ void AppointmentDialog::setupRecurrence()
     if (auto *st = m_form->findChild<QDateTimeEdit *>(QStringLiteral("startEdit")))
         connect(st, &QDateTimeEdit::dateTimeChanged, this, [this](const QDateTime &dt) { onStartDateChanged(dt.date()); });
     updateRecurrenceUi();
+}
+
+void AppointmentDialog::setupDayTimes()
+{
+    // Zeile unter „am“ (Wochentage) im Formular einfügen – auch in angepassten Formularen,
+    // solange sie die Wochentags-Kästchen in einem QFormLayout haben
+    auto *wd1 = m_form->findChild<QCheckBox *>(QStringLiteral("wd1Check"));
+    auto *label = m_form->findChild<QWidget *>(QStringLiteral("repeatOnLabel"));
+    QFormLayout *form = nullptr;
+    int row = -1;
+    if (wd1 && label)
+        for (QFormLayout *f : m_form->findChildren<QFormLayout *>()) {
+            QFormLayout::ItemRole role;
+            f->getWidgetPosition(label, &row, &role);
+            if (row >= 0) { form = f; break; }
+        }
+    m_dayTimesBox = new QWidget(m_form);
+    m_dayTimesBox->setObjectName(QStringLiteral("dayTimesBox"));
+    auto *v = new QVBoxLayout(m_dayTimesBox);
+    v->setContentsMargins(0, 0, 0, 0);
+    m_dayTimesCheck = new QCheckBox(tr("Eigene Uhrzeit je Wochentag"), m_dayTimesBox);
+    m_dayTimesCheck->setObjectName(QStringLiteral("dayTimesCheck"));
+    m_dayTimesCheck->setToolTip(tr("Zum Beispiel Montag 8:00, Mittwoch 14:30 und Freitag 10:00 – in einer Serie"));
+    v->addWidget(m_dayTimesCheck);
+    auto *grid = new QGridLayout;
+    grid->setContentsMargins(24, 0, 0, 0);
+    const QLocale loc;
+    const QTime from = m_appt.start.time();
+    const QTime to = m_appt.end.isValid() ? m_appt.end.time() : from.addSecs(3600);
+    for (int i = 1; i <= 7; ++i) {
+        m_dayRow[i] = new QWidget(m_dayTimesBox);
+        auto *h = new QHBoxLayout(m_dayRow[i]);
+        h->setContentsMargins(0, 0, 0, 0);
+        auto *l = new QLabel(loc.dayName(i, QLocale::LongFormat), m_dayRow[i]);
+        l->setMinimumWidth(90);
+        m_dayFrom[i] = new QTimeEdit(m_dayRow[i]);
+        m_dayTo[i] = new QTimeEdit(m_dayRow[i]);
+        m_dayFrom[i]->setObjectName(QStringLiteral("dayFrom%1").arg(i));
+        m_dayTo[i]->setObjectName(QStringLiteral("dayTo%1").arg(i));
+        for (QTimeEdit *t : { m_dayFrom[i], m_dayTo[i] }) t->setDisplayFormat(QStringLiteral("HH:mm"));
+        const auto it = m_origRule.dayTimes.constFind(i);
+        if (it != m_origRule.dayTimes.cend()) {
+            m_dayFrom[i]->setTime(it->start);
+            m_dayTo[i]->setTime(it->minutes >= 0 ? it->start.addSecs(it->minutes * 60) : it->start.addSecs(3600));
+        } else {
+            m_dayFrom[i]->setTime(from);
+            m_dayTo[i]->setTime(to);
+        }
+        h->addWidget(l);
+        h->addWidget(m_dayFrom[i]);
+        h->addWidget(new QLabel(tr("bis"), m_dayRow[i]));
+        h->addWidget(m_dayTo[i]);
+        h->addStretch();
+        grid->addWidget(m_dayRow[i], i - 1, 0);
+        connect(m_dayFrom[i], &QTimeEdit::timeChanged, this, [this, i](const QTime &t) {
+            // Dauer beibehalten: „bis“ wandert mit
+            if (m_updating) return;
+            if (m_dayTo[i]->time() <= t) m_dayTo[i]->setTime(t.addSecs(3600));
+            updateRecurrenceUi();
+        });
+        connect(m_dayTo[i], &QTimeEdit::timeChanged, this, &AppointmentDialog::updateRecurrenceUi);
+    }
+    v->addLayout(grid);
+    m_dayTimesCheck->setChecked(m_origRule.hasDayTimes());
+    connect(m_dayTimesCheck, &QCheckBox::toggled, this, &AppointmentDialog::updateRecurrenceUi);
+    if (form) form->insertRow(row + 1, QString(), m_dayTimesBox);
+    else if (auto *lay = m_form->layout()) lay->addWidget(m_dayTimesBox);
 }
 
 void AppointmentDialog::fillMonthModes(const QDate &start)
@@ -401,6 +474,16 @@ Recurrence AppointmentDialog::readRecurrence(const QDate &start) const
                 r.weekdays |= 1 << (i - 1);
     if (auto *c = m_form->findChild<QComboBox *>(QStringLiteral("monthModeCombo")))
         r.monthMode = c->currentData().toInt();
+    const bool allDay = FormIO::read(m_form, QStringLiteral("allDayCheck")).value_or(false).toBool();
+    if (r.freq == Recurrence::Weekly && m_dayTimesCheck && m_dayTimesCheck->isChecked() && !allDay)
+        for (int i = 1; i <= 7; ++i) {
+            if (!(r.weekdays & (1 << (i - 1)))) continue;
+            Recurrence::DayTime dt;
+            dt.start = m_dayFrom[i]->time();
+            const int mins = int(dt.start.secsTo(m_dayTo[i]->time()) / 60);
+            dt.minutes = mins > 0 ? mins : -1;
+            r.dayTimes.insert(i, dt);
+        }
     const int end = FormIO::read(m_form, QStringLiteral("repeatEndCombo")).value_or(int(EndNever)).toInt();
     if (end == EndUntil) {
         if (auto *d = m_form->findChild<QDateEdit *>(QStringLiteral("repeatUntilEdit"))) r.until = d->date();
@@ -424,6 +507,15 @@ void AppointmentDialog::updateRecurrenceUi()
     show("intervalSpin", on && choice != RepWorkdays);
     const bool weekly = choice == RepWeekly || choice == RepEveryNWeeks;
     for (int i = 1; i <= 7; ++i) show(qPrintable(QStringLiteral("wd%1Check").arg(i)), weekly);
+    if (m_dayTimesBox) {     // Uhrzeit je Wochentag: nur wöchentlich, nicht ganztägig
+        const bool allDay = FormIO::read(m_form, QStringLiteral("allDayCheck")).value_or(false).toBool();
+        m_dayTimesBox->setVisible(weekly && !allDay);
+        const bool per = m_dayTimesCheck->isChecked();
+        for (int i = 1; i <= 7; ++i) {
+            auto *cb = m_form->findChild<QCheckBox *>(QStringLiteral("wd%1Check").arg(i));
+            m_dayRow[i]->setVisible(per && cb && cb->isChecked());
+        }
+    }
     show("monthModeCombo", choice == RepMonthly);
     show("repeatOnLabel", weekly || choice == RepMonthly);
     show("repeatEndLabel", on);
@@ -462,7 +554,8 @@ void AppointmentDialog::updateRecurrenceUi()
         const QList<QDate> next = r.dates(start, start.addYears(5), 6);
         QStringList ds;
         for (int i = 0; i < std::min<qsizetype>(5, next.size()); ++i)
-            ds << QLocale().toString(next[i], QStringLiteral("ddd dd.MM."));
+            ds << QLocale().toString(next[i], QStringLiteral("ddd dd.MM."))
+                      + (r.hasDayTimes() ? QLatin1Char(' ') + r.startTimeOn(next[i], QTime()).toString(QStringLiteral("HH:mm")) : QString());
         info = tr("↻ %1<br>Termine: %2").arg(r.describe(start).toHtmlEscaped(),
                                              ds.join(QStringLiteral(", ")) + (next.size() > 5 ? QStringLiteral(" …") : QString()));
     }

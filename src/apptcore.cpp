@@ -156,21 +156,53 @@ bool ruleChanged(const Appointment &before, const std::function<Recurrence(const
     return rule(i.start) != i.orig;
 }
 
+// Eigene Uhrzeit je Wochentag: Beginn und Ende des Termins an seinen Wochentag anpassen
+void applyDayTime(Appointment &a, const Recurrence &r)
+{
+    if (a.allDay || !r.hasDayTimes() || !a.start.isValid()) return;
+    const qint64 dur = a.end.isValid() ? a.start.secsTo(a.end) : -1;
+    a.start = QDateTime(a.start.date(), r.startTimeOn(a.start.date(), a.start.time()));
+    const qint64 d = r.durationOn(a.start.date(), dur);
+    a.end = d >= 0 ? a.start.addSecs(d) : QDateTime();
+}
+
+// Ein einzelner Termin einer Serie mit Uhrzeit je Wochentag wurde zeitlich verschoben und soll für
+// mehrere gelten: die Uhrzeit seines Wochentags in der Regel übernehmen. true = Regel geändert.
+static bool takeDayTimeFrom(Recurrence &r, const Appointment &a)
+{
+    if (a.allDay || !r.hasDayTimes()) return false;
+    const int wd = a.start.date().dayOfWeek();
+    Recurrence::DayTime dt;
+    dt.start = a.start.time();
+    dt.minutes = a.end.isValid() ? int(a.start.secsTo(a.end) / 60) : -1;
+    const auto it = r.dayTimes.constFind(wd);
+    if (it != r.dayTimes.cend() && *it == dt) return false;
+    if (!(r.weekdays & (1 << (wd - 1)))) return false;
+    r.dayTimes.insert(wd, dt);
+    return true;
+}
+
 bool saveWithScope(Appointment &a, const Appointment &before, const std::function<Recurrence(const QDate &)> &rule,
                    SeriesScope scope, QString *error)
 {
     Database &db = Database::instance();
-    const Recurrence newRule = rule ? rule(a.start.date()) : Recurrence();
+    Recurrence newRule = rule ? rule(a.start.date()) : Recurrence();
     if (newRule.until.isValid() && newRule.until < a.start.date()) {
         if (error) *error = QCoreApplication::translate("AppointmentDialog", "Das Ende der Serie liegt vor dem ersten Termin.");
         return false;
     }
     if (!a.isSeries()) {
         if (newRule.isNone()) return db.saveAppointment(a, error);
+        applyDayTime(a, newRule);                 // erster Termin: Uhrzeit seines Wochentags
         return db.createSeries(a, newRule, error);
     }
     const SeriesInfo info = seriesInfo(before);
-    const bool changed = ruleChanged(before, rule);
+    bool changed = ruleChanged(before, rule);
+    // Uhrzeit je Wochentag: zeitlich verschobener Termin für „folgende“/„alle“ → Uhrzeit des Wochentags
+    if (scope != SeriesScope::OnlyThis && a.start.date() == a.seriesOrig.date()) {
+        Recurrence r = changed ? newRule : info.orig;
+        if (!changed && takeDayTimeFrom(r, a)) { newRule = r; changed = true; }
+    }
     // Gleiche Regel auf einen neuen Starttermin übertragen (einzelner Wochentag wandert mit)
     auto moved = [&](const QDate &newStart) {
         Recurrence r = info.orig;
@@ -189,8 +221,11 @@ bool saveWithScope(Appointment &a, const Appointment &before, const std::functio
         }
         a.detached = true;
         return db.saveAppointment(a, error);
-    case SeriesScope::Following:
-        return db.splitSeries(a.seriesId, a.seriesOrig, a, changed ? newRule : moved(a.start.date()), error);
+    case SeriesScope::Following: {
+        const Recurrence r = changed ? newRule : moved(a.start.date());
+        applyDayTime(a, r);
+        return db.splitSeries(a.seriesId, a.seriesOrig, a, r, error);
+    }
     case SeriesScope::All: {
         if (!changed && a.start.date() == a.seriesOrig.date()) {
             const bool done = a.done;
@@ -210,6 +245,7 @@ bool saveWithScope(Appointment &a, const Appointment &before, const std::functio
         f.snoozeUntil = {};
         Recurrence r = changed ? newRule : moved(f.start.date());
         r.normalize(f.start.date());
+        applyDayTime(f, r);
         if (!db.splitSeries(a.seriesId, first, f, r, error, true)) return false;
         a = f;
         return true;

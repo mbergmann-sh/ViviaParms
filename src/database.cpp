@@ -1568,9 +1568,10 @@ bool Database::generateOccurrences(AppointmentSeries &s, const Appointment &tmpl
         a.id = 0;
         a.seriesId = s.id;
         a.detached = false;
-        a.start = QDateTime(d, s.dtstart.time());
+        a.start = QDateTime(d, tmpl.allDay ? s.dtstart.time() : s.rule.startTimeOn(d, s.dtstart.time()));
         a.seriesOrig = a.start;
-        a.end = dur >= 0 ? a.start.addSecs(dur) : QDateTime();
+        const qint64 dd = tmpl.allDay ? dur : s.rule.durationOn(d, dur);    // eigene Uhrzeit je Wochentag
+        a.end = dd >= 0 ? a.start.addSecs(dd) : QDateTime();
         a.snoozeUntil = {};
         a.done = false;
         a.remindedAt = {};
@@ -1699,9 +1700,11 @@ bool Database::updateSeriesAll(qint64 seriesId, const Appointment &v, QString *e
         a.remindEmail = v.remindEmail;
         a.emailTo = v.emailTo;
         a.extra = v.extra;
-        a.start = QDateTime(a.seriesOrig.date(), t);
+        const QDate day = a.seriesOrig.date();
+        a.start = QDateTime(day, v.allDay ? t : s->rule.startTimeOn(day, t));   // Uhrzeit je Wochentag bleibt
         a.seriesOrig = a.start;
-        a.end = dur >= 0 ? a.start.addSecs(dur) : QDateTime();
+        const qint64 dd = v.allDay ? dur : s->rule.durationOn(day, dur);
+        a.end = dd >= 0 ? a.start.addSecs(dd) : QDateTime();
         a.detached = false;
         if (a.start > now && (a.start != oldStart || a.remindMinutes != oldLead)) {
             a.remindedAt = {};

@@ -34,6 +34,7 @@ private:
     Recurrence readRecurrence(const QDate &start) const;
     bool hasRecurrenceUi() const;
     bool saveSeriesAware(Appointment &a, QString *err, bool *cancelled);
+    void setupDayTimes();          // „eigene Uhrzeit je Wochentag“ (nur wöchentlich)
 
     Appointment m_appt;
     QWidget *m_form = nullptr;
@@ -41,4 +42,9 @@ private:
     Recurrence m_origRule;
     QDate m_prevStart;
     bool m_updating = false;
+    // Uhrzeit je Wochentag: Ankreuzfeld und je Wochentag (1 = Mo) eine Zeile „von – bis“
+    class QCheckBox *m_dayTimesCheck = nullptr;
+    QWidget *m_dayTimesBox = nullptr;
+    QWidget *m_dayRow[8] = {};
+    class QTimeEdit *m_dayFrom[8] = {}, *m_dayTo[8] = {};
 };

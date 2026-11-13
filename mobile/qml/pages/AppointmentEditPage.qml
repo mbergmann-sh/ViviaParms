@@ -20,6 +20,16 @@ Page {
     property var repeats: app.apptRepeatChoices()
     property int priority: rec.priority !== undefined ? rec.priority : 1
     property int weekdays: rule.weekdays || 0
+    // Eigene Uhrzeit je Wochentag (wöchentlich): {"1": {from, to}, …}, 1 = Montag
+    property bool perDay: rule.perDay === true
+    property var dayTimes: rule.dayTimes || ({})
+    function dayTime(i) { return dayTimes[String(i)] || { from: startTime.text, to: endTime.text } }
+    function setDayTime(i, key, value) {
+        const m = Object.assign({}, dayTimes)
+        const d = Object.assign({}, dayTime(i)); d[key] = value
+        m[String(i)] = d
+        dayTimes = m
+    }
     property string prevStart: rec.startDate || ""
     background: Rectangle { color: Theme.paper }
 
@@ -32,7 +42,13 @@ Page {
     function collectRule() {
         return { repeat: repeatChoice, interval: intervalStep.value, weekdays: weekdays,
                  monthMode: monthBox.currentIndex >= 0 && monthModes.length ? monthModes[monthBox.currentIndex].value : 0,
-                 endMode: endChoice, until: untilDate.isoDate, count: countStep.value }
+                 endMode: endChoice, until: untilDate.isoDate, count: countStep.value,
+                 perDay: perDay, dayTimes: completeDayTimes(), allDay: allDay.checked }
+    }
+    function completeDayTimes() {      // für jeden gewählten Wochentag eine Zeit (Vorgabe: Beginn/Ende oben)
+        const m = {}
+        for (let i = 1; i <= 7; ++i) if (weekdays & (1 << (i - 1))) m[String(i)] = dayTime(i)
+        return m
     }
     function collect() {
         return { id: page.apptId, title: titleField.text, location: locField.text, notes: notesArea.text,
@@ -202,6 +218,29 @@ Page {
                     model: app.weekdayNames()
                     VChip { text: modelData; checkable: false; checked: (page.weekdays & (1 << index)) !== 0
                             onClicked: page.weekdays = page.weekdays ^ (1 << index) }
+                }
+            }
+            VCheck { id: perDayCheck; objectName: "apptPerDay"; visible: page.weekly && !allDay.checked
+                     text: qsTr("Eigene Uhrzeit je Wochentag"); checked: page.perDay
+                     onToggled: page.perDay = checked; Layout.fillWidth: true }
+            Repeater {
+                model: 7
+                RowLayout {
+                    objectName: "apptDayTime" + (index + 1)
+                    visible: page.weekly && page.perDay && !allDay.checked && (page.weekdays & (1 << index)) !== 0
+                    Layout.leftMargin: Theme.gapL
+                    spacing: Theme.gapS
+                    Label { text: app.weekdayNames()[index]; color: Theme.ink; font.pixelSize: Theme.fsM
+                            Layout.preferredWidth: 56 }
+                    VField { objectName: "apptDayFrom" + (index + 1); label: ""; width: 110; Layout.preferredWidth: 110; Layout.maximumWidth: 130
+                             placeholder: "HH:MM"; inputMethodHints: Qt.ImhPreferNumbers
+                             text: page.dayTime(index + 1).from
+                             onTextChanged: if (text !== page.dayTime(index + 1).from) page.setDayTime(index + 1, "from", text) }
+                    Label { text: qsTr("bis"); color: Theme.ink2 }
+                    VField { objectName: "apptDayTo" + (index + 1); label: ""; width: 110; Layout.preferredWidth: 110; Layout.maximumWidth: 130
+                             placeholder: "HH:MM"; inputMethodHints: Qt.ImhPreferNumbers
+                             text: page.dayTime(index + 1).to
+                             onTextChanged: if (text !== page.dayTime(index + 1).to) page.setDayTime(index + 1, "to", text) }
                 }
             }
             VCombo { id: monthBox; visible: page.repeatChoice === 4; Layout.preferredWidth: 360

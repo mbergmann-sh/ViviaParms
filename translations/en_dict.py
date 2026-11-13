@@ -2,6 +2,8 @@
 # Used by tools/apply_translations.py to fill translations/viviaparms_en.ts.
 # Edit viviaparms_en.ts with Qt Linguist afterwards if you prefer.
 EN = {
+"Eigene Uhrzeit je Wochentag": "Own time per weekday",
+"Zum Beispiel Montag 8:00, Mittwoch 14:30 und Freitag 10:00 – in einer Serie": "For example Monday 8:00, Wednesday 14:30 and Friday 10:00 – in one series",
 "Datei konnte nicht kopiert werden: %1": "File could not be copied: %1",
 "<p>VitaParms heißt jetzt <b>ViviaParms</b>.</p>": "<p>VitaParms is now called <b>ViviaParms</b>.</p>",
 "<p>Ihre Daten wurden übernommen. Der bisherige Ordner bleibt unverändert als Sicherung erhalten:<br><tt>%1</tt></p><p>Sobald ViviaParms wie gewohnt läuft, können Sie ihn löschen.</p>": "<p>Your data has been taken over. The previous folder is kept unchanged as a backup:<br><tt>%1</tt></p><p>Once ViviaParms runs as usual, you can delete it.</p>",

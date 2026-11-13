@@ -436,6 +436,15 @@ Wiederherstellungsschlüssel (Anmeldedialog → *Wiederherstellungsschlüssel…
   ein Abgleich (USB oder Website) mit einem Gerät in neuerer Version abgelehnt, und der Server
   nimmt von älteren Versionen keine Datenbank mehr an (HTTP 426) – so kann ein nicht
   aktualisiertes Gerät keine Daten überschreiben, die es nicht kennt.
+* **0.33.0:** **Terminserien mit eigener Uhrzeit je Wochentag** (Desktop, light, Tablet/Smartphone):
+  Bei *wöchentlich* gibt es *Eigene Uhrzeit je Wochentag* – je gewähltem Wochentag „von – bis“, z. B.
+  Mo 8:00–9:00, Mi 14:30–15:15, Fr 10:00 –, in einer Serie und auf Wunsch für einen Zeitraum
+  (*bis einschließlich*). `Recurrence::dayTimes` (JSON `times`), die Termine werden mit der Uhrzeit
+  ihres Wochentags angelegt; *Alle Termine der Serie* behält die Uhrzeiten; wird ein Termin zeitlich
+  verschoben und für *folgende*/*alle* gespeichert, gilt die neue Uhrzeit für seinen Wochentag.
+  Einzelne Termine lassen sich wie bisher abändern. iCalendar-Export: eine RRULE je Uhrzeit (die Gruppe
+  des ersten Termins behält die UID, die übrigen `…-s<id>-w<Wochentage>`). Tests: Harness (Regel,
+  Datenbank, „alle“, Verschieben, iCalendar, Formular) und Autopilot.
 * **0.32.0:** **VitaParms heißt jetzt ViviaParms** und steht unter der **PolyForm Noncommercial
   License 1.0.0** (bis 0.31.4: MIT-Lizenz; für diese Fassungen gilt sie weiter). Umbenannt sind
   Programm, App, Website, Installer, Debian-Pakete, Handbücher, Projekt- und Quelldateien sowie

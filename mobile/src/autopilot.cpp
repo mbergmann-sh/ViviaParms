@@ -1098,6 +1098,62 @@ int runAutopilot(QQmlApplicationEngine &engine, AppController &app)
     if (QObject *b = win->findChild<QObject *>(QStringLiteral("scopeAll"))) QMetaObject::invokeMethod(b, "clicked");
     wait(300);
     check(win->findChild<QObject *>(QStringLiteral("appointmentEditPage")) == nullptr, "Serie: gespeichert und geschlossen");
+    {   // 0.33: Serie mit eigener Uhrzeit je Wochentag (Mo 8:00–9:00, Mi 14:30–15:15)
+        const QDate mon = QDate::currentDate().addDays(8 - QDate::currentDate().dayOfWeek());
+        QVariantMap s = app.appointment(0, pid);
+        s.insert(QStringLiteral("title"), QStringLiteral("Tablet-Physio"));
+        s.insert(QStringLiteral("startDate"), mon.toString(Qt::ISODate));
+        s.insert(QStringLiteral("startTime"), QStringLiteral("12:00"));
+        s.insert(QStringLiteral("endDate"), mon.toString(Qt::ISODate));
+        s.insert(QStringLiteral("endTime"), QStringLiteral("12:30"));
+        const QVariantMap times{ { QStringLiteral("1"), QVariantMap{ { QStringLiteral("from"), QStringLiteral("08:00") }, { QStringLiteral("to"), QStringLiteral("09:00") } } },
+                                 { QStringLiteral("3"), QVariantMap{ { QStringLiteral("from"), QStringLiteral("14:30") }, { QStringLiteral("to"), QStringLiteral("15:15") } } } };
+        s.insert(QStringLiteral("rule"), QVariantMap{ { QStringLiteral("repeat"), 3 }, { QStringLiteral("interval"), 1 },
+                                                      { QStringLiteral("weekdays"), 1 | 4 }, { QStringLiteral("endMode"), 2 }, { QStringLiteral("count"), 6 },
+                                                      { QStringLiteral("perDay"), true }, { QStringLiteral("dayTimes"), times } });
+        check(app.apptRulePreview(s.value(QStringLiteral("rule")).toMap(), mon.toString(Qt::ISODate)).contains(QStringLiteral("14:30")), "Uhrzeit je Wochentag: Vorschau");
+        check(app.saveAppointment(s), "Uhrzeit je Wochentag: speichern");
+        QList<QVariantMap> items;
+        for (const QVariant &v : app.appointmentList(pid, QStringLiteral("upcoming"), true))
+            if (v.toMap().value(QStringLiteral("title")).toString() == QStringLiteral("Tablet-Physio")) items << v.toMap();
+        bool ok = items.size() == 6;
+        qint64 firstId = 0;
+        for (const QVariantMap &m : items) {
+            const QVariantMap d = app.appointment(m.value(QStringLiteral("id")).toLongLong(), pid);
+            const QDate day = QDate::fromString(d.value(QStringLiteral("startDate")).toString(), Qt::ISODate);
+            const QString t = d.value(QStringLiteral("startTime")).toString();
+            ok &= (day.dayOfWeek() == 1 && t == QStringLiteral("08:00")) || (day.dayOfWeek() == 3 && t == QStringLiteral("14:30"));
+            if (!firstId) firstId = m.value(QStringLiteral("id")).toLongLong();
+        }
+        check(ok, "Uhrzeit je Wochentag: Termine mit eigener Uhrzeit");
+        if (firstId) {
+            const QVariantMap back = app.appointment(firstId, pid);
+            check(back.value(QStringLiteral("rule")).toMap().value(QStringLiteral("perDay")).toBool(), "Uhrzeit je Wochentag: Regel gelesen");
+            call(h, "editAppointment", firstId);
+            wait(300);
+            std::function<QQuickItem *(QQuickItem *, const QString &)> inTree = [&](QQuickItem *it, const QString &name) -> QQuickItem * {
+                if (it->objectName() == name) return it;            // Repeater-Delegaten: nur im Elementbaum
+                for (QQuickItem *c : it->childItems()) if (QQuickItem *f = inTree(c, name)) return f;
+                return nullptr;
+            };
+            QQuickItem *root = win->contentItem()->parentItem() ? win->contentItem()->parentItem() : win->contentItem();
+            QObject *row = inTree(root, QStringLiteral("apptDayTime3"));
+            check(row && QQmlProperty::read(row, QStringLiteral("visible")).toBool(), "Uhrzeit je Wochentag: Zeile Mittwoch sichtbar");
+            QObject *row2 = inTree(root, QStringLiteral("apptDayTime2"));
+            check(row2 && !QQmlProperty::read(row2, QStringLiteral("visible")).toBool(), "Uhrzeit je Wochentag: Dienstag ausgeblendet");
+            if (QObject *f = win->findChild<QObject *>(QStringLiteral("apptPerDay")))
+                if (auto *it = qobject_cast<QQuickItem *>(f)) {      // ins Bild rollen
+                    QQuickItem *fl = it->parentItem();
+                    while (fl && !fl->inherits("QQuickFlickable")) fl = fl->parentItem();
+                    if (fl) QQmlProperty::write(fl, QStringLiteral("contentY"),
+                                                std::max(0.0, it->mapToItem(fl->property("contentItem").value<QQuickItem *>(), QPointF(0, 0)).y() - 200));
+                }
+            wait(250);
+            shot(QStringLiteral("m18b_termin_uhrzeit_je_tag"));
+            stackPop();
+            check(app.deleteAppointment(firstId, QStringLiteral("all")), "Uhrzeit je Wochentag: Serie löschen");
+        }
+    }
     // BZ-Tagesprofil: Seite und fällige Messung (Zeitpunkt in drei Minuten)
     {
         QQmlProperty::write(h, QStringLiteral("tab"), 1);
