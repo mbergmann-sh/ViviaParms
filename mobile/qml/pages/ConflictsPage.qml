@@ -78,8 +78,8 @@ Page {
             Flow {
                 Layout.fillWidth: true; Layout.preferredWidth: 1
                 spacing: Theme.gap
-                DateField { id: from; objectName: "conflictFrom"; label: qsTr("von"); allowEmpty: false; width: win.phone ? 150 : 200 }
-                DateField { id: to; objectName: "conflictTo"; label: qsTr("bis"); allowEmpty: false; width: win.phone ? 150 : 200 }
+                DateField { id: from; objectName: "conflictFrom"; label: qsTr("von"); allowEmpty: false; width: win.phone ? 190 : 220 }
+                DateField { id: to; objectName: "conflictTo"; label: qsTr("bis"); allowEmpty: false; width: win.phone ? 190 : 220 }
             }
             Label { text: qsTr("Mindestabstand (z. B. für die Fahrt)"); font.pixelSize: Theme.fsS; color: Theme.ink2 }
             Flow {

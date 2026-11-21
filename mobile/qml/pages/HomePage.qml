@@ -12,6 +12,9 @@ Page {
     property var personId: 0
     property var summary: ({})
     property int tab: 0
+    // Wenig Höhe (Smartphone quer, kleine Telefone): Kopf schlanker, Reiter in einer wischbaren Zeile –
+    // sonst bleibt für Kurven und Listen kaum Platz
+    readonly property bool shortScreen: height < 620
     function goBack() { if (tab === 0) return false; tab = 0; return true }   // „Zurück“: erst zur Übersicht
     background: Rectangle { color: Theme.paper }
 
@@ -158,8 +161,8 @@ Page {
                     }
                     Item { Layout.fillWidth: win.wide && !app.light }
                     // Demo: deutlich kennzeichnen, Beenden mit einem Tipp
-                    Badge { visible: app.demo; text: qsTr("Demo – erfundene Daten"); warn: true }
-                    VButton { objectName: "stopDemoButton"; visible: app.demo; text: qsTr("Demo beenden"); kind: "flat"
+                    Badge { visible: app.demo; text: parent.narrow ? qsTr("Demo") : qsTr("Demo – erfundene Daten"); warn: true }
+                    VButton { objectName: "stopDemoButton"; visible: app.demo && !parent.menuOnly; text: qsTr("Demo beenden"); kind: "flat"
                               onClicked: { app.stopDemo(); win.goStart() } }
                     // Abgleich
                     AbstractButton {
@@ -177,7 +180,9 @@ Page {
                         }
                     }
                     // Schmale Bildschirme (Smartphone) und ViviaParms light: ein Menü statt drei Knöpfen
-                    readonly property bool menuOnly: app.light || home.width < 700
+                    // (nach der Breite der Kopfleiste selbst – im Querformat steht links die Personenliste)
+                    readonly property bool menuOnly: app.light || width < 820
+                    readonly property bool narrow: width < 520
                     VButton { visible: !parent.menuOnly; text: qsTr("Einstellungen"); kind: "flat"; onClicked: home.openSettings() }
                     VButton { objectName: "lockButton"; visible: !parent.menuOnly; text: qsTr("Sperren"); kind: "flat"
                               onClicked: win.askUsbThen(function() { app.lock(); win.goStart() }, qsTr("Ohne Abgleich sperren")) }
@@ -192,6 +197,8 @@ Page {
                         Menu {
                             id: mainMenu
                             width: Math.min(360, home.width - 24)
+                            MenuItem { visible: app.demo; height: visible ? Theme.touch : 0; text: qsTr("Demo beenden"); font.pixelSize: Theme.fsM
+                                       onTriggered: { app.stopDemo(); win.goStart() } }
                             MenuItem { text: qsTr("Mit dem Computer abgleichen (USB)"); font.pixelSize: Theme.fsM; height: Theme.touch; onTriggered: win.openUsbSync() }
                             MenuItem { text: qsTr("Einstellungen"); font.pixelSize: Theme.fsM; height: Theme.touch; onTriggered: home.openSettings() }
                             MenuItem { text: qsTr("Erste Schritte"); font.pixelSize: Theme.fsM; height: Theme.touch
@@ -230,7 +237,7 @@ Page {
                 spacing: 8
                 GridLayout {
                     // Smartphone: Name und Knopf untereinander
-                    columns: home.width < 600 ? 1 : 2
+                    columns: home.width < 600 && !home.shortScreen ? 1 : 2
                     columnSpacing: Theme.gap; rowSpacing: 8
                     Layout.fillWidth: true
                     Layout.minimumWidth: 0
@@ -238,7 +245,7 @@ Page {
                     ColumnLayout {
                         Layout.fillWidth: true
                         spacing: 2
-                        Label { text: home.summary.name || ""; font.pixelSize: Theme.fsXl; font.bold: true; color: Theme.ink
+                        Label { text: home.summary.name || ""; font.pixelSize: home.shortScreen ? Theme.fsL : Theme.fsXl; font.bold: true; color: Theme.ink
                                 elide: Text.ElideRight; Layout.fillWidth: true }
                         Label {
                             visible: !personHead.compact
@@ -250,7 +257,8 @@ Page {
                         }
                     }
                     VButton { objectName: "measureButton"; text: qsTr("Messung erfassen"); iconText: "+"; kind: "primary"; onClicked: home.measure(0)
-                              Layout.preferredHeight: Theme.touch + 4; Layout.fillWidth: home.width < 600 }
+                              Layout.preferredHeight: home.shortScreen ? Theme.touch : Theme.touch + 4
+                              Layout.fillWidth: home.width < 600 && !home.shortScreen }
                 }
                 // Pflegegrad und Ausweis
                 Flow {
@@ -263,7 +271,7 @@ Page {
                 Label { visible: !personHead.compact && !!home.summary.allergies; Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2; textFormat: Text.StyledText
                         text: "<b>" + qsTr("Allergien:") + "</b> " + (home.summary.allergies || "").replace(/\n/g, "; ") }
                 Rectangle {
-                    visible: !!home.summary.emergency
+                    visible: !!home.summary.emergency && !(home.shortScreen && personHead.compact)
                     Layout.fillWidth: true
                     implicitHeight: em.implicitHeight + 20
                     radius: 6

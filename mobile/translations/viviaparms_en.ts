@@ -341,322 +341,357 @@
 <context>
     <name>AppController</name>
     <message>
-        <location filename="../src/appcontroller.cpp" line="69" />
+        <location filename="../src/appcontroller.cpp" line="70" />
         <source>Atemfrequenz</source>
         <translation>Respiratory rate</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="89" />
+        <location filename="../src/appcontroller.cpp" line="90" />
         <source>männlich</source>
         <translation>male</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="90" />
+        <location filename="../src/appcontroller.cpp" line="91" />
         <source>weiblich</source>
         <translation>female</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="91" />
+        <location filename="../src/appcontroller.cpp" line="92" />
         <source>divers</source>
         <translation>diverse</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="199" />
+        <location filename="../src/appcontroller.cpp" line="201" />
         <source>Die Kurzanleitung lässt sich nicht öffnen. Ist eine App zum Anzeigen von PDF-Dateien installiert?</source>
         <translation>The quick guide cannot be opened. Is an app for viewing PDF files installed?</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="202" />
+        <location filename="../src/appcontroller.cpp" line="204" />
         <source>Die Kurzanleitung „Erste Schritte“ ist in dieser Installation nicht enthalten.</source>
         <translation>The quick guide “Getting Started” is not included in this installation.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="293" />
+        <location filename="../src/appcontroller.cpp" line="298" />
         <source>Name oder Passwort stimmt nicht.</source>
         <translation>Name or password is incorrect.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="496" />
+        <location filename="../src/appcontroller.cpp" line="355" />
+        <source>Alle Termine (alle Personen und Konten)</source>
+        <translation>All appointments (all persons and accounts)</translation>
+    </message>
+    <message>
+        <location filename="../src/appcontroller.cpp" line="355" />
+        <source>Alle Termine (alle Personen)</source>
+        <translation>All appointments (all persons)</translation>
+    </message>
+    <message>
+        <location filename="../src/appcontroller.cpp" line="358" />
+        <source>Nur %1</source>
+        <translation>Only %1</translation>
+    </message>
+    <message>
+        <location filename="../src/appcontroller.cpp" line="374" />
+        <source>Kein Zugriff auf den Kalender – bitte erlauben.</source>
+        <translation>No access to the calendar – please allow it.</translation>
+    </message>
+    <message>
+        <location filename="../src/appcontroller.cpp" line="376" />
+        <source>Übertragen fehlgeschlagen: %1</source>
+        <translation>Transfer failed: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/appcontroller.cpp" line="377" />
+        <source>Noch nicht übertragen.</source>
+        <translation>Not transferred yet.</translation>
+    </message>
+    <message>
+        <location filename="../src/appcontroller.cpp" line="379" />
+        <source>Zuletzt übertragen: %1 – Termine im Kalender: %2</source>
+        <translation>Last transferred: %1 – appointments in the calendar: %2</translation>
+    </message>
+    <message>
+        <location filename="../src/appcontroller.cpp" line="545" />
         <source>Bitte auch die zugehörige Schlüsseldatei (.keys) wählen – oder am Computer „Datei → Datenbank exportieren“ verwenden, dann ist alles in einer Datei.</source>
         <translation>Please also select the matching key file (.keys) – or use “File → Export database” on the computer, then everything is in one file.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="508" />
+        <location filename="../src/appcontroller.cpp" line="557" />
         <source>Die Datei enthält keine Anmeldekonten (.keys).</source>
         <translation>The file contains no login accounts (.keys).</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="523" />
+        <location filename="../src/appcontroller.cpp" line="572" />
         <source>Das ist keine Kopplungsdatei von ViviaParms.</source>
         <translation>This is not a ViviaParms pairing file.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="606" />
+        <location filename="../src/appcontroller.cpp" line="655" />
         <source>Ausweichtermine für %1</source>
         <translation>Alternatives for %1</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="680" />
+        <location filename="../src/appcontroller.cpp" line="729" />
         <source>Vers.-Nr. %1</source>
         <translation>Ins. no. %1</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="682" />
+        <location filename="../src/appcontroller.cpp" line="731" />
         <source>Tel. %1</source>
         <translation>Tel. %1</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="683" />
+        <location filename="../src/appcontroller.cpp" line="732" />
         <source>mobil %1</source>
         <translation>mobile %1</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="709" />
+        <location filename="../src/appcontroller.cpp" line="758" />
         <source>Ch.-B. %1</source>
         <translation>Lot %1</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="711" />
+        <location filename="../src/appcontroller.cpp" line="760" />
         <source>ohne Datum</source>
         <translation>no date</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="790" />
+        <location filename="../src/appcontroller.cpp" line="839" />
         <source>Sollwert heute: %1 l/min (%2).</source>
         <translation>Predicted value today: %1 l/min (%2).</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="793" />
+        <location filename="../src/appcontroller.cpp" line="842" />
         <source>Warnhinweise beziehen sich auf den %1 (%2 l/min): gelb unter %3, rot unter %4 l/min.</source>
         <translation>Warnings are based on the %1 (%2 l/min): yellow below %3, red below %4 l/min.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="794" />
+        <location filename="../src/appcontroller.cpp" line="843" />
         <source>persönlichen Bestwert</source>
         <translation>personal best</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="794" />
+        <location filename="../src/appcontroller.cpp" line="843" />
         <source>Sollwert</source>
         <translation>predicted value</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="797" />
+        <location filename="../src/appcontroller.cpp" line="846" />
         <source>Ohne Bezugswert gibt es keine Warnhinweise – bitte den persönlichen Bestwert eintragen.</source>
         <translation>Without a reference value there are no warnings – please enter the personal best.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="841" />
+        <location filename="../src/appcontroller.cpp" line="890" />
         <source>Bitte einen Namen eingeben.</source>
         <translation>Please enter a name.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="938" />
+        <location filename="../src/appcontroller.cpp" line="987" />
         <source>Nur Administratoren können Personen löschen.</source>
         <translation>Only administrators can delete persons.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1037" />
+        <location filename="../src/appcontroller.cpp" line="1086" />
         <source>RR</source>
         <translation>BP</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1081" />
+        <location filename="../src/appcontroller.cpp" line="1130" />
         <source>Begleitsymptome</source>
         <translation>Accompanying symptoms</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1095" />
+        <location filename="../src/appcontroller.cpp" line="1144" />
         <source>bei Aufnahme</source>
         <translation>on admission</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1210" />
+        <location filename="../src/appcontroller.cpp" line="1259" />
         <source>Bitte mindestens einen Wert eingeben.</source>
         <translation>Please enter at least one value.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1212" />
+        <location filename="../src/appcontroller.cpp" line="1261" />
         <source>Beim Blutdruck ist nur ein Wert (systolisch oder diastolisch) eingetragen.</source>
         <translation>Only one blood pressure value (systolic or diastolic) has been entered.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1214" />
+        <location filename="../src/appcontroller.cpp" line="1263" />
         <source>Der systolische Wert (%1) ist nicht größer als der diastolische (%2) – vertauscht?</source>
         <translation>The systolic value (%1) is not greater than the diastolic value (%2) – swapped?</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1216" />
+        <location filename="../src/appcontroller.cpp" line="1265" />
         <source>Der Messzeitpunkt liegt in der Zukunft.</source>
         <translation>The measurement time is in the future.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1228" />
+        <location filename="../src/appcontroller.cpp" line="1277" />
         <source>Person nicht gefunden.</source>
         <translation>Person not found.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1252" />
+        <location filename="../src/appcontroller.cpp" line="1301" />
         <source>Für den BMI wird die Körpergröße benötigt.</source>
         <translation>Height is required for the BMI.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1253" />
+        <location filename="../src/appcontroller.cpp" line="1302" />
         <source>BMI %1 kg/m²</source>
         <translation>BMI %1 kg/m²</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1256" />
+        <location filename="../src/appcontroller.cpp" line="1305" />
         <source> (Größe aus letzter Messung: %1 cm)</source>
         <translation> (height from last measurement: %1 cm)</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1257" />
+        <location filename="../src/appcontroller.cpp" line="1306" />
         <source>, korrigiert für fehlende Gliedmaßen</source>
         <translation>, corrected for missing limbs</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1271" />
-        <location filename="../src/appcontroller.cpp" line="1384" />
-        <location filename="../src/appcontroller.cpp" line="1833" />
+        <location filename="../src/appcontroller.cpp" line="1320" />
+        <location filename="../src/appcontroller.cpp" line="1433" />
+        <location filename="../src/appcontroller.cpp" line="1882" />
         <location filename="../src/appcontroller_appts.cpp" line="118" />
         <source>heute</source>
         <translation>today</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1271" />
-        <location filename="../src/appcontroller.cpp" line="1384" />
+        <location filename="../src/appcontroller.cpp" line="1320" />
+        <location filename="../src/appcontroller.cpp" line="1433" />
         <source>gestern</source>
         <translation>yesterday</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1276" />
+        <location filename="../src/appcontroller.cpp" line="1325" />
         <source>Blutdruck</source>
         <translation>Blood pressure</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1345" />
+        <location filename="../src/appcontroller.cpp" line="1394" />
         <source>Ein-/Ausfuhr heute</source>
         <translation>Intake/output today</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1347" />
+        <location filename="../src/appcontroller.cpp" line="1396" />
         <source>ml</source>
         <translation>ml</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1348" />
+        <location filename="../src/appcontroller.cpp" line="1397" />
         <source>Bilanz %1</source>
         <translation>Balance %1</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1385" />
+        <location filename="../src/appcontroller.cpp" line="1434" />
         <source>vor %1 Tagen</source>
         <translation>%1 days ago</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1387" />
+        <location filename="../src/appcontroller.cpp" line="1436" />
         <source>an %1 der letzten 30 Tage</source>
         <translation>on %1 of the last 30 days</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1473" />
+        <location filename="../src/appcontroller.cpp" line="1522" />
         <source>Heute</source>
         <translation>Today</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1474" />
+        <location filename="../src/appcontroller.cpp" line="1523" />
         <source>: Einfuhr %1 ml, Ausfuhr %2 ml, Bilanz %3</source>
         <translation>: intake %1 ml, output %2 ml, balance %3</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1507" />
+        <location filename="../src/appcontroller.cpp" line="1556" />
         <source>Ödeme: %1</source>
         <translation>Oedema: %1</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1626" />
+        <location filename="../src/appcontroller.cpp" line="1675" />
         <source>Bestand %1%2</source>
         <translation>stock %1%2</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1627" />
+        <location filename="../src/appcontroller.cpp" line="1676" />
         <source>reicht bis %1</source>
         <translation>lasts until %1</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1678" />
+        <location filename="../src/appcontroller.cpp" line="1727" />
         <source>Stück</source>
         <translation>pcs</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1739" />
+        <location filename="../src/appcontroller.cpp" line="1788" />
         <source>Bitte den Namen des Medikaments eingeben.</source>
         <translation>Please enter the name of the medication.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1759" />
+        <location filename="../src/appcontroller.cpp" line="1808" />
         <source>Bitte mindestens einen Wochentag für die Einnahme wählen.</source>
         <translation>Please choose at least one weekday for the intake.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1772" />
+        <location filename="../src/appcontroller.cpp" line="1821" />
         <source>Das Enddatum liegt vor dem Beginn.</source>
         <translation>The end date is before the start date.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1796" />
+        <location filename="../src/appcontroller.cpp" line="1845" />
         <source>Bitte die Uhrzeit im Format 08:00 eingeben.</source>
         <translation>Please enter the time in the format 08:00.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1800" />
+        <location filename="../src/appcontroller.cpp" line="1849" />
         <source>Bitte mindestens eine Uhrzeit für die Erinnerung wählen.</source>
         <translation>Please choose at least one time for the reminder.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1801" />
+        <location filename="../src/appcontroller.cpp" line="1850" />
         <source>Bitte mindestens einen Tag für die Erinnerung wählen.</source>
         <translation>Please choose at least one day for the reminder.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1833" />
+        <location filename="../src/appcontroller.cpp" line="1882" />
         <location filename="../src/appcontroller_appts.cpp" line="118" />
         <source>morgen</source>
         <translation>tomorrow</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1921" />
+        <location filename="../src/appcontroller.cpp" line="1970" />
         <source>%1 – %2</source>
         <translation>%1 – %2</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1923" />
+        <location filename="../src/appcontroller.cpp" line="1972" />
         <source>alle Einträge</source>
         <translation>all entries</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1856" />
+        <location filename="../src/appcontroller.cpp" line="1905" />
         <source>letzte %1 Tage</source>
         <translation>last %1 days</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1858" />
+        <location filename="../src/appcontroller.cpp" line="1907" />
         <source>gesamter Verlauf</source>
         <translation>complete history</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="1989" />
+        <location filename="../src/appcontroller.cpp" line="2038" />
         <source>Bitte einen gültigen Zeitraum wählen.</source>
         <translation>Please choose a valid period.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="2010" />
+        <location filename="../src/appcontroller.cpp" line="2059" />
         <source>Die Ausgabe konnte nicht erstellt werden.</source>
         <translation>The output could not be created.</translation>
     </message>
     <message>
-        <location filename="../src/appcontroller.cpp" line="2027" />
+        <location filename="../src/appcontroller.cpp" line="2076" />
         <source>Öffnen mit …</source>
         <translation>Open with …</translation>
     </message>
@@ -2172,6 +2207,32 @@
     </message>
 </context>
 <context>
+    <name>CalendarExport</name>
+    <message>
+        <location filename="../src/calendarexport.cpp" line="58" />
+        <source>Für: %1</source>
+        <translation>For: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/calendarexport.cpp" line="60" />
+        <source>Aus ViviaParms übertragen – Änderungen bitte in ViviaParms vornehmen.</source>
+        <translation>Transferred from ViviaParms – please make changes in ViviaParms.</translation>
+    </message>
+</context>
+<context>
+    <name>CalendarPopup</name>
+    <message>
+        <location filename="../qml/components/CalendarPopup.qml" line="98" />
+        <source>Heute</source>
+        <translation>Today</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/CalendarPopup.qml" line="100" />
+        <source>Abbrechen</source>
+        <translation>Cancel</translation>
+    </message>
+</context>
+<context>
     <name>CareInfo</name>
     <message>
         <location filename="../../src/careinfo.cpp" line="18" />
@@ -2309,57 +2370,58 @@
 <context>
     <name>ChartPage</name>
     <message>
-        <location filename="../qml/pages/ChartPage.qml" line="34" />
+        <location filename="../qml/pages/ChartPage.qml" line="49" />
         <source>Tag</source>
         <translation>Day</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChartPage.qml" line="34" />
+        <location filename="../qml/pages/ChartPage.qml" line="49" />
         <source>Woche</source>
         <translation>Week</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChartPage.qml" line="34" />
+        <location filename="../qml/pages/ChartPage.qml" line="49" />
         <source>Monat</source>
         <translation>Month</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChartPage.qml" line="34" />
+        <location filename="../qml/pages/ChartPage.qml" line="49" />
         <source>Jahr</source>
         <translation>Year</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChartPage.qml" line="34" />
+        <location filename="../qml/pages/ChartPage.qml" line="49" />
         <source>Zeitraum</source>
         <translation>Period</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChartPage.qml" line="55" />
+        <location filename="../qml/pages/ChartPage.qml" line="76" />
         <source>Heute</source>
         <translation>Today</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChartPage.qml" line="64" />
+        <location filename="../qml/pages/ChartPage.qml" line="85" />
         <source>Von</source>
         <translation>From</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChartPage.qml" line="66" />
+        <location filename="../qml/pages/ChartPage.qml" line="87" />
         <source>Bis</source>
         <translation>To</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChartPage.qml" line="77" />
+        <location filename="../qml/pages/ChartPage.qml" line="102" />
+        <location filename="../qml/pages/ChartPage.qml" line="122" />
         <source>Als PDF</source>
         <translation>As PDF</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChartPage.qml" line="82" />
+        <location filename="../qml/pages/ChartPage.qml" line="126" />
         <source>Tipp: Auf einen Legendeneintrag tippen blendet die Kurve aus oder ein; auf einen Messpunkt tippen zeigt den Wert.</source>
         <translation>Tip: tap a legend entry to hide or show the curve; tap a data point to see its value.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChartPage.qml" line="104" />
+        <location filename="../qml/pages/ChartPage.qml" line="145" />
         <source>Keine Messungen in diesem Zeitraum.</source>
         <translation>No readings in this period.</translation>
     </message>
@@ -2675,9 +2737,14 @@ Please update ViviaParms on this device – the data remain unchanged.</translat
 <context>
     <name>DateField</name>
     <message>
-        <location filename="../qml/components/DateField.qml" line="40" />
+        <location filename="../qml/components/DateField.qml" line="44" />
         <source>TT.MM.JJJJ</source>
         <translation>DD.MM.YYYY</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/DateField.qml" line="60" />
+        <source>Kalender</source>
+        <translation>Calendar</translation>
     </message>
 </context>
 <context>
@@ -5958,177 +6025,183 @@ You can take over the current template again via “Tools → Customize forms…
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="100" />
+        <location filename="../qml/pages/HomePage.qml" line="103" />
         <source>Personen</source>
         <translation>Persons</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="120" />
-        <location filename="../qml/pages/HomePage.qml" line="247" />
+        <location filename="../qml/pages/HomePage.qml" line="123" />
+        <location filename="../qml/pages/HomePage.qml" line="254" />
         <source>geb. %1</source>
         <translation>born %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="126" />
+        <location filename="../qml/pages/HomePage.qml" line="129" />
         <source>Neue Person</source>
         <translation>New person</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="161" />
+        <location filename="../qml/pages/HomePage.qml" line="164" />
         <source>Demo – erfundene Daten</source>
         <translation>Demo – fictitious data</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="162" />
+        <location filename="../qml/pages/HomePage.qml" line="164" />
+        <source>Demo</source>
+        <translation>Demo</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HomePage.qml" line="165" />
+        <location filename="../qml/pages/HomePage.qml" line="200" />
         <source>Demo beenden</source>
         <translation>End demo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="175" />
+        <location filename="../qml/pages/HomePage.qml" line="178" />
         <source>Abgleich …</source>
         <translation>Synchronising …</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="175" />
+        <location filename="../qml/pages/HomePage.qml" line="178" />
         <source>Abgleichen</source>
         <translation>Synchronise</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="175" />
+        <location filename="../qml/pages/HomePage.qml" line="178" />
         <source>Abgeglichen</source>
         <translation>Synchronised</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="181" />
-        <location filename="../qml/pages/HomePage.qml" line="196" />
+        <location filename="../qml/pages/HomePage.qml" line="186" />
+        <location filename="../qml/pages/HomePage.qml" line="203" />
         <source>Einstellungen</source>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="182" />
-        <location filename="../qml/pages/HomePage.qml" line="200" />
+        <location filename="../qml/pages/HomePage.qml" line="187" />
+        <location filename="../qml/pages/HomePage.qml" line="207" />
         <source>Sperren</source>
         <translation>Lock</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="183" />
-        <location filename="../qml/pages/HomePage.qml" line="201" />
+        <location filename="../qml/pages/HomePage.qml" line="188" />
+        <location filename="../qml/pages/HomePage.qml" line="208" />
         <source>Ohne Abgleich sperren</source>
         <translation>Lock without syncing</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="184" />
-        <location filename="../qml/pages/HomePage.qml" line="202" />
+        <location filename="../qml/pages/HomePage.qml" line="189" />
+        <location filename="../qml/pages/HomePage.qml" line="209" />
         <source>Beenden</source>
         <translation>Quit</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="190" />
+        <location filename="../qml/pages/HomePage.qml" line="195" />
         <source>Menü</source>
         <translation>Menu</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="195" />
+        <location filename="../qml/pages/HomePage.qml" line="202" />
         <source>Mit dem Computer abgleichen (USB)</source>
         <translation>Synchronise with the computer (USB)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="197" />
+        <location filename="../qml/pages/HomePage.qml" line="204" />
         <source>Erste Schritte</source>
         <translation>Getting Started</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="214" />
+        <location filename="../qml/pages/HomePage.qml" line="221" />
         <source>Noch keine Person angelegt</source>
         <translation>No person created yet</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="214" />
+        <location filename="../qml/pages/HomePage.qml" line="221" />
         <source>Willkommen!</source>
         <translation>Welcome!</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="216" />
+        <location filename="../qml/pages/HomePage.qml" line="223" />
         <source>Legen Sie zuerst Ihr Stammblatt an: Name, Geburtsdatum und – wenn Sie möchten – Ärzte, Angehörige, Diagnosen und Medikamente.</source>
         <translation>First create your master record: name, date of birth and – if you like – doctors, relatives, diagnoses and medication.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="217" />
+        <location filename="../qml/pages/HomePage.qml" line="224" />
         <source>Legen Sie ein Stammblatt an, um Messwerte zu erfassen.</source>
         <translation>Create a master record to enter readings.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="219" />
+        <location filename="../qml/pages/HomePage.qml" line="226" />
         <source>Neue Person anlegen</source>
         <translation>Create new person</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="219" />
+        <location filename="../qml/pages/HomePage.qml" line="226" />
         <source>Stammblatt anlegen</source>
         <translation>Create master record</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="248" />
+        <location filename="../qml/pages/HomePage.qml" line="255" />
         <source>%1 Jahre</source>
         <translation>%1 years</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="252" />
+        <location filename="../qml/pages/HomePage.qml" line="259" />
         <source>Messung erfassen</source>
         <translation>New reading</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="264" />
+        <location filename="../qml/pages/HomePage.qml" line="272" />
         <source>Allergien:</source>
         <translation>Allergies:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="274" />
+        <location filename="../qml/pages/HomePage.qml" line="282" />
         <source>Notfallmedikation:</source>
         <translation>Emergency medication:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="292" />
+        <location filename="../qml/pages/HomePage.qml" line="300" />
         <source>Übersicht</source>
         <translation>Overview</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="292" />
+        <location filename="../qml/pages/HomePage.qml" line="300" />
         <source>Messwerte</source>
         <translation>Readings</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="292" />
+        <location filename="../qml/pages/HomePage.qml" line="300" />
         <source>Verlaufskurven</source>
         <translation>Trend charts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="292" />
+        <location filename="../qml/pages/HomePage.qml" line="300" />
         <source>Stammblatt</source>
         <translation>Master record</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="292" />
+        <location filename="../qml/pages/HomePage.qml" line="300" />
         <source>Medikamente</source>
         <translation>Medication</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="292" />
+        <location filename="../qml/pages/HomePage.qml" line="300" />
         <source>Termine</source>
         <translation>Appointments</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="292" />
+        <location filename="../qml/pages/HomePage.qml" line="300" />
         <source>Krankenakte</source>
         <translation>Medical record</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="292" />
+        <location filename="../qml/pages/HomePage.qml" line="300" />
         <source>Berichte</source>
         <translation>Reports</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="292" />
+        <location filename="../qml/pages/HomePage.qml" line="300" />
         <source>Wunden</source>
         <translation>Wounds</translation>
     </message>
@@ -6404,12 +6477,12 @@ You can take over the current template again via “Tools → Customize forms…
         <translation>BP day profiles (Excel)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/JournalPage.qml" line="145" />
+        <location filename="../qml/pages/JournalPage.qml" line="146" />
         <source>Von</source>
         <translation>From</translation>
     </message>
     <message>
-        <location filename="../qml/pages/JournalPage.qml" line="147" />
+        <location filename="../qml/pages/JournalPage.qml" line="148" />
         <source>Bis</source>
         <translation>To</translation>
     </message>
@@ -6593,73 +6666,73 @@ You can take over the current template again via “Tools → Customize forms…
 <context>
     <name>Main</name>
     <message>
-        <location filename="../qml/Main.qml" line="48" />
-        <location filename="../qml/Main.qml" line="69" />
+        <location filename="../qml/Main.qml" line="49" />
+        <location filename="../qml/Main.qml" line="70" />
         <source>Ohne Abgleich beenden</source>
         <translation>Quit without syncing</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="103" />
+        <location filename="../qml/Main.qml" line="104" />
         <source>Zeit für die Blutzuckermessung (%1).</source>
         <translation>Time to measure blood glucose (%1).</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="103" />
+        <location filename="../qml/Main.qml" line="104" />
         <source>Zeit für die Blutdruckmessung (%1).</source>
         <translation>Time for the blood pressure measurement (%1).</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="104" />
+        <location filename="../qml/Main.qml" line="105" />
         <source>Messung erfassen</source>
         <translation>New reading</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="105" />
+        <location filename="../qml/Main.qml" line="106" />
         <source>Später</source>
         <translation>Later</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="111" />
+        <location filename="../qml/Main.qml" line="112" />
         <source>Erledigt – nicht mehr erinnern</source>
         <translation>Done – stop reminding</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="112" />
+        <location filename="../qml/Main.qml" line="113" />
         <source>Morgen wieder erinnern</source>
         <translation>Remind me tomorrow</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="119" />
+        <location filename="../qml/Main.qml" line="120" />
         <source>Mit dem Computer abgleichen?</source>
         <translation>Sync with the computer?</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="120" />
+        <location filename="../qml/Main.qml" line="121" />
         <source>Die Werte dieses Tablets über das USB-Kabel mit ViviaParms am Computer abgleichen? Am Computer dazu „Datei → Mit Tablet über USB abgleichen…“ wählen und den Code eingeben, den das Tablet gleich anzeigt.</source>
         <translation>Synchronise this tablet’s data with ViviaParms on the computer over the USB cable? On the computer choose “File → Sync with tablet via USB…” and enter the code the tablet is about to show.</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="121" />
+        <location filename="../qml/Main.qml" line="122" />
         <source>USB-Abgleich öffnen</source>
         <translation>Open USB sync</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="159" />
+        <location filename="../qml/Main.qml" line="160" />
         <source>Aus Sicherheitsgründen gesperrt – bitte erneut anmelden.</source>
         <translation>Locked for security – please log in again.</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="162" />
+        <location filename="../qml/Main.qml" line="163" />
         <source>Abgleich: %1</source>
         <translation>Synchronisation: %1</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="163" />
+        <location filename="../qml/Main.qml" line="164" />
         <source>Website aktualisiert.</source>
         <translation>Website updated.</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="163" />
+        <location filename="../qml/Main.qml" line="164" />
         <source>Website: %1</source>
         <translation>Website: %1</translation>
     </message>
@@ -8204,7 +8277,7 @@ You can take over the current template again via “Tools → Customize forms…
     <name>PatientDialog</name>
     <message>
         <location filename="../src/appcontroller_docs.cpp" line="408" />
-        <location filename="../src/autopilot.cpp" line="1779" />
+        <location filename="../src/autopilot.cpp" line="1993" />
         <source>Vorsorge</source>
         <translation>Advance directive</translation>
     </message>
@@ -11840,7 +11913,7 @@ For security reasons you are logged in with user rights only. An administrator s
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="74" />
         <location filename="../qml/pages/SettingsPage.qml" line="109" />
-        <location filename="../qml/pages/SettingsPage.qml" line="191" />
+        <location filename="../qml/pages/SettingsPage.qml" line="258" />
         <source>Gespeichert.</source>
         <translation>Saved.</translation>
     </message>
@@ -11990,12 +12063,78 @@ For security reasons you are logged in with user rights only. An administrator s
         <translation>Allow on-time reminders</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="193" />
+        <location filename="../qml/pages/SettingsPage.qml" line="159" />
+        <location filename="../qml/pages/SettingsPage.qml" line="204" />
+        <source>Kalender</source>
+        <translation>Calendar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="172" />
+        <source>Termine in den Kalender übertragen</source>
+        <translation>Copy appointments to the calendar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="176" />
+        <source>Neue und geänderte Termine erscheinen im gewählten Kalender des Geräts – bei einem Google-Konto auch in Google Kalender. Änderungen dort werden nicht zurückgeholt; maßgeblich bleibt ViviaParms. Ausschalten entfernt die übertragenen Termine wieder aus dem Kalender.</source>
+        <translation>New and changed appointments appear in the chosen calendar on this device – with a Google account also in Google Calendar. Changes made there are not copied back; ViviaParms remains authoritative. Turning this off removes the copied appointments from the calendar again.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="180" />
+        <source>ViviaParms darf noch nicht auf die Kalender des Geräts zugreifen.</source>
+        <translation>ViviaParms is not yet allowed to access the calendars on this device.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="182" />
+        <source>Zugriff auf den Kalender erlauben</source>
+        <translation>Allow calendar access</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="189" />
+        <source>Welche Termine</source>
+        <translation>Which appointments</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="197" />
+        <source>Wie im Terminplaner: mit dem Verwaltungskonto die Termine aller Konten.</source>
+        <translation>As in the planner: with the administrator account, the appointments of all accounts.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="198" />
+        <source>Wie im Terminplaner: die Termine, für die dieses Konto zuständig ist.</source>
+        <translation>As in the planner: the appointments this account is responsible for.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="212" />
+        <source>Auf dem Gerät ist kein beschreibbarer Kalender eingerichtet. Ein Google-Konto unter „Einstellungen → Konten“ hinzufügen.</source>
+        <translation>There is no writable calendar on this device. Add a Google account under “Settings → Accounts”.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="214" />
+        <source>Tipp: In Google Kalender einen eigenen Kalender „ViviaParms“ anlegen (am Computer: calendar.google.com → Weitere Kalender → Neuer Kalender) und ihn hier wählen – so bleiben die Termine von den übrigen getrennt und lassen sich gemeinsam ein- und ausblenden.</source>
+        <translation>Tip: create a separate calendar “ViviaParms” in Google Calendar (on a computer: calendar.google.com → Other calendars → Create new calendar) and choose it here – this keeps the appointments apart from the others and lets you show or hide them together.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="215" />
+        <source>Notizen mitübertragen</source>
+        <translation>Include notes</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="218" />
+        <source>Übertragen werden Titel, Zeit, Ort und für wen der Termin ist. Notizen können Gesundheitsdaten enthalten und liegen dann auch bei Google.</source>
+        <translation>Title, time, place and the person the appointment is for are copied. Notes may contain health data and would then also be stored with Google.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="221" />
+        <source>Jetzt übertragen</source>
+        <translation>Transfer now</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="260" />
         <source>Über %1</source>
         <translation>About %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="195" />
+        <location filename="../qml/pages/SettingsPage.qml" line="262" />
         <source>%3 %1 – persönliches Gesundheitstagebuch, kein Medizinprodukt. Quelloffen, PolyForm Noncommercial License 1.0.0 (nicht-kommerzielle Nutzung). Angemeldet als %2.</source>
         <translation>%3 %1 – personal health diary, not a medical device. Source-available, PolyForm Noncommercial License 1.0.0 (noncommercial use). Signed in as %2.</translation>
     </message>
@@ -12015,72 +12154,72 @@ For security reasons you are logged in with user rights only. An administrator s
         <translation>Allow notifications</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="158" />
+        <location filename="../qml/pages/SettingsPage.qml" line="225" />
         <source>Darstellung</source>
         <translation>Appearance</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="163" />
+        <location filename="../qml/pages/SettingsPage.qml" line="230" />
         <source>wie das System</source>
         <translation>like the system</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="163" />
+        <location filename="../qml/pages/SettingsPage.qml" line="230" />
         <source>hell</source>
         <translation>light</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="163" />
+        <location filename="../qml/pages/SettingsPage.qml" line="230" />
         <source>dunkel</source>
         <translation>dark</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="167" />
+        <location filename="../qml/pages/SettingsPage.qml" line="234" />
         <source>Blutzucker</source>
         <translation>Blood glucose</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="177" />
+        <location filename="../qml/pages/SettingsPage.qml" line="244" />
         <source>Sicherheit</source>
         <translation>Security</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="178" />
+        <location filename="../qml/pages/SettingsPage.qml" line="245" />
         <source>Automatisch sperren nach</source>
         <translation>Lock automatically after</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="183" />
+        <location filename="../qml/pages/SettingsPage.qml" line="250" />
         <source>nie</source>
         <translation>never</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="183" />
+        <location filename="../qml/pages/SettingsPage.qml" line="250" />
         <source>5 Minuten</source>
         <translation>5 minutes</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="183" />
+        <location filename="../qml/pages/SettingsPage.qml" line="250" />
         <source>10 Minuten</source>
         <translation>10 minutes</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="183" />
+        <location filename="../qml/pages/SettingsPage.qml" line="250" />
         <source>30 Minuten</source>
         <translation>30 minutes</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="189" />
+        <location filename="../qml/pages/SettingsPage.qml" line="256" />
         <source>Messzeitpunkte für Tagesprofile</source>
         <translation>Measurement times for daily profiles</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="190" />
+        <location filename="../qml/pages/SettingsPage.qml" line="257" />
         <source>Ein Eintrag pro Zeile</source>
         <translation>One entry per line</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="191" />
+        <location filename="../qml/pages/SettingsPage.qml" line="258" />
         <source>Messzeitpunkte speichern</source>
         <translation>Save measurement times</translation>
     </message>

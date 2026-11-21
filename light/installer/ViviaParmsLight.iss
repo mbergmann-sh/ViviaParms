@@ -11,7 +11,7 @@
 ; ===========================================================================
 
 #define AppName      "ViviaParms light"
-#define AppVersion   "0.33.0"
+#define AppVersion   "0.34.0"
 #define AppPublisher "Michael Bergmann"
 #define AppExe       "ViviaParmsLight.exe"
 #define AppGuid      "0AD93A66-2F43-489D-A041-4547ACAED549"   ; eigene AppId: unabhängig von ViviaParms

@@ -142,10 +142,11 @@ Item {
             Layout.fillWidth: true
             Layout.preferredWidth: 1
             spacing: Theme.gapS
-            DateField { objectName: "journalFrom"; label: qsTr("Von"); allowEmpty: false; width: win.phone ? 150 : 170
-                        isoDate: page.fromDay; onIsoDateChanged: if (valid && isoDate) page.fromDay = isoDate }
-            DateField { objectName: "journalTo"; label: qsTr("Bis"); allowEmpty: false; width: win.phone ? 150 : 170
-                        isoDate: page.toDay; onIsoDateChanged: if (valid && isoDate) page.toDay = isoDate }
+            // per Kalender – getippte Zwischenstände („01.10.20“) verstellten früher den Zeitraum
+            DatePicker { objectName: "journalFrom"; label: qsTr("Von"); width: win.phone ? 160 : 190
+                         isoDate: page.fromDay; onPicked: (iso) => { page.fromDay = iso; if (page.toDay < iso) page.toDay = iso } }
+            DatePicker { objectName: "journalTo"; label: qsTr("Bis"); width: win.phone ? 160 : 190
+                         isoDate: page.toDay; minDate: page.fromDay; onPicked: (iso) => page.toDay = iso }
         }
         Timer { id: searchTimer; interval: 300; onTriggered: page.reload() }
 

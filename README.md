@@ -436,6 +436,30 @@ Wiederherstellungsschlüssel (Anmeldedialog → *Wiederherstellungsschlüssel…
   ein Abgleich (USB oder Website) mit einem Gerät in neuerer Version abgelehnt, und der Server
   nimmt von älteren Versionen keine Datenbank mehr an (HTTP 426) – so kann ein nicht
   aktualisiertes Gerät keine Daten überschreiben, die es nicht kennt.
+* **0.34.0:** **Mobil: Termine in den Kalender übertragen** – neue Einstellung (*Einstellungen →
+  Kalender*): Termine gehen in einen Kalender des Telefons/Tablets, bei einem Google-Konto damit auch in
+  Google Kalender. Nur in eine Richtung (ViviaParms bleibt maßgeblich; geänderte oder gelöschte
+  Einträge im Kalender werden beim nächsten Übertragen wiederhergestellt), automatisch nach jeder
+  Änderung, ohne Google-Anmeldung in ViviaParms. Wählbar sind *alle Termine* (alle Personen; mit dem
+  Verwaltungskonto aller Konten – wie im Terminplaner) oder *nur die Termine einer Person*; dazu der
+  Kalender (Vorschlag: ein Kalender „ViviaParms“). Notizen nur auf Wunsch, Ausschalten entfernt die
+  Einträge wieder. Details in
+  `mobile/README.md`.
+* **0.33.1:** **Smartphone: Verlaufskurven wieder sichtbar** (gemeldet auf einem Moto G67). Die Seite
+  *Verlaufskurven* rollt jetzt als Ganzes, statt die Kurven in einen eigenen, am Smartphone nur wenige
+  Pixel (oder gar keine) hohen Bereich zu legen; die Kurvenauswahl steht dort in einer Zeile zum
+  Seitwärtswischen, jede Kurve ist mindestens 260 px hoch. Dazu: die Personenliste links erscheint nur
+  noch bei genug Breite **und** Höhe (Smartphone quer bekommt das volle Bild), die Kopfleiste fasst
+  Einstellungen/Sperren/Beenden nach ihrer eigenen Breite im Menü ☰ zusammen, *Demo beenden* steht am
+  Smartphone im Menü, die Kopfzeile ist bei wenig Höhe kompakter und Plaketten (Pflegegrad, GdB)
+  brechen um statt über den Rand zu ragen. Autopilot `VP_AUTOPILOT_CHARTONLY=1` prüft die sichtbare
+  Kurvenfläche und alle Reiter in sechs Bildschirmgrößen (Smartphone hoch/quer, klein, Tablet).
+  **Zeitraum per Kalender:** *Von*/*Bis* bei *Verlaufskurven* und *Messwerte → Zeitraum* werden mit einem
+  Monatsblatt gewählt (`DatePicker`, `CalendarPopup`). Vorher waren es Textfelder, die schon beim Tippen
+  galten – ein Zwischenstand wie „01.10.20“ (= 2020) verstellte den Zeitraum und überschrieb das andere
+  Feld, die Kurve zeigte danach nicht das Gewünschte. Alle übrigen Datumsfelder (`DateField`) haben
+  zusätzlich einen Kalenderknopf; Tippen geht weiter. Autopilot: Von/Bis per Fingertipp im Kalender,
+  Kurve und Felder folgen; Datumsfeld mit Kalender.
 * **0.33.0:** **Terminserien mit eigener Uhrzeit je Wochentag** (Desktop, light, Tablet/Smartphone):
   Bei *wöchentlich* gibt es *Eigene Uhrzeit je Wochentag* – je gewähltem Wochentag „von – bis“, z. B.
   Mo 8:00–9:00, Mi 14:30–15:15, Fr 10:00 –, in einer Serie und auf Wunsch für einen Zeitraum

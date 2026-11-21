@@ -15,7 +15,8 @@ ApplicationWindow {
     font.family: Theme.family
     font.pixelSize: Theme.fsM
 
-    readonly property bool wide: width >= 900
+    // Personenliste links nur bei genug Breite und Höhe (Smartphone quer: Platz für den Inhalt)
+    readonly property bool wide: width >= 900 && height >= 600
     readonly property bool phone: width < 600     // Smartphone hochkant: knappere Kopfzeilen
     function toast(msg, error) { toastItem.show(msg, error) }
 

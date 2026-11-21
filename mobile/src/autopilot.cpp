@@ -5,6 +5,10 @@
 #include "appcontroller.h"
 #include "dbsync.h"
 #include <QElapsedTimer>
+#include <QMouseEvent>
+#include <QQmlComponent>
+#include <QSet>
+#include "calendarexport.h"
 #include <QSignalBlocker>
 #include "edition.h"
 #include "dbtransfer.h"
@@ -57,7 +61,8 @@ static QStringList widthProblems(QQuickWindow *win, QStringList *hidden = nullpt
         if (it->inherits("QQuickPopupItem")) return;
         if (it->inherits("QQuickFlickable") && it->property("contentWidth").toDouble() > it->width() + 1) {
             // senkrechte Listen mit breiterem Inhalt sind ein eigener Fall; hier nur waagerechte Leisten
-            if (hidden && it->height() < 120 && it->property("flickableDirection").toInt() != 2)
+            if (hidden && it->height() < 120 && it->property("flickableDirection").toInt() != 2
+                && !it->property("scrollStrip").toBool())
                 *hidden << QStringLiteral("%1 (%2 von %3 px sichtbar)").arg(it->objectName().isEmpty() ? QStringLiteral("Leiste") : it->objectName())
                                .arg(int(it->width())).arg(int(it->property("contentWidth").toDouble()));
             return;
@@ -650,6 +655,215 @@ int runAutopilot(QQmlApplicationEngine &engine, AppController &app)
         if (arg.isValid()) QMetaObject::invokeMethod(o, fn, Q_ARG(QVariant, arg));
         else QMetaObject::invokeMethod(o, fn);
     };
+
+    // Verlaufskurven in verschiedenen Fenstergrößen prüfen (auch ohne Datenbank: Demo)
+    auto chartCheck = [&](const char *tag, int w, int h) {
+        win->resize(w, h);
+        wait(400);
+        QObject *hp = home();
+        if (!hp) { ++fails; qWarning("FEHLER: Kurven %s: HomePage fehlt", tag); return; }
+        QQmlProperty::write(hp, QStringLiteral("tab"), 2);
+        wait(600);
+        QQuickItem *chart = nullptr;
+        std::function<void(QQuickItem *)> find = [&](QQuickItem *it) {
+            if (!chart && it->inherits("ChartItem")) chart = it;
+            for (QQuickItem *c : it->childItems()) find(c);
+        };
+        find(win->contentItem());
+        if (!chart) { ++fails; qWarning("FEHLER: Kurven %s: Chart fehlt", tag); return; }
+        // sichtbarer Ausschnitt der Kurven: erst ohne Rollen (Anfang muss zu sehen sein), dann auf die
+        // Kurven gerollt (mindestens die Hälfte der Seitenhöhe)
+        QQuickItem *fl = chart->parentItem();
+        while (fl && !fl->inherits("QQuickFlickable")) fl = fl->parentItem();
+        auto visible = [&]() {
+            const QRectF vis = fl ? fl->mapRectToScene(QRectF(0, 0, fl->width(), fl->height())) : QRectF();
+            const QRectF r = chart->mapRectToScene(QRectF(0, 0, chart->width(), chart->height()));
+            return vis.intersected(r).intersected(QRectF(0, 0, win->width(), win->height()));
+        };
+        const QRectF first = visible();
+        if (fl) {
+            const QPointF p = chart->mapToItem(fl->property("contentItem").value<QQuickItem *>(), QPointF(0, 0));
+            QQmlProperty::write(fl, QStringLiteral("contentY"), std::max(0.0, std::min(p.y(), fl->property("contentHeight").toDouble() - fl->height())));
+            wait(300);
+        }
+        const QRectF shown = visible();
+        qInfo("Kurven %s: Fenster %dx%d, Kurve %.0fx%.0f, anfangs %.0f, gerollt %.0fx%.0f (Seite %.0f), Messungen %d", tag, w, h,
+              chart->width(), chart->height(), first.height(), shown.width(), shown.height(), fl ? fl->height() : 0.0,
+              chart->property("recordCount").toInt());
+        if (!fl || (fl->height() >= 400 && first.height() < 60) || shown.height() < 0.5 * fl->height() || shown.width() < 0.8 * fl->width()) {
+            ++fails; qWarning("FEHLER: Kurven %s: zu wenig sichtbar", tag);
+        }
+        shot(QStringLiteral("m29_kurven_%1").arg(QString::fromLatin1(tag)));
+    };
+    if (qEnvironmentVariableIsSet("VP_AUTOPILOT_CHARTONLY")) {
+        if (!app.loggedIn()) app.startDemo();
+        QMetaObject::invokeMethod(win, "goStart");
+        wait(1200);
+        struct Sz { const char *tag; int w, h; };
+        for (const Sz sz : { Sz{ "handy_hoch", 412, 915 }, Sz{ "handy_quer", 915, 412 }, Sz{ "handy_klein", 360, 740 },
+                             Sz{ "handy_klein_quer", 740, 360 }, Sz{ "tablet", 1280, 800 }, Sz{ "tablet_hoch", 800, 1280 } }) {
+            chartCheck(sz.tag, sz.w, sz.h);
+            QObject *hp = home();
+            for (int t = 0; t < 9 && hp; ++t) {          // alle Reiter: nichts zu breit, nichts verdeckt
+                QQmlProperty::write(hp, QStringLiteral("tab"), t);
+                wait(300);
+                QStringList hidden;
+                const QStringList bad = widthProblems(win, &hidden);
+                if (!bad.isEmpty()) { ++fails; qWarning("BREITE %s Reiter %d: %s", sz.tag, t, qPrintable(bad.mid(0, 6).join(QStringLiteral("; ")))); }
+                if (!hidden.isEmpty()) { ++fails; qWarning("VERDECKT %s Reiter %d: %s", sz.tag, t, qPrintable(hidden.mid(0, 4).join(QStringLiteral("; ")))); }
+            }
+            if (hp) { QQmlProperty::write(hp, QStringLiteral("tab"), 5); shot(QStringLiteral("m29_reiter_%1").arg(QString::fromLatin1(sz.tag))); }
+        }
+        // Zeitraum per Kalender: Von/Bis antippen, Tag antippen → Kurve zeigt den neuen Zeitraum
+        {
+            win->resize(412, 915);
+            wait(400);
+            QObject *hp = home();
+            QQmlProperty::write(hp, QStringLiteral("tab"), 2);
+            wait(400);
+            std::function<QQuickItem *(QQuickItem *, const QString &)> item = [&](QQuickItem *it, const QString &name) -> QQuickItem * {
+                if (it->objectName() == name && it->isVisible()) return it;
+                for (QQuickItem *c : it->childItems()) if (QQuickItem *f = item(c, name)) return f;
+                return nullptr;
+            };
+            auto root = [&]() { return win->contentItem()->parentItem() ? win->contentItem()->parentItem() : win->contentItem(); };
+            auto tap = [&](QQuickItem *it) {          // echter Fingertipp (Maus) in die Mitte des Elements
+                if (!it) return false;
+                const QPointF p = it->mapToScene(QPointF(it->width() / 2, it->height() / 2));
+                QMouseEvent press(QEvent::MouseButtonPress, p, p, win->mapToGlobal(p), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+                QCoreApplication::sendEvent(win, &press);
+                QMouseEvent rel(QEvent::MouseButtonRelease, p, p, win->mapToGlobal(p), Qt::LeftButton, Qt::NoButton, Qt::NoModifier);
+                QCoreApplication::sendEvent(win, &rel);
+                wait(350);
+                return true;
+            };
+            QQuickItem *chart = nullptr;
+            std::function<void(QQuickItem *)> findChart = [&](QQuickItem *it) {
+                if (!chart && it->inherits("ChartItem")) chart = it;
+                for (QQuickItem *c : it->childItems()) findChart(c);
+            };
+            findChart(win->contentItem());
+            if (QQuickItem *b = item(root(), QStringLiteral("scale_4"))) QMetaObject::invokeMethod(b, "clicked");
+            wait(400);
+            auto pickDay = [&](const char *field, const QDate &d) {
+                QQuickItem *fl = item(root(), QStringLiteral("chartPageFlick"));
+                if (fl) { QQmlProperty::write(fl, QStringLiteral("contentY"), 0); wait(200); }
+                if (!tap(item(root(), QString::fromLatin1(field) + QStringLiteral("Button")))) { ++fails; qWarning("FEHLER: Kalender %s: Knopf fehlt", field); return; }
+                shot(QStringLiteral("m29_kalender_%1").arg(QString::fromLatin1(field)));
+                // zum Monat blättern
+                QObject *grid = item(root(), QStringLiteral("calGrid"));
+                if (!grid) { ++fails; qWarning("FEHLER: Kalender %s: Monatsblatt fehlt", field); return; }
+                for (int i = 0; i < 24; ++i) {
+                    const int m = grid->property("month").toInt(), y = grid->property("year").toInt();
+                    const int diff = (d.year() - y) * 12 + (d.month() - 1 - m);
+                    if (diff == 0) break;
+                    tap(item(root(), diff < 0 ? QStringLiteral("calMonthBack") : QStringLiteral("calMonthNext")));
+                }
+                if (!tap(item(root(), QStringLiteral("calDay_") + d.toString(Qt::ISODate)))) { ++fails; qWarning("FEHLER: Kalender %s: Tag fehlt", field); }
+            };
+            const QDate today = QDate::currentDate();
+            const QDate from = today.addDays(-40), to = today.addDays(-5);
+            const int before = chart ? chart->property("recordCount").toInt() : -1;
+            pickDay("chartFrom", from);
+            pickDay("chartTo", to);
+            const QString pt = chart ? chart->property("periodText").toString() : QString();
+            const int after = chart ? chart->property("recordCount").toInt() : -1;
+            QObject *ff = item(root(), QStringLiteral("chartFrom"));
+            qInfo("Kalender: Zeitraum \"%s\", Messungen %d → %d", qPrintable(pt), before, after);
+            if (!chart || chart->property("fromDate").toString() != from.toString(Qt::ISODate)
+                || chart->property("toDate").toString() != to.toString(Qt::ISODate)) { ++fails; qWarning("FEHLER: Kalender: Zeitraum nicht übernommen"); }
+            if (!ff || QQmlProperty::read(ff, QStringLiteral("isoDate")).toString() != from.toString(Qt::ISODate)) { ++fails; qWarning("FEHLER: Kalender: Feld Von"); }
+            if (chart) {                              // ◀: Felder folgen (Bindung bleibt)
+                QMetaObject::invokeMethod(chart, "step", Q_ARG(int, -1));
+                wait(300);
+                if (!ff || QQmlProperty::read(ff, QStringLiteral("isoDate")).toString() != chart->property("fromDate").toString()) {
+                    ++fails; qWarning("FEHLER: Kalender: Feld folgt ◀ nicht");
+                }
+            }
+            shot(QStringLiteral("m29_kalender_ergebnis"));
+            // Datumsfeld zum Tippen mit Kalenderknopf
+            QQmlComponent comp(&engine);
+            comp.setData("import QtQuick\nimport \"qrc:/qml/components\"\n"
+                         "DateField { objectName: \"apDateField\"; label: \"Test\"; width: 220; x: 16; y: 120; z: 99; isoDate: \"2026-03-14\" }",
+                         QUrl(QStringLiteral("qrc:/qml/_aptest.qml")));
+            if (auto *df = qobject_cast<QQuickItem *>(comp.create(engine.rootContext()))) {
+                df->setParentItem(win->contentItem());
+                wait(200);
+                tap(item(root(), QStringLiteral("apDateFieldCalendar")));
+                shot(QStringLiteral("m29_kalender_datumsfeld"));
+                QQuickItem *grid = item(root(), QStringLiteral("calGrid"));
+                const bool march = grid && grid->property("month").toInt() == 2 && grid->property("year").toInt() == 2026;
+                tap(item(root(), QStringLiteral("calDay_2026-03-20")));
+                const QString got = QQmlProperty::read(df, QStringLiteral("isoDate")).toString();
+                qInfo("Datumsfeld: Kalender auf März 2026 %s, gewählt %s", march ? "ja" : "nein", qPrintable(got));
+                if (!march || got != QLatin1String("2026-03-20")) { ++fails; qWarning("FEHLER: Datumsfeld-Kalender"); }
+                delete df;
+            } else { ++fails; qWarning("FEHLER: Datumsfeld: %s", qPrintable(comp.errorString())); }
+            if (QQuickItem *b = item(root(), QStringLiteral("scale_1"))) QMetaObject::invokeMethod(b, "clicked");
+        }
+        // Termine für den Kalender: Plan aus den Demo-Terminen, Einstellung als Bildschirmfoto
+        {
+            const QList<CalendarExport::Item> cal = CalendarExport::plan(QDateTime::currentDateTime(), false);
+            int allDay = 0, bad = 0;
+            QSet<QString> keys;
+            for (const CalendarExport::Item &it : cal) {
+                allDay += it.allDay;
+                keys.insert(it.key);
+                if (!it.start.isValid() || it.end <= it.start || it.title.isEmpty() || it.hash.size() != 16) ++bad;
+                if (it.allDay && (it.start.timeSpec() != Qt::UTC || it.start.time() != QTime(0, 0))) ++bad;
+            }
+            qInfo("Kalender-Übertragung: %d Termine (%d ganztägig), %d fehlerhaft, Schlüssel eindeutig: %s; Beispiel: %s",
+                  int(cal.size()), allDay, bad, keys.size() == cal.size() ? "ja" : "nein",
+                  cal.isEmpty() ? "-" : qPrintable(cal.first().title + QStringLiteral(" | ") + QString(cal.first().description).replace(QLatin1Char('\n'), QLatin1Char(' '))));
+            if (cal.isEmpty() || bad || keys.size() != cal.size()) { ++fails; qWarning("FEHLER: Kalender-Übertragung"); }
+            // nur eine Person: Teilmenge, jede Person zusammen höchstens alle
+            {
+                int sum = 0;
+                QStringList per;
+                for (const Patient &p : Database::instance().patients()) {
+                    const QList<CalendarExport::Item> one = CalendarExport::plan(QDateTime::currentDateTime(), false, p.id);
+                    sum += int(one.size());
+                    per << QStringLiteral("%1: %2").arg(p.displayName()).arg(one.size());
+                    for (const CalendarExport::Item &it : one)
+                        if (!keys.contains(it.key)) { ++fails; qWarning("FEHLER: Kalender: Termin %s fehlt in „alle“", qPrintable(it.key)); break; }
+                }
+                qInfo("Kalender je Person: %s (zusammen %d von %d; Rest ohne Person)", qPrintable(per.join(QStringLiteral(", "))), sum, int(cal.size()));
+                if (sum > cal.size() || sum == 0) { ++fails; qWarning("FEHLER: Kalender je Person"); }
+            }
+            const QList<CalendarExport::Item> notes = CalendarExport::plan(QDateTime::currentDateTime(), true);
+            int changed = 0;
+            for (int i = 0; i < qMin(cal.size(), notes.size()); ++i) changed += cal[i].hash != notes[i].hash;
+            qInfo("Kalender-Übertragung mit Notizen: %d Prüfsummen geändert", changed);
+            if (qEnvironmentVariableIsSet("VP_AUTOPILOT_CALUI")) {
+                app.setCalendarExportEnabled(true);
+                QMetaObject::invokeMethod(home(), "openSettings");
+                wait(1200);
+                std::function<QQuickItem *(QQuickItem *, const QString &)> find = [&](QQuickItem *it, const QString &name) -> QQuickItem * {
+                    if (it->objectName() == name && it->isVisible()) return it;
+                    for (QQuickItem *c : it->childItems()) if (QQuickItem *f = find(c, name)) return f;
+                    return nullptr;
+                };
+                QQuickItem *check = find(win->contentItem(), QStringLiteral("calendarExportCheck"));
+                QQuickItem *flick = check;
+                while (flick && !flick->inherits("QQuickFlickable")) flick = flick->parentItem();
+                if (check && flick) {
+                    const QPointF p = check->mapToItem(flick->childItems().value(0), QPointF(0, 0));
+                    QQmlProperty::write(flick, QStringLiteral("contentY"), qMax(0.0, p.y() - 60));
+                }
+                wait(2500);
+                QQuickItem *combo = find(win->contentItem(), QStringLiteral("calendarChoice"));
+                if (!find(win->contentItem(), QStringLiteral("calendarScope"))) { ++fails; qWarning("FEHLER: Kalender: Auswahl der Termine fehlt"); }
+                QQuickItem *stat = find(win->contentItem(), QStringLiteral("calendarStatus"));
+                qInfo("Kalender-Einstellung: Schalter %s, Kalenderwahl %s, Status \"%s\"", check ? "ja" : "nein", combo ? "ja" : "nein",
+                      stat ? qPrintable(stat->property("text").toString()) : "-");
+                if (!check || !combo || !stat) { ++fails; qWarning("FEHLER: Kalender-Einstellung"); }
+                shot(QStringLiteral("m30_kalender_einstellung"));
+                app.setCalendarExportEnabled(false);
+            }
+        }
+        qInfo("Kurven geprüft: %d Fehler", fails);
+        return fails;
+    }
 
     if (!app.loggedIn()) {          // ohne Datenbank: Einrichtung zeigen
         shot(QStringLiteral("m50_einrichtung"));

@@ -18,6 +18,7 @@
 #include "drugclass.h"
 #include "usbsync.h"
 #include "tabletreminders.h"
+#include "calendarexport.h"
 #include "formloader.h"
 #include "i18n.h"
 #include "journalmodel.h"
@@ -103,11 +104,12 @@ AppController::AppController(QObject *parent) : QObject(parent)
     });
 #endif
     m_reminders = new TabletReminders(this);
+    m_calendar = new CalendarExport(this);
     connect(qApp, &QGuiApplication::applicationStateChanged, this, [this](Qt::ApplicationState s) {
         if (s != Qt::ApplicationActive) return;
         ++m_permRevision;
         emit permissionsChanged();
-        if (loggedIn() && !m_demo) m_reminders->scheduleSoon();
+        if (loggedIn() && !m_demo) { m_reminders->scheduleSoon(); m_calendar->syncSoon(); }
     });
     m_bumpTimer.setSingleShot(true);
     m_bumpTimer.setInterval(0);
@@ -224,7 +226,10 @@ void AppController::bump()
 void AppController::flushBump()
 {
     m_bumpTimer.stop();
-    if (m_reminders && loggedIn() && !m_demo) m_reminders->scheduleSoon();   // Erinnerungen neu stellen (nicht in der Demo)
+    if (m_reminders && loggedIn() && !m_demo) {
+        m_reminders->scheduleSoon();   // Erinnerungen neu stellen (nicht in der Demo)
+        m_calendar->syncSoon();        // Termine in den Kalender übertragen (falls eingeschaltet)
+    }
     ++m_revision;
     emit dataChanged();
     emit syncStatusChanged();
@@ -313,6 +318,7 @@ void AppController::afterLogin()
         m_reminders->requestPermission();
     }
     m_reminders->scheduleNow();
+    m_calendar->syncSoon();
     ensureUsbServer(nullptr);      // Computer kann jetzt ohne Code abgleichen
 }
 
@@ -329,6 +335,49 @@ bool AppController::notificationsAllowed() const
 void AppController::requestNotifications()
 {
     m_reminders->requestPermission();
+}
+
+bool AppController::calendarExportAvailable() const
+{
+#ifdef VP_AUTOPILOT
+    if (qEnvironmentVariableIsSet("VP_AUTOPILOT_CALUI")) return true;   // Bildschirmfoto der Einstellung (am Computer)
+#endif
+    return !m_demo;
+}
+bool AppController::calendarExportEnabled() const { return m_calendar->enabled(); }
+void AppController::setCalendarExportEnabled(bool on) { if (calendarExportAvailable()) m_calendar->setEnabled(on); }
+QVariantList AppController::deviceCalendars() const { return m_calendar->calendars(); }
+qint64 AppController::calendarExportId() const { return m_calendar->calendarId(); }
+void AppController::setCalendarExportId(qint64 id) { m_calendar->setCalendarId(id); }
+QVariantList AppController::calendarExportScopes()
+{
+    QVariantList l{ QVariantMap{ { QStringLiteral("id"), 0 },
+                                 { QStringLiteral("label"), Session::isAdmin() ? tr("Alle Termine (alle Personen und Konten)") : tr("Alle Termine (alle Personen)") } } };
+    if (!loggedIn()) return l;
+    for (const Patient &p : Database::instance().patients())
+        l << QVariantMap{ { QStringLiteral("id"), p.id }, { QStringLiteral("label"), tr("Nur %1").arg(p.displayName()) } };
+    return l;
+}
+qint64 AppController::calendarExportPerson() const { return m_calendar->personId(); }
+void AppController::setCalendarExportPerson(qint64 id) { m_calendar->setPersonId(id); }
+bool AppController::calendarExportNotes() const { return m_calendar->withNotes(); }
+void AppController::setCalendarExportNotes(bool on) { m_calendar->setWithNotes(on); }
+bool AppController::calendarAllowed() const { return m_calendar->permissionGranted(); }
+void AppController::requestCalendarPermission() { m_calendar->requestPermission(); }
+void AppController::calendarExportNow() { if (calendarExportAvailable()) m_calendar->syncNow(true); }
+
+QString AppController::calendarExportStatus() const
+{
+    if (!m_calendar->enabled()) return {};
+    const QVariantMap st = m_calendar->status();
+    if (st.value(QStringLiteral("error")).toString() == QLatin1String("permission"))
+        return tr("Kein Zugriff auf den Kalender – bitte erlauben.");
+    if (!st.value(QStringLiteral("error")).toString().isEmpty())
+        return tr("Übertragen fehlgeschlagen: %1").arg(st.value(QStringLiteral("error")).toString());
+    if (!st.contains(QStringLiteral("at"))) return tr("Noch nicht übertragen.");
+    const QDateTime at = QDateTime::fromMSecsSinceEpoch(qint64(st.value(QStringLiteral("at")).toDouble()));
+    return tr("Zuletzt übertragen: %1 – Termine im Kalender: %2")
+        .arg(QLocale().toString(at, QStringLiteral("dd.MM.yyyy HH:mm"))).arg(st.value(QStringLiteral("total")).toInt());
 }
 
 bool AppController::remindersExact() const

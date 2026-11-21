@@ -42,11 +42,13 @@ SOURCES += \
     $$PWD/src/appcontroller_admin.cpp \
     $$PWD/src/appcontroller_wounds.cpp \
     $$PWD/src/tabletreminders.cpp \
+    $$PWD/src/calendarexport.cpp \
     $$PWD/src/systemui.cpp \
     $$PWD/src/chartitem.cpp
 HEADERS += \
     $$PWD/src/appcontroller.h \
     $$PWD/src/tabletreminders.h \
+    $$PWD/src/calendarexport.h \
     $$PWD/src/systemui.h \
     $$PWD/src/chartitem.h
 

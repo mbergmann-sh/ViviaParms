@@ -5,8 +5,8 @@
     <DisplayName xml:lang="de">ViviaParms light</DisplayName>
     <Description>The simple vital signs diary for one person: readings, charts, medication, documents and appointments</Description>
     <Description xml:lang="de">Das einfache Vitalwerte-Tagebuch für eine Person: Messwerte, Grafiken, Medikamente, Dokumente und Termine</Description>
-    <Version>0.33.0</Version>
-    <ReleaseDate>2026-10-29</ReleaseDate>
+    <Version>0.34.0</Version>
+    <ReleaseDate>2026-11-20</ReleaseDate>
     <Default>true</Default>
     <ForcedInstallation>true</ForcedInstallation>
     <SortingPriority>100</SortingPriority>

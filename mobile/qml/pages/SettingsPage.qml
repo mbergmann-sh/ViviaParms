@@ -155,6 +155,73 @@ ColumnLayout {   // Abgleich und Website: nicht in ViviaParms light (dort nur US
             VButton { objectName: "exactAlarmButton"; visible: (app.permissionRevision, !app.remindersExact())
                       text: qsTr("Pünktliche Erinnerungen erlauben"); onClicked: app.openExactAlarmSettings() }
 
+            // Termine in einen Kalender des Geräts (z. B. Google Kalender) – nur in eine Richtung
+            SectionTitle { text: qsTr("Kalender"); visible: app.calendarExportAvailable() }
+            ColumnLayout {
+                id: calSync
+                visible: app.calendarExportAvailable()
+                Layout.fillWidth: true
+                spacing: Theme.gapS
+                property bool on: app.calendarExportEnabled()
+                property var cals: (app.permissionRevision, calSync.on, app.deviceCalendars())
+                property string status: ""
+                function refresh() { status = app.calendarExportStatus() }
+                Component.onCompleted: refresh()
+                Timer { interval: 2000; repeat: true; running: calSync.on && page.visible; triggeredOnStart: true; onTriggered: calSync.refresh() }
+
+                VCheck { objectName: "calendarExportCheck"; text: qsTr("Termine in den Kalender übertragen"); font.pixelSize: Theme.fsM
+                         checked: calSync.on
+                         onToggled: { app.setCalendarExportEnabled(checked); calSync.on = app.calendarExportEnabled(); calSync.refresh() } }
+                Label { Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.muted; font.pixelSize: Theme.fsS; leftPadding: 36
+                        text: qsTr("Neue und geänderte Termine erscheinen im gewählten Kalender des Geräts – bei einem Google-Konto auch in Google Kalender. Änderungen dort werden nicht zurückgeholt; maßgeblich bleibt ViviaParms. Ausschalten entfernt die übertragenen Termine wieder aus dem Kalender.") }
+
+                Label { visible: calSync.on && !(app.permissionRevision, app.calendarAllowed())
+                        Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2
+                        text: qsTr("ViviaParms darf noch nicht auf die Kalender des Geräts zugreifen.") }
+                VButton { visible: calSync.on && !(app.permissionRevision, app.calendarAllowed())
+                          text: qsTr("Zugriff auf den Kalender erlauben"); onClicked: app.requestCalendarPermission() }
+
+                VCombo {
+                    id: scopeChoice
+                    objectName: "calendarScope"
+                    visible: calSync.on
+                    Layout.fillWidth: true
+                    label: qsTr("Welche Termine")
+                    property var scopes: (calSync.on, app.dataRevision, app.calendarExportScopes())
+                    model: scopes
+                    textRole: "label"
+                    currentIndex: { const id = (calSync.on, app.calendarExportPerson()); for (let i = 0; i < scopes.length; ++i) if (scopes[i].id === id) return i; return 0 }
+                    onActivated: (i) => { app.setCalendarExportPerson(scopes[i].id); calSync.refresh() }
+                }
+                Label { visible: calSync.on; Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.muted; font.pixelSize: Theme.fsS
+                        text: app.isAdmin ? qsTr("Wie im Terminplaner: mit dem Verwaltungskonto die Termine aller Konten.")
+                                          : qsTr("Wie im Terminplaner: die Termine, für die dieses Konto zuständig ist.") }
+                VCombo {
+                    id: calChoice
+                    objectName: "calendarChoice"
+                    visible: calSync.on && (app.permissionRevision, app.calendarAllowed()) && calSync.cals.length > 0
+                    Layout.fillWidth: true
+                    label: qsTr("Kalender")
+                    model: calSync.cals
+                    textRole: "label"
+                    currentIndex: { const id = (calSync.on, app.calendarExportId()); for (let i = 0; i < calSync.cals.length; ++i) if (calSync.cals[i].id === id) return i; return -1 }
+                    onActivated: (i) => { app.setCalendarExportId(calSync.cals[i].id); calSync.refresh() }
+                }
+                Label { visible: calSync.on && (app.permissionRevision, app.calendarAllowed()) && calSync.cals.length === 0
+                        Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2
+                        text: qsTr("Auf dem Gerät ist kein beschreibbarer Kalender eingerichtet. Ein Google-Konto unter „Einstellungen → Konten“ hinzufügen.") }
+                Label { visible: calChoice.visible; Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.muted; font.pixelSize: Theme.fsS
+                        text: qsTr("Tipp: In Google Kalender einen eigenen Kalender „ViviaParms“ anlegen (am Computer: calendar.google.com → Weitere Kalender → Neuer Kalender) und ihn hier wählen – so bleiben die Termine von den übrigen getrennt und lassen sich gemeinsam ein- und ausblenden.") }
+                VCheck { objectName: "calendarNotesCheck"; visible: calSync.on; text: qsTr("Notizen mitübertragen"); font.pixelSize: Theme.fsM
+                         checked: (calSync.on, app.calendarExportNotes()); onToggled: { app.setCalendarExportNotes(checked); calSync.refresh() } }
+                Label { visible: calSync.on; Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.muted; font.pixelSize: Theme.fsS; leftPadding: 36
+                        text: qsTr("Übertragen werden Titel, Zeit, Ort und für wen der Termin ist. Notizen können Gesundheitsdaten enthalten und liegen dann auch bei Google.") }
+                Label { objectName: "calendarStatus"; visible: calSync.on && calSync.status !== ""
+                        Layout.fillWidth: true; wrapMode: Text.WordWrap; color: Theme.ink2; text: calSync.status }
+                VButton { visible: calSync.on && (app.permissionRevision, app.calendarAllowed()); text: qsTr("Jetzt übertragen")
+                          onClicked: { app.calendarExportNow(); calSync.refresh() } }
+            }
+
             SectionTitle { text: qsTr("Darstellung") }
             Flow {
                 Layout.fillWidth: true

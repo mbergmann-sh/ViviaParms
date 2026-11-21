@@ -89,6 +89,22 @@ neu. `USE_EXACT_ALARM` (ohne Rückfrage) ist seit 0.31.2 entfernt: Google Play l
 Wecker- und Kalender-Apps zu. Die Wecker stellt ein Hintergrund-Thread; ein unveränderter Plan
 wird nicht erneut übergeben.
 
+**Termine in den Kalender übertragen** (*Einstellungen → Kalender*, ab 0.34.0): nur in eine Richtung,
+ViviaParms → ein Kalender des Geräts (`CalendarExport.java`, Android-Kalenderschnittstelle
+`CalendarContract`, Rechte `READ_CALENDAR`/`WRITE_CALENDAR`). Gehört der Kalender zu einem Google-Konto,
+gleicht Android ihn selbst mit Google Kalender ab – ViviaParms braucht kein Google-Projekt, keine
+Anmeldung und speichert keine Zugangsdaten. Einen *neuen* Kalender in einem Google-Konto kann eine App
+über diese Schnittstelle nicht anlegen; empfohlen ist, in Google Kalender einen Kalender „ViviaParms“
+anzulegen (wird dann vorgeschlagen), sonst der Hauptkalender. Übertragen werden – je nach Auswahl – alle
+Termine oder nur die einer Person, so weit das angemeldete Konto sie sieht (Verwaltung: alle Konten,
+sonst die eigenen), von 30 Tagen zurück bis ein Jahr voraus: Titel (bei „alle“ und mehreren Personen mit Namen),
+Zeit, Ort, „Für: …“, Notizen nur auf Wunsch. Welche Einträge von ViviaParms stammen, steht in den
+app-eigenen SharedPreferences (Termin → Ereignis-ID + Prüfsumme); nur diese werden geändert oder
+gelöscht, im Kalender gelöschte werden wieder eingetragen. Ausschalten oder ein anderer Kalender
+entfernt die bisherigen Einträge. Wechsel der Auswahl entfernt die nicht mehr gewählten Termine. Nicht in der Demo; nur für das Konto,
+das die Übertragung eingeschaltet hat. Google Play: in der Datensicherheit „Kalender“ angeben (nicht weitergegeben,
+auf dem Gerät verarbeitet).
+
 **Android 15 und 16 (Ziel-API 36):**
 
 * *Darstellung bis an den Rand:* Android zeichnet die App unter Status- und Navigationsleiste.

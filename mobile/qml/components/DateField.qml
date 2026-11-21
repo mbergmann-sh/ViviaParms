@@ -1,4 +1,4 @@
-// Datumsfeld zum Tippen (TT.MM.JJJJ) – Wert als ISO-Datum; leer erlaubt
+// Datumsfeld zum Tippen (TT.MM.JJJJ) oder per Kalender (Knopf rechts) – Wert als ISO-Datum; leer erlaubt
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -32,9 +32,13 @@ ColumnLayout {
     Component.onCompleted: input.text = toText(isoDate)
 
     Label { visible: f.label !== ""; text: f.label; font.family: Theme.family; font.pixelSize: Theme.fsS; color: Theme.ink2 }
+    RowLayout {
+        Layout.fillWidth: true
+        spacing: 6
     TextField {
         id: input
         Layout.fillWidth: true
+        Layout.minimumWidth: 60
         implicitHeight: Theme.touch
         font.family: Theme.family; font.pixelSize: Theme.fsM; color: Theme.ink
         placeholderText: qsTr("TT.MM.JJJJ")
@@ -48,5 +52,37 @@ ColumnLayout {
             border.width: input.activeFocus ? 2 : 1
             border.color: !f.valid ? Theme.alert : input.activeFocus ? Theme.brand : Theme.ruleStrong
         }
+    }
+    AbstractButton {
+        id: calButton
+        objectName: f.objectName !== "" ? f.objectName + "Calendar" : ""
+        implicitWidth: Theme.touch - 6; implicitHeight: Theme.touch
+        Accessible.name: qsTr("Kalender")
+        onClicked: cal.openAt(f.parse(input.text) || f.isoDate)
+        // gezeichnetes Kalenderblatt (kein Emoji – nicht jede Schrift hat es)
+        contentItem: Item {
+            Rectangle {
+                id: sheet
+                anchors.centerIn: parent
+                width: 22; height: 20; radius: 3
+                color: "transparent"; border.width: 2; border.color: Theme.brand
+                Rectangle { x: 0; y: 0; width: parent.width; height: 6; radius: 3; color: Theme.brand }
+                Grid {
+                    x: 5; y: 9; columns: 3; spacing: 2
+                    Repeater { model: 6; Rectangle { width: 2.5; height: 2.5; color: Theme.brand } }
+                }
+            }
+            Rectangle { x: sheet.x + 5; y: sheet.y - 3; width: 2; height: 5; radius: 1; color: Theme.brand }
+            Rectangle { x: sheet.x + sheet.width - 7; y: sheet.y - 3; width: 2; height: 5; radius: 1; color: Theme.brand }
+        }
+        background: Rectangle { radius: Theme.radius; color: calButton.down ? Theme.brandWash : Theme.surface
+                                border.width: 1; border.color: Theme.ruleStrong }
+    }
+    }
+    CalendarPopup {
+        id: cal
+        parent: Overlay.overlay
+        title: f.label
+        onPicked: (iso) => { input.text = f.toText(iso); f.isoDate = iso }
     }
 }

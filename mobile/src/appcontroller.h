@@ -175,6 +175,22 @@ public:
     Q_INVOKABLE void setQuarterReminderEnabled(bool on);       // gestellte Erinnerungen (Anzeige, Prüfung)
     Q_INVOKABLE bool notificationsAllowed() const;
     Q_INVOKABLE void requestNotifications();
+    // Termine in den Kalender des Geräts übertragen (nur ViviaParms → Kalender, z. B. Google Kalender)
+    Q_INVOKABLE bool calendarExportAvailable() const;    // nicht in der Demo (erfundene Daten nicht ins echte Kalenderkonto)
+    Q_INVOKABLE bool calendarExportEnabled() const;
+    Q_INVOKABLE void setCalendarExportEnabled(bool on);
+    Q_INVOKABLE QVariantList deviceCalendars() const;
+    Q_INVOKABLE qint64 calendarExportId() const;
+    Q_INVOKABLE void setCalendarExportId(qint64 id);
+    Q_INVOKABLE QVariantList calendarExportScopes();    // [{id: 0, label: "Alle Termine"}, {id: Person, label: "Nur …"}]
+    Q_INVOKABLE qint64 calendarExportPerson() const;
+    Q_INVOKABLE void setCalendarExportPerson(qint64 id);
+    Q_INVOKABLE bool calendarExportNotes() const;
+    Q_INVOKABLE void setCalendarExportNotes(bool on);
+    Q_INVOKABLE bool calendarAllowed() const;
+    Q_INVOKABLE void requestCalendarPermission();
+    Q_INVOKABLE QString calendarExportStatus() const;
+    Q_INVOKABLE void calendarExportNow();
     Q_INVOKABLE bool remindersExact() const;          // pünktliche Wecker erlaubt (Android 12+; sonst ungefähr)
     Q_INVOKABLE void openExactAlarmSettings();        // Systemeinstellung „Wecker und Erinnerungen“
     int permissionRevision() const { return m_permRevision; }
@@ -344,6 +360,7 @@ private:
     int m_permRevision = 0;               // fasst mehrere Änderungen eines Vorgangs zu einem Neuladen zusammen
     class UsbSyncServer *m_usb = nullptr;
     class TabletReminders *m_reminders = nullptr;
+    class CalendarExport *m_calendar = nullptr;
     class Speech *m_speech = nullptr;
     QStringList m_lastShared;
     bool m_demo = false;
