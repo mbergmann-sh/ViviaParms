@@ -49,6 +49,7 @@ Speech *AppController::speech()
         m_speech = new Speech(this);
         m_speech->setRate(AppSettings::speechRate());
         m_speech->setChoice(AppSettings::voiceGender());
+        connect(m_speech, &Speech::statusChanged, this, &AppController::speechChanged);   // Hinweise neu lesen
     }
     return m_speech;
 }
@@ -60,7 +61,9 @@ QVariantMap AppController::speechInfo()
     for (const auto &[k, label] : Speech::voiceChoices())
         voices << QVariantMap{ { QStringLiteral("key"), k }, { QStringLiteral("label"), label } };
     QString info;
-    if (!s->available())
+    if (s->isStarting())
+        info = tr("Die Sprachausgabe wird gestartet …");
+    else if (!s->available())
         info = tr("Keine Sprachausgabe verfügbar – der Assistent zeigt die Angaben nur an. Bitte eine "
                   "Sprachausgabe-App (z. B. „Sprachausgabe von Google“) mit deutscher Stimme installieren; in den "
                   "Android-Einstellungen über die Suche nach „Text-in-Sprache“ bzw. „Sprachausgabe“ zu finden.");
@@ -72,7 +75,7 @@ QVariantMap AppController::speechInfo()
         info = tr("Für die eingestellte Sprache ist keine Systemstimme installiert, die Aussprache kann fremd klingen.");
     return { { QStringLiteral("available"), s->available() }, { QStringLiteral("voices"), voices },
              { QStringLiteral("voice"), AppSettings::voiceGender() }, { QStringLiteral("description"), s->voiceDescription() },
-             { QStringLiteral("info"), info } };
+             { QStringLiteral("info"), info }, { QStringLiteral("starting"), s->isStarting() } };
 }
 
 void AppController::setVoice(const QString &key)

@@ -4,6 +4,7 @@
 #include <algorithm>
 
 #include <QCoreApplication>
+#include <QElapsedTimer>
 #include <QLocale>
 #include <QRegularExpression>
 
@@ -21,14 +22,12 @@ QString g_engineName;
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 constexpr QTextToSpeech::State kErrorState = QTextToSpeech::Error;
 bool realError(const QTextToSpeech *t) { return t->state() == QTextToSpeech::Error && t->errorReason() != QTextToSpeech::ErrorReason::NoError; }
-bool stillStarting(const QTextToSpeech *t) { return t->state() == QTextToSpeech::Error && t->errorReason() == QTextToSpeech::ErrorReason::NoError; }
 QString errorText(const QTextToSpeech *t) { return t->errorString(); }
 int errorCode(const QTextToSpeech *t) { return int(t->errorReason()); }
 QString engineName(const QTextToSpeech *t) { return t->engine(); }
 #else
 constexpr QTextToSpeech::State kErrorState = QTextToSpeech::BackendError;
 bool realError(const QTextToSpeech *t) { return t->state() == QTextToSpeech::BackendError; }
-bool stillStarting(const QTextToSpeech *) { return false; }
 QString errorText(const QTextToSpeech *) { return {}; }
 int errorCode(const QTextToSpeech *) { return 0; }
 QString engineName(const QTextToSpeech *) { return g_engineName; }
@@ -39,6 +38,17 @@ QString engineName(const QTextToSpeech *) { return g_engineName; }
 QTextToSpeech *g_engine = nullptr;
 bool g_tried = false;
 bool g_voicesDone = false;      // Stimmen aller Sprachen ermittelt (erst, wenn die Engine bereit ist)
+// Android startet die Engine asynchron und meldet bis dahin „Error“ – je nach Qt-Version auch MIT
+// Ursache. Darum gilt ein Fehler erst als echt, wenn die Engine nie bereit war und die Anlaufzeit
+// vorbei ist; vorher heißt es „wird gestartet“.
+bool g_everReady = false;
+QElapsedTimer g_since;
+constexpr qint64 kStartupMs = 10000;
+bool starting(const QTextToSpeech *t)
+{
+    return !g_everReady && t && t->state() != QTextToSpeech::Ready && t->state() != QTextToSpeech::Speaking
+        && (!g_since.isValid() || g_since.elapsed() < kStartupMs);
+}
 
 // Engine wählen: nie die Test-Engine „mock“ (wird unter Android mit ausgeliefert und spricht nicht),
 // unter Android bevorzugt „android“ (Sprachausgabe des Systems)
@@ -58,8 +68,13 @@ QTextToSpeech *sharedEngine()
         g_tried = true;
         const QString name = preferredEngine();
         if (!name.isEmpty()) {
+            g_since.start();
             g_engine = new QTextToSpeech(name, QCoreApplication::instance());
             g_engineName = name;
+            if (g_engine->state() == QTextToSpeech::Ready) g_everReady = true;
+            QObject::connect(g_engine, &QTextToSpeech::stateChanged, g_engine, [](QTextToSpeech::State s) {
+                if (s == QTextToSpeech::Ready || s == QTextToSpeech::Speaking) g_everReady = true;
+            });
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
             QObject::connect(g_engine, &QTextToSpeech::errorOccurred, g_engine, [](QTextToSpeech::ErrorReason, const QString &msg) {
                 qWarning("Sprachausgabe: %s", qPrintable(msg));
@@ -86,6 +101,7 @@ Speech::Speech(QObject *parent) : QObject(parent)
         connect(m_tts, &QTextToSpeech::stateChanged, this, [this](QTextToSpeech::State s) {
             // Android: die Engine startet asynchron – Stimme erst wählen, wenn sie bereit ist,
             // und einen in der Zwischenzeit angeforderten Text dann vorlesen
+            if (s == QTextToSpeech::Ready) g_everReady = true;
             if (s == QTextToSpeech::Ready && !m_pending.isEmpty()) {
                 const QString t = m_pending;
                 m_pending.clear();
@@ -94,6 +110,7 @@ Speech::Speech(QObject *parent) : QObject(parent)
                 return;
             }
             if (s == QTextToSpeech::Ready && (m_desc.isEmpty() || !g_voicesDone)) chooseVoice();
+            if (s == QTextToSpeech::Ready || s == kErrorState) emit statusChanged();
             if (g_speaker != this) return;
             if (s == QTextToSpeech::Speaking) m_speaking = true;
             else if (m_speaking && (s == QTextToSpeech::Ready || s == kErrorState)) {
@@ -119,7 +136,17 @@ Speech::~Speech()
 bool Speech::available() const
 {
 #ifdef VP_HAVE_TTS
-    return m_tts != nullptr && !realError(m_tts);
+    // nicht verfügbar erst, wenn die Engine nie bereit war und nach der Anlaufzeit noch einen Fehler meldet
+    return m_tts != nullptr && (g_everReady || starting(m_tts) || !realError(m_tts));
+#else
+    return false;
+#endif
+}
+
+bool Speech::isStarting() const
+{
+#ifdef VP_HAVE_TTS
+    return m_tts && !g_everReady && starting(m_tts);
 #else
     return false;
 #endif
@@ -154,7 +181,12 @@ void Speech::setRate(double rate)
 bool Speech::languageMatches() const
 {
 #ifdef VP_HAVE_TTS
-    return m_tts && m_tts->locale().language() == QLocale().language();
+    if (!m_tts) return false;
+    if (m_tts->locale().language() == QLocale().language()) return true;
+    // Engine steht (noch) auf einer anderen Sprache: zählt, ob sie die Oberflächensprache kann
+    for (const QLocale &l : m_tts->availableLocales())
+        if (l.language() == QLocale().language()) return true;
+    return false;
 #else
     return false;
 #endif
@@ -283,7 +315,20 @@ void Speech::chooseVoice()
     for (const VoiceEntry &e : pool)
         if (e.gender == g) { apply(e, 0.0); return; }
     if (pool.isEmpty()) { m_desc.clear(); return; }
-    // 3) keine passende Stimme installiert: vorhandene Stimme deutlich tiefer/höher stellen
+    // 3) die Engine nennt bei keiner Stimme ein Geschlecht (z. B. Android/Google: „de-de-x-deb-local“):
+    //    dann ist nicht bekannt, ob eine passende fehlt – Standardstimme der Sprache, unverändert.
+    //    Eine bestimmte Stimme lässt sich in der Liste wählen.
+    bool anyKnown = false;
+    for (const VoiceEntry &e : pool) anyKnown = anyKnown || e.gender == QVoice::Male || e.gender == QVoice::Female;
+    if (!anyKnown) {
+        m_tts->setLocale(pool.first().locale);
+        const QVoice def = m_tts->voice();          // Standardstimme der Engine für diese Sprache
+        bool found = false;
+        for (const VoiceEntry &e : pool) if (e.voice.name() == def.name()) { apply(e, 0.0); found = true; break; }
+        if (!found) apply(pool.first(), 0.0);
+        return;
+    }
+    // 4) keine passende Stimme installiert: vorhandene Stimme deutlich tiefer/höher stellen
     apply(pool.first(), wantMale ? -0.6 : 0.35);
     m_desc = pool.first().voice.name() + QCoreApplication::translate("Speech", " (Tonhöhe angepasst)");
     m_hint = (wantMale ? QCoreApplication::translate("Speech", "Keine männliche Stimme für %1 installiert")
@@ -299,11 +344,12 @@ void Speech::say(const QString &text)
 {
 #ifdef VP_HAVE_TTS
     if (!m_tts) return;
-    if (m_tts->state() == kErrorState) {
-        // Engine startet noch (Android, ohne Fehlerursache): vorlesen, sobald sie bereit ist
-        if (stillStarting(m_tts)) m_pending = text;
+    if (!g_everReady && m_tts->state() != QTextToSpeech::Ready) {
+        // Engine startet noch (Android, meldet bis dahin „Error“): vorlesen, sobald sie bereit ist
+        m_pending = text;
         return;
     }
+    // war sie einmal bereit, wird auch bei gemeldetem Fehler gesprochen – Android meldet ihn teils grundlos
     m_pending.clear();
     m_tts->stop();
     if (g_speaker != this || m_desc.isEmpty()) chooseVoice();   // gemeinsame Engine: eigene Stimme/Tempo wieder setzen
@@ -366,6 +412,10 @@ QString Speech::diagnostics()
     if (t->state() == kErrorState)
         l << QCoreApplication::translate("Speech", "Fehler: %1 (%2)").arg(errorText(t).isEmpty() ? QStringLiteral("–") : errorText(t))
                                                                          .arg(errorCode(t));
+    if (t->state() == kErrorState && g_everReady)
+        l << QCoreApplication::translate("Speech", "Die Engine war bereit und spricht weiter – die Fehlermeldung betrifft z. B. eine nicht installierte Sprachvariante.");
+    else if (starting(t))
+        l << QCoreApplication::translate("Speech", "Die Engine startet noch.");
     l << QCoreApplication::translate("Speech", "Sprache: %1, Stimmen: %2, Sprachen: %3")
              .arg(t->locale().name()).arg(t->availableVoices().size()).arg(t->availableLocales().size());
     if (!t->voice().name().isEmpty()) l << QCoreApplication::translate("Speech", "Stimme: %1").arg(t->voice().name());

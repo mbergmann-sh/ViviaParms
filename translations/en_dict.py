@@ -3221,6 +3221,8 @@ EN.update({
     'Notizen mitübertragen': 'Include notes',
     'Übertragen werden Titel, Zeit, Ort und für wen der Termin ist. Notizen können Gesundheitsdaten enthalten und liegen dann auch bei Google.': 'Title, time, place and the person the appointment is for are copied. Notes may contain health data and would then also be stored with Google.',
     'Jetzt übertragen': 'Transfer now',
+    'Die Engine war bereit und spricht weiter – die Fehlermeldung betrifft z. B. eine nicht installierte Sprachvariante.': 'The engine was ready and keeps speaking – the error message concerns e.g. a language variant that is not installed.',
+    'Die Engine startet noch.': 'The engine is still starting.',
     'Alle Termine (alle Personen und Konten)': 'All appointments (all persons and accounts)',
     'Alle Termine (alle Personen)': 'All appointments (all persons)',
     'Nur %1': 'Only %1',

@@ -11,9 +11,9 @@ also je einmal bauen (auf dem Rechner selbst, in einer virtuellen Maschine oder 
 Die Abhängigkeiten (`Depends:`) ermittelt `dpkg-shlibdeps` automatisch aus den tatsächlich
 gelinkten Bibliotheken, die Distribution steht in der Versionsnummer:
 
-    viviaparms_0.34.0-1~deb12_amd64.deb            ViviaParms für Debian 12
-    viviaparms-light_0.34.0-1~deb13_amd64.deb      ViviaParms light für Debian 13
-    viviaparms_0.34.0-1~ubuntu24.04_amd64.deb      ViviaParms für Ubuntu 24.04
+    viviaparms_0.34.1-1~deb12_amd64.deb            ViviaParms für Debian 12
+    viviaparms-light_0.34.1-1~deb13_amd64.deb      ViviaParms light für Debian 13
+    viviaparms_0.34.1-1~ubuntu24.04_amd64.deb      ViviaParms für Ubuntu 24.04
 
 Das Bauen ist bewusst **nicht** in den qmake-Build eingebunden, sondern wird von Hand gestartet.
 
@@ -95,8 +95,8 @@ Ein Durchlauf für beide Ausgaben dauert je nach Rechner etwa 5–15 Minuten.
 ## 3. Installieren, aktualisieren, entfernen
 
 ```sh
-sudo apt install ./dist-deb/viviaparms_0.34.0-1~deb12_amd64.deb
-sudo apt install ./dist-deb/viviaparms-light_0.34.0-1~deb12_amd64.deb
+sudo apt install ./dist-deb/viviaparms_0.34.1-1~deb12_amd64.deb
+sudo apt install ./dist-deb/viviaparms-light_0.34.1-1~deb12_amd64.deb
 ```
 
 `apt` (nicht `dpkg -i`) installiert die fehlenden Qt-Laufzeitpakete gleich mit. Eine neuere

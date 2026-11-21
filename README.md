@@ -436,6 +436,15 @@ Wiederherstellungsschlüssel (Anmeldedialog → *Wiederherstellungsschlüssel…
   ein Abgleich (USB oder Website) mit einem Gerät in neuerer Version abgelehnt, und der Server
   nimmt von älteren Versionen keine Datenbank mehr an (HTTP 426) – so kann ein nicht
   aktualisiertes Gerät keine Daten überschreiben, die es nicht kennt.
+* **0.34.1:** **Sprachausgabe unter Android: kein falscher Hinweis mehr.** Android startet die
+  Sprachausgabe verzögert und meldet bis dahin einen Fehler (je nach Qt-Version mit Ursache). ViviaParms
+  hielt sie deshalb für „nicht verfügbar“ und zeigte beim Medikamente-Stellen den Hinweis, eine
+  Sprachausgabe-App zu installieren – obwohl kurz darauf gesprochen wurde. Jetzt gilt sie während der
+  ersten Sekunden als „wird gestartet“, ein Text wird bis dahin zurückgehalten, und die Anzeige
+  (Stimmenliste, „automatisch vorlesen“, Hinweis) aktualisiert sich, sobald die Engine bereit ist. War
+  sie einmal bereit, gilt ein später gemeldeter Fehler (etwa für eine nicht installierte Sprachvariante)
+  nicht mehr als „keine Sprachausgabe“. Nennt die Engine bei keiner Stimme ein Geschlecht (Google:
+  „de-de-x-deb-local“), wird die Standardstimme ohne Tonhöhen-Verstellung und ohne Warnung verwendet.
 * **0.34.0:** **Mobil: Termine in den Kalender übertragen** – neue Einstellung (*Einstellungen →
   Kalender*): Termine gehen in einen Kalender des Telefons/Tablets, bei einem Google-Konto damit auch in
   Google Kalender. Nur in eine Richtung (ViviaParms bleibt maßgeblich; geänderte oder gelöschte

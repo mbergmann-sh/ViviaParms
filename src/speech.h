@@ -27,6 +27,7 @@ public:
     void setRate(double rate);               // -1 … 1
     QString voiceDescription() const;        // für die Anzeige
     bool isSpeaking() const;
+    bool isStarting() const;                 // Engine läuft noch an (Android: einige Sekunden)
     bool languageMatches() const;           // Stimme passt zur Oberflächensprache
 
     // Fehlersuche: Engine, Zustand, Fehler, Sprache und Stimmen; Engine neu starten
@@ -42,6 +43,7 @@ public slots:
 
 signals:
     void finished();
+    void statusChanged();                    // Engine bereit / Fehler – Hinweise neu lesen
 
 private:
     void chooseVoice();

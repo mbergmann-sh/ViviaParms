@@ -13995,82 +13995,92 @@ Restart ViviaParms now? (You will need to log in again.)</translation>
 <context>
     <name>Speech</name>
     <message>
-        <location filename="../src/speech.cpp" line="235" />
+        <location filename="../src/speech.cpp" line="267" />
         <source>weiblich (automatisch)</source>
         <translation>female (automatic)</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="236" />
+        <location filename="../src/speech.cpp" line="268" />
         <source>männlich (automatisch)</source>
         <translation>male (automatic)</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="246" />
+        <location filename="../src/speech.cpp" line="278" />
         <source>männlich</source>
         <translation>male</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="247" />
+        <location filename="../src/speech.cpp" line="279" />
         <source>weiblich</source>
         <translation>female</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="248" />
+        <location filename="../src/speech.cpp" line="280" />
         <source>unbekannt</source>
         <translation>unknown</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="272" />
+        <location filename="../src/speech.cpp" line="304" />
         <source>Die gewählte Stimme ist nicht mehr installiert – es wird automatisch gewählt.</source>
         <translation>The selected voice is no longer installed – choosing automatically.</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="288" />
+        <location filename="../src/speech.cpp" line="333" />
         <source> (Tonhöhe angepasst)</source>
         <translation> (pitch adjusted)</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="289" />
+        <location filename="../src/speech.cpp" line="334" />
         <source>Keine männliche Stimme für %1 installiert</source>
         <translation>No male voice installed for %1</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="290" />
+        <location filename="../src/speech.cpp" line="335" />
         <source>Keine weibliche Stimme für %1 installiert</source>
         <translation>No female voice installed for %1</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="292" />
+        <location filename="../src/speech.cpp" line="337" />
         <source> – die vorhandene Stimme wird nur in der Tonhöhe verändert. Weitere Stimmen lassen sich in den Sprach-Einstellungen des Betriebssystems installieren.</source>
         <translation> – only the pitch of the available voice is changed. More voices can be installed in the operating system’s language settings.</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="360" />
+        <location filename="../src/speech.cpp" line="406" />
         <source>Engines: %1</source>
         <translation>Engines: %1</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="365" />
+        <location filename="../src/speech.cpp" line="411" />
         <source>Verwendet: %1, Zustand: %2</source>
         <translation>In use: %1, state: %2</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="367" />
+        <location filename="../src/speech.cpp" line="413" />
         <source>Fehler: %1 (%2)</source>
         <translation>Error: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="369" />
+        <location filename="../src/speech.cpp" line="416" />
+        <source>Die Engine war bereit und spricht weiter – die Fehlermeldung betrifft z. B. eine nicht installierte Sprachvariante.</source>
+        <translation>The engine was ready and keeps speaking – the error message concerns e.g. a language variant that is not installed.</translation>
+    </message>
+    <message>
+        <location filename="../src/speech.cpp" line="418" />
+        <source>Die Engine startet noch.</source>
+        <translation>The engine is still starting.</translation>
+    </message>
+    <message>
+        <location filename="../src/speech.cpp" line="419" />
         <source>Sprache: %1, Stimmen: %2, Sprachen: %3</source>
         <translation>Language: %1, voices: %2, languages: %3</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="371" />
+        <location filename="../src/speech.cpp" line="421" />
         <source>Stimme: %1</source>
         <translation>Voice: %1</translation>
     </message>
     <message>
-        <location filename="../src/speech.cpp" line="374" />
+        <location filename="../src/speech.cpp" line="424" />
         <source>Ohne Qt TextToSpeech gebaut.</source>
         <translation>Built without Qt TextToSpeech.</translation>
     </message>

@@ -324,6 +324,7 @@ public:
     Q_INVOKABLE void setContexts(const QStringList &l);
 
 signals:
+    void speechChanged();                // Sprachausgabe bereit/Fehler: speechInfo() neu lesen
     void permissionsChanged();
     void languageChanged();
     void sessionChanged();
